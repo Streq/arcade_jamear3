@@ -19,8 +19,11 @@ func physics_update(delta: float):
 	_physics_update(delta)
 	emit_signal("physics_updated", delta)
 
+#OVERRIDABLE
+
 # Initialize the state. E.g. change the animation
 func _enter(params):
+	
 	pass
 
 # Clean up the state. Reinitialize values like a timer
