@@ -80,13 +80,13 @@ config/icon="res://assets/texture/icon.png"
 
 [display]
 
-window/size/width=1920
-window/size/height=1080
+window/size/width=640
+window/size/height=352
 window/size/resizable=false
-window/size/fullscreen=true
+window/size/test_width=1920
+window/size/test_height=1056
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
-window/stretch/shrink=3.0
 
 [editor_plugins]
 
