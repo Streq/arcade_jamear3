@@ -83,8 +83,9 @@ config/icon="res://assets/texture/icon.png"
 window/size/width=360
 window/size/height=360
 window/size/resizable=false
-window/size/test_width=1080
+window/size/test_width=1900
 window/size/test_height=1080
+window/stretch/aspect="expand"
 
 [editor_plugins]
 
@@ -166,6 +167,11 @@ prev={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":6,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="terrain"
+2d_physics/layer_2="player"
 
 [physics]
 

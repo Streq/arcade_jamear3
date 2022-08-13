@@ -7,6 +7,7 @@ export (float, 0.0, 60.0) var rotation_lerp := 4.0
 export var strong_flap := 175.0
 export var weak_flap := 125.0
 export var glide_break_threshold := 200.0
+export var glide_break_recovery_threshold := 100.0
 export var glide_opposite_break_threshold := 100.0
 export var broken_glide_friction := 0.01
 export var glide_friction := 1.0
@@ -52,9 +53,24 @@ func _physics_process(delta):
 	velocity += Vector2.DOWN*gravity*delta
 	
 	#air_friction = velocity*velocity*k
-	var air_friction_force = velocity.length()*air_friction
-	velocity *= (1-air_friction_force*delta)
+		
+#	var air_friction_force = velocity.length()*air_friction
+#	velocity *= (1-air_friction_force*delta)
+	var air_resistance = get_air_resistance()
+	velocity = velocity.move_toward(Vector2.ZERO, air_resistance*delta)
+	
 	velocity = move_and_slide(velocity)
 #	if velocity:
 #		print(velocity)
 	
+
+func get_air_resistance():
+	#Air resistance can be calculated by 
+	#taking air density times the drag coefficient
+	#times area all over two, 
+	#and then multiply by velocity squared.
+#	var air_density = 1.0
+	var drag_coefficient = air_friction
+#	var area = 1.0 
+	var air_resistance = (drag_coefficient)*velocity.length_squared()
+	return air_resistance
