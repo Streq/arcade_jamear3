@@ -9,4 +9,4 @@ func _physics_update(delta):
 	if Input.is_action_just_pressed("A"):
 		goto("flap")
 	if Input.is_action_pressed("B"):
-		goto("glide")
+		goto("open_wings")

@@ -1,24 +1,48 @@
 extends KinematicBody2D
 
 
-export var gravity = 200.0
-export var air_friction = 0.0
+export var gravity := 200.0
+export var air_friction := 0.0
+export (float, 0.0, 60.0) var rotation_lerp := 4.0
+export var strong_flap := 175.0
+export var weak_flap := 125.0
+export var glide_break_threshold := 200.0
+export var glide_opposite_break_threshold := 100.0
+export var broken_glide_friction := 0.01
+export var glide_friction := 1.0
+export var animation_speed_multiplier := 1.0 setget set_animation_speed
+export var custom_animation_lengths := {} setget set_custom_animation_lengths
+
+var ready = false
+func set_custom_animation_lengths(val):
+	custom_animation_lengths = val
+	if ready:
+		animation_scaler.update_lengths()
+
+
+func set_animation_speed(val):
+	animation_speed_multiplier = val
+	if state_animation:
+		state_animation.playback_speed = val
+
 
 
 var velocity = Vector2()
 var direction := Vector2.UP
-onready var state_machine = $state_machine
-onready var state_animation = $"%state_animation"
+onready var state_machine := $state_machine
+onready var state_animation := $"%state_animation"
 onready var sprite = $Sprite
+onready var animation_scaler = $"%animation_scaler"
 
 func _ready():
 	state_machine.initialize()
-
+	set_animation_speed(animation_speed_multiplier)
+	ready = true
 func _physics_process(delta):
 	var change_direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 	if change_direction:
 #		direction = change_direction
-		direction = Vector2.RIGHT.rotated(lerp_angle(direction.angle(),change_direction.angle(),delta*4.0))
+		direction = Vector2.RIGHT.rotated(lerp_angle(direction.angle(),change_direction.angle(),delta*rotation_lerp))
 	
 	var point_dir = -direction.angle_to(Vector2.UP)
 	sprite.rotation = point_dir
@@ -31,6 +55,6 @@ func _physics_process(delta):
 	var air_friction_force = velocity.length()*air_friction
 	velocity *= (1-air_friction_force*delta)
 	velocity = move_and_slide(velocity)
-	if velocity:
-		print(velocity)
+#	if velocity:
+#		print(velocity)
 	

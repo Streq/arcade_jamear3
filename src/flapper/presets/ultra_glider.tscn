@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/flapper/flapper.tscn" type="PackedScene" id=1]
+
+[node name="ultra_glider" instance=ExtResource( 1 )]
+__meta__ = {
+"_edit_pinned_properties_": [ "glide_opposite_break_threshold", "strong_flap", "weak_flap", "glide_break_threshold", "broken_glide_friction", "glide_friction", "animation_speed_multiplier", "custom_animation_lengths", "rotation_lerp", "air_friction", "gravity" ]
+}
+gravity = 200.0
+air_friction = 0.001
+rotation_lerp = 4.0
+strong_flap = 175.0
+weak_flap = 125.0
+glide_break_threshold = 20000.0
+glide_opposite_break_threshold = 100.0
+broken_glide_friction = 0.01
+glide_friction = 1.0
+animation_speed_multiplier = 1.0
+custom_animation_lengths = {
+"flap": -1.0,
+"glide_flap": -1.0
+}
