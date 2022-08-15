@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/flapper/addons/energy_bar.gd" type="Script" id=2]
+[ext_resource path="res://src/HUD/small_energy_bar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/flapper/presets/super_glider.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0, 0.283237, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture2D" id=6]
+gradient = SubResource( 5 )
+width = 32
+height = 8
+fill_from = Vector2( 0, 1 )
+
+[sub_resource type="Gradient" id=3]
+colors = PoolColorArray( 0, 1, 0.211914, 1, 0, 1, 0.282227, 1 )
+
+[sub_resource type="GradientTexture2D" id=4]
+gradient = SubResource( 3 )
+width = 32
+height = 6
+fill_from = Vector2( 0, 1 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 4, 4 )
+
+[node name="flapper_with_energy" type="Node2D"]
+
+[node name="super_glider" parent="." instance=ExtResource( 4 )]
+position = Vector2( 403.978, 182.168 )
+glide_opposite_break_threshold = 50.0
+glide_opposite_break_recovery_threshold = 50.0
+glide_friction = 0.5
+glide_opposite_friction = 0.1
+broken_glide_opposite_friction = 0.0
+
+[node name="energy" type="Node" parent="super_glider"]
+script = ExtResource( 2 )
+max_value = 32.0
+value = 32.0
+flap_cost = 2.0
+
+[node name="energy_bar" parent="super_glider" instance=ExtResource( 3 )]
+texture_under = SubResource( 6 )
+texture_progress = SubResource( 4 )
+texture_progress_offset = Vector2( 0, 1 )
+
+[node name="pickup_detect" type="Area2D" parent="super_glider"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="super_glider/pickup_detect"]
+position = Vector2( 0.0216064, -0.168182 )
+shape = SubResource( 7 )
+
+[connection signal="value_changed" from="super_glider/energy" to="super_glider/energy_bar" method="update_vals"]

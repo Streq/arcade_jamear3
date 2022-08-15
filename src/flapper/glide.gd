@@ -4,56 +4,65 @@ onready var ground_effect_detect = $"%ground_effect_detect"
 
 func _enter(params):
 	owner.state_animation.play("glide")
-	failing = false
+	failing_up = false
+	failing_down = false
 	pass
 
-var failing = false
-func _physics_update(delta):
-	var vel :Vector2 = owner.velocity
-	var normal :Vector2 = owner.direction
-	var projected :Vector2 = vel.project(normal)
+enum {
+	GLIDE,
+	GLIDE_BACK,
+	FAILING,
+	FAILING_BACK
+}
+var state = GLIDE
 
+var failing_up = false
+var failing_down = false
+func _physics_update(delta):
+	var velocity :Vector2 = owner.velocity
+	var normal :Vector2 = owner.direction
+	var projected :Vector2 = velocity.project(normal)
+	var projected_length = projected.length()
 	owner.state_animation.play("glide")
-	if normal.dot(vel) < 0.0:
-#		print("vel:",vel,", normal:",normal,", projected:",projected)
-		var lift = projected*projected.length()
-		
-		var ground = ground_effect_detect.get_overlapping_bodies()
-		if ground.size()>0:
-			print("overlap")
-			lift *= 20.0
-		
-		var interfriction = -1.0
-		var break_speed = owner.glide_break_threshold
-		var recovery_speed = owner.glide_break_recovery_threshold
-		var speed = projected.length()
-		if speed > break_speed:
-			failing = true
-		elif speed < recovery_speed:
-			failing = false
-		elif failing: #how close am I to glide_break_recovery from 0 to 1
-			interfriction = (
-				( speed - recovery_speed)
-				/
-				(break_speed - recovery_speed)
-			)
-		
-		var broken_glide = owner.broken_glide_friction
-		var glide = owner.glide_friction
-		if failing:
-			var fric
-			if interfriction < 0.0:
-				fric = broken_glide
-			else:
-				fric = lerp(broken_glide, glide, interfriction)
+	var lift_vec = projected*projected_length
+	var lift = projected.length_squared()
+	var lift_is_below_wings = normal.dot(velocity) < 0.0
+	if lift_is_below_wings:
+		var max_force_wings_can_handle = owner.glide_break_threshold
+		var max_force_bent_wings_can_recover_from = owner.glide_break_recovery_threshold
+		var normal_force = projected_length
+		if normal_force > max_force_wings_can_handle:
+			failing_up = true
+		elif normal_force <= max_force_bent_wings_can_recover_from:
+			failing_up = false
+			
+		if failing_up:
 			owner.state_animation.play("glide_fail")
-			owner.velocity -= lift*fric*delta
+			owner.velocity -= lift_vec*owner.broken_glide_friction*delta
+			
+#			print(owner.velocity)
+#			print(projected)
 		else:
-			owner.velocity -= lift*glide*delta
+			owner.velocity -= lift_vec*owner.glide_friction*delta
 	
 		
-	elif projected.length()>owner.glide_opposite_break_threshold:
-		owner.state_animation.play("glide_opposite_fail")
+	else: #lift is above wings
+		var max_force_wings_can_handle = owner.glide_opposite_break_threshold
+		var max_force_bent_wings_can_recover_from = owner.glide_opposite_break_recovery_threshold
+		var normal_force = projected_length
+		if normal_force > max_force_wings_can_handle:
+			failing_down = true
+		elif normal_force <= max_force_bent_wings_can_recover_from:
+			failing_down = false
+			
+		if failing_down:
+			owner.state_animation.play("glide_opposite_fail")
+			owner.velocity -= lift_vec*owner.broken_glide_opposite_friction*delta
+			
+#			print(owner.velocity)
+#			print(projected)
+		else:
+			owner.velocity -= lift_vec*owner.glide_opposite_friction*delta
 		
 	if !Input.is_action_pressed("B"):
 		goto("close_wings")

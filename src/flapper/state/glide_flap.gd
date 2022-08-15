@@ -2,7 +2,11 @@ extends State
 
 var buffered_flap = false
 func _enter(params):
-	owner.state_animation.play("glide_flap")
+	if owner.can_flap:
+		owner.state_animation.play("glide_flap")
+	else:
+		owner.state_animation.play("failed_glide_flap")
+	
 	owner.state_animation.connect("animation_finished", self, "_on_animation_finished")
 	clear_buffer()
 

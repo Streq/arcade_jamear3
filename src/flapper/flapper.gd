@@ -1,18 +1,29 @@
 extends KinematicBody2D
 
+signal flapped
 
 export var gravity := 200.0
 export var air_friction := 0.0
 export (float, 0.0, 60.0) var rotation_lerp := 4.0
 export var strong_flap := 175.0
 export var weak_flap := 125.0
+export var failed_strong_flap := 50.0
+export var failed_weak_flap := 50.0
 export var glide_break_threshold := 200.0
 export var glide_break_recovery_threshold := 100.0
 export var glide_opposite_break_threshold := 100.0
-export var broken_glide_friction := 0.01
+export var glide_opposite_break_recovery_threshold := 75.0
 export var glide_friction := 1.0
+export var broken_glide_friction := 0.01
+export var glide_opposite_friction := 1.0
+export var broken_glide_opposite_friction := 0.01
+
 export var animation_speed_multiplier := 1.0 setget set_animation_speed
 export var custom_animation_lengths := {} setget set_custom_animation_lengths
+
+var can_flap = true
+
+var addons = {}
 
 var ready = false
 func set_custom_animation_lengths(val):

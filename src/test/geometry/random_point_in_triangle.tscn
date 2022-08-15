@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/test/geometry/random_point_in_triangle_test.gd" type="Script" id=1]
+[ext_resource path="res://src/test/geometry/point.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+POINT = ExtResource( 2 )
+
+[node name="triangle" type="Polygon2D" parent="."]
+polygon = PoolVector2Array( 32, 25, 423, 58, 479, 188, 329, 79, 76, 71, 86, 215, 230, 211, 146, 97, 503, 210, 324, 254, 258, 283, 125, 277, 56, 259, 26, 234, 21, 25, 45, 18 )

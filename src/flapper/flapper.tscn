@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://src/flapper/flapper.gd" type="Script" id=1]
 [ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=2]
@@ -12,7 +12,7 @@
 [ext_resource path="res://src/flapper/name_label.gd" type="Script" id=10]
 [ext_resource path="res://src/flapper/state/open_wings.gd" type="Script" id=12]
 
-[sub_resource type="StreamTexture" id=14]
+[sub_resource type="StreamTexture" id=16]
 load_path = "res://.import/flapper.png-42d4f1390d9d9cceb01520b415ef9b37.stex"
 
 [sub_resource type="RectangleShape2D" id=15]
@@ -33,7 +33,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 9.0 ]
+"values": [ 13.0 ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -48,7 +48,65 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 16.0, 14.0, 15.0, 9.0 ]
+"values": [ 24.0, 22.0, 23.0, 13.0 ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 19.0, 15.0, 14.0, 0.0, 12.0, 13.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("flap_action")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "strong_failed"
+} ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 24.0, 9.0, 4.0, 3.0, 2.0, 1.0, 5.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("flap_action")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "weak_failed"
+} ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -92,7 +150,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 11.0, 10.0, 0.0, 8.0, 9.0 ]
+"values": [ 19.0, 18.0, 17.0, 16.0, 13.0 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -107,7 +165,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 16.0 ]
+"values": [ 24.0 ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -123,7 +181,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 13.0, 12.0 ]
+"values": [ 21.0, 20.0 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -167,7 +225,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 16.0, 5.0, 4.0, 3.0, 2.0, 1.0 ]
+"values": [ 24.0, 9.0, 8.0, 7.0, 6.0, 5.0 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -183,7 +241,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 7.0, 6.0 ]
+"values": [ 11.0, 10.0 ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -198,7 +256,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 9.0, 15.0, 14.0, 16.0 ]
+"values": [ 13.0, 23.0, 22.0, 24.0 ]
 }
 
 [node name="flapper" type="KinematicBody2D"]
@@ -210,10 +268,10 @@ custom_animation_lengths = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = SubResource( 14 )
+texture = SubResource( 16 )
 hframes = 5
-vframes = 4
-frame = 16
+vframes = 5
+frame = 5
 __meta__ = {
 "_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PXN0YXRlX2FuaW1hdGlvbgpzb3VyY2V8PXJlczovL2Fzc2V0cy9hc2Vwcml0ZS9mbGFwcGVyLmFzZXByaXRlCmxheWVyfD0Kb3BfZXhwfD1GYWxzZQpvX2ZvbGRlcnw9cmVzOi8vYXNzZXRzL3RleHR1cmUKb19uYW1lfD0Kb25seV92aXNpYmxlfD1UcnVlCm9fZXhfcHw9Cg=="
 }
@@ -256,6 +314,8 @@ unique_name_in_owner = true
 playback_process_mode = 0
 anims/air = SubResource( 3 )
 anims/close_wings = SubResource( 12 )
+anims/failed_flap = SubResource( 17 )
+anims/failed_glide_flap = SubResource( 18 )
 anims/flap = SubResource( 4 )
 anims/glide = SubResource( 5 )
 anims/glide_fail = SubResource( 8 )

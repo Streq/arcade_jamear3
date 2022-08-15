@@ -7,14 +7,16 @@ __meta__ = {
 "_edit_pinned_properties_": [ "glide_opposite_break_threshold", "strong_flap", "weak_flap", "glide_break_threshold", "broken_glide_friction", "glide_friction", "animation_speed_multiplier", "custom_animation_lengths", "rotation_lerp", "air_friction", "gravity" ]
 }
 gravity = 200.0
-air_friction = 0.001
+air_friction = 0.0001
 rotation_lerp = 8.0
 strong_flap = 175.0
 weak_flap = 125.0
 glide_break_threshold = 200.0
-glide_opposite_break_threshold = 150.0
+glide_break_recovery_threshold = 135.0
+glide_opposite_break_threshold = 100.0
+glide_friction = 0.2
 broken_glide_friction = 0.01
-glide_friction = 0.5
+glide_opposite_friction = 0.2
 animation_speed_multiplier = 2.0
 custom_animation_lengths = {
 "flap": -1.0,
