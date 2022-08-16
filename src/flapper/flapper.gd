@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
 signal flapped
+signal hard_collision(prev_velocity,post_velocity)
+signal soft_collision(prev_velocity,post_velocity)
+signal die
 
 export var gravity := 200.0
 export var air_friction := 0.0
@@ -17,6 +20,10 @@ export var glide_friction := 1.0
 export var broken_glide_friction := 0.01
 export var glide_opposite_friction := 1.0
 export var broken_glide_opposite_friction := 0.01
+
+export var soft_collision_threshold := 200.0
+export var hard_collision_threshold := 500.0
+
 
 export var animation_speed_multiplier := 1.0 setget set_animation_speed
 export var custom_animation_lengths := {} setget set_custom_animation_lengths
@@ -70,10 +77,39 @@ func _physics_process(delta):
 	var air_resistance = get_air_resistance()
 	velocity = velocity.move_toward(Vector2.ZERO, air_resistance*delta)
 	
+	var prev_velocity = velocity
 	velocity = move_and_slide(velocity)
+	var squared_velocity_dt = prev_velocity.length_squared()-velocity.length_squared()
+#	print(squared_velocity_dt)
+	if squared_velocity_dt > hard_collision_threshold*hard_collision_threshold:
+		emit_signal("hard_collision", prev_velocity, velocity)
+	elif squared_velocity_dt > soft_collision_threshold*soft_collision_threshold:
+		emit_signal("soft_collision", prev_velocity, velocity)
+	
+
+func die():
+	visible = false
+	set_physics_process(false)
+	emit_signal("die")
+
 #	if velocity:
 #		print(velocity)
 	
+
+func print_slides(delta):
+	var prev_velocity = velocity
+	if get_slide_count()>1:
+		print("SLIDE_COLLISIONS")
+		print("velocityx0:",prev_velocity)
+		print("movement_left_to_handle0:",prev_velocity*delta)
+		var j = 0
+		for i in get_slide_count():
+			var collision :KinematicCollision2D = get_slide_collision(i)
+	#			print(collision.collider_velocity)
+
+			print("movement_left_to_handle%d:"%(i+1),collision.remainder)
+			j = i
+		print("velocityxt:",velocity)
 
 func get_air_resistance():
 	#Air resistance can be calculated by 
@@ -85,3 +121,5 @@ func get_air_resistance():
 #	var area = 1.0 
 	var air_resistance = (drag_coefficient)*velocity.length_squared()
 	return air_resistance
+
+

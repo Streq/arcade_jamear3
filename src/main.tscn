@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/test/utils/player_alternator.gd" type="Script" id=1]
 [ext_resource path="res://assets/texture/terrain.png" type="Texture" id=2]
 [ext_resource path="res://src/terrain/puzzle_terrain.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/flapper/presets/super_glider.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/main.gd" type="Script" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 10, 10, 2, 10, 2, 2, 10, 2 )
@@ -176,6 +177,7 @@ points = PoolVector2Array( 10, 10, 2, 10, 2, 2, 10, 2 )
 0/z_index = 0
 
 [node name="Node" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 195.0
@@ -212,6 +214,7 @@ glide_opposite_break_recovery_threshold = 135.0
 glide_friction = 0.3
 glide_opposite_friction = 0.1
 broken_glide_opposite_friction = 0.005
+hard_collision_threshold = 700.0
 
 [node name="camera" type="Camera2D" parent="player_alternator/super_glider"]
 unique_name_in_owner = true
@@ -221,3 +224,4 @@ current = true
 position = Vector2( 211, 50 )
 air_friction = 0.0
 glide_friction = 0.3
+hard_collision_threshold = 700.0

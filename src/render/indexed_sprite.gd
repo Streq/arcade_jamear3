@@ -18,11 +18,9 @@ func _ready():
 func set_palette(val):
 	palette = val
 	if ready:
-		update_tex()
+		update_tex_from_palette()
 
-func update_tex():
-	tex.flags = -1
-
+func update_tex_from_palette():
 	var img = Image.new()
 	var size = palette.size()
 	img.create(size, 1, false, Image.FORMAT_RGBA8)
@@ -30,6 +28,9 @@ func update_tex():
 	for i in size:
 		img.set_pixel(i%size, i/size, palette[i])
 	img.unlock()
+	update_tex(img)
+	
+func update_tex(img):
+	tex.flags = -1
 	tex.create_from_image(img)
 	tex.flags = 0
-

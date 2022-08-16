@@ -20,9 +20,9 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=2]
+[sub_resource type="Image" id=4]
 data = {
-"data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 112, 47, 0, 255, 172, 56, 0, 255 ),
+"data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 255, 196, 0, 255, 255, 0, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -32,7 +32,7 @@ data = {
 [sub_resource type="ImageTexture" id=3]
 flags = 0
 flags = 0
-image = SubResource( 2 )
+image = SubResource( 4 )
 size = Vector2( 4, 1 )
 
 [resource]

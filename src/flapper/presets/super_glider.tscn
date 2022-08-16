@@ -59,6 +59,7 @@ glide_opposite_break_threshold = 100.0
 glide_friction = 0.2
 broken_glide_friction = 0.01
 glide_opposite_friction = 0.2
+broken_glide_opposite_friction = 0.0
 animation_speed_multiplier = 2.0
 custom_animation_lengths = {
 "flap": -1.0,

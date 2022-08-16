@@ -100,7 +100,6 @@ extents = Vector2( 4, 4 )
 
 [node name="background_palette" type="Node2D" parent="."]
 material = SubResource( 10 )
-scale = Vector2( 2, 2 )
 script = ExtResource( 7 )
 palette = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0.301961, 0.129412, 0, 1, 0.427451, 0.141176, 0, 1 )
 
@@ -111,7 +110,6 @@ tile_data = PoolIntArray( 65535, 0, 65537, 0, 0, 65538, 1, 0, 65538, 2, 0, 65538
 
 [node name="terrain_palette" type="Node2D" parent="."]
 material = SubResource( 13 )
-scale = Vector2( 2, 2 )
 script = ExtResource( 7 )
 palette = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67451, 0.223529, 0, 1 )
 
@@ -123,21 +121,18 @@ tile_data = PoolIntArray( 0, 0, 65537, 1, 0, 65538, 2, 0, 65538, 3, 0, 65538, 4,
 
 [node name="super_glider" parent="flapper_with_energy" instance=ExtResource( 2 )]
 position = Vector2( 314, 78 )
-strong_flap = 75.0
-weak_flap = 50.0
+strong_flap = 150.0
+weak_flap = 100.0
 failed_strong_flap = 25.0
 failed_weak_flap = 25.0
-glide_opposite_break_threshold = 50.0
-glide_opposite_break_recovery_threshold = 50.0
+glide_opposite_break_threshold = 125.0
 glide_friction = 0.3
-glide_opposite_friction = 0.1
-broken_glide_opposite_friction = 0.0
-animation_speed_multiplier = 4.0
+hard_collision_threshold = 500.0
 
 [node name="energy" type="Node" parent="flapper_with_energy/super_glider"]
 script = ExtResource( 3 )
-max_value = 32.0
-value = 32.0
+max_value = 3200.0
+value = 3200.0
 flap_cost = 1.0
 
 [node name="energy_bar" parent="flapper_with_energy/super_glider" instance=ExtResource( 4 )]
@@ -155,6 +150,11 @@ shape = SubResource( 7 )
 
 [node name="Camera2D" type="Camera2D" parent="flapper_with_energy/super_glider"]
 current = true
+zoom = Vector2( 0.5, 0.5 )
+limit_left = 0
+limit_top = 0
+limit_right = 1888
+limit_bottom = 1072
 
 [node name="death_time" type="Node2D" parent="."]
 script = ExtResource( 8 )
@@ -184,7 +184,6 @@ script = ExtResource( 9 )
 stat = "PUNTAJE"
 
 [node name="seed_spawner" type="Node2D" parent="death_time"]
-scale = Vector2( 2, 2 )
 script = ExtResource( 6 )
 SEED = ExtResource( 5 )
 
@@ -193,6 +192,7 @@ position = Vector2( 10, 0 )
 color = Color( 1, 1, 1, 0 )
 polygon = PoolVector2Array( 38, 73, 125, 126, 73.183, 190.175, 153, 456, 498, 503, 667, 454, 800, 398, 863, 255, 740, 84, 489, 28, 273, 57, 271, 92, 459, 186, 604, 79, 702, 91, 741, 118, 549, 243, 715, 361, 738, 409, 669, 443, 455, 303, 241, 434, 170, 438, 176, 372, 327, 243, 192, 136, 57, 73, 179, 36, 455, 13, 859, 49, 887, 108, 913, 283, 871, 467, 796, 499, 539, 519, 143, 493, 7, 408 )
 
+[connection signal="die" from="flapper_with_energy/super_glider" to="death_time" method="_on_player_dead"]
 [connection signal="value_changed" from="flapper_with_energy/super_glider/energy" to="flapper_with_energy/super_glider/energy_bar" method="update_vals"]
 [connection signal="timeout" from="death_time/Timer" to="death_time" method="_on_Timer_timeout"]
 [connection signal="seed_taken" from="death_time/seed_spawner" to="death_time" method="_on_seed_taken"]

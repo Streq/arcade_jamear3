@@ -1,12 +1,6 @@
 extends Node2D
-#
-#enum {
-#	FORWARD,
-#	NEUTRAL,
-#	BACKWARD
-#}
-#
-#var state = FORWARD
+
+onready var sprite = $Sprite
 
 export var gravity := 100.0
 export var friction := 10.0

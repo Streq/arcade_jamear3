@@ -10,7 +10,8 @@ onready var puntaje = $CanvasLayer/puntaje
 var total = 0.0
 
 func _physics_process(delta):
-	total+=delta*60.0
+	if !timer.is_stopped():
+		total+=delta*60.0
 	tiempo.set_value("%.2f"%timer.time_left)
 	puntaje.set_value("%d"%total)
 
@@ -21,6 +22,7 @@ func _on_seed_taken():
 
 
 func _on_Timer_timeout():
-	total = 0.0
-	timer.wait_time = initial_time
-	timer.start()
+	timer.stop()
+	$"../flapper_with_energy/super_glider".die()
+func _on_player_dead():
+	timer.stop()

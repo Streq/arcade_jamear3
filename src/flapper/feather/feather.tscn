@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/flapper/feather/feather.gd" type="Script" id=1]
+[ext_resource path="res://src/render/indexed_sprite.gd" type="Script" id=2]
+[ext_resource path="res://src/render/indexed_sprite_material.tres" type="Material" id=3]
 
 [sub_resource type="Animation" id=1]
 length = 1.6
@@ -28,12 +30,14 @@ script = ExtResource( 1 )
 anims/fall = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 3 )
 texture = SubResource( 2 )
 hframes = 2
 vframes = 2
 frame = 1
+script = ExtResource( 2 )
 __meta__ = {
-"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PUFuaW1hdGlvblBsYXllcgpzb3VyY2V8PXJlczovL2Fzc2V0cy9hc2Vwcml0ZS9mZWF0aGVyLmFzZXByaXRlCmxheWVyfD0Kb3BfZXhwfD1GYWxzZQpvX2ZvbGRlcnw9Cm9fbmFtZXw9Cm9ubHlfdmlzaWJsZXw9RmFsc2UKb19leF9wfD0K"
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PUFuaW1hdGlvblBsYXllcgpzb3VyY2V8PXJlczovL2Fzc2V0cy9hc2Vwcml0ZS9mZWF0aGVyLmFzZXByaXRlCmxheWVyfD0Kb3BfZXhwfD1UcnVlCm9fZm9sZGVyfD0Kb19uYW1lfD0Kb25seV92aXNpYmxlfD1GYWxzZQpvX2V4X3B8PQo="
 }
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]

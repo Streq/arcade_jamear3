@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/flapper/addons/energy_bar.gd" type="Script" id=1]
+[ext_resource path="res://src/HUD/energy_bar.gd" type="Script" id=2]
+[ext_resource path="res://src/flapper/flapper.gd" type="Script" id=3]
+[ext_resource path="res://src/flapper/presets/super_glider.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/HUD/small_energy_bar.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0, 0.283237, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture2D" id=6]
+gradient = SubResource( 5 )
+width = 32
+height = 8
+fill_from = Vector2( 0, 1 )
+
+[sub_resource type="Gradient" id=3]
+colors = PoolColorArray( 0, 1, 0.211914, 1, 0, 1, 0.282227, 1 )
+
+[sub_resource type="GradientTexture2D" id=4]
+gradient = SubResource( 3 )
+width = 32
+height = 6
+fill_from = Vector2( 0, 1 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 4, 4 )
+
+[node name="flapper_with_energy" type="Node2D"]
+
+[node name="super_glider" type="KinematicBody2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 314, 78 )
+collision_layer = 2
+script = ExtResource( 3 )
+air_friction = 0.0001
+rotation_lerp = 8.0
+strong_flap = 75.0
+weak_flap = 50.0
+failed_strong_flap = 25.0
+failed_weak_flap = 25.0
+glide_break_recovery_threshold = 135.0
+glide_opposite_break_threshold = 50.0
+glide_opposite_break_recovery_threshold = 50.0
+glide_friction = 0.3
+glide_opposite_friction = 0.1
+broken_glide_opposite_friction = 0.0
+animation_speed_multiplier = 4.0
+custom_animation_lengths = {
+"flap": -1.0,
+"glide_flap": -1.0
+}
+
+[node name="energy" type="Node" parent="super_glider"]
+script = ExtResource( 1 )
+max_value = 32.0
+value = 32.0
+flap_cost = 1.0
+
+[node name="energy_bar" type="TextureProgress" parent="super_glider" instance=ExtResource( 5 )]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = -8.0
+rect_pivot_offset = Vector2( 16, 4 )
+step = 0.0
+value = 100.0
+texture_under = SubResource( 6 )
+texture_progress = SubResource( 4 )
+texture_progress_offset = Vector2( 0, 1 )
+script = ExtResource( 2 )
+
+[node name="pickup_detect" type="Area2D" parent="super_glider"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="super_glider/pickup_detect"]
+position = Vector2( 0.0216064, -0.168182 )
+shape = SubResource( 7 )
+
+[node name="Camera2D" type="Camera2D" parent="super_glider"]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+limit_left = 0
+limit_top = 0
+limit_right = 1888
+limit_bottom = 1072
+
+[connection signal="value_changed" from="super_glider/energy" to="super_glider/energy_bar" method="update_vals"]
