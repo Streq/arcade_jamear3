@@ -2,6 +2,8 @@ extends Area2D
 
 export var amount := 32.0
 
+
+
 func _on_area_entered(area):
 	var flapper = area.get_parent()
 	if flapper.addons.has("energy"):

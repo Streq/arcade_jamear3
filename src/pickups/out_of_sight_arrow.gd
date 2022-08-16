@@ -1,0 +1,29 @@
+extends VisibilityNotifier2D
+
+
+onready var arrow = $CanvasLayer/arrow
+
+func _physics_process(delta):
+	if !self.is_on_screen():
+		var vp_transform = get_viewport_transform()
+		
+		var screen_dims = get_viewport_rect().size
+		var relative_pos = vp_transform.xform(owner.global_position)
+		
+		var dir = Vector2()
+		
+		if relative_pos.x < 0:
+			dir.x = -1.0
+		if relative_pos.x > screen_dims.x:
+			dir.x = 1.0
+		if relative_pos.y < 0:
+			dir.y = -1.0
+		if relative_pos.y > screen_dims.y:
+			dir.y = 1.0
+		
+		var x = clamp(relative_pos.x, 0, screen_dims.x)
+		var y = clamp(relative_pos.y, 0, screen_dims.y)
+		
+		arrow.rotation = dir.angle()
+		arrow.position = Vector2(x,y)
+		
