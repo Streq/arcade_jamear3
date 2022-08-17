@@ -8,8 +8,8 @@ signal die
 export var gravity := 200.0
 export var air_friction := 0.0
 export (float, 0.0, 60.0) var rotation_lerp := 4.0
-export var strong_flap := 175.0
-export var weak_flap := 125.0
+export var strong_flap := 87.0
+export var weak_flap := 62.0
 export var failed_strong_flap := 50.0
 export var failed_weak_flap := 50.0
 export var glide_break_threshold := 200.0
@@ -23,7 +23,7 @@ export var broken_glide_opposite_friction := 0.01
 
 export var soft_collision_threshold := 200.0
 export var hard_collision_threshold := 500.0
-
+export var delta_multiplier := 1.0
 
 export var animation_speed_multiplier := 1.0 setget set_animation_speed
 export var custom_animation_lengths := {} setget set_custom_animation_lengths
@@ -58,6 +58,7 @@ func _ready():
 	set_animation_speed(animation_speed_multiplier)
 	ready = true
 func _physics_process(delta):
+	delta *= delta_multiplier
 	var change_direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 	if change_direction:
 #		direction = change_direction
@@ -91,6 +92,10 @@ func die():
 	visible = false
 	set_physics_process(false)
 	emit_signal("die")
+	if has_node("camera"):
+		NodeUtils.reparent_keep_transform(get_node("camera"),get_tree().current_scene)
+	queue_free()
+		
 
 #	if velocity:
 #		print(velocity)

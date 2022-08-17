@@ -1,0 +1,136 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/render/indexed_sprite.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/enemy/ghost.gd" type="Script" id=2]
+[ext_resource path="res://src/pickups/out_of_sight_arrow.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 6.0
+
+[sub_resource type="Animation" id=3]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "turn_around"
+} ]
+}
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+uniform int palette_size = 4;
+uniform float offset : hint_range(0, 8, 1);
+uniform sampler2D palette;
+
+void fragment(){
+	vec4 tex = texture(TEXTURE, UV);
+	//used as index for the palette texture
+	float blue_1 = tex.b;
+	
+	float palette_index = mod(blue_1 * (255.0) + offset+0.5,float(palette_size));
+	float h_pixel_size = 1.0/float(palette_size);
+	vec2 palette_pixel = vec2(palette_index*(h_pixel_size), 0.0);
+	
+	COLOR.rgb = texture(palette, palette_pixel).rgb;
+	COLOR.a = tex.a;
+	
+}"
+
+[sub_resource type="Image" id=11]
+data = {
+"data": PoolByteArray( 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 4
+}
+
+[sub_resource type="ImageTexture" id=10]
+flags = 0
+flags = 0
+image = SubResource( 11 )
+size = Vector2( 4, 1 )
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/palette_size = 4
+shader_param/offset = null
+shader_param/palette = SubResource( 10 )
+
+[sub_resource type="StreamTexture" id=8]
+load_path = "res://.import/floaty.png-1fe1175cb100e39cd3cfb4855d2c2c10.stex"
+
+[node name="ghost" type="KinematicBody2D"]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "floating"
+playback_process_mode = 0
+anims/floating = SubResource( 3 )
+anims/turn = SubResource( 4 )
+
+[node name="Sprite" parent="." instance=ExtResource( 1 )]
+material = SubResource( 7 )
+texture = SubResource( 8 )
+hframes = 2
+vframes = 2
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PUFuaW1hdGlvblBsYXllcgpzb3VyY2V8PXJlczovL2Fzc2V0cy9hc2Vwcml0ZS9mbG9hdHkuYXNlcHJpdGUKbGF5ZXJ8PQpvcF9leHB8PUZhbHNlCm9fZm9sZGVyfD0Kb19uYW1lfD0Kb25seV92aXNpYmxlfD1GYWxzZQpvX2V4X3B8PQo="
+}
+palette = PoolColorArray( 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1 )
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource( 2 )
+
+[node name="out_of_sight_arrow" parent="." instance=ExtResource( 3 )]
+
+[node name="Sprite" parent="out_of_sight_arrow/CanvasLayer/arrow" index="0"]
+modulate = Color( 1, 0, 0, 1 )
+
+[editable path="out_of_sight_arrow"]

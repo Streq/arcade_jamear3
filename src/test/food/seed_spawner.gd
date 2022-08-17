@@ -9,11 +9,12 @@ var _seed = null
 
 
 func spawn():
-	var point = GeometryUtils.random_point_in_polygon(spawn_area.polygon) + spawn_area.position
-	_seed = SEED.instance()
-	call_deferred("add_child",_seed)
-	_seed.position = point
-	_seed.connect("tree_exited", self, "_seed_taken")
+	if is_inside_tree():
+		var point = spawn_area.global_transform.xform(GeometryUtils.random_point_in_polygon(spawn_area.polygon))
+		_seed = SEED.instance()
+		get_tree().current_scene.call_deferred("add_child",_seed)
+		_seed.global_position = point
+		_seed.connect("tree_exited", self, "_seed_taken")
 
 func _seed_taken():
 	emit_signal("seed_taken")

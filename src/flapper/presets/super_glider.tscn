@@ -24,7 +24,7 @@ void fragment(){
 
 [sub_resource type="Image" id=7]
 data = {
-"data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 255, 196, 0, 255, 255, 0, 0, 255 ),
+"data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 255, 179, 0, 255, 255, 72, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,

@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/texture/arrow.png" type="Texture" id=1]
 [ext_resource path="res://src/pickups/out_of_sight_arrow.gd" type="Script" id=2]
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D"]
+[node name="out_of_sight_arrow" type="VisibilityNotifier2D"]
 rect = Rect2( 0, 0, 0, 0 )
 script = ExtResource( 2 )
 
@@ -16,4 +16,5 @@ position = Vector2( -22, 0 )
 texture = ExtResource( 1 )
 
 [connection signal="screen_entered" from="." to="CanvasLayer/arrow/Sprite" method="set_visible" binds= [ false ]]
+[connection signal="screen_exited" from="." to="." method="_on_screen_exited"]
 [connection signal="screen_exited" from="." to="CanvasLayer/arrow/Sprite" method="set_visible" binds= [ true ]]

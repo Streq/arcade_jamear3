@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://src/flapper/flapper.gd" type="Script" id=1]
 [ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://src/flapper/feather/feather.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/flapper/addons/soft_collision_detect.gd" type="Script" id=16]
 [ext_resource path="res://src/flapper/addons/hard_collision_detect.gd" type="Script" id=17]
+[ext_resource path="res://src/flapper/addons/hurt_handler.gd" type="Script" id=18]
 
 [sub_resource type="StreamTexture" id=16]
 load_path = "res://.import/flapper.png-42d4f1390d9d9cceb01520b415ef9b37.stex"
@@ -265,7 +266,10 @@ tracks/0/keys = {
 "values": [ 13.0, 23.0, 22.0, 24.0 ]
 }
 
-[node name="flapper" type="KinematicBody2D"]
+[sub_resource type="CircleShape2D" id=19]
+radius = 3.0
+
+[node name="flapper" type="KinematicBody2D" groups=["flapper"]]
 collision_layer = 2
 script = ExtResource( 1 )
 hard_collision_threshold = 1000.0
@@ -353,6 +357,7 @@ valign = 1
 script = ExtResource( 10 )
 
 [node name="feather_action" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource( 14 )
 FEATHER = ExtResource( 15 )
 initial_speed = 0.0
@@ -363,15 +368,35 @@ amount = 3
 rand_initial_speed = 50.0
 inertia_multiplier = 0.0
 
-[node name="feathers_on_hard" type="Node" parent="."]
+[node name="many_feathers_slow" type="Node" parent="."]
 script = ExtResource( 16 )
 amount = 50
 rand_initial_speed = 50.0
 inertia_multiplier = 0.0
 
+[node name="some_feathers_fast" type="Node" parent="."]
+script = ExtResource( 16 )
+rand_initial_speed = 100.0
+inertia_multiplier = 0.0
+
 [node name="hard_collision_detect" type="Node" parent="."]
 script = ExtResource( 17 )
 
+[node name="hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource( 19 )
+
+[node name="hurt_handler" type="Node" parent="."]
+script = ExtResource( 18 )
+
+[connection signal="die" from="." to="hurtbox/CollisionShape2D" method="set_disabled" flags=3 binds= [ true ]]
+[connection signal="hard_collision" from="." to="many_feathers_slow" method="_on_collision"]
+[connection signal="hard_collision" from="." to="some_feathers_fast" method="_on_collision"]
 [connection signal="hard_collision" from="." to="hard_collision_detect" method="_on_hard_collision"]
-[connection signal="hard_collision" from="." to="feathers_on_hard" method="_on_collision"]
 [connection signal="soft_collision" from="." to="feathers_on_soft" method="_on_collision"]
+[connection signal="area_entered" from="hurtbox" to="hurt_handler" method="_on_hit"]
+[connection signal="killed_by_hit" from="hurt_handler" to="many_feathers_slow" method="_on_collision_no_args"]
+[connection signal="killed_by_hit" from="hurt_handler" to="some_feathers_fast" method="_on_collision_no_args"]

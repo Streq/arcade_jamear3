@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/enemy/bat.gd" type="Script" id=1]
+[ext_resource path="res://src/pickups/out_of_sight_arrow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/render/indexed_sprite.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 6.0
+
+[sub_resource type="Animation" id=8]
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1.0, 2.0 ]
+}
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+uniform int palette_size = 4;
+uniform float offset : hint_range(0, 8, 1);
+uniform sampler2D palette;
+
+void fragment(){
+	vec4 tex = texture(TEXTURE, UV);
+	//used as index for the palette texture
+	float blue_1 = tex.b;
+	
+	float palette_index = mod(blue_1 * (255.0) + offset+0.5,float(palette_size));
+	float h_pixel_size = 1.0/float(palette_size);
+	vec2 palette_pixel = vec2(palette_index*(h_pixel_size), 0.0);
+	
+	COLOR.rgb = texture(palette, palette_pixel).rgb;
+	COLOR.a = tex.a;
+	
+}"
+
+[sub_resource type="Image" id=12]
+data = {
+"data": PoolByteArray( 255, 255, 255, 0, 0, 0, 0, 255, 87, 0, 130, 255, 255, 0, 233, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 4
+}
+
+[sub_resource type="ImageTexture" id=10]
+flags = 0
+flags = 0
+image = SubResource( 12 )
+size = Vector2( 4, 1 )
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/palette_size = 4
+shader_param/offset = null
+shader_param/palette = SubResource( 10 )
+
+[sub_resource type="StreamTexture" id=11]
+load_path = "res://.import/bat.png-a8b52d81614051d9dbf9113e1deadd92.stex"
+
+[node name="bat" type="KinematicBody2D"]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "flap"
+playback_process_mode = 0
+anims/flap = SubResource( 8 )
+
+[node name="Sprite" parent="." instance=ExtResource( 3 )]
+material = SubResource( 7 )
+texture = SubResource( 11 )
+hframes = 2
+vframes = 2
+frame = 1
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PUFuaW1hdGlvblBsYXllcgpzb3VyY2V8PXJlczovL2Fzc2V0cy9hc2Vwcml0ZS9iYXQuYXNlcHJpdGUKbGF5ZXJ8PQpvcF9leHB8PUZhbHNlCm9fZm9sZGVyfD0Kb19uYW1lfD0Kb25seV92aXNpYmxlfD1GYWxzZQpvX2V4X3B8PQo="
+}
+palette = PoolColorArray( 1, 1, 1, 0, 0, 0, 0, 1, 0.341176, 0, 0.509804, 1, 1, 0, 0.913725, 1 )
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource( 2 )
+
+[node name="out_of_sight_arrow" parent="." instance=ExtResource( 2 )]
+
+[node name="Sprite" parent="out_of_sight_arrow/CanvasLayer/arrow" index="0"]
+modulate = Color( 1, 0, 0, 1 )
+
+[editable path="out_of_sight_arrow"]
