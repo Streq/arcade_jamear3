@@ -22,7 +22,7 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=7]
+[sub_resource type="Image" id=5]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 255, 179, 0, 255, 255, 72, 0, 255 ),
 "format": "RGBA8",
@@ -34,7 +34,7 @@ data = {
 [sub_resource type="ImageTexture" id=6]
 flags = 0
 flags = 0
-image = SubResource( 7 )
+image = SubResource( 5 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=4]
@@ -47,6 +47,10 @@ shader_param/palette = SubResource( 6 )
 [node name="super_glider" instance=ExtResource( 1 )]
 __meta__ = {
 "_edit_pinned_properties_": [ "glide_opposite_break_threshold", "strong_flap", "weak_flap", "glide_break_threshold", "broken_glide_friction", "glide_friction", "animation_speed_multiplier", "custom_animation_lengths", "rotation_lerp", "air_friction", "gravity" ]
+}
+custom_animation_lengths = {
+"flap": -1.0,
+"glide_flap": -1.0
 }
 gravity = 200.0
 air_friction = 0.0001
@@ -61,10 +65,6 @@ broken_glide_friction = 0.01
 glide_opposite_friction = 0.2
 broken_glide_opposite_friction = 0.0
 animation_speed_multiplier = 2.0
-custom_animation_lengths = {
-"flap": -1.0,
-"glide_flap": -1.0
-}
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 4 )
