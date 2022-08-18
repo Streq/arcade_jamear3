@@ -1,8 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/enemy/bat.gd" type="Script" id=1]
 [ext_resource path="res://src/pickups/out_of_sight_arrow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/render/indexed_sprite.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/flapper/feather/bat_scale.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/flapper/addons/feather_action.gd" type="Script" id=5]
+[ext_resource path="res://src/flapper/addons/soft_collision_detect.gd" type="Script" id=6]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 6.0
@@ -43,7 +46,7 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=12]
+[sub_resource type="Image" id=14]
 data = {
 "data": PoolByteArray( 255, 255, 255, 0, 0, 0, 0, 255, 87, 0, 130, 255, 255, 0, 233, 255 ),
 "format": "RGBA8",
@@ -52,10 +55,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=10]
+[sub_resource type="ImageTexture" id=13]
 flags = 0
 flags = 0
-image = SubResource( 12 )
+image = SubResource( 14 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=7]
@@ -63,15 +66,16 @@ resource_local_to_scene = true
 shader = SubResource( 1 )
 shader_param/palette_size = 4
 shader_param/offset = null
-shader_param/palette = SubResource( 10 )
+shader_param/palette = SubResource( 13 )
 
 [sub_resource type="StreamTexture" id=11]
 load_path = "res://.import/bat.png-a8b52d81614051d9dbf9113e1deadd92.stex"
 
 [node name="bat" type="KinematicBody2D"]
 collision_layer = 128
-collision_mask = 128
+collision_mask = 129
 script = ExtResource( 1 )
+hard_collision_threshold = 600.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
@@ -103,5 +107,30 @@ shape = SubResource( 2 )
 
 [node name="Sprite" parent="out_of_sight_arrow/CanvasLayer/arrow" index="0"]
 modulate = Color( 1, 0, 0, 1 )
+
+[node name="many_feathers_slow" type="Node" parent="."]
+script = ExtResource( 6 )
+amount = 25
+rand_initial_speed = 50.0
+inertia_multiplier = 0.5
+
+[node name="some_feathers_fast" type="Node" parent="."]
+script = ExtResource( 6 )
+amount = 5
+rand_initial_speed = 100.0
+
+[node name="some_feathers_soft" type="Node" parent="."]
+script = ExtResource( 6 )
+amount = 3
+rand_initial_speed = 20.0
+
+[node name="feather_action" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource( 5 )
+FEATHER = ExtResource( 4 )
+initial_speed = 0.0
+
+[connection signal="hard_collision" from="." to="many_feathers_slow" method="_on_collision"]
+[connection signal="hard_collision" from="." to="some_feathers_fast" method="_on_collision"]
 
 [editable path="out_of_sight_arrow"]
