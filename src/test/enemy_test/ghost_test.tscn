@@ -128,11 +128,11 @@ tile_data = PoolIntArray( -64897, 0, 65536, 65535, 0, 1, 0, 0, 65538, 1, 0, 6553
 position = Vector2( 314, 78 )
 strong_flap = 75.0
 weak_flap = 50.0
+failed_strong_flap = 20.0
+failed_weak_flap = 20.0
 glide_opposite_break_threshold = 75.0
 glide_friction = 0.3
 animation_speed_multiplier = 4.0
-failed_strong_flap = 20.0
-failed_weak_flap = 20.0
 
 [node name="energy" type="Node" parent="flapper_with_energy/super_glider"]
 script = ExtResource( 3 )
