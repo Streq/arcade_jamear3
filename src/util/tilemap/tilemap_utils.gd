@@ -5,8 +5,21 @@ static func merge_navigation_polygons_into_one(tilemap:TileMap, block_size:=64) 
 	var holes = []
 	
 	
+	var rect = tilemap.get_used_rect()
+	for j in range(rect.position.y, rect.end.y, block_size):
+		for i in range(rect.position.x, rect.end.x, block_size):
+			var merged = _generate_polygon_block(tilemap, i, j, block_size, block_size)
+			islands.append_array(merged.islands)
+			holes.append_array(merged.holes)
+	var merge = GeometryUtils.merge_polys(islands)
+	islands = merge.islands
 	
-	return {islands=null, holes=null}
+	holes.append_array(merge.holes)
+	
+	return {islands=islands, holes=holes}
+
+
+
 
 
 static func _generate_polygon_block(tilemap:TileMap,x0,y0,w,h):
@@ -61,8 +74,5 @@ static func _generate_polygon_block(tilemap:TileMap,x0,y0,w,h):
 							holes.append(merged_polygon)
 				if !taken:
 					islands.append(transformed_outline)
-#		update_polygon(navpoly,islands,holes)
 	return {"islands":islands,"holes":holes}
-
-
 

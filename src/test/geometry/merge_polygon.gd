@@ -11,6 +11,9 @@ onready var merged = $NavigationPolygonInstance
 onready var islands_label = $islands
 onready var holes_label = $holes
 
+var polygon = {}
+
+
 export var update : bool setget set_update
 func set_update(val):
 	_generate_polygon()
@@ -82,28 +85,14 @@ func _generate_polygon_block(x0,y0,w,h):
 
 func _generate_polygon():
 	var time_start = Time.get_ticks_usec()
-#	var navpoly = merged.navpoly
-#	var ret = _generate_polygon_block(0,0,32,32)
-#	update_polygon(navpoly,ret.islands,ret.holes)
-	var rect = tile_map.get_used_rect()
-	var islands = []
-	var holes = []
+
 	var navpoly = merged.navpoly
-	for j in range(rect.position.y, rect.end.y, block_size):
-		for i in range(rect.position.x, rect.end.x, block_size):
-			var merged = _generate_polygon_block(i, j, block_size, block_size)
-			islands.append_array(merged.islands)
-			holes.append_array(merged.holes)
-#			update_polygon(navpoly,islands,holes)
-#			yield(self,"A_pressed")
-	var merge = merge_polys(islands)
-	islands = merge.islands
+	var merge = TilemapUtils.merge_navigation_polygons_into_one(tile_map)
 	
-	holes.append_array(merge.holes)
-	update_polygon(navpoly,islands,holes)
-	
+	update_polygon(navpoly, merge.islands, merge.holes)
 	var total_time = Time.get_ticks_usec()-time_start
 	print("took %d usecs" % total_time)
+	
 	return
 
 
