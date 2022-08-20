@@ -28,6 +28,8 @@ export var delta_multiplier := 1.0
 export var animation_speed_multiplier := 1.0 setget set_animation_speed
 export var custom_animation_lengths := {} setget set_custom_animation_lengths
 
+export var turbo_flap = false
+
 var can_flap = true
 
 var addons = {}

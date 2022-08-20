@@ -81,7 +81,7 @@ _global_script_class_icons={
 [application]
 
 config/name="jamear3"
-run/main_scene="res://src/test/enemy_test/ghost_test.tscn"
+run/main_scene="res://src/test/enemy_test/bat_test.tscn"
 config/icon="res://assets/texture/icon.png"
 
 [display]

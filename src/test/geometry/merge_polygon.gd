@@ -21,7 +21,7 @@ func _input(event):
 
 func _ready():
 	if !Engine.editor_hint:
-		_generate_polygon()
+#		_generate_polygon()
 		tile_map.queue_free()
 		
 
@@ -81,6 +81,7 @@ func _generate_polygon_block(x0,y0,w,h):
 	return {"islands":islands,"holes":holes}
 
 func _generate_polygon():
+	var time_start = Time.get_ticks_usec()
 #	var navpoly = merged.navpoly
 #	var ret = _generate_polygon_block(0,0,32,32)
 #	update_polygon(navpoly,ret.islands,ret.holes)
@@ -93,10 +94,16 @@ func _generate_polygon():
 			var merged = _generate_polygon_block(i, j, block_size, block_size)
 			islands.append_array(merged.islands)
 			holes.append_array(merged.holes)
+#			update_polygon(navpoly,islands,holes)
+#			yield(self,"A_pressed")
 	var merge = merge_polys(islands)
 	islands = merge.islands
-#	holes.append_array(merge.holes)
+	
+	holes.append_array(merge.holes)
 	update_polygon(navpoly,islands,holes)
+	
+	var total_time = Time.get_ticks_usec()-time_start
+	print("took %d usecs" % total_time)
 	return
 
 
@@ -160,6 +167,7 @@ func update_polygon(navpoly,islands,holes):
 	holes_label.text = "holes: %d" % holes.size()
 
 func merge_polys(polys):
+	OS.get_time()
 	var result = {islands=polys,holes=[]}
 	var i = 0
 	var j = 0
@@ -179,11 +187,13 @@ func merge_polys(polys):
 					else: 
 						islands.append(merge)
 				if islands.size() == 1:
-					polys[i] = islands[0]
+					a = islands[0]
 					polys.remove(j)
-					j -= 1
+					j = i
 				result.holes.append_array(holes)
+#			print(polys.size())
 			j += 1
+		polys[i] = a
 		i += 1
 	return result
 
