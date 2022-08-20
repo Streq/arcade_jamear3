@@ -1,4 +1,4 @@
-extends Sprite
+extends Node2D
 onready var agent = $NavigationAgent2D
 onready var line_2d = $Line2D
 
