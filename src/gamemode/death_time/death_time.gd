@@ -3,7 +3,6 @@ extends Node2D
 export var initial_time = 30.0
 export var decrement_factor = 1.0-1.0/30.0
 
-onready var tiempo = $CanvasLayer/tiempo
 onready var puntaje = $CanvasLayer/puntaje
 onready var semillas_label = $CanvasLayer/semillas
 

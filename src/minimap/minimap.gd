@@ -15,6 +15,7 @@ func _draw():
 		"ghost":Color.red,
 		"bat":Color.rebeccapurple,
 		"seed":Color.green,
+		"flapper":Color.darkorange,
 	}
 	
 	for key in nodes:
