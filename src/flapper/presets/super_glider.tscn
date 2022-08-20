@@ -68,3 +68,12 @@ custom_animation_lengths = {
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 4 )
+
+[node name="feathers_on_soft" parent="." index="7"]
+inertia_multiplier = 0.25
+
+[node name="many_feathers_slow" parent="." index="8"]
+inertia_multiplier = 0.5
+
+[node name="some_feathers_fast" parent="." index="9"]
+inertia_multiplier = 1.0

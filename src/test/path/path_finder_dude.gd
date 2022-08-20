@@ -11,7 +11,7 @@ func _physics_process(delta):
 	if get_tree().has_group("flapper"):
 		var target_pos = get_tree().get_nodes_in_group("flapper")[0].global_position
 		
-		agent.set_velocity(get_parent().velocity)
+#		agent.set_velocity(get_parent().velocity)
 		
 		var path = Navigation2DServer.map_get_path(agent.get_navigation_map(),current_pos,target_pos,true)
 	#	navigation_agent_2d.set_navigation_map(maps[0])

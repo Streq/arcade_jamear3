@@ -11,5 +11,5 @@ func _on_collision(prev_vel, _post_vel):
 	feather_action.throw_feathers(prev_vel, amount, rand_initial_speed, inertia_multiplier)
 
 func _on_collision_no_args():
-	feather_action.throw_feathers(Vector2(), amount, rand_initial_speed, inertia_multiplier)
+	feather_action.throw_feathers(owner.velocity, amount, rand_initial_speed, inertia_multiplier)
 

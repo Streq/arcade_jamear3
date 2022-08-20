@@ -97,7 +97,7 @@ shader_param/palette = SubResource( 10 )
 [sub_resource type="StreamTexture" id=8]
 load_path = "res://.import/floaty.png-1fe1175cb100e39cd3cfb4855d2c2c10.stex"
 
-[node name="ghost" type="KinematicBody2D"]
+[node name="ghost" type="KinematicBody2D" groups=["ghost"]]
 collision_layer = 128
 collision_mask = 128
 script = ExtResource( 2 )

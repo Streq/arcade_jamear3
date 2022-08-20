@@ -26,11 +26,13 @@ script = ExtResource( 3 )
 delta = -4.0
 
 [node name="islands" type="Label" parent="."]
+visible = false
 margin_right = 49.0
 margin_bottom = 14.0
 text = "islands: 1"
 
 [node name="holes" type="Label" parent="."]
+visible = false
 margin_top = 14.0
 margin_right = 49.0
 margin_bottom = 28.0

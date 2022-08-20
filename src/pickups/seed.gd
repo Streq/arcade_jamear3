@@ -1,6 +1,6 @@
 extends Area2D
 
-export var amount := 32.0
+export var amount := 1000.0
 
 
 
