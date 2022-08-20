@@ -59,3 +59,54 @@ static func random_weighted(weights: PoolRealArray)->int:
 			break
 		i += 1
 	return i
+
+
+#returns array of PoolVector2Array if they overlap at all 
+#otherwise returns empty array
+static func attempt_poly_merge(a,b) -> Array:
+	var merged_polygons = Geometry.merge_polygons_2d(a, b)
+	var first = merged_polygons[0]
+	#if at least one of the results is either of the input ones 
+	#and there's two results
+	#then we know the merge failed
+	if merged_polygons.size()==2 and !is_hole(merged_polygons[0]) and !is_hole(merged_polygons[1]):
+		return []
+	return merged_polygons
+
+static func is_hole(polygon:PoolVector2Array) -> bool:
+	return Geometry.is_polygon_clockwise(polygon)
+
+
+#merge several polygons
+#TODO: fails on edge cases like islands within holes
+#returns {islands:Array<PoolVector2Array>, holes:Array<PoolVector2Array>}
+static func merge_polys(polys)-> Dictionary:
+	OS.get_time()
+	var result = {islands=polys,holes=[]}
+	var i = 0
+	var j = 0
+	
+	while i != polys.size():
+		var a = polys[i]
+		j = i+1
+		while j != polys.size():
+			var b = polys[j]
+			var merges = attempt_poly_merge(a,b)
+			if merges:
+				var islands = []
+				var holes = []
+				for merge in merges:
+					if is_hole(merge):
+						holes.append(merge)
+					else: 
+						islands.append(merge)
+				if islands.size() == 1:
+					a = islands[0]
+					polys.remove(j)
+					j = i
+				result.holes.append_array(holes)
+#			print(polys.size())
+			j += 1
+		polys[i] = a
+		i += 1
+	return result

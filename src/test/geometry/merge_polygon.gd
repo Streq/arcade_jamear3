@@ -61,7 +61,7 @@ func _generate_polygon_block(x0,y0,w,h):
 					if taken:
 						break
 					#tratar de mergear
-					var merged_polygons = attempt_poly_merge(islands[i], transformed_outline)
+					var merged_polygons = GeometryUtils.attempt_poly_merge(islands[i], transformed_outline)
 					#si no colisionan seguir
 					if !merged_polygons:
 						continue
@@ -177,7 +177,7 @@ func merge_polys(polys):
 		j = i+1
 		while j != polys.size():
 			var b = polys[j]
-			var merges = attempt_poly_merge(a,b)
+			var merges = GeometryUtils.attempt_poly_merge(a,b)
 			if merges:
 				var islands = []
 				var holes = []
@@ -200,15 +200,7 @@ func merge_polys(polys):
 func is_hole(polygon):
 	return Geometry.is_polygon_clockwise(polygon)
 
-func attempt_poly_merge(a,b):
-	var merged_polygons = Geometry.merge_polygons_2d(a, b)
-	var first = merged_polygons[0]
-	#if at least one of the results is either of the input ones 
-	#and there's two results
-	#then we know the merge failed
-	if merged_polygons.size()==2 and !is_hole(merged_polygons[0]) and !is_hole(merged_polygons[1]):
-		return []
-	return merged_polygons
+
 	
 func apply_tilemap_xform(points: PoolVector2Array, woorld_coord: Vector2):
 	var xformed = PoolVector2Array()
