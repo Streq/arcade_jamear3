@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 signal flapped
+signal failed_flap
+
 signal hard_collision(prev_velocity,post_velocity)
 signal soft_collision(prev_velocity,post_velocity)
 signal touch_collision(prev_velocity,post_velocity)

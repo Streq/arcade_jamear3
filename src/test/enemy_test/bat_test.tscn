@@ -35,7 +35,7 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=22]
+[sub_resource type="Image" id=26]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 77, 33, 0, 255, 109, 35, 0, 255 ),
 "format": "RGBA8",
@@ -47,7 +47,7 @@ data = {
 [sub_resource type="ImageTexture" id=23]
 flags = 0
 flags = 0
-image = SubResource( 22 )
+image = SubResource( 26 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=10]
@@ -77,7 +77,7 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=24]
+[sub_resource type="Image" id=27]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 172, 56, 0, 255 ),
 "format": "RGBA8",
@@ -89,7 +89,7 @@ data = {
 [sub_resource type="ImageTexture" id=25]
 flags = 0
 flags = 0
-image = SubResource( 24 )
+image = SubResource( 27 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=13]

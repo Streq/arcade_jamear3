@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/render/indexed_sprite.gd" type="Script" id=2]
 [ext_resource path="res://src/terrain/puzzle_terrain.tscn" type="PackedScene" id=3]
@@ -24,7 +24,7 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=7]
+[sub_resource type="Image" id=23]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 172, 56, 0, 255 ),
 "format": "RGBA8",
@@ -33,10 +33,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=6]
+[sub_resource type="ImageTexture" id=18]
 flags = 0
 flags = 0
-image = SubResource( 7 )
+image = SubResource( 23 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=4]
@@ -44,7 +44,49 @@ resource_local_to_scene = true
 shader = SubResource( 1 )
 shader_param/palette_size = 4
 shader_param/offset = null
-shader_param/palette = SubResource( 6 )
+shader_param/palette = SubResource( 18 )
+
+[sub_resource type="Shader" id=8]
+code = "shader_type canvas_item;
+uniform int palette_size = 4;
+uniform float offset : hint_range(0, 8, 1);
+uniform sampler2D palette;
+
+void fragment(){
+	vec4 tex = texture(TEXTURE, UV);
+	//used as index for the palette texture
+	float blue_1 = tex.b;
+	
+	float palette_index = mod(blue_1 * (255.0) + offset+0.5,float(palette_size));
+	float h_pixel_size = 1.0/float(palette_size);
+	vec2 palette_pixel = vec2(palette_index*(h_pixel_size), 0.0);
+	
+	COLOR.rgb = texture(palette, palette_pixel).rgb;
+	COLOR.a = tex.a;
+	
+}"
+
+[sub_resource type="Image" id=24]
+data = {
+"data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 255, 179, 0, 255, 255, 72, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 4
+}
+
+[sub_resource type="ImageTexture" id=21]
+flags = 0
+flags = 0
+image = SubResource( 24 )
+size = Vector2( 4, 1 )
+
+[sub_resource type="ShaderMaterial" id=22]
+resource_local_to_scene = true
+shader = SubResource( 8 )
+shader_param/palette_size = 4
+shader_param/offset = null
+shader_param/palette = SubResource( 21 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -60,7 +102,7 @@ tile_data = PoolIntArray( 0, 2, 65537, 1, 2, 2, 2, 2, 2, 3, 2, 2, 4, 2, 2, 5, 2,
 [node name="flapper_with_energy" type="Node2D" parent="."]
 
 [node name="super_glider" parent="flapper_with_energy" instance=ExtResource( 4 )]
-position = Vector2( 151.596, 120.642 )
+position = Vector2( 827.829, 119.055 )
 strong_flap = 100.0
 weak_flap = 50.0
 failed_strong_flap = 20.0
@@ -69,3 +111,11 @@ glide_opposite_break_threshold = 75.0
 glide_friction = 0.3
 animation_speed_multiplier = 4.0
 friction = 0.03
+
+[node name="Sprite" parent="flapper_with_energy/super_glider" index="0"]
+material = SubResource( 22 )
+
+[node name="energy" parent="flapper_with_energy/super_glider" index="25"]
+flap_cost = 256.0
+
+[editable path="flapper_with_energy/super_glider"]
