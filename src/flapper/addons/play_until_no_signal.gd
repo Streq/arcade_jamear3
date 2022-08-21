@@ -1,14 +1,18 @@
 extends AudioStreamPlayer2D
 
 var keep_playing = false
+
 var power = 0.0
-var min_power = 0.0
-var max_power = 10.0
+export var min_power = 0.0
+export var max_power = 10.0
+export var min_volume = -80.0
+export var max_volume = 0.0
+
 func trigger(applied_friction):
 #	var threshold_squared = owner.graze_threshold*owner.graze_threshold
 	
-	power = range_lerp(applied_friction, min_power, max_power, -10.0, 0.0)
-	power = clamp(self.power, -10.0, -1.0)
+	power = range_lerp(applied_friction, min_power, max_power, min_volume, max_volume)
+	power = clamp(self.power, min_volume, max_volume)
 	
 	keep_playing = true
 

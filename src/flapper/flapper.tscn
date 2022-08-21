@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://src/flapper/flapper.gd" type="Script" id=1]
 [ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=2]
@@ -29,6 +29,8 @@
 [ext_resource path="res://assets/audio/sfx/roce.wav" type="AudioStream" id=27]
 [ext_resource path="res://src/flapper/addons/play_until_no_signal.gd" type="Script" id=28]
 [ext_resource path="res://src/flapper/addons/set_to_graze_squared.gd" type="Script" id=29]
+[ext_resource path="res://src/flapper/addons/set_max_min_to_glide_break_thresholds.gd" type="Script" id=30]
+[ext_resource path="res://assets/audio/sfx/glide.wav" type="AudioStream" id=31]
 
 [sub_resource type="StreamTexture" id=16]
 load_path = "res://.import/flapper.png-42d4f1390d9d9cceb01520b415ef9b37.stex"
@@ -488,6 +490,7 @@ stream = ExtResource( 26 )
 [node name="roce" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 27 )
 script = ExtResource( 28 )
+min_volume = -20.0
 
 [node name="set_to_graze_squared" type="Node" parent="roce"]
 script = ExtResource( 29 )
@@ -495,6 +498,17 @@ script = ExtResource( 29 )
 [node name="failed_glide" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 27 )
 script = ExtResource( 28 )
+min_volume = -50.0
+
+[node name="set_to_glide_break_thresholds" type="Node" parent="failed_glide"]
+script = ExtResource( 30 )
+
+[node name="glide" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 31 )
+script = ExtResource( 28 )
+min_power = 100.0
+max_power = 400.0
+min_volume = -50.0
 
 [node name="on_soft_collision" type="Node" parent="."]
 script = ExtResource( 20 )
@@ -535,6 +549,8 @@ shape = SubResource( 24 )
 [connection signal="soft_collision" from="." to="feathers_on_soft" method="_on_collision"]
 [connection signal="soft_collision" from="." to="on_soft_collision" method="trigger"]
 [connection signal="touch_collision" from="." to="on_touch_collision" method="trigger"]
+[connection signal="glide_pressure" from="state_machine/glide" to="failed_glide" method="trigger"]
+[connection signal="glide_tangent" from="state_machine/glide" to="glide" method="trigger"]
 [connection signal="area_entered" from="hurtbox" to="hurt_handler" method="_on_hit"]
 [connection signal="killed_by_hit" from="hurt_handler" to="many_feathers_slow" method="_on_collision_no_args"]
 [connection signal="killed_by_hit" from="hurt_handler" to="some_feathers_fast" method="_on_collision_no_args"]

@@ -14,14 +14,7 @@ func update_arrow():
 	var relative_pos = vp_transform.xform(owner.global_position)
 	
 	var dir = Vector2()
-#		if relative_pos.x < 0:
-#			dir.x = -1.0
-#		if relative_pos.x > screen_dims.x:
-#			dir.x = 1.0
-#		if relative_pos.y < 0:
-#			dir.y = -1.0
-#		if relative_pos.y > screen_dims.y:
-#			dir.y = 1.0
+
 	dir = (relative_pos-screen_dims/2)
 
 	var x = clamp(relative_pos.x, 0, screen_dims.x)
