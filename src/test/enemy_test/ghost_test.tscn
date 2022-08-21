@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://src/terrain/puzzle_terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/flapper/presets/super_glider.tscn" type="PackedScene" id=2]
@@ -97,9 +97,6 @@ width = 32
 height = 6
 fill_from = Vector2( 0, 1 )
 
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 4, 4 )
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 12 )
 
@@ -148,10 +145,6 @@ texture_progress_offset = Vector2( 0, 1 )
 [node name="pickup_detect" type="Area2D" parent="flapper_with_energy/super_glider"]
 collision_layer = 0
 collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="flapper_with_energy/super_glider/pickup_detect"]
-position = Vector2( 0.0216064, -0.168182 )
-shape = SubResource( 7 )
 
 [node name="camera" type="Camera2D" parent="flapper_with_energy/super_glider"]
 current = true
@@ -246,6 +239,5 @@ speed = 200.0
 speed_up_with_time = 10.0
 
 [connection signal="die" from="flapper_with_energy/super_glider" to="death_time" method="_on_player_dead"]
-[connection signal="value_changed" from="flapper_with_energy/super_glider/energy" to="flapper_with_energy/super_glider/energy_bar" method="update_vals"]
 [connection signal="timeout" from="death_time/Timer" to="death_time" method="_on_Timer_timeout"]
 [connection signal="seed_taken" from="death_time/seed_spawner" to="death_time" method="_on_seed_taken"]

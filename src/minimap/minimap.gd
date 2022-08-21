@@ -23,4 +23,10 @@ func _draw():
 		for n in get_tree().get_nodes_in_group(key):
 			rect.position = n.global_position*minimap_scale - rect.size/2
 			draw_rect(rect, color)
+	
+	for n in get_tree().get_nodes_in_group("seed"):
+		var line :Line2D = n.line
+		var points = Transform2D(0,n.global_position).scaled(Vector2(1,1)*minimap_scale).xform(line.points)
 		
+		draw_polyline(points, Color.green, 1.0, false)
+	

@@ -13,7 +13,7 @@ func strong():
 
 func weak_failed():
 	owner.velocity += owner.failed_weak_flap*owner.direction
-	owner.emit_signal("flapped")
+#	owner.emit_signal("flapped")
 func strong_failed():
 	owner.velocity += owner.failed_strong_flap*owner.direction
-	owner.emit_signal("flapped")
+#	owner.emit_signal("flapped")

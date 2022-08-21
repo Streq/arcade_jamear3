@@ -31,6 +31,9 @@ func set_max_value(val):
 	if ready:
 		emit_signal("value_changed", value, max_value)
 
+func add_value(val):
+	set_value(value+val)
+
 func _physics_process(delta):
 	set_value(clamp(value+regen*delta, 0, max_value))
 

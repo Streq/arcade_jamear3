@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/texture/seed.png" type="Texture" id=1]
 [ext_resource path="res://src/pickups/seed.gd" type="Script" id=2]
 [ext_resource path="res://src/pickups/player_magnet.gd" type="Script" id=3]
 [ext_resource path="res://src/pickups/out_of_sight_arrow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/audio/sfx/seed.wav" type="AudioStream" id=5]
+[ext_resource path="res://src/test/path/path_finder_dude.gd" type="Script" id=6]
+[ext_resource path="res://src/pickups/arrow.gd" type="Script" id=7]
+[ext_resource path="res://assets/texture/arrow.png" type="Texture" id=8]
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 5.09902
@@ -42,7 +46,7 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=5]
 radius = 64.0
 
-[node name="seed" type="Area2D"]
+[node name="seed" type="Area2D" groups=["seed"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource( 2 )
@@ -63,9 +67,31 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player_magnet" groups=["seed"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_magnet"]
 shape = SubResource( 5 )
 
 [node name="VisibilityNotifier2D" parent="." instance=ExtResource( 4 )]
+
+[node name="pickup_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="nav_indicator" type="Node2D" parent="."]
+modulate = Color( 0.00784314, 1, 0, 1 )
+script = ExtResource( 6 )
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="nav_indicator"]
+avoidance_enabled = true
+neighbor_dist = 1000.0
+max_speed = 1000.0
+
+[node name="Line2D" type="Line2D" parent="nav_indicator"]
+visible = false
+points = PoolVector2Array( 48, 7.99999, 8, 32, -40, 24, -24, -16, 0, -40, 40, -32, 56, -8, 64, 8 )
+width = 1.0
+default_color = Color( 0.4, 0.501961, 1, 1 )
+
+[node name="arrow" type="Sprite" parent="nav_indicator"]
+texture = ExtResource( 8 )
+script = ExtResource( 7 )
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

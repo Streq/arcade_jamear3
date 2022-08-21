@@ -20,19 +20,19 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=3]
+[sub_resource type="Image" id=2]
 data = {
-"data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 58, 0, 185, 255, 255, 0, 0, 255 ),
+"data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 255, 179, 0, 255, 255, 72, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=2]
+[sub_resource type="ImageTexture" id=3]
 flags = 0
 flags = 0
-image = SubResource( 3 )
+image = SubResource( 2 )
 size = Vector2( 4, 1 )
 
 [resource]
@@ -40,4 +40,4 @@ resource_local_to_scene = true
 shader = SubResource( 1 )
 shader_param/palette_size = 4
 shader_param/offset = null
-shader_param/palette = SubResource( 2 )
+shader_param/palette = SubResource( 3 )

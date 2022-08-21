@@ -3,6 +3,8 @@ extends KinematicBody2D
 signal flapped
 signal hard_collision(prev_velocity,post_velocity)
 signal soft_collision(prev_velocity,post_velocity)
+signal touch_collision(prev_velocity,post_velocity)
+signal graze(applied_friction)
 signal die
 
 export var gravity := 200.0
@@ -21,14 +23,19 @@ export var broken_glide_friction := 0.01
 export var glide_opposite_friction := 1.0
 export var broken_glide_opposite_friction := 0.01
 
+export var touch_collision_threshold := 50.0
 export var soft_collision_threshold := 200.0
 export var hard_collision_threshold := 500.0
+export var graze_threshold := 10.0
 export var delta_multiplier := 1.0
 
 export var animation_speed_multiplier := 1.0 setget set_animation_speed
 export var custom_animation_lengths := {} setget set_custom_animation_lengths
 
 export var turbo_flap = false
+
+export var bounciness = 0.25
+export var friction = 0.1
 
 var can_flap = true
 
@@ -81,21 +88,45 @@ func _physics_process(delta):
 	velocity = velocity.move_toward(Vector2.ZERO, air_resistance*delta)
 	
 	var prev_velocity = velocity
-	velocity = move_and_slide(velocity)
-	var squared_velocity_dt = prev_velocity.length_squared()-velocity.length_squared()
+	var new_velocity = move_and_slide(velocity)
+	
+	var squared_velocity_dt = prev_velocity.length_squared()-new_velocity.length_squared()
 #	print(squared_velocity_dt)
-	if squared_velocity_dt > hard_collision_threshold*hard_collision_threshold:
-		emit_signal("hard_collision", prev_velocity, velocity)
-	elif squared_velocity_dt > soft_collision_threshold*soft_collision_threshold:
-		emit_signal("soft_collision", prev_velocity, velocity)
+	
+	var slides = get_slide_count()
+	if slides:
+		if squared_velocity_dt > hard_collision_threshold*hard_collision_threshold:
+			emit_signal("hard_collision", prev_velocity, new_velocity)
+		elif squared_velocity_dt > soft_collision_threshold*soft_collision_threshold:
+			emit_signal("soft_collision", prev_velocity, new_velocity)
+		elif squared_velocity_dt > touch_collision_threshold*touch_collision_threshold:
+			emit_signal("touch_collision", prev_velocity, new_velocity)
+			
+		var collision = get_slide_collision(0)
+		var normal = collision.normal
+		
+		velocity -= velocity.project(normal)*(1.0-bounciness)
+		velocity = velocity.bounce(normal)
+		
+		var tangent = Vector2(normal.y, -normal.x)
+		var applied_friction = velocity.project(tangent)*friction
+		if applied_friction.length_squared() > graze_threshold*graze_threshold:
+			emit_signal("graze", applied_friction.length_squared())
+		velocity -= applied_friction
+		
+	else:
+		velocity = new_velocity
 	
 
+
 func die():
+	
 	visible = false
 	set_physics_process(false)
 	emit_signal("die")
 	if has_node("camera"):
 		NodeUtils.reparent_keep_transform(get_node("camera"),get_tree().current_scene)
+	yield(get_tree().create_timer(3.0),"timeout")
 	queue_free()
 		
 
