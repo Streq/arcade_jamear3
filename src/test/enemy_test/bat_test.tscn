@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://src/terrain/puzzle_terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/HUD/HUD_map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/flapper/presets/super_glider.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/test/spawning/spawn_area.gd" type="Script" id=4]
 [ext_resource path="res://src/pickups/seed.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/test/food/seed_spawner.gd" type="Script" id=6]
 [ext_resource path="res://src/render/indexed_sprite.gd" type="Script" id=7]
@@ -153,12 +154,10 @@ failed_strong_flap = 20.0
 failed_weak_flap = 20.0
 glide_opposite_break_threshold = 75.0
 glide_friction = 0.3
-broken_glide_opposite_friction = 0.01
 animation_speed_multiplier = 4.0
 friction = 0.03
 
 [node name="camera" type="Camera2D" parent="flapper_with_energy/super_glider"]
-current = true
 limit_smoothed = true
 script = ExtResource( 10 )
 
@@ -190,7 +189,18 @@ stat = "SEMILLAS"
 script = ExtResource( 6 )
 SEED = ExtResource( 5 )
 
-[node name="spawn_area" type="Polygon2D" parent="score/seed_spawner"]
+[node name="spawn_area" type="Polygon2D" parent="score/seed_spawner" groups=["spawn_area"]]
+position = Vector2( -32.3962, -50.4842 )
+scale = Vector2( 5.62804, 4.8834 )
+color = Color( 1, 0, 0, 0.494118 )
+polygon = PoolVector2Array( 19.9708, 38.1874, 413.714, 39.8256, 491.894, 72.5896, 494.736, 106.992, 469.15, 149.585, 372.491, 156.138, 335.534, 152.862, 332.691, 43.102, 321.319, 41.4638, 319.898, 152.862, 281.518, 144.671, 201.917, 128.289, 163.538, 123.374, 162.116, 48.0166, 149.323, 48.0166, 150.745, 121.736, 41.2926, 111.907, 42.714, 131.565, 152.166, 133.203, 148.248, 315.212, 176.279, 358.663, 240.998, 386.883, 514.637, 403.507, 616.982, 418.25, 638.303, 426.441, 679.525, 491.97, 587.131, 537.839, 344.062, 528.01, 318.476, 434.632, 162.116, 428.08, 119.473, 403.507, 34.1853, 279.003, 14.3348, 166.993, 14.2849, 147.947, 21.3922, 131.565, 31.3424, 123.374, 35.6068, 120.098, 41.2926, 123.374, 39.8711, 120.098, 39.8711, 116.821, 28.4995, 121.736, -9.87978, 152.862, -7.03687, 431.356, 223.239, 465.758, 329.848, 549.307, 631.196, 559.136, 722.169, 496.884, 678.007, 443.16, 807.241, 362.992, 804.226, 313.76, 729.847, 223.986, 574.053, 84.9795, 539.453, 87.2401, 506.227, 80.53, 512.351, 90.6386, 569.274, 97.1988, 606.748, 125.08, 677.581, 214.139, 774.072, 340.403, 721.764, 387.846, 664.104, 426.247, 645.411, 403.507, 467.729, 385.486, 467.729, 247.877, 170.645, 238.048, 162.116, 133.203, 169.223, 128.289, 200.495, 133.203, 388.127, 182.349, 474.836, 161.053, 514.637, 105.354, 494.736, 66.0368, 437.878, 31.6346, 332.691, 29.9964, 21.3922, 25.0817 )
+script = ExtResource( 4 )
+
+[node name="seed_spawner2" type="Node2D" parent="score"]
+script = ExtResource( 6 )
+SEED = ExtResource( 5 )
+
+[node name="spawn_area" type="Polygon2D" parent="score/seed_spawner2"]
 position = Vector2( -32.3962, -50.4842 )
 scale = Vector2( 5.62804, 4.8834 )
 color = Color( 1, 0, 0, 0.494118 )

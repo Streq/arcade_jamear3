@@ -513,6 +513,7 @@ script = ExtResource( 28 )
 min_power = 100.0
 max_power = 400.0
 min_volume = -50.0
+max_volume = -10.0
 
 [node name="on_soft_collision" type="Node" parent="."]
 script = ExtResource( 20 )

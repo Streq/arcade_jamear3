@@ -1,8 +1,11 @@
 extends Node2D
 
 signal seed_taken
+signal requirement_met
 
 export var SEED : PackedScene
+export var required_seeds := 3
+export var current_seeds := 0
 onready var spawn_area = $spawn_area
 
 var _seed = null
@@ -10,9 +13,7 @@ var _seed = null
 
 func spawn():
 	if is_inside_tree():
-		var rand_point = GeometryUtils.random_point_in_polygon(spawn_area.polygon)
-#		var point = rand_point
-		var point = spawn_area.global_transform.xform(rand_point)
+		var point = spawn_area.get_random_point()
 		_seed = SEED.instance()
 		_seed.connect("tree_exited", self, "_seed_taken")
 		yield(get_tree(),"idle_frame")
@@ -22,6 +23,9 @@ func spawn():
 
 func _seed_taken():
 	emit_signal("seed_taken")
+	current_seeds += 1
+	if current_seeds == required_seeds:
+		emit_signal("requirement_met")
 	spawn()
 
 func _ready():
