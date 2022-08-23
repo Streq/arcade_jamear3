@@ -7,6 +7,7 @@ signal hard_collision(prev_velocity,post_velocity)
 signal soft_collision(prev_velocity,post_velocity)
 signal touch_collision(prev_velocity,post_velocity)
 signal graze(applied_friction)
+signal entered_portal(portal)
 signal die
 
 export var gravity := 200.0

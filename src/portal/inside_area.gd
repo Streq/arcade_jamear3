@@ -12,6 +12,8 @@ func _on_body_entered(body : KinematicBody2D):
 #	body.position = to_local(body.global_position)
 	var pos = to_local(body.global_position)+viewport.size/2.0
 	print(to_local(body.global_position))
+	
+	body.emit_signal("entered_portal", self)
 	NodeUtils.reparent(body, viewport)
 	body.global_position = pos
-	
+	owner._on_exited()

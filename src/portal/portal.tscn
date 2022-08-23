@@ -1,8 +1,12 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/test/enemy_test/portal/portal_sprite.gd" type="Script" id=1]
 [ext_resource path="res://src/portal/portal.gd" type="Script" id=2]
 [ext_resource path="res://src/portal/inside_area.gd" type="Script" id=3]
+[ext_resource path="res://src/pickups/arrow.gd" type="Script" id=4]
+[ext_resource path="res://src/test/path/path_finder_dude.gd" type="Script" id=5]
+[ext_resource path="res://assets/audio/sfx/portal_hum2.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/texture/arrow.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=32]
 resource_name = "play"
@@ -35,20 +39,98 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 1e-05, 1e-05 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("hum:pitch_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("hum:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=39]
 resource_name = "close"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1.93187, 0.267943 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hum:pitch_scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 4.92458, 8.87654 ),
+"update": 0,
+"values": [ 1.0, 100.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("hum:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=48]
+resource_name = "hum"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("hum:pitch_scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 3.73214, 0.267943 ),
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+"values": [ 2.0, 1.0, 2.0, 1.0, 2.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hum:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=36]
@@ -112,6 +194,7 @@ anims/play = SubResource( 32 )
 [node name="state_change" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 35 )
 anims/close = SubResource( 39 )
+anims/hum = SubResource( 48 )
 anims/open = SubResource( 36 )
 
 [node name="Viewport" type="Viewport" parent="."]
@@ -144,5 +227,29 @@ script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="inside_area"]
 shape = SubResource( 47 )
+
+[node name="hum" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+volume_db = -28.8723
+attenuation = 3.86374
+
+[node name="nav_indicator" type="Node2D" parent="."]
+modulate = Color( 0.658824, 1, 0.984314, 1 )
+script = ExtResource( 5 )
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="nav_indicator"]
+avoidance_enabled = true
+neighbor_dist = 1000.0
+max_speed = 1000.0
+
+[node name="Line2D" type="Line2D" parent="nav_indicator"]
+visible = false
+points = PoolVector2Array( 48, 7.99999, 8, 32, -40, 24, -24, -16, 0, -40, 40, -32, 56, -8, 64, 8 )
+width = 1.0
+default_color = Color( 0.4, 0.501961, 1, 1 )
+
+[node name="arrow" type="Sprite" parent="nav_indicator"]
+texture = ExtResource( 7 )
+script = ExtResource( 4 )
 
 [connection signal="body_entered" from="inside_area" to="inside_area" method="_on_body_entered"]
