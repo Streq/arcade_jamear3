@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://src/flapper/flapper.gd" type="Script" id=1]
 [ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=2]
@@ -32,6 +32,7 @@
 [ext_resource path="res://src/flapper/addons/set_max_min_to_glide_break_thresholds.gd" type="Script" id=30]
 [ext_resource path="res://assets/audio/sfx/glide.wav" type="AudioStream" id=31]
 [ext_resource path="res://assets/audio/sfx/pio.wav" type="AudioStream" id=32]
+[ext_resource path="res://src/flapper/addons/set_velocity_to_portal_exit.gd" type="Script" id=33]
 
 [sub_resource type="StreamTexture" id=27]
 load_path = "res://.import/flapper.png-42d4f1390d9d9cceb01520b415ef9b37.stex"
@@ -476,21 +477,26 @@ script = ExtResource( 18 )
 
 [node name="soft_collision" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 21 )
+volume_db = -11.7255
 
 [node name="flap" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 25 )
+volume_db = -6.62745
 
 [node name="pio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 32 )
 
 [node name="explosion" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 19 )
+volume_db = -6.11765
 
 [node name="hard_collision" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 24 )
+volume_db = -9.68627
 
 [node name="touch_collision" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 26 )
+volume_db = -6.62745
 
 [node name="roce" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 27 )
@@ -514,7 +520,7 @@ script = ExtResource( 28 )
 min_power = 100.0
 max_power = 400.0
 min_volume = -50.0
-max_volume = -10.0
+max_volume = -5.0
 
 [node name="on_soft_collision" type="Node" parent="."]
 script = ExtResource( 20 )
@@ -544,6 +550,9 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pickup_detect"]
 position = Vector2( 0.0216064, -0.168182 )
 shape = SubResource( 24 )
+
+[node name="set_velocity_to_portal_exit" type="Node" parent="."]
+script = ExtResource( 33 )
 
 [connection signal="die" from="." to="hurtbox/CollisionShape2D" method="set_disabled" flags=3 binds= [ true ]]
 [connection signal="failed_flap" from="." to="pio" method="play"]

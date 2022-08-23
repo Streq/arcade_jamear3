@@ -87,13 +87,15 @@ _global_script_class_icons={
 [application]
 
 config/name="jamear3"
-run/main_scene="res://src/test/enemy_test/bat_test.tscn"
+run/main_scene="res://src/main.tscn"
 config/icon="res://assets/texture/icon.png"
 
 [autoload]
 
-Global="*res://src/global/global.gd"
 Levels="*res://src/global/levels.tscn"
+Global="*res://src/global/global.tscn"
+GameOverHud="*res://src/HUD/game_over_HUD.tscn"
+PortalAbiertoHud="*res://src/HUD/portal_abierto_HUD.tscn"
 
 [display]
 

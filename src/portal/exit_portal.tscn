@@ -1,12 +1,8 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://src/test/enemy_test/portal/portal_sprite.gd" type="Script" id=1]
-[ext_resource path="res://src/portal/portal.gd" type="Script" id=2]
-[ext_resource path="res://src/portal/inside_area.gd" type="Script" id=3]
-[ext_resource path="res://src/pickups/arrow.gd" type="Script" id=4]
-[ext_resource path="res://src/test/path/path_finder_dude.gd" type="Script" id=5]
-[ext_resource path="res://assets/audio/sfx/portal_hum2.wav" type="AudioStream" id=6]
-[ext_resource path="res://assets/texture/arrow.png" type="Texture" id=7]
+[ext_resource path="res://src/portal/exit_portal.gd" type="Script" id=1]
+[ext_resource path="res://assets/audio/sfx/portal_hum2.wav" type="AudioStream" id=2]
+[ext_resource path="res://src/test/enemy_test/portal/portal_sprite.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=32]
 resource_name = "play"
@@ -167,31 +163,30 @@ void fragment(){
 	
 }"
 
-[sub_resource type="ViewportTexture" id=46]
+[sub_resource type="ViewportTexture" id=49]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="ShaderMaterial" id=43]
+[sub_resource type="ShaderMaterial" id=50]
 resource_local_to_scene = true
 shader = SubResource( 42 )
 shader_param/position = null
 shader_param/sprite_rect_offset = null
-shader_param/other_world = SubResource( 46 )
+shader_param/other_world = SubResource( 49 )
 
 [sub_resource type="StreamTexture" id=31]
 load_path = "res://.import/portal_orb.png-12f3895f12bcf5fcc259c4e66a058e39.stex"
 
-[sub_resource type="CircleShape2D" id=47]
-radius = 10.0038
-
 [node name="portal" type="Node2D"]
+position = Vector2( 184.347, 128.195 )
 z_index = -1
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "play"
 anims/play = SubResource( 32 )
 
 [node name="state_change" type="AnimationPlayer" parent="."]
+autoplay = "close"
 anims/RESET = SubResource( 35 )
 anims/close = SubResource( 39 )
 anims/hum = SubResource( 48 )
@@ -204,52 +199,23 @@ handle_input_locally = false
 render_target_v_flip = true
 render_target_update_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="Viewport"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="ColorRect" type="ColorRect" parent="Viewport"]
+margin_right = 53.0
+margin_bottom = 53.0
+color = Color( 0, 0.34902, 0.356863, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 43 )
+material = SubResource( 50 )
 scale = Vector2( 1e-05, 1e-05 )
 texture = SubResource( 31 )
 hframes = 4
 vframes = 4
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 __meta__ = {
 "_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PXBvcnRhbC9BbmltYXRpb25QbGF5ZXIKc291cmNlfD1yZXM6Ly9hc3NldHMvYXNlcHJpdGUvcG9ydGFsX29yYi5hc2Vwcml0ZQpsYXllcnw9Cm9wX2V4cHw9VHJ1ZQpvX2ZvbGRlcnw9Cm9fbmFtZXw9Cm9ubHlfdmlzaWJsZXw9RmFsc2UKb19leF9wfD0K"
 }
 
-[node name="inside_area" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="inside_area"]
-shape = SubResource( 47 )
-
 [node name="hum" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 6 )
+stream = ExtResource( 2 )
 volume_db = -28.8723
 attenuation = 3.86374
-
-[node name="nav_indicator" type="Node2D" parent="."]
-modulate = Color( 0.658824, 1, 0.984314, 1 )
-z_index = 2
-script = ExtResource( 5 )
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="nav_indicator"]
-avoidance_enabled = true
-neighbor_dist = 1000.0
-max_speed = 1000.0
-
-[node name="Line2D" type="Line2D" parent="nav_indicator"]
-visible = false
-points = PoolVector2Array( 48, 7.99999, 8, 32, -40, 24, -24, -16, 0, -40, 40, -32, 56, -8, 64, 8 )
-width = 1.0
-default_color = Color( 0.4, 0.501961, 1, 1 )
-
-[node name="arrow" type="Sprite" parent="nav_indicator"]
-texture = ExtResource( 7 )
-script = ExtResource( 4 )
-
-[connection signal="body_entered" from="inside_area" to="inside_area" method="_on_body_entered"]

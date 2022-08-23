@@ -27,6 +27,7 @@ func _draw():
 	for n in get_tree().get_nodes_in_group("seed"):
 		var line :Line2D = n.line
 		var points = Transform2D(0,n.global_position).scaled(Vector2(1,1)*minimap_scale).xform(line.points)
-		
+		if points.size()<2:
+			continue
 		draw_polyline(points, Color.green, 1.0, false)
 	

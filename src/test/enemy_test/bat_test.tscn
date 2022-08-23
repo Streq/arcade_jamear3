@@ -193,6 +193,7 @@ SEED = ExtResource( 5 )
 PORTAL = ExtResource( 14 )
 
 [node name="spawn_area" type="Polygon2D" parent="score/seed_spawner" groups=["spawn_area"]]
+visible = false
 position = Vector2( -32.3962, -50.4842 )
 scale = Vector2( 5.62804, 4.8834 )
 color = Color( 1, 0, 0, 0.494118 )

@@ -117,8 +117,11 @@ friction = 0.03
 [node name="Sprite" parent="flapper_with_energy/super_glider" index="0"]
 material = SubResource( 22 )
 
+[node name="flap" parent="flapper_with_energy/super_glider" index="14"]
+volume_db = 0.0
+
 [node name="glide" parent="flapper_with_energy/super_glider" index="21"]
-max_volume = 0.0
+max_volume = -10.0
 
 [node name="energy_bar" parent="flapper_with_energy/super_glider" index="26"]
 visible = false
@@ -126,13 +129,6 @@ visible = false
 [node name="Camera2D" type="Camera2D" parent="flapper_with_energy/super_glider"]
 current = true
 script = ExtResource( 5 )
-
-[node name="ViewportContainer" type="ViewportContainer" parent="."]
-visible = false
-margin_left = 45.0
-margin_top = 22.0
-margin_right = 1005.0
-margin_bottom = 562.0
 
 [node name="portal" parent="." instance=ExtResource( 1 )]
 position = Vector2( 463.442, 153.852 )

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/test/manual_scene_change/manual_scene_change_test.gd" type="Script" id=1]
+[ext_resource path="res://src/main.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/test/enemy_test/bat_test.tscn" type="PackedScene" id=3]
+
+[sub_resource type="ViewportTexture" id=1]
+viewport_path = NodePath("Viewport")
+
+[node name="manual_scene_change" type="Node2D"]
+script = ExtResource( 1 )
+SCENE_A = ExtResource( 3 )
+SCENE_B = ExtResource( 2 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 960, 540 )
+render_target_v_flip = true
+audio_listener_enable_2d = true
+
+[node name="Viewport2" type="Viewport" parent="."]
+size = Vector2( 960, 540 )
+render_target_v_flip = true
+audio_listener_enable_2d = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 1 )
