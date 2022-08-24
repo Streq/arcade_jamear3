@@ -233,6 +233,7 @@ volume_db = -28.8723
 attenuation = 3.86374
 
 [node name="nav_indicator" type="Node2D" parent="."]
+visible = false
 modulate = Color( 0.658824, 1, 0.984314, 1 )
 z_index = 2
 script = ExtResource( 5 )

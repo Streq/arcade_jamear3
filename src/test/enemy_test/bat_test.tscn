@@ -227,31 +227,31 @@ width = 1.0
 
 [node name="ghost" parent="." instance=ExtResource( 16 )]
 position = Vector2( 704, 96 )
-speed_up_with_time = 1.0
+speed_up_with_time = 10.0
 
 [node name="ghost3" parent="." instance=ExtResource( 16 )]
 position = Vector2( 1896, 688 )
-speed_up_with_time = 1.0
+speed_up_with_time = 10.0
 
 [node name="ghost4" parent="." instance=ExtResource( 16 )]
 position = Vector2( 2120, 1328 )
-speed_up_with_time = 1.0
+speed_up_with_time = 10.0
 
 [node name="ghost5" parent="." instance=ExtResource( 16 )]
 position = Vector2( 1616, 2104 )
-speed_up_with_time = 1.0
+speed_up_with_time = 10.0
 
 [node name="ghost6" parent="." instance=ExtResource( 16 )]
 position = Vector2( 208, 1640 )
-speed_up_with_time = 1.0
+speed_up_with_time = 10.0
 
 [node name="ghost7" parent="." instance=ExtResource( 16 )]
 position = Vector2( 2872, 2552 )
-speed_up_with_time = 1.0
+speed_up_with_time = 10.0
 
 [node name="ghost8" parent="." instance=ExtResource( 16 )]
 position = Vector2( 3792, 2128 )
-speed_up_with_time = 1.0
+speed_up_with_time = 5.0
 
 [node name="ghost9" parent="." instance=ExtResource( 16 )]
 position = Vector2( 3664, 1144 )
