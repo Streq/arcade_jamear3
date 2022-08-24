@@ -23,3 +23,4 @@ func _ready():
 
 func _on_new_game():
 	total_time = 0.0
+

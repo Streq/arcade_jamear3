@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/HUD/input_indicator.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/HUD/score_record.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/style/black_box.tres" type="StyleBox" id=3]
+[ext_resource path="res://src/global/score_display.gd" type="Script" id=4]
+
+[node name="ScoreDisplay" type="CanvasLayer"]
+script = ExtResource( 4 )
+RECORD = ExtResource( 2 )
+
+[node name="pivot" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="PanelContainer" type="PanelContainer" parent="pivot"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -91.0
+margin_top = -24.0
+margin_right = 91.0
+margin_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_styles/panel = ExtResource( 3 )
+
+[node name="entry_list" type="VBoxContainer" parent="pivot/PanelContainer"]
+unique_name_in_owner = true
+margin_right = 182.0
+margin_bottom = 48.0
+
+[node name="Label" parent="pivot/PanelContainer/entry_list" instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 182.0
+margin_bottom = 14.0
+
+[node name="play_again" parent="pivot/PanelContainer/entry_list" instance=ExtResource( 1 )]
+unique_name_in_owner = true
+margin_right = 182.0

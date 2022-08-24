@@ -1,14 +1,20 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/font/ProggyClean.ttf/ProggyClean.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/HUD/game_over_HUD.gd" type="Script" id=2]
-[ext_resource path="res://assets/texture/buttons.png" type="Texture" id=3]
+[ext_resource path="res://src/HUD/input_indicator.tscn" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 3 )
+[sub_resource type="StreamTexture" id=2]
+load_path = "res://.import/buttons.png-972e58b881dae0d92c4054933eb22561.stex"
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = SubResource( 2 )
 region = Rect2( 0, 0, 16, 16 )
 
 [node name="CanvasLayer" type="CanvasLayer"]
@@ -18,15 +24,26 @@ script = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Label" type="Label" parent="pivot"]
+[node name="PanelContainer" type="PanelContainer" parent="pivot"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -129.5
-margin_top = -89.0
-margin_right = 129.5
-margin_bottom = -58.0
+margin_left = -105.0
+margin_top = -51.5
+margin_right = 105.0
+margin_bottom = 51.5
+custom_styles/panel = SubResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pivot/PanelContainer"]
+margin_right = 210.0
+margin_bottom = 103.0
+alignment = 1
+
+[node name="Label" type="Label" parent="pivot/PanelContainer/VBoxContainer"]
+margin_top = 7.0
+margin_right = 210.0
+margin_bottom = 38.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
@@ -36,26 +53,36 @@ text = "el pájaro se la puso y murió
 FIN"
 align = 1
 
-[node name="Label2" type="Label" parent="pivot"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -120.0
-margin_top = -56.0
-margin_right = 139.0
-margin_bottom = -25.0
+[node name="new_record" type="Label" parent="pivot/PanelContainer/VBoxContainer"]
+margin_top = 42.0
+margin_right = 210.0
+margin_bottom = 56.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 custom_constants/shadow_as_outline = 1
 custom_fonts/font = SubResource( 1 )
-text = "= reiniciar"
+text = "NUEVO RÉCORD!!!!"
 align = 1
 
-[node name="TextureRect" type="TextureRect" parent="pivot"]
-margin_left = 431.0
-margin_top = 212.0
-margin_right = 447.0
-margin_bottom = 228.0
-texture = SubResource( 2 )
+[node name="save_record" parent="pivot/PanelContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 60.0
+margin_right = 210.0
+margin_bottom = 76.0
+
+[node name="TextureRect" parent="pivot/PanelContainer/VBoxContainer/save_record" index="0"]
+margin_left = 46.0
+margin_right = 62.0
+texture = SubResource( 3 )
+
+[node name="Label" parent="pivot/PanelContainer/VBoxContainer/save_record" index="1"]
+margin_left = 66.0
+margin_right = 164.0
+text = "guardar récord"
+
+[node name="play_again" parent="pivot/PanelContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 80.0
+margin_right = 210.0
+margin_bottom = 96.0
+
+[editable path="pivot/PanelContainer/VBoxContainer/save_record"]

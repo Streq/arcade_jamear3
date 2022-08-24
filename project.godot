@@ -65,6 +65,11 @@ _global_script_classes=[ {
 "path": "res://src/util/state_machine/state_machine.gd"
 }, {
 "base": "Reference",
+"class": "StringUtils",
+"language": "GDScript",
+"path": "res://src/global/string_utils.gd"
+}, {
+"base": "Reference",
 "class": "TilemapUtils",
 "language": "GDScript",
 "path": "res://src/util/tilemap/tilemap_utils.gd"
@@ -81,6 +86,7 @@ _global_script_class_icons={
 "RenderUtils": "",
 "State": "",
 "StateMachine": "",
+"StringUtils": "",
 "TilemapUtils": ""
 }
 
@@ -96,6 +102,10 @@ Levels="*res://src/global/levels.tscn"
 Global="*res://src/global/global.tscn"
 GameOverHud="*res://src/HUD/game_over_HUD.tscn"
 PortalAbiertoHud="*res://src/HUD/portal_abierto_HUD.tscn"
+Score="*res://src/global/score.tscn"
+ScoreBoard="*res://src/HUD/score_board.tscn"
+SaveRecord="*res://src/HUD/save_record.tscn"
+ScoreDisplay="*res://src/global/ScoreDisplay.tscn"
 
 [display]
 
