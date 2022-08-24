@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/font/proggy.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/texture/panel_border.png" type="Texture" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.34902, 0.34902, 0.34902, 1 )
+border_color = Color( 1, 1, 1, 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="pivot" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="pivot"]
+show_behind_parent = true
+margin_left = 473.0
+margin_top = 254.0
+margin_right = 487.0
+margin_bottom = 286.0
+custom_constants/margin_right = 3
+custom_constants/margin_top = 3
+custom_constants/margin_left = 3
+custom_constants/margin_bottom = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="pivot/MarginContainer"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 11.0
+margin_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_styles/panel = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pivot/MarginContainer/PanelContainer"]
+margin_right = 8.0
+margin_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="name" type="Label" parent="pivot/MarginContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 4.0
+margin_right = 8.0
+margin_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+align = 1
+valign = 1
+
+[node name="chars" type="GridContainer" parent="pivot/MarginContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 22.0
+margin_right = 8.0
+margin_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/hseparation = 10
+columns = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="pivot/MarginContainer"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 11.0
+margin_bottom = 29.0
+custom_constants/margin_right = -3
+custom_constants/margin_top = -3
+custom_constants/margin_left = -3
+custom_constants/margin_bottom = -3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="pivot/MarginContainer/MarginContainer"]
+margin_left = -3.0
+margin_top = -3.0
+margin_right = 11.0
+margin_bottom = 29.0
+texture = ExtResource( 2 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3

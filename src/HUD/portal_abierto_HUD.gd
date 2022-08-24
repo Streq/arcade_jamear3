@@ -7,7 +7,7 @@ func _ready():
 	Global.connect("portal_open", self, "portal_open")
 	Global.connect("new_level", self, "new_level")
 	Global.connect("player_dead", self, "player_dead")
-	
+	visible = false
 func portal_open():
 	pivot.visible = true
 

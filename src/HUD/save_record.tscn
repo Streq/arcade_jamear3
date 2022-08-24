@@ -3,9 +3,7 @@
 [ext_resource path="res://assets/font/proggy.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/HUD/char_select_button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/HUD/save_record.gd" type="Script" id=3]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0, 0, 0, 1 )
+[ext_resource path="res://src/HUD/panel.tscn" type="PackedScene" id=4]
 
 [node name="SaveRecord" type="CanvasLayer"]
 script = ExtResource( 3 )
@@ -15,43 +13,39 @@ CHAR_BUTTON = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="PanelContainer" type="PanelContainer" parent="pivot"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -7.0
-margin_top = -16.0
-margin_right = 7.0
-margin_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-custom_styles/panel = SubResource( 1 )
+[node name="MarginContainer" parent="pivot" instance=ExtResource( 4 )]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="pivot/PanelContainer"]
-margin_right = 14.0
-margin_bottom = 32.0
+[node name="panel_border" parent="pivot/MarginContainer" index="0"]
+margin_bottom = 42.0
+
+[node name="PanelContainer" parent="pivot/MarginContainer" index="1"]
+margin_bottom = 42.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pivot/MarginContainer/PanelContainer" index="0"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 8.0
+margin_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="name" type="Label" parent="pivot/PanelContainer/VBoxContainer"]
+[node name="name" type="Label" parent="pivot/MarginContainer/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 7.0
-margin_right = 14.0
-margin_bottom = 21.0
+margin_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 1 )
 align = 1
 valign = 1
 
-[node name="chars" type="GridContainer" parent="pivot/PanelContainer/VBoxContainer"]
+[node name="chars" type="GridContainer" parent="pivot/MarginContainer/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 25.0
-margin_right = 14.0
-margin_bottom = 25.0
+margin_top = 18.0
+margin_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_constants/hseparation = 10
 columns = 10
+
+[editable path="pivot/MarginContainer"]

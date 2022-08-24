@@ -57,6 +57,8 @@ func enable():
 	set_process_input(true)
 	resulting_name = ""
 	update_name()
+	var button :Button= chars.get_child(0)
+	button.grab_focus()
 
 func _delete():
 	var length = resulting_name.length()
@@ -77,4 +79,6 @@ func update_name():
 func _input(event):
 	if event.is_action_pressed("B"):
 		_delete()
+	if event.is_action_pressed("A"):
+		pass
 	
