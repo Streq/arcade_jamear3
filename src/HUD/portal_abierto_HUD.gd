@@ -9,11 +9,13 @@ func _ready():
 	Global.connect("player_dead", self, "player_dead")
 	visible = false
 func portal_open():
-	pivot.visible = true
+	visible = true
 
 func player_dead():
-	pivot.visible = false
+	visible = false
+	pass
 
 func new_level():
-	pivot.visible = false
+	visible = false
+	pass
 	
