@@ -14,10 +14,32 @@ var board = [{"score":0.0,"name":""},
 export var board_size = 10
 
 
-func load_board():
-	pass
+const SAVE_PATH := "user://save.res"
+
+
 func save_board():
-	pass
+	var save = File.new()
+	save.open(SAVE_PATH, File.WRITE)
+	save.store_var(board)
+	save.close()
+func load_board():
+	var save = File.new()
+	if save.open(SAVE_PATH, File.READ) == OK:
+		var invalid = false
+		var saved_board = save.get_var()
+		if saved_board is Array:
+			var arr := saved_board as Array
+			for entry in arr:
+				if !("score" in entry) or !("name" in entry):
+					invalid = true
+					break
+		else:
+			invalid = true
+		if invalid:
+			printerr("invalid save: ", to_json(saved_board))
+		else:
+			board = saved_board
+		
 
 func _ready():
 	load_board()
