@@ -13,7 +13,7 @@ func disable():
 func _input(event):
 	if event.is_action_pressed("A"):
 		ScoreDisplay.enable()
-		self.disable()
+		owner.disable()
 	if event.is_action_pressed("B"):
-		self.disable()
+		owner.disable()
 		Global.new_game()

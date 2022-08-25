@@ -26,6 +26,8 @@ func enable():
 func disable():
 	visible = false
 	set_process_input(false)
+	new_record.disable()
+	no_record.disable()
 	
 
 func _ready():

@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/font/proggy.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/HUD/char_select_button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/HUD/save_record.gd" type="Script" id=3]
 [ext_resource path="res://src/HUD/panel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/HUD/send_button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/HUD/delete_button.tscn" type="PackedScene" id=6]
 
 [node name="SaveRecord" type="CanvasLayer"]
 script = ExtResource( 3 )
 CHAR_BUTTON = ExtResource( 2 )
+SEND_BUTTON = ExtResource( 5 )
+DEL_BUTTON = ExtResource( 6 )
 
 [node name="pivot" type="Control" parent="."]
 anchor_right = 1.0
