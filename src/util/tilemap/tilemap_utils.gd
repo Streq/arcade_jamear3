@@ -28,6 +28,8 @@ static func _generate_polygon_block(tilemap:TileMap,x0,y0,w,h):
 	var tile_size = tilemap.cell_size
 	var islands = []
 	var holes = []
+	var tileset = tilemap.tile_set
+	
 	# por cada tile
 	
 	for y in range(y0,y0+h):
@@ -39,8 +41,18 @@ static func _generate_polygon_block(tilemap:TileMap,x0,y0,w,h):
 			var tile_id = tilemap.get_cellv(tilemap_coord)
 			if tile_id == TileMap.INVALID_CELL:
 				continue
-			var nav : NavigationPolygon = tilemap.tile_set.tile_get_navigation_polygon(tile_id)
-			var offset : Vector2 = tilemap.tile_set.tile_get_navigation_polygon_offset(tile_id)
+			
+			var nav : NavigationPolygon 
+			var offset : Vector2
+			match tileset.tile_get_tile_mode(tile_id):
+				TileSet.SINGLE_TILE:
+					nav = tileset.tile_get_navigation_polygon(tile_id)
+					offset = tileset.tile_get_navigation_polygon_offset(tile_id)
+				TileSet.AUTO_TILE, TileSet.ATLAS_TILE:
+					var subtile = tilemap.get_cell_autotile_coord(x,y)
+					nav = tileset.autotile_get_navigation_polygon(tile_id, subtile)
+					offset = Vector2()
+			
 			if !nav:
 				continue
 			var world_coord = tile_size*tilemap_coord+offset
