@@ -3,16 +3,18 @@ tool
 
 export var palette: PoolColorArray setget set_palette
 export var material : ShaderMaterial
-
+export var glow = false
+export var glow_speed = 1.0
 var ready = false
 
 var tex = ImageTexture.new()
 
+
 func _ready():
 	ready = true
 	set_palette(palette)
-	var m : ShaderMaterial = material
-	m.set_shader_param("palette", tex)
+	material.set_shader_param("palette", tex)
+	material.set_shader_param("palette_size", palette.size())
 	get_parent().material = material
 
 func set_palette(val):
@@ -35,3 +37,8 @@ func update_tex(img):
 	tex.flags = -1
 	tex.create_from_image(img)
 	tex.flags = 0
+
+func _process(delta):
+	if glow:
+		material.set_shader_param("offset", posmod(Time.get_ticks_msec()*glow_speed, 1000)/(1000/palette.size()))
+	pass
