@@ -21,9 +21,10 @@ func _on_hearing_body_exited(body):
 func _physics_process(delta):
 	for key in on_the_loop_about:
 		on_the_loop_about[key] = false
-
+	update()
 func _draw():
-	draw_arc(Vector2(), shape_owner_get_shape(0,0).radius, 0, TAU, 64, Color.red, 1.0, false)
+	var col = Color.yellow if owner.state_machine.current.name == "asleep" else Color.red
+	draw_arc(Vector2(), shape_owner_get_shape(0,0).radius, 0, TAU, 64, col, 1.0, false)
 #	draw_circle(Vector2(),shape_owner_get_shape(0,0).radius,Color.red)
 
 

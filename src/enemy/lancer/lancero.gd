@@ -6,6 +6,8 @@ onready var palette = $palette
 onready var shooter = $aim/shooter
 onready var sight = $sight
 onready var aim = $aim
+onready var exclamation_anim = $exclamation_anim
+
 var target = null
 
 func _ready():
