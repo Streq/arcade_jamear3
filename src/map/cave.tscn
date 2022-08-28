@@ -1,12 +1,13 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/terrain/terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/flapper/presets/super_glider.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/camera/camera.gd" type="Script" id=3]
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=4]
 [ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/terrain/torch.tscn" type="PackedScene" id=6]
 
-[sub_resource type="Image" id=15]
+[sub_resource type="Image" id=30]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 49, 0, 75, 255, 202, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
@@ -15,10 +16,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=16]
+[sub_resource type="ImageTexture" id=25]
 flags = 0
 flags = 0
-image = SubResource( 15 )
+image = SubResource( 30 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=8]
@@ -27,9 +28,9 @@ shader = ExtResource( 4 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 16 )
+shader_param/palette = SubResource( 25 )
 
-[sub_resource type="Image" id=17]
+[sub_resource type="Image" id=31]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 43, 43, 43, 255, 138, 138, 138, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -38,10 +39,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=18]
+[sub_resource type="ImageTexture" id=27]
 flags = 0
 flags = 0
-image = SubResource( 17 )
+image = SubResource( 31 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=7]
@@ -50,21 +51,21 @@ shader = ExtResource( 4 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 18 )
+shader_param/palette = SubResource( 27 )
 
-[sub_resource type="Image" id=19]
+[sub_resource type="Image" id=32]
 data = {
-"data": PoolByteArray( 0, 0, 0, 255, 67, 84, 0, 255, 0, 66, 15, 255, 122, 139, 0, 255 ),
+"data": PoolByteArray( 0, 0, 0, 255, 0, 94, 7, 255, 0, 173, 0, 255, 93, 255, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=20]
+[sub_resource type="ImageTexture" id=29]
 flags = 0
 flags = 0
-image = SubResource( 19 )
+image = SubResource( 32 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=14]
@@ -73,7 +74,30 @@ shader = ExtResource( 4 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 20 )
+shader_param/palette = SubResource( 29 )
+
+[sub_resource type="Image" id=33]
+data = {
+"data": PoolByteArray( 135, 63, 0, 255, 235, 84, 31, 255, 255, 205, 58, 255, 255, 196, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 4
+}
+
+[sub_resource type="ImageTexture" id=22]
+flags = 0
+flags = 0
+image = SubResource( 33 )
+size = Vector2( 4, 1 )
+
+[sub_resource type="ShaderMaterial" id=23]
+resource_local_to_scene = true
+shader = ExtResource( 4 )
+shader_param/palette_size = 4
+shader_param/offset = null
+shader_param/blue_index_offset = 1.0
+shader_param/palette = SubResource( 22 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -95,10 +119,10 @@ material = SubResource( 7 )
 
 [node name="TileMap3" parent="." instance=ExtResource( 1 )]
 material = SubResource( 14 )
-tile_data = PoolIntArray( 47, 6, 8, 48, 6, 10, 49, 6, 10, 50, 6, 10, 51, 6, 10, 52, 6, 10, 53, 6, 10, 54, 6, 10, 55, 6, 11, 65582, 6, 8, 65583, 6, 65541, 65584, 6, 131081, 65585, 6, 131078, 65586, 6, 196617, 65587, 6, 196617, 65588, 6, 196617, 65589, 6, 196617, 65590, 6, 131077, 65591, 6, 65542, 65592, 6, 11, 131116, 6, 8, 131117, 6, 10, 131118, 6, 65541, 131119, 6, 131078, 131120, 6, 196617, 131121, 6, 196619, 131126, 6, 196616, 131127, 6, 196617, 131128, 6, 131082, 131129, 6, 11, 196652, 6, 65544, 196653, 6, 131081, 196654, 6, 131078, 196655, 6, 196619, 196664, 6, 196616, 196665, 6, 131079, 262187, 6, 8, 262188, 6, 65541, 262189, 6, 131081, 262190, 6, 131083, 262201, 6, 65540, 262202, 6, 11, 327722, 6, 8, 327723, 6, 65541, 327724, 6, 131081, 327725, 6, 131078, 327726, 6, 196619, 327737, 6, 131076, 327738, 6, 196614, 327739, 6, 196611, 393258, 6, 196616, 393259, 6, 131077, 393260, 6, 131081, 393261, 6, 131083, 393272, 6, 8, 393273, 6, 65543, 458795, 6, 65544, 458796, 6, 131081, 458797, 6, 65542, 458798, 6, 11, 458808, 6, 65544, 458809, 6, 131083, 524331, 6, 65544, 524332, 6, 131081, 524333, 6, 131081, 524334, 6, 65542, 524335, 6, 11, 524344, 6, 196616, 524345, 6, 4, 524346, 6, 196611, 524348, 6, 0, 589867, 6, 65544, 589868, 6, 131081, 589869, 6, 131081, 589870, 6, 131081, 589871, 6, 131083, 589881, 6, 131072, 589884, 6, 131072, 655403, 6, 196616, 655404, 6, 131077, 655405, 6, 131081, 655406, 6, 131081, 655407, 6, 65547, 655408, 6, 196611, 720940, 6, 196616, 720941, 6, 196617, 720942, 6, 196617, 720943, 6, 131079, 786479, 6, 131073, 786480, 6, 196610, 786481, 6, 196610, 786482, 6, 3, 852018, 6, 131073, 852019, 6, 196611 )
+tile_data = PoolIntArray(  )
 
 [node name="palette" parent="TileMap3" instance=ExtResource( 5 )]
-palette = PoolColorArray( 0, 0, 0, 1, 0.262745, 0.329412, 0, 1, 0, 0.258824, 0.0588235, 1, 0.478431, 0.545098, 0, 1 )
+palette = PoolColorArray( 0, 0, 0, 1, 0, 0.37, 0.0308333, 1, 0, 0.68, 0, 1, 0.366667, 1, 0, 1 )
 material = SubResource( 14 )
 
 [node name="super_glider" parent="." instance=ExtResource( 2 )]
@@ -128,3 +152,19 @@ layer = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.0980392, 0, 0.243137, 1 )
+
+[node name="Node2D" parent="." instance=ExtResource( 6 )]
+material = SubResource( 23 )
+position = Vector2( 914.62, 181.986 )
+
+[node name="Node2D2" parent="." instance=ExtResource( 6 )]
+material = SubResource( 23 )
+position = Vector2( 676.412, 165.391 )
+
+[node name="Node2D3" parent="." instance=ExtResource( 6 )]
+material = SubResource( 23 )
+position = Vector2( 817.69, 63.7973 )
+
+[node name="Node2D4" parent="." instance=ExtResource( 6 )]
+material = SubResource( 23 )
+position = Vector2( 560.531, 13.0005 )

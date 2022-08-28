@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/test/enemy_test/portal/portal_sprite.gd" type="Script" id=1]
 [ext_resource path="res://src/portal/portal.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/test/path/path_finder_dude.gd" type="Script" id=5]
 [ext_resource path="res://assets/audio/sfx/portal_hum2.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/texture/arrow.png" type="Texture" id=7]
+[ext_resource path="res://src/portal/attraction_area.gd" type="Script" id=8]
 
 [sub_resource type="Animation" id=32]
 resource_name = "play"
@@ -135,6 +136,8 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=36]
 resource_name = "open"
+length = 1.2
+step = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
 tracks/0/interp = 2
@@ -142,10 +145,34 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 1.2 ),
 "transitions": PoolRealArray( 0.267943, 1 ),
 "update": 0,
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hum:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("hum:pitch_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 100.0, 2.0 ]
 }
 
 [sub_resource type="Shader" id=42]
@@ -182,6 +209,9 @@ load_path = "res://.import/portal_orb.png-12f3895f12bcf5fcc259c4e66a058e39.stex"
 
 [sub_resource type="CircleShape2D" id=47]
 radius = 10.0038
+
+[sub_resource type="CircleShape2D" id=49]
+radius = 69.0783
 
 [node name="portal" type="Node2D"]
 z_index = -1
@@ -252,5 +282,16 @@ default_color = Color( 0.4, 0.501961, 1, 1 )
 [node name="arrow" type="Sprite" parent="nav_indicator"]
 texture = ExtResource( 7 )
 script = ExtResource( 4 )
+
+[node name="attraction_area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 8 )
+pull = 1e+07
+friction = 600.0
+max_pull = 1000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attraction_area"]
+shape = SubResource( 49 )
 
 [connection signal="body_entered" from="inside_area" to="inside_area" method="_on_body_entered"]

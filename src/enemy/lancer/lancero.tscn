@@ -1,0 +1,448 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
+[ext_resource path="res://src/enemy/lancer/shooter.gd" type="Script" id=2]
+[ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/enemy/lancer/aim.gd" type="Script" id=5]
+[ext_resource path="res://src/enemy/lancer/state/asleep.gd" type="Script" id=6]
+[ext_resource path="res://src/enemy/lancer/arrow.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/enemy/lancer/lancero.gd" type="Script" id=8]
+[ext_resource path="res://src/enemy/lancer/state/shoot.gd" type="Script" id=9]
+[ext_resource path="res://src/enemy/lancer/state/idle.gd" type="Script" id=10]
+[ext_resource path="res://src/enemy/lancer/state/load.gd" type="Script" id=11]
+[ext_resource path="res://src/enemy/lancer/state/wake_up.gd" type="Script" id=12]
+[ext_resource path="res://src/enemy/lancer/sight.gd" type="Script" id=13]
+[ext_resource path="res://src/enemy/lancer/hearing.gd" type="Script" id=14]
+[ext_resource path="res://assets/audio/sfx/alert5.wav" type="AudioStream" id=15]
+[ext_resource path="res://src/enemy/lancer/play_if_no_one_else.gd" type="Script" id=16]
+
+[sub_resource type="Image" id=41]
+data = {
+"data": PoolByteArray( 57, 0, 0, 255, 0, 61, 95, 255, 253, 255, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=33]
+flags = 0
+flags = 0
+image = SubResource( 41 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=16]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 33 )
+
+[sub_resource type="StreamTexture" id=37]
+load_path = "res://.import/body.png-940de2ef5de01a2251135ddd6702d10b.stex"
+
+[sub_resource type="StreamTexture" id=38]
+load_path = "res://.import/bow_arm.png-43364ea118bb5ba6a496dd96240814c7.stex"
+
+[sub_resource type="StreamTexture" id=39]
+load_path = "res://.import/pull_arm.png-4b84df8ba64f84638bd553191dd8ab76.stex"
+
+[sub_resource type="StreamTexture" id=40]
+load_path = "res://.import/arrow.png-a1832eda68b808d809468f06a52e8461.stex"
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 5, 11 )
+
+[sub_resource type="Animation" id=27]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1.0, 2.0, 3.0, 4.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("aim/bow_arm:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1.0, 1.0, 1.0, 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("aim/pull_arm:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1.0, 1.0, 1.0, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("aim/arrow:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 0.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=28]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("aim/bow_arm:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("aim/pull_arm:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("aim/arrow:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=29]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 0.0, 0.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("aim/bow_arm:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 0.0, 0.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("aim/pull_arm:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 0.0, 0.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("aim/arrow:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1.0, 2.0, 3.0, 4.0 ]
+}
+
+[sub_resource type="Animation" id=30]
+tracks/0/type = "method"
+tracks/0/path = NodePath("aim/shooter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("aim/bow_arm:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2.0, 3.0, 0.0, 4.0, 0.0, 4.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("aim/pull_arm:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("aim/arrow:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=31]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("aim/bow_arm:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("aim/pull_arm:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("aim/arrow:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="CircleShape2D" id=35]
+radius = 246.27
+
+[node name="lancero" type="KinematicBody2D"]
+material = SubResource( 16 )
+z_index = 1
+collision_layer = 0
+script = ExtResource( 8 )
+
+[node name="body" type="Sprite" parent="."]
+use_parent_material = true
+texture = SubResource( 37 )
+hframes = 3
+vframes = 2
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PUFuaW1hdGlvblBsYXllcgpzb3VyY2V8PXJlczovL2Fzc2V0cy9hc2Vwcml0ZS9sYW5jZXJvLmFzZXByaXRlCmxheWVyfD1ib2R5Cm9wX2V4cHw9RmFsc2UKb19mb2xkZXJ8PQpvX25hbWV8PQpvbmx5X3Zpc2libGV8PUZhbHNlCm9fZXhfcHw9Cg=="
+}
+
+[node name="aim" type="Node2D" parent="."]
+use_parent_material = true
+position = Vector2( 0, -7 )
+script = ExtResource( 5 )
+predict = true
+
+[node name="bow_arm" type="Sprite" parent="aim"]
+use_parent_material = true
+position = Vector2( 0, 9 )
+z_index = -1
+texture = SubResource( 38 )
+hframes = 3
+vframes = 2
+frame = 3
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PUFuaW1hdGlvblBsYXllcgpzb3VyY2V8PXJlczovL2Fzc2V0cy9hc2Vwcml0ZS9sYW5jZXJvLmFzZXByaXRlCmxheWVyfD1ib3dfYXJtCm9wX2V4cHw9RmFsc2UKb19mb2xkZXJ8PQpvX25hbWV8PQpvbmx5X3Zpc2libGV8PUZhbHNlCm9fZXhfcHw9Cg=="
+}
+
+[node name="pull_arm" type="Sprite" parent="aim"]
+use_parent_material = true
+position = Vector2( 0, 8 )
+texture = SubResource( 39 )
+hframes = 2
+vframes = 2
+frame = 2
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PUFuaW1hdGlvblBsYXllcgpzb3VyY2V8PXJlczovL2Fzc2V0cy9hc2Vwcml0ZS9sYW5jZXJvLmFzZXByaXRlCmxheWVyfD1wdWxsX2FybQpvcF9leHB8PUZhbHNlCm9fZm9sZGVyfD0Kb19uYW1lfD0Kb25seV92aXNpYmxlfD1GYWxzZQpvX2V4X3B8PQo="
+}
+
+[node name="arrow" type="Sprite" parent="aim"]
+use_parent_material = true
+position = Vector2( 0, 8 )
+texture = SubResource( 40 )
+hframes = 3
+vframes = 2
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PUFuaW1hdGlvblBsYXllcgpzb3VyY2V8PXJlczovL2Fzc2V0cy9hc2Vwcml0ZS9sYW5jZXJvLmFzZXByaXRlCmxheWVyfD1hcnJvdwpvcF9leHB8PUZhbHNlCm9fZm9sZGVyfD0Kb19uYW1lfD0Kb25seV92aXNpYmxlfD1GYWxzZQpvX2V4X3B8PQo="
+}
+
+[node name="shooter" type="Node2D" parent="aim"]
+script = ExtResource( 2 )
+ARROW = ExtResource( 7 )
+
+[node name="palette" parent="." instance=ExtResource( 3 )]
+palette = PoolColorArray( 0.223529, 0, 0, 1, 0, 0.239216, 0.372549, 1, 0.992157, 1, 0, 1 )
+material = SubResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -3 )
+shape = SubResource( 19 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_process_mode = 2
+anims/asleep = SubResource( 27 )
+anims/idle = SubResource( 28 )
+anims/load = SubResource( 29 )
+anims/shoot = SubResource( 30 )
+anims/wake_up = SubResource( 31 )
+
+[node name="state_machine" parent="." instance=ExtResource( 4 )]
+start_state = "asleep"
+
+[node name="asleep" type="Node" parent="state_machine"]
+script = ExtResource( 6 )
+
+[node name="idle" type="Node" parent="state_machine"]
+script = ExtResource( 10 )
+
+[node name="Timer" type="Timer" parent="state_machine/idle"]
+process_mode = 0
+wait_time = 5.0
+
+[node name="load" type="Node" parent="state_machine"]
+script = ExtResource( 11 )
+
+[node name="shoot" type="Node" parent="state_machine"]
+script = ExtResource( 9 )
+
+[node name="wake_up" type="Node" parent="state_machine"]
+script = ExtResource( 12 )
+
+[node name="sight" type="Node2D" parent="."]
+script = ExtResource( 13 )
+opaque_layers = 1
+
+[node name="hearing" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 130
+script = ExtResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hearing"]
+shape = SubResource( 35 )
+
+[node name="alert" type="AudioStreamPlayer2D" parent="." groups=["alert"]]
+stream = ExtResource( 15 )
+volume_db = -4.2573
+script = ExtResource( 16 )
+
+[connection signal="timeout" from="state_machine/idle/Timer" to="state_machine/idle" method="_on_Timer_timeout"]
+[connection signal="entered" from="state_machine/wake_up" to="alert" method="trigger"]
+[connection signal="area_entered" from="hearing" to="hearing" method="_on_hearing_area_entered"]
+[connection signal="area_exited" from="hearing" to="hearing" method="_on_hearing_area_exited"]
+[connection signal="body_entered" from="hearing" to="hearing" method="_on_hearing_body_entered"]
+[connection signal="body_exited" from="hearing" to="hearing" method="_on_hearing_body_exited"]

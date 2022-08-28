@@ -1,6 +1,30 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/flapper/flapper.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=2]
+
+[sub_resource type="Image" id=6]
+data = {
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=5]
+flags = 0
+flags = 0
+image = SubResource( 6 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 1.0
+shader_param/palette = SubResource( 5 )
 
 [node name="super_glider" instance=ExtResource( 1 )]
 __meta__ = {
@@ -23,11 +47,17 @@ custom_animation_lengths = {
 "glide_flap": -1.0
 }
 
-[node name="feathers_on_soft" parent="." index="7"]
+[node name="feathers_on_soft" parent="." index="6"]
 inertia_multiplier = 0.25
 
-[node name="many_feathers_slow" parent="." index="8"]
+[node name="many_feathers_slow" parent="." index="7"]
 inertia_multiplier = 0.5
 
-[node name="some_feathers_fast" parent="." index="9"]
+[node name="some_feathers_fast" parent="." index="8"]
 inertia_multiplier = 1.0
+
+[node name="Sprite" parent="." index="28"]
+material = SubResource( 3 )
+
+[node name="palette" parent="Sprite" index="1"]
+material = SubResource( 3 )

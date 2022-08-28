@@ -23,10 +23,3 @@ glide_friction = 0.5
 broken_glide_friction = 0.0
 glide_opposite_friction = 0.5
 broken_glide_opposite_friction = 0.0
-
-[connection signal="hard_collision" from="super_glider" to="super_glider/many_feathers_slow" method="_on_collision"]
-[connection signal="hard_collision" from="super_glider" to="super_glider/some_feathers_fast" method="_on_collision"]
-[connection signal="soft_collision" from="super_glider" to="super_glider/feathers_on_soft" method="_on_collision"]
-[connection signal="hard_collision" from="ultra_glider" to="ultra_glider/many_feathers_slow" method="_on_collision"]
-[connection signal="hard_collision" from="ultra_glider" to="ultra_glider/some_feathers_fast" method="_on_collision"]
-[connection signal="soft_collision" from="ultra_glider" to="ultra_glider/feathers_on_soft" method="_on_collision"]

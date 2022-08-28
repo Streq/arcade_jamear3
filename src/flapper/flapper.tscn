@@ -342,9 +342,9 @@ fill_from = Vector2( 0, 1 )
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 4, 4 )
 
-[sub_resource type="Image" id=34]
+[sub_resource type="Image" id=36]
 data = {
-"data": PoolByteArray( 255, 0, 0, 255, 255, 179, 0, 255, 255, 255, 255, 255 ),
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -354,14 +354,14 @@ data = {
 [sub_resource type="ImageTexture" id=35]
 flags = 0
 flags = 0
-image = SubResource( 34 )
+image = SubResource( 36 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=33]
 resource_local_to_scene = true
 shader = ExtResource( 11 )
 shader_param/palette_size = 3
-shader_param/offset = 1
+shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
 shader_param/palette = SubResource( 35 )
 
@@ -576,9 +576,8 @@ shape = SubResource( 15 )
 disabled = true
 
 [node name="palette" parent="Sprite" instance=ExtResource( 13 )]
-palette = PoolColorArray( 1, 0, 0, 1, 1, 0.701961, 0, 1, 1, 1, 1, 1 )
+palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
 material = SubResource( 33 )
-glow = true
 glow_speed = 4.0
 
 [connection signal="die" from="." to="hurtbox/CollisionShape2D" method="set_disabled" flags=3 binds= [ true ]]

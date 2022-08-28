@@ -45,5 +45,4 @@ func _on_soft_collision(prev_velocity, velocity):
 	emit_signal("soft_collision", prev_velocity, velocity)
 
 func _ready():
-	if get_tree().has_group("flapper"):
-		target = get_tree().get_nodes_in_group("flapper")[0]
+	target = Group.get_one("flapper")

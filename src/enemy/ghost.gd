@@ -43,5 +43,4 @@ func  _physics_process(delta):
 	
 	
 func _ready():
-	if get_tree().has_group("flapper"):
-		target = get_tree().get_nodes_in_group("flapper")[0]
+	target = Group.get_one("flapper")

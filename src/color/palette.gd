@@ -3,9 +3,10 @@ tool
 
 export var palette: PoolColorArray setget set_palette
 export var material : ShaderMaterial
-export var glow = false
+export var glow = false setget set_glow
 export var glow_speed = 1.0
 var ready = false
+
 
 var tex = ImageTexture.new()
 
@@ -16,6 +17,7 @@ func _ready():
 	material.set_shader_param("palette", tex)
 	material.set_shader_param("palette_size", palette.size())
 	get_parent().material = material
+	set_glow(glow)
 
 func set_palette(val):
 	palette = val
@@ -42,3 +44,8 @@ func _process(delta):
 	if glow:
 		material.set_shader_param("offset", posmod(Time.get_ticks_msec()*glow_speed, 1000)/(1000/palette.size()))
 	pass
+func set_glow(val):
+	glow = val
+	if ready:
+		material.set_shader_param("offset", 0)
+	

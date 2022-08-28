@@ -10,7 +10,7 @@ func _physics_process(delta):
 #	navigation_agent_2d.set_target_location(get_global_mouse_position())
 	var current_pos = global_position
 	if get_tree().has_group("flapper"):
-		target = get_tree().get_nodes_in_group("flapper")[0]
+		target = Group.get_one("flapper")
 		var target_pos = target.global_position
 		
 #		agent.set_velocity(get_parent().velocity)
