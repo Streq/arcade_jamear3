@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/enemy/bat.gd" type="Script" id=1]
 [ext_resource path="res://src/pickups/out_of_sight_arrow.tscn" type="PackedScene" id=2]
@@ -6,13 +6,38 @@
 [ext_resource path="res://src/flapper/feather/bat_scale.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/flapper/addons/feather_action.gd" type="Script" id=5]
 [ext_resource path="res://src/flapper/addons/soft_collision_detect.gd" type="Script" id=6]
+[ext_resource path="res://assets/audio/sfx/choque_explosivo.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/sfx/choque2.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/sfx/choque_suave.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/audio/sfx/flap2.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/audio/sfx/choque_explosivo2.wav" type="AudioStream" id=11]
+[ext_resource path="res://src/flapper/on_soft_collision.gd" type="Script" id=12]
+[ext_resource path="res://src/enemy/set_to_difficulty.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/enemy/addon/player_finder.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/util/node/reparent_to_grandparent_on_trigger.gd" type="Script" id=15]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 6.0
 
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("flap:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
 [sub_resource type="Animation" id=8]
 length = 0.5
 loop = true
+step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -24,6 +49,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 1.0, 2.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("flap:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Shader" id=1]
@@ -46,19 +83,19 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=14]
+[sub_resource type="Image" id=17]
 data = {
-"data": PoolByteArray( 255, 255, 255, 0, 0, 0, 0, 255, 87, 0, 130, 255, 255, 0, 233, 255 ),
+"data": PoolByteArray( 255, 255, 255, 0, 0, 0, 0, 255, 86, 0, 130, 255, 255, 0, 232, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=13]
+[sub_resource type="ImageTexture" id=16]
 flags = 0
 flags = 0
-image = SubResource( 14 )
+image = SubResource( 17 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=7]
@@ -66,7 +103,7 @@ resource_local_to_scene = true
 shader = SubResource( 1 )
 shader_param/palette_size = 4
 shader_param/offset = null
-shader_param/palette = SubResource( 13 )
+shader_param/palette = SubResource( 16 )
 
 [sub_resource type="StreamTexture" id=11]
 load_path = "res://.import/bat.png-a8b52d81614051d9dbf9113e1deadd92.stex"
@@ -83,7 +120,14 @@ shape = SubResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "flap"
 playback_process_mode = 0
+anims/RESET = SubResource( 14 )
 anims/flap = SubResource( 8 )
+
+[node name="set_to_difficulty" parent="AnimationPlayer" instance=ExtResource( 13 )]
+prop = "playback_speed"
+max_value = 4.0
+min_value = 1.0
+max_difficulty = 240.0
 
 [node name="Sprite" parent="." instance=ExtResource( 3 )]
 material = SubResource( 7 )
@@ -130,7 +174,57 @@ script = ExtResource( 5 )
 FEATHER = ExtResource( 4 )
 initial_speed = 0.0
 
+[node name="soft_collision" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+volume_db = -11.7255
+
+[node name="flap" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+volume_db = -12.1011
+attenuation = 4.28709
+
+[node name="explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+volume_db = -6.11765
+
+[node name="hard_collision" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+volume_db = -18.8538
+
+[node name="reparent_to_grandparent_on_trigger" type="Node" parent="hard_collision"]
+script = ExtResource( 15 )
+
+[node name="touch_collision" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+volume_db = -6.62745
+
+[node name="on_hard_collision" type="Node" parent="."]
+script = ExtResource( 12 )
+
+[node name="on_soft_collision" type="Node" parent="."]
+script = ExtResource( 12 )
+
+[node name="set_to_difficulty" parent="." instance=ExtResource( 13 )]
+prop = "speed"
+max_value = 1200.0
+min_value = 100.0
+max_difficulty = 240.0
+
+[node name="set_col_resistance_to_difficulty" parent="." instance=ExtResource( 13 )]
+prop = "hard_collision_threshold"
+max_value = 600.0
+min_value = 250.0
+max_difficulty = 240.0
+
+[node name="player_finder" parent="." instance=ExtResource( 14 )]
+
+[connection signal="dead" from="." to="hard_collision/reparent_to_grandparent_on_trigger" method="trigger"]
 [connection signal="hard_collision" from="." to="many_feathers_slow" method="_on_collision"]
 [connection signal="hard_collision" from="." to="some_feathers_fast" method="_on_collision"]
+[connection signal="hard_collision" from="." to="on_hard_collision" method="trigger"]
+[connection signal="soft_collision" from="." to="some_feathers_soft" method="_on_collision"]
+[connection signal="soft_collision" from="." to="on_soft_collision" method="trigger"]
+[connection signal="trigger" from="on_hard_collision" to="hard_collision" method="play"]
+[connection signal="trigger" from="on_soft_collision" to="soft_collision" method="play"]
 
 [editable path="out_of_sight_arrow"]

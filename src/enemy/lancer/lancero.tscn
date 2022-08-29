@@ -20,19 +20,19 @@
 [ext_resource path="res://src/enemy/lancer/set_to_difficulty.gd" type="Script" id=18]
 [ext_resource path="res://src/enemy/set_to_difficulty.tscn" type="PackedScene" id=19]
 
-[sub_resource type="Image" id=43]
+[sub_resource type="Image" id=45]
 data = {
-"data": PoolByteArray( 57, 0, 0, 255, 0, 61, 95, 255, 253, 255, 0, 255 ),
+"data": PoolByteArray( 56, 0, 0, 255, 0, 61, 94, 255, 253, 255, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=33]
+[sub_resource type="ImageTexture" id=44]
 flags = 0
 flags = 0
-image = SubResource( 43 )
+image = SubResource( 45 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=16]
@@ -41,7 +41,7 @@ shader = ExtResource( 1 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 33 )
+shader_param/palette = SubResource( 44 )
 
 [sub_resource type="StreamTexture" id=37]
 load_path = "res://.import/body.png-940de2ef5de01a2251135ddd6702d10b.stex"
@@ -487,8 +487,8 @@ script = ExtResource( 13 )
 opaque_layers = 1
 
 [node name="hearing" type="Area2D" parent="."]
-collision_layer = 128
-collision_mask = 130
+collision_layer = 64
+collision_mask = 66
 script = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hearing"]

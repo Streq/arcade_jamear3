@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://src/terrain/terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/flapper/presets/fast_glider.tscn" type="PackedScene" id=2]
@@ -17,7 +17,8 @@
 [ext_resource path="res://src/HUD/HUD_map.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/HUD/tutorial_message.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/enemy/ghost.tscn" type="PackedScene" id=17]
-[ext_resource path="res://src/enemy/addon/player_finder.tscn" type="PackedScene" id=18]
+[ext_resource path="res://src/test/spawning/spawn_point.tscn" type="PackedScene" id=18]
+[ext_resource path="res://src/test/spawning/bat_spawner.tscn" type="PackedScene" id=19]
 
 [sub_resource type="Image" id=47]
 data = {
@@ -266,9 +267,6 @@ margin_bottom = 273.322
 position = Vector2( -59.1748, -345.73 )
 speed = 200.0
 hard_collision_threshold = 10000.0
-speed_up_with_time = 10.0
-
-[node name="player_finder" parent="bat" instance=ExtResource( 18 )]
 
 [node name="ghost" parent="." instance=ExtResource( 17 )]
 position = Vector2( 1883, -461 )
@@ -302,10 +300,29 @@ position = Vector2( 259, -465 )
 
 [node name="lancero" parent="." instance=ExtResource( 8 )]
 material = SubResource( 43 )
-position = Vector2( 1508, 1897 )
+position = Vector2( 461, 1133 )
+rotation = 2.35619
 
 [node name="lancero2" parent="." instance=ExtResource( 8 )]
 material = SubResource( 46 )
-position = Vector2( 1636, 2745 )
+position = Vector2( 2490, 1467 )
+rotation = -0.785397
+
+[node name="bat_spawner" parent="." instance=ExtResource( 19 )]
+
+[node name="spawn_point" parent="bat_spawner" instance=ExtResource( 18 )]
+position = Vector2( -469, -348 )
+
+[node name="spawn_point2" parent="bat_spawner" instance=ExtResource( 18 )]
+position = Vector2( 4655, 309 )
+
+[node name="spawn_point3" parent="bat_spawner" instance=ExtResource( 18 )]
+position = Vector2( 1171, 1710 )
+
+[node name="spawn_point4" parent="bat_spawner" instance=ExtResource( 18 )]
+position = Vector2( 2310, 768 )
+
+[node name="spawn_point5" parent="bat_spawner" instance=ExtResource( 18 )]
+position = Vector2( 2174, -240 )
 
 [editable path="navigation_generator"]
