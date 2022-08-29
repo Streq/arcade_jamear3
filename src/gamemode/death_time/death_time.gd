@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var puntaje = $CanvasLayer/puntaje
-onready var semillas_label = $CanvasLayer/semillas
+#onready var semillas_label = $CanvasLayer/semillas
 
 var total = 0.0
 var semillas = 0
@@ -18,7 +18,7 @@ func _physics_process(delta):
 
 func _on_seed_taken():
 	semillas += 1
-	semillas_label.set_value(str(semillas))
+#	semillas_label.set_value(str(semillas))
 	 
 func _on_player_dead():
 	player_alive = false

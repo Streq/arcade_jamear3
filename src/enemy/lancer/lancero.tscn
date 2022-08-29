@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
 [ext_resource path="res://src/enemy/lancer/shooter.gd" type="Script" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://assets/audio/sfx/alert5.wav" type="AudioStream" id=15]
 [ext_resource path="res://src/enemy/lancer/play_if_no_one_else.gd" type="Script" id=16]
 [ext_resource path="res://assets/texture/exclamation.png" type="Texture" id=17]
+[ext_resource path="res://src/enemy/lancer/set_to_difficulty.gd" type="Script" id=18]
+[ext_resource path="res://src/enemy/set_to_difficulty.tscn" type="PackedScene" id=19]
 
 [sub_resource type="Image" id=43]
 data = {
@@ -383,7 +385,6 @@ texture = ExtResource( 17 )
 use_parent_material = true
 position = Vector2( 0, -7 )
 script = ExtResource( 5 )
-predict = true
 
 [node name="bow_arm" type="Sprite" parent="aim"]
 use_parent_material = true
@@ -422,6 +423,20 @@ __meta__ = {
 script = ExtResource( 2 )
 ARROW = ExtResource( 7 )
 
+[node name="set_to_difficulty" type="Node" parent="aim/shooter"]
+script = ExtResource( 18 )
+prop = "shoot_speed"
+max_value = 1000.0
+min_value = 500.0
+max_difficulty = 360.0
+
+[node name="set_to_difficulty" parent="aim" instance=ExtResource( 19 )]
+
+[node name="Line2D" type="Line2D" parent="aim"]
+visible = false
+points = PoolVector2Array( 0, 0, 3000, 0 )
+width = 1.0
+
 [node name="palette" parent="." instance=ExtResource( 3 )]
 palette = PoolColorArray( 0.223529, 0, 0, 1, 0, 0.239216, 0.372549, 1, 0.992157, 1, 0, 1 )
 material = SubResource( 16 )
@@ -437,6 +452,13 @@ anims/idle = SubResource( 28 )
 anims/load = SubResource( 29 )
 anims/shoot = SubResource( 30 )
 anims/wake_up = SubResource( 31 )
+
+[node name="set_to_difficulty" type="Node" parent="AnimationPlayer"]
+script = ExtResource( 18 )
+prop = "playback_speed"
+max_value = 4.0
+min_value = 1.0
+max_difficulty = 360.0
 
 [node name="state_machine" parent="." instance=ExtResource( 4 )]
 start_state = "asleep"

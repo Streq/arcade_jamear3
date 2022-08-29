@@ -12,5 +12,5 @@ func _physics_process(delta):
 		if dist_squared:
 			var power = min(max_pull/pull,dist_unit*dist_unit/dist_squared)
 			body.velocity += dir*pull*power*delta
-			body.velocity *= (1.0-friction*power*delta)
+			body.velocity *= (1.0-friction*delta)
 			

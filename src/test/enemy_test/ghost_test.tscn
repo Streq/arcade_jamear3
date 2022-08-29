@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/terrain/puzzle_terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/flapper/presets/super_glider.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://src/enemy/ghost.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/test/enemy_test/ghost_test.gd" type="Script" id=12]
 [ext_resource path="res://src/enemy/bat.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/test/spawning/spawn_area.gd" type="Script" id=14]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -123,7 +124,7 @@ tile_data = PoolIntArray( -64897, 0, 65536, 65535, 0, 1, 0, 0, 65538, 1, 0, 6553
 
 [node name="super_glider" parent="flapper_with_energy" instance=ExtResource( 2 )]
 position = Vector2( 314, 78 )
-strong_flap = 75.0
+strong_flap = 100.0
 weak_flap = 50.0
 failed_strong_flap = 20.0
 failed_weak_flap = 20.0
@@ -187,41 +188,35 @@ position = Vector2( -32.3962, -50.4842 )
 scale = Vector2( 5.62804, 4.8834 )
 color = Color( 1, 1, 1, 0 )
 polygon = PoolVector2Array( 26.012, 40.0303, 179, 36, 455, 13, 859, 49, 887, 108, 886.348, 289.856, 871, 467, 796, 499, 539, 519, 143, 493, 29.7433, 489.512 )
+script = ExtResource( 14 )
 
 [node name="ghost" parent="." instance=ExtResource( 11 )]
 position = Vector2( 174, 101 )
 speed = 200.0
-speed_up_with_time = 7.5
 
 [node name="ghost2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1444, 606 )
 speed = 200.0
-speed_up_with_time = 10.0
 
 [node name="ghost3" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1912, 862 )
 speed = 200.0
-speed_up_with_time = 10.0
 
 [node name="ghost4" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1765, 403 )
 speed = 200.0
-speed_up_with_time = 10.0
 
 [node name="ghost5" parent="." instance=ExtResource( 11 )]
 position = Vector2( 912, 343 )
 speed = 200.0
-speed_up_with_time = 10.0
 
 [node name="ghost6" parent="." instance=ExtResource( 11 )]
 position = Vector2( 106, 681 )
 speed = 200.0
-speed_up_with_time = 10.0
 
 [node name="ghost7" parent="." instance=ExtResource( 11 )]
 position = Vector2( 141, 371 )
 speed = 200.0
-speed_up_with_time = 10.0
 
 [node name="bat" parent="." instance=ExtResource( 13 )]
 position = Vector2( 770, 668 )

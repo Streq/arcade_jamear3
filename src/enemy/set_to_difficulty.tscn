@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/enemy/lancer/set_to_difficulty.gd" type="Script" id=1]
+
+[node name="set_to_difficulty" type="Node"]
+script = ExtResource( 1 )
+prop = "prediction"
+max_value = 1.0
+max_difficulty = 180.0

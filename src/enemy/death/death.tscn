@@ -1,0 +1,107 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://src/enemy/death/death.gd" type="Script" id=1]
+[ext_resource path="res://src/pickups/out_of_sight_arrow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/color/palettes/death_palette.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/enemy/addon/turn_to_dir.gd" type="Script" id=4]
+[ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/enemy/set_to_difficulty.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/texture/death.png" type="Texture" id=7]
+[ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=8]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 16.0
+
+[sub_resource type="Image" id=22]
+data = {
+"data": PoolByteArray( 0, 0, 0, 255, 33, 0, 0, 255, 255, 222, 90, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=19]
+flags = 0
+flags = 0
+image = SubResource( 22 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=11]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 19 )
+
+[sub_resource type="Image" id=23]
+data = {
+"data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 255, 0, 0, 255, 0, 0, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 4
+}
+
+[sub_resource type="ImageTexture" id=21]
+flags = 0
+flags = 0
+image = SubResource( 23 )
+size = Vector2( 4, 1 )
+
+[sub_resource type="ShaderMaterial" id=17]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 4
+shader_param/offset = 0
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 21 )
+
+[node name="death" type="KinematicBody2D"]
+collision_layer = 128
+collision_mask = 129
+script = ExtResource( 1 )
+speed = 1000.0
+hard_collision_threshold = 500000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 11 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PUFuaW1hdGlvblBsYXllcgpzb3VyY2V8PXJlczovL2Fzc2V0cy9hc2Vwcml0ZS9iYXQuYXNlcHJpdGUKbGF5ZXJ8PQpvcF9leHB8PUZhbHNlCm9fZm9sZGVyfD0Kb19uYW1lfD0Kb25seV92aXNpYmxlfD1GYWxzZQpvX2V4X3B8PQo="
+}
+
+[node name="palette" parent="Sprite" instance=ExtResource( 3 )]
+palette = PoolColorArray( 0, 0, 0, 1, 0.129412, 0, 0, 1, 1, 0.870588, 0.352941, 1 )
+material = SubResource( 11 )
+
+[node name="hitbox" type="Area2D" parent="." groups=["bat"]]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource( 2 )
+
+[node name="out_of_sight_arrow" parent="." instance=ExtResource( 2 )]
+
+[node name="Sprite" parent="out_of_sight_arrow/CanvasLayer/arrow" index="0"]
+material = SubResource( 17 )
+
+[node name="palette" parent="out_of_sight_arrow/CanvasLayer/arrow/Sprite" index="0" instance=ExtResource( 5 )]
+palette = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1 )
+material = SubResource( 17 )
+
+[node name="turn_to_dir" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="set_to_difficulty" parent="." instance=ExtResource( 6 )]
+prop = "speed"
+max_value = 1200.0
+min_value = 500.0
+max_difficulty = 120.0
+
+[editable path="out_of_sight_arrow"]

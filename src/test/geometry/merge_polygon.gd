@@ -5,34 +5,39 @@ signal A_pressed
 export var block_size := 32
 
 
+export var tilemap_path : NodePath setget set_tilemap_path
+
 onready var tile_map = $TileMap
 
-onready var merged = $NavigationPolygonInstance
+
+onready var merged :NavigationPolygonInstance = $NavigationPolygonInstance
 onready var islands_label = $islands
 onready var holes_label = $holes
 
 var polygon = {}
+var ready = false
 
 
 export var update : bool setget set_update
 func set_update(val):
 	_generate_polygon()
-
+	print("polygon count:", merged.navpoly.get_polygon_count())
+	
 func _input(event):
 	if event.is_action_pressed("A"):
 		emit_signal("A_pressed")
 
 func _ready():
-	if !Engine.editor_hint:
-		_generate_polygon()
-		tile_map.queue_free()
-		
+#	if !Engine.editor_hint:
+	if tilemap_path:
+		tile_map = get_node_or_null(tilemap_path)
+	ready = true
 
 func _generate_polygon():
 	var time_start = Time.get_ticks_usec()
 
 	var navpoly = merged.navpoly
-	var merge = TilemapUtils.merge_navigation_polygons_into_one(tile_map)
+	var merge = TilemapUtils.merge_navigation_polygons_into_one(tile_map, block_size)
 	
 	update_polygon(navpoly, merge.islands, merge.holes)
 	var total_time = Time.get_ticks_usec()-time_start
@@ -93,3 +98,8 @@ func apply_tilemap_xform(points: PoolVector2Array, woorld_coord: Vector2):
 		xformed.append(tile_map.transform.xform(point+woorld_coord))
 	return xformed
 
+
+func set_tilemap_path(val):
+	tilemap_path = val
+	if tilemap_path:
+		tile_map = get_node_or_null(tilemap_path)

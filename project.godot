@@ -113,6 +113,7 @@ ScoreBoard="*res://src/HUD/score_board.tscn"
 SaveRecord="*res://src/HUD/save_record.tscn"
 ScoreDisplay="*res://src/global/ScoreDisplay.tscn"
 Group="*res://src/global/group.gd"
+Difficulty="*res://src/global/difficulty.tscn"
 
 [display]
 
@@ -232,6 +233,11 @@ curr_level={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+restart={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [layer_names]
 
@@ -246,6 +252,10 @@ curr_level={
 
 limits/message_queue/max_size_kb=8192
 limits/command_queue/multithreading_queue_size_kb=1024
+
+[network]
+
+limits/debugger_stdout/max_warnings_per_second=10000
 
 [physics]
 

@@ -15,7 +15,9 @@ var player_alive = false
 func _input(event):
 	if event.is_action_pressed("full_screen"):
 		OS.window_fullscreen = !OS.window_fullscreen
-
+	if OS.is_debug_build():
+		if event.is_action_pressed("restart"):
+			get_tree().reload_current_scene()
 
 
 func _player_died():
@@ -35,7 +37,8 @@ func new_level():
 	emit_signal("new_level")
 
 func new_game():
+	emit_signal("new_game")
 	Levels.current_level = 0
 	Levels.load_level()
 	exit_portal_velocity = Vector2()
-	emit_signal("new_game")
+	

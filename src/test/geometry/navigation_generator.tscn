@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/test/geometry/merge_polygon.gd" type="Script" id=1]
+[ext_resource path="res://src/terrain/puzzle_terrain.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/test/geometry/inflator.gd" type="Script" id=3]
+
+[sub_resource type="NavigationPolygon" id=1]
+resource_local_to_scene = true
+
+[node name="navigation_generator" type="Node2D"]
+script = ExtResource( 1 )
+block_size = 64
+
+[node name="TileMap" parent="." instance=ExtResource( 2 )]
+use_parent_material = true
+tile_data = PoolIntArray(  )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
+navpoly = SubResource( 1 )
+
+[node name="inflator" type="Node" parent="NavigationPolygonInstance"]
+script = ExtResource( 3 )
+delta = -4.0
+
+[node name="islands" type="Label" parent="."]
+visible = false
+margin_right = 49.0
+margin_bottom = 14.0
+text = "islands: 0"
+
+[node name="holes" type="Label" parent="."]
+visible = false
+margin_top = 14.0
+margin_right = 49.0
+margin_bottom = 28.0
+text = "holes: 0"
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( 3, -2 )

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/render/indexed_sprite.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/enemy/ghost.gd" type="Script" id=2]
 [ext_resource path="res://src/pickups/out_of_sight_arrow.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/enemy/set_to_difficulty.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 6.0
@@ -132,5 +133,11 @@ shape = SubResource( 2 )
 
 [node name="Sprite" parent="out_of_sight_arrow/CanvasLayer/arrow" index="0"]
 modulate = Color( 1, 0, 0, 1 )
+
+[node name="set_to_difficulty" parent="." instance=ExtResource( 4 )]
+prop = "speed"
+max_value = 1200.0
+min_value = 100.0
+max_difficulty = 360.0
 
 [editable path="out_of_sight_arrow"]

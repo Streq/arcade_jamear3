@@ -15,17 +15,17 @@ anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="pivot"]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -129.5
-margin_top = -34.3988
-margin_right = 129.5
-margin_bottom = -3.39883
+margin_left = -266.0
+margin_right = 266.0
+margin_bottom = 31.0
+grow_horizontal = 2
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 custom_constants/shadow_as_outline = 1
 custom_fonts/font = SubResource( 1 )
-text = "Se abrió un portal!!"
+text = "Se abrió un portal!!
+buscalo! está en un punto aleatorio del mapa.
+(la flechita verde apunta a una semilla, no al portal)"
 align = 1

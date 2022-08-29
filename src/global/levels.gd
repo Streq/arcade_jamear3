@@ -1,5 +1,7 @@
 extends Node
 
+signal next_level()
+
 onready var levels = get_children()
 var current_level = -1
 
@@ -8,6 +10,7 @@ func get_next_level():
 
 func next_level():
 	current_level = posmod(current_level+1,levels.size())
+	emit_signal("next_level")
 	load_level()
 
 func prev_level():
@@ -25,6 +28,7 @@ func _input(event):
 			prev_level()
 		if event.is_action_pressed("curr_level"):
 			curr_level()
+			
 
 func load_level():
 	get_tree().change_scene_to(levels[current_level].scene)

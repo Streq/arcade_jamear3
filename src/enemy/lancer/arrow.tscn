@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/enemy/lancer/arrow.gd" type="Script" id=1]
 [ext_resource path="res://assets/texture/lancero_arrow.png" type="Texture" id=2]
 [ext_resource path="res://assets/audio/sfx/arrow_on_wall.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/audio/sfx/arrow2.wav" type="AudioStream" id=4]
+[ext_resource path="res://src/pickups/out_of_sight_arrow.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 0.5 )
@@ -40,6 +41,14 @@ volume_db = -8.51462
 stream = ExtResource( 3 )
 volume_db = -20.0
 
+[node name="out_of_sight_arrow" parent="." instance=ExtResource( 5 )]
+
+[node name="Sprite" parent="out_of_sight_arrow/CanvasLayer/arrow" index="0"]
+modulate = Color( 1, 0.384314, 0.266667, 1 )
+
 [connection signal="hit_wall" from="." to="hit_wall_sound" method="play"]
+[connection signal="hit_wall" from="." to="out_of_sight_arrow" method="queue_free"]
 [connection signal="ready" from="." to="shoot_sound" method="play"]
 [connection signal="body_entered" from="terrain_box" to="." method="_on_terrain_box_body_entered"]
+
+[editable path="out_of_sight_arrow"]

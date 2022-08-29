@@ -10,5 +10,6 @@ extends TileMap
 func _ready():
 	yield(get_tree().current_scene,"ready")
 	var map : TileMap = Group.get_one("map")
+	scale = map.cell_size/8.0
 	self.set("tile_data", map.get("tile_data"))
 #	self.scale *=0.5

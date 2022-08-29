@@ -41,6 +41,23 @@ static func intercept(src:Vector2, dst:Vector2, dstv:Vector2, v:float):
 	return sol;
 
 
+#/**
+# * Return the firing solution for a projectile starting at 'src' with
+# * velocity 'v', to hit a target, 'dst', but only accounting for the
+# * travelling time the projectile would take to reach dst, not dst+dstv*t.
+# *
+# * @param src position of shooter
+# * @param dst position of target
+# * @param dstv velocity of target
+# * @param v speed of projectile
+# *
+# * @return Vector2 at which to fire (and where intercept occurs). Or null if target cannot be hit.
+# */
+static func intercept_flawed(src:Vector2, dst:Vector2, dstv:Vector2, v:float):
+	var tx = dst.x - src.x
+	var ty = dst.y - src.y
+	var t = Vector2(tx,ty).length()/v
+	return dst + dstv*t
 
 static func quad(a, b, c):
 	var sol = null;
