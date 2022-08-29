@@ -73,7 +73,7 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=9]
+[sub_resource type="Image" id=11]
 data = {
 "data": PoolByteArray( 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -85,7 +85,7 @@ data = {
 [sub_resource type="ImageTexture" id=10]
 flags = 0
 flags = 0
-image = SubResource( 9 )
+image = SubResource( 11 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=7]

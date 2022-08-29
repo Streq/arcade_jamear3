@@ -203,6 +203,7 @@ color = Color( 0.0117647, 0, 0.152941, 1 )
 position = Vector2( 912.865, 484.053 )
 
 [node name="camera" type="Camera2D" parent="fast_glider"]
+current = true
 limit_smoothed = true
 script = ExtResource( 3 )
 

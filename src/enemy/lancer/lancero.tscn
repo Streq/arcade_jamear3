@@ -494,6 +494,12 @@ script = ExtResource( 14 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hearing"]
 shape = SubResource( 35 )
 
+[node name="set_to_difficulty" parent="hearing/CollisionShape2D" instance=ExtResource( 19 )]
+prop = "shape:radius"
+max_value = 492.0
+min_value = 246.0
+max_difficulty = 240.0
+
 [node name="alert" type="AudioStreamPlayer2D" parent="." groups=["alert"]]
 stream = ExtResource( 15 )
 volume_db = -4.2573

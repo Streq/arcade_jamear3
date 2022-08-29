@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/global/level.gd" type="Script" id=1]
 [ext_resource path="res://src/global/levels.gd" type="Script" id=2]
 [ext_resource path="res://src/map/castle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/map/cave.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/map/forest.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/texture/background_texture.png" type="Texture" id=7]
+[ext_resource path="res://assets/texture/cave_background.png" type="Texture" id=6]
+[ext_resource path="res://assets/texture/forest_background.png" type="Texture" id=7]
+[ext_resource path="res://assets/texture/castle_background.png" type="Texture" id=8]
 
 [node name="Levels" type="Node"]
 script = ExtResource( 2 )
@@ -13,12 +15,12 @@ script = ExtResource( 2 )
 [node name="level2" type="Node" parent="."]
 script = ExtResource( 1 )
 scene = ExtResource( 4 )
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 
 [node name="level3" type="Node" parent="."]
 script = ExtResource( 1 )
 scene = ExtResource( 3 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="level4" type="Node" parent="."]
 script = ExtResource( 1 )
