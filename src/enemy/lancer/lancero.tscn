@@ -502,7 +502,7 @@ max_difficulty = 240.0
 
 [node name="alert" type="AudioStreamPlayer2D" parent="." groups=["alert"]]
 stream = ExtResource( 15 )
-volume_db = -4.2573
+volume_db = -12.7719
 script = ExtResource( 16 )
 
 [node name="exclamation_anim" type="AnimationPlayer" parent="."]
