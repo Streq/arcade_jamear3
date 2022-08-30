@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://src/terrain/terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/flapper/presets/fast_glider.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/texture/nameathegame.png" type="Texture" id=20]
 [ext_resource path="res://src/map/show_on_first_level_only.gd" type="Script" id=21]
 [ext_resource path="res://src/map/play_music.gd" type="Script" id=22]
+[ext_resource path="res://src/flapper/flapper.gd" type="Script" id=23]
 
 [sub_resource type="Image" id=50]
 data = {
@@ -339,6 +340,7 @@ position = Vector2( -893, 387 )
 
 [node name="fast_glider" parent="." instance=ExtResource( 2 )]
 position = Vector2( 72, 121 )
+script = ExtResource( 23 )
 
 [node name="camera" type="Camera2D" parent="fast_glider"]
 current = true

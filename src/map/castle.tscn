@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://src/terrain/terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/flapper/presets/fast_glider.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://src/enemy/ghost.tscn" type="PackedScene" id=17]
 [ext_resource path="res://src/enemy/lancer/lancero.tscn" type="PackedScene" id=18]
 [ext_resource path="res://src/map/play_music.gd" type="Script" id=19]
+[ext_resource path="res://src/flapper/flapper.gd" type="Script" id=20]
 
 [sub_resource type="Image" id=65]
 data = {
@@ -464,6 +465,7 @@ position = Vector2( 2689, 951 )
 
 [node name="fast_glider" parent="." instance=ExtResource( 2 )]
 position = Vector2( 836, 110 )
+script = ExtResource( 20 )
 
 [node name="camera" type="Camera2D" parent="fast_glider"]
 current = true
