@@ -16,8 +16,14 @@ func _ready():
 	set_palette(palette)
 	material.set_shader_param("palette", tex)
 	material.set_shader_param("palette_size", palette.size())
-	get_parent().material = material
+	update_parent_material()
 	set_glow(glow)
+	
+
+func update_parent_material():
+	var parent = get_parent()
+	if "material" in parent:
+		parent.material = material
 
 func set_palette(val):
 	palette = val

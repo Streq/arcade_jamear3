@@ -10,6 +10,7 @@ signal graze(applied_friction)
 signal entered_portal(portal)
 signal die
 
+
 export var gravity := 200.0
 export var air_friction := 0.0
 export (float, 0.0, 60.0) var rotation_lerp := 4.0
@@ -45,6 +46,17 @@ var can_flap = true
 var addons = {}
 
 var ready = false
+
+var velocity = Vector2()
+var direction := Vector2.UP
+onready var state_machine := $state_machine
+onready var state_animation := $"%state_animation"
+onready var sprite = $Sprite
+onready var animation_scaler = $"%animation_scaler"
+onready var palette = $Sprite/palette
+onready var hurtbox = $hurtbox
+
+
 func set_custom_animation_lengths(val):
 	custom_animation_lengths = val
 	if ready:
@@ -55,15 +67,6 @@ func set_animation_speed(val):
 	animation_speed_multiplier = val
 	if state_animation:
 		state_animation.playback_speed = val
-
-
-
-var velocity = Vector2()
-var direction := Vector2.UP
-onready var state_machine := $state_machine
-onready var state_animation := $"%state_animation"
-onready var sprite = $Sprite
-onready var animation_scaler = $"%animation_scaler"
 
 func _ready():
 	state_machine.initialize()

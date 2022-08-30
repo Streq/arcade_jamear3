@@ -320,21 +320,21 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=19]
 radius = 3.0
 
-[sub_resource type="Gradient" id=20]
+[sub_resource type="Gradient" id=38]
 offsets = PoolRealArray( 0, 0.283237, 1 )
 colors = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1 )
 
 [sub_resource type="GradientTexture2D" id=21]
-gradient = SubResource( 20 )
+gradient = SubResource( 38 )
 width = 32
 height = 8
 fill_from = Vector2( 0, 1 )
 
-[sub_resource type="Gradient" id=22]
+[sub_resource type="Gradient" id=39]
 colors = PoolColorArray( 0, 1, 0.211914, 1, 0, 1, 0.282227, 1 )
 
 [sub_resource type="GradientTexture2D" id=23]
-gradient = SubResource( 22 )
+gradient = SubResource( 39 )
 width = 32
 height = 6
 fill_from = Vector2( 0, 1 )
@@ -342,7 +342,7 @@ fill_from = Vector2( 0, 1 )
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 4, 4 )
 
-[sub_resource type="Image" id=36]
+[sub_resource type="Image" id=40]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -351,10 +351,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=35]
+[sub_resource type="ImageTexture" id=37]
 flags = 0
 flags = 0
-image = SubResource( 36 )
+image = SubResource( 40 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=33]
@@ -363,7 +363,7 @@ shader = ExtResource( 11 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 35 )
+shader_param/palette = SubResource( 37 )
 
 [sub_resource type="StreamTexture" id=27]
 load_path = "res://.import/flapper.png-42d4f1390d9d9cceb01520b415ef9b37.stex"

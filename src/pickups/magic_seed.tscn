@@ -1,0 +1,108 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
+[ext_resource path="res://assets/audio/sfx/powerUp.wav" type="AudioStream" id=2]
+[ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/texture/seed.png" type="Texture" id=5]
+[ext_resource path="res://src/pickups/player_magnet.gd" type="Script" id=6]
+[ext_resource path="res://src/test/magic_seed/magic_seed.gd" type="Script" id=7]
+[ext_resource path="res://src/effect/magic_seed_effect.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Image" id=63]
+data = {
+"data": PoolByteArray( 0, 255, 0, 255, 0, 0, 255, 255, 255, 0, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=62]
+flags = 0
+flags = 0
+image = SubResource( 63 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=60]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/palette_size = 3
+shader_param/offset = 2
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 62 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 5.09902
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "play"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2 ), Vector2( 0, -2 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 64.0
+
+[node name="magic_seed" type="Area2D"]
+position = Vector2( 1006, 499 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 7 )
+EFFECT = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 60 )
+texture = ExtResource( 5 )
+
+[node name="palette" parent="Sprite" instance=ExtResource( 3 )]
+palette = PoolColorArray( 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1 )
+material = SubResource( 60 )
+glow = true
+glow_speed = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "play"
+anims/RESET = SubResource( 2 )
+anims/play = SubResource( 3 )
+
+[node name="player_magnet" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_magnet"]
+shape = SubResource( 5 )
+
+[node name="pickup_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+volume_db = -20.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered" flags=3]

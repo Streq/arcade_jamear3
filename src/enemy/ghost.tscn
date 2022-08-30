@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/render/indexed_sprite.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/enemy/ghost.gd" type="Script" id=2]
 [ext_resource path="res://src/pickups/out_of_sight_arrow.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/enemy/set_to_difficulty.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/enemy/ghost/hurt_handler.gd" type="Script" id=5]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 6.0
@@ -73,7 +74,7 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=11]
+[sub_resource type="Image" id=12]
 data = {
 "data": PoolByteArray( 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -85,7 +86,7 @@ data = {
 [sub_resource type="ImageTexture" id=10]
 flags = 0
 flags = 0
-image = SubResource( 11 )
+image = SubResource( 12 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=7]
@@ -97,6 +98,9 @@ shader_param/palette = SubResource( 10 )
 
 [sub_resource type="StreamTexture" id=8]
 load_path = "res://.import/floaty.png-1fe1175cb100e39cd3cfb4855d2c2c10.stex"
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 3.0
 
 [node name="ghost" type="KinematicBody2D" groups=["ghost"]]
 collision_layer = 128
@@ -139,5 +143,17 @@ __meta__ = {
 "_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PUFuaW1hdGlvblBsYXllcgpzb3VyY2V8PXJlczovL2Fzc2V0cy9hc2Vwcml0ZS9mbG9hdHkuYXNlcHJpdGUKbGF5ZXJ8PQpvcF9leHB8PUZhbHNlCm9fZm9sZGVyfD0Kb19uYW1lfD0Kb25seV92aXNpYmxlfD1GYWxzZQpvX2V4X3B8PQo="
 }
 palette = PoolColorArray( 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1 )
+
+[node name="hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource( 11 )
+
+[node name="hurt_handler" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[connection signal="area_entered" from="hurtbox" to="hurt_handler" method="_on_hit"]
 
 [editable path="out_of_sight_arrow"]
