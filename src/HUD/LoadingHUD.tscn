@@ -10,6 +10,7 @@ font_data = ExtResource( 1 )
 
 [node name="LoadingHUD" type="CanvasLayer"]
 layer = 20
+visible = false
 
 [node name="Panel" type="PanelContainer" parent="."]
 anchor_left = 0.5

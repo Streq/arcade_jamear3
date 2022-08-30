@@ -215,6 +215,9 @@ load_path = "res://.import/portal_orb.png-12f3895f12bcf5fcc259c4e66a058e39.stex"
 [sub_resource type="CircleShape2D" id=47]
 radius = 10.0038
 
+[sub_resource type="CircleShape2D" id=49]
+radius = 69.0783
+
 [sub_resource type="Image" id=55]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 105, 98, 140, 255, 0, 207, 255, 255 ),
@@ -237,9 +240,6 @@ shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 54 )
-
-[sub_resource type="CircleShape2D" id=49]
-radius = 69.0783
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 12 )
@@ -294,6 +294,17 @@ stream = ExtResource( 6 )
 volume_db = -28.8723
 attenuation = 3.86374
 
+[node name="attraction_area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 8 )
+pull = 1e+07
+friction = 4.0
+max_pull = 1000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attraction_area"]
+shape = SubResource( 49 )
+
 [node name="nav_indicator" type="Node2D" parent="."]
 modulate = Color( 0.658824, 1, 0.984314, 1 )
 z_index = 2
@@ -318,17 +329,6 @@ script = ExtResource( 4 )
 [node name="palette" parent="nav_indicator/arrow" instance=ExtResource( 10 )]
 palette = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0.415686, 0.384314, 0.54902, 1, 0, 0.811765, 1, 1 )
 material = SubResource( 52 )
-
-[node name="attraction_area" type="Area2D" parent="nav_indicator"]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource( 8 )
-pull = 1e+07
-friction = 4.0
-max_pull = 1000.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="nav_indicator/attraction_area"]
-shape = SubResource( 49 )
 
 [node name="free" parent="nav_indicator" instance=ExtResource( 14 )]
 
