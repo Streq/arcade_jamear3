@@ -5,6 +5,7 @@ onready var sprite = $Sprite
 export var gravity := 100.0
 export var friction := 10.0
 export var velocity := Vector2()
+onready var visibility_notifier_2d = $VisibilityNotifier2D
 
 
 var angular_inertia := 0.0
@@ -24,8 +25,11 @@ func _physics_process(delta):
 	
 	velocity *= (1.0 - delta*2)
 	
-	
-#	rotation = lerp_angle(rotation,velocity.angle()-PI/2,delta*0.02*velocity.length_squared())
-	
+
 func _on_screen_exited():
 	queue_free()
+
+
+func _on_spawn_timer_timeout():
+	if !visibility_notifier_2d.is_on_screen():
+		queue_free()

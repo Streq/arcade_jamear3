@@ -221,17 +221,14 @@ speed = 200.0
 [node name="bat" parent="." instance=ExtResource( 13 )]
 position = Vector2( 770, 668 )
 speed = 200.0
-speed_up_with_time = 10.0
 
 [node name="bat2" parent="." instance=ExtResource( 13 )]
 position = Vector2( 45, 497 )
 speed = 200.0
-speed_up_with_time = 10.0
 
 [node name="bat3" parent="." instance=ExtResource( 13 )]
 position = Vector2( 788, 170 )
 speed = 200.0
-speed_up_with_time = 10.0
 
 [connection signal="die" from="flapper_with_energy/super_glider" to="death_time" method="_on_player_dead"]
 [connection signal="timeout" from="death_time/Timer" to="death_time" method="_on_Timer_timeout"]

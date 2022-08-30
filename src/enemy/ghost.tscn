@@ -131,7 +131,7 @@ modulate = Color( 1, 0, 0, 1 )
 [node name="set_to_difficulty" parent="." instance=ExtResource( 4 )]
 prop = "speed"
 max_value = 1200.0
-min_value = 50.0
+min_value = 15.0
 max_difficulty = 400.0
 
 [node name="Sprite" parent="." instance=ExtResource( 1 )]

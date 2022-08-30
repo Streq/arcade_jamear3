@@ -214,13 +214,13 @@ script = ExtResource( 12 )
 [node name="set_to_difficulty" parent="." instance=ExtResource( 13 )]
 prop = "speed"
 max_value = 1200.0
-min_value = 100.0
+min_value = 50.0
 max_difficulty = 240.0
 
 [node name="set_col_resistance_to_difficulty" parent="." instance=ExtResource( 13 )]
 prop = "hard_collision_threshold"
-max_value = 600.0
-min_value = 250.0
+max_value = 1000.0
+min_value = 80.0
 max_difficulty = 240.0
 
 [node name="player_finder" parent="." instance=ExtResource( 14 )]

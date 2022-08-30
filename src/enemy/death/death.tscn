@@ -107,8 +107,8 @@ script = ExtResource( 4 )
 [node name="set_to_difficulty" parent="." instance=ExtResource( 6 )]
 prop = "speed"
 max_value = 1500.0
-min_value = 800.0
-max_difficulty = 120.0
+min_value = 600.0
+max_difficulty = 240.0
 
 [node name="player_finder" parent="." instance=ExtResource( 9 )]
 

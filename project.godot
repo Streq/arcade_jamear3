@@ -115,6 +115,7 @@ ScoreDisplay="*res://src/global/ScoreDisplay.tscn"
 Group="*res://src/global/group.gd"
 Difficulty="*res://src/global/difficulty.tscn"
 Music="*res://src/global/music.tscn"
+LoadingHud="*res://src/HUD/LoadingHUD.tscn"
 
 [display]
 
