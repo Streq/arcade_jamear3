@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Far-Out-Pong-Heads.mp3-5915919bb9a9376fe9ddcad1e85f091a.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/Far-Out-Pong-Heads.mp3"
+dest_files=[ "res://.import/Far-Out-Pong-Heads.mp3-5915919bb9a9376fe9ddcad1e85f091a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

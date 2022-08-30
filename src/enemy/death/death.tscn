@@ -14,7 +14,7 @@
 [sub_resource type="CircleShape2D" id=2]
 radius = 16.0
 
-[sub_resource type="Image" id=23]
+[sub_resource type="Image" id=27]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 33, 0, 0, 255, 255, 221, 89, 255 ),
 "format": "RGBA8",
@@ -23,10 +23,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=19]
+[sub_resource type="ImageTexture" id=24]
 flags = 0
 flags = 0
-image = SubResource( 23 )
+image = SubResource( 27 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=11]
@@ -35,9 +35,9 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 19 )
+shader_param/palette = SubResource( 24 )
 
-[sub_resource type="Image" id=24]
+[sub_resource type="Image" id=28]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 255, 0, 0, 255, 0, 0, 0, 255 ),
 "format": "RGBA8",
@@ -46,10 +46,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=21]
+[sub_resource type="ImageTexture" id=26]
 flags = 0
 flags = 0
-image = SubResource( 24 )
+image = SubResource( 28 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=17]
@@ -58,12 +58,12 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 21 )
+shader_param/palette = SubResource( 26 )
 
 [sub_resource type="DynamicFont" id=22]
 font_data = ExtResource( 10 )
 
-[node name="death" type="KinematicBody2D"]
+[node name="death" type="KinematicBody2D" groups=["death"]]
 collision_layer = 128
 collision_mask = 129
 script = ExtResource( 1 )

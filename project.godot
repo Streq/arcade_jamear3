@@ -114,6 +114,7 @@ SaveRecord="*res://src/HUD/save_record.tscn"
 ScoreDisplay="*res://src/global/ScoreDisplay.tscn"
 Group="*res://src/global/group.gd"
 Difficulty="*res://src/global/difficulty.tscn"
+Music="*res://src/global/music.tscn"
 
 [display]
 

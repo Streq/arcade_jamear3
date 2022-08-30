@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://src/terrain/terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/flapper/presets/fast_glider.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://src/HUD/HUD_map.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/test/spawning/bat_spawner.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/pickups/spawner/magic_seed_spawner.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/map/play_music.gd" type="Script" id=18]
 
 [sub_resource type="Image" id=49]
 data = {
@@ -278,5 +279,9 @@ position = Vector2( 958, -593 )
 
 [node name="spawn_point9" parent="bat_spawner" instance=ExtResource( 6 )]
 position = Vector2( 213, 224 )
+
+[node name="play_music" type="Node" parent="."]
+script = ExtResource( 18 )
+song = "forest"
 
 [editable path="navigation_generator"]

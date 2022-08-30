@@ -360,7 +360,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[node name="lancero" type="KinematicBody2D"]
+[node name="lancero" type="KinematicBody2D" groups=["lancero"]]
 material = SubResource( 16 )
 z_index = 1
 collision_layer = 0
