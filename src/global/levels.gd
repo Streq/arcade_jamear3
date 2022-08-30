@@ -33,8 +33,10 @@ func _input(event):
 func load_level():
 	AudioServer.set_bus_mute(0,true)
 	LoadingHud.visible = true
-	yield(get_tree(),"idle_frame")
-	yield(get_tree(),"idle_frame")
+	
+	for i in 10:
+		yield(get_tree(),"idle_frame")
+	
 	
 	get_tree().change_scene_to(levels[current_level].scene)
 	Global.new_level()
