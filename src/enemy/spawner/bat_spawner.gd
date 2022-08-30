@@ -27,7 +27,7 @@ func spawn():
 	spawned_instances.append(instance)
 	
 	instance.connect("tree_exiting",self,"_on_instance_gone",[instance])
-	print("spawned")
+#	print("spawned")
 	if max_spawns > spawned_instances.size():
 		_on_free_slot()
 	

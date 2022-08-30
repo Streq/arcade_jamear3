@@ -2,7 +2,8 @@ extends Node
 onready var palette = $palette
 onready var hitbox = $hitbox
 
-var original_collision_threshold = 0.0
+var original_hard_collision_threshold = 0.0
+var original_soft_collision_threshold = 0.0
 onready var energy_bar = $energy_bar
 onready var timer = $Timer
 
@@ -14,13 +15,15 @@ func trigger():
 #	if !parent.sprite:
 #		yield(parent,"ready")
 	
-	original_collision_threshold = parent.hard_collision_threshold
+	original_hard_collision_threshold = parent.hard_collision_threshold
+	original_soft_collision_threshold = parent.soft_collision_threshold
 
 	parent.sprite.material = palette.material
 	palette.update_parent_material()
 	parent.hurtbox.monitorable = false
 	parent.hurtbox.monitoring = false
 	parent.hard_collision_threshold = 1000000.0
+#	parent.soft_collision_threshold = 1000000.0
 	remove_child(hitbox)
 	parent.add_child(hitbox)
 	hitbox.owner = parent
@@ -39,7 +42,8 @@ func wear_off():
 	parent.palette.update_parent_material()
 	parent.hurtbox.monitorable = true
 	parent.hurtbox.monitoring = true
-	parent.hard_collision_threshold = original_collision_threshold
+	parent.hard_collision_threshold = original_hard_collision_threshold
+	parent.soft_collision_threshold = original_soft_collision_threshold
 	hitbox.queue_free()
 	queue_free()
 

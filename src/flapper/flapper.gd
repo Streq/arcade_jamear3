@@ -143,20 +143,6 @@ func die():
 #		print(velocity)
 	
 
-func print_slides(delta):
-	var prev_velocity = velocity
-	if get_slide_count()>1:
-		print("SLIDE_COLLISIONS")
-		print("velocityx0:",prev_velocity)
-		print("movement_left_to_handle0:",prev_velocity*delta)
-		var j = 0
-		for i in get_slide_count():
-			var collision :KinematicCollision2D = get_slide_collision(i)
-	#			print(collision.collider_velocity)
-
-			print("movement_left_to_handle%d:"%(i+1),collision.remainder)
-			j = i
-		print("velocityxt:",velocity)
 
 func get_air_resistance():
 	#Air resistance can be calculated by 

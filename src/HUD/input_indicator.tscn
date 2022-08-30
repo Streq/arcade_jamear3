@@ -2,11 +2,11 @@
 
 [ext_resource path="res://assets/font/ProggyClean.ttf/ProggyClean.ttf" type="DynamicFontData" id=1]
 
-[sub_resource type="StreamTexture" id=2]
+[sub_resource type="StreamTexture" id=5]
 load_path = "res://.import/buttons.png-972e58b881dae0d92c4054933eb22561.stex"
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = SubResource( 2 )
+atlas = SubResource( 5 )
 region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="DynamicFont" id=3]

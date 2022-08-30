@@ -5,7 +5,7 @@
 
 [sub_resource type="Image" id=8]
 data = {
-"data": PoolByteArray( 135, 64, 0, 255, 236, 85, 32, 255, 255, 206, 58, 255, 255, 197, 0, 255 ),
+"data": PoolByteArray( 135, 63, 0, 255, 235, 84, 31, 255, 255, 205, 58, 255, 255, 196, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -45,7 +45,7 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0, 2.0, 3.0, 4.0 ]
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="torch" type="Node2D"]
 material = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]

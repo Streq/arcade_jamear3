@@ -24,7 +24,7 @@ func _ready():
 	Global.connect("new_game", self, "_on_new_game")
 
 func _on_new_game():
-	base_difficulty = 0.0
+	base_difficulty = -10.0
 	last_difficulty = 0.0
 	levels_completed = -1
 	
@@ -33,8 +33,8 @@ func _on_level_completed():
 #	si la diferencia entre la dificultad en el nivel anterior+10 
 #	y la dificultad en este nivel es mayor a 30, si no, 
 #	que baje a la dificultad del nivel anterior+10
-	
 	base_difficulty = max(base_difficulty+difficulty_increase_per_level, _get_base_difficulty()-difficulty_decrease_per_level_compeltion)
+	levels_completed += 1
 	score_offset = Score.total_time
 
 

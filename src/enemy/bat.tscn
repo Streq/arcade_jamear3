@@ -249,7 +249,7 @@ script = ExtResource( 16 )
 [connection signal="killed_by_hit" from="hurt_handler" to="many_feathers_slow" method="_on_collision_no_args"]
 [connection signal="killed_by_hit" from="hurt_handler" to="some_feathers_fast" method="_on_collision_no_args"]
 [connection signal="killed_by_hit" from="hurt_handler" to="explosion" method="play"]
-[connection signal="killed_by_hit" from="hurt_handler" to="hard_collision/reparent_to_grandparent_on_trigger" method="trigger"]
 [connection signal="killed_by_hit" from="hurt_handler" to="explosion/reparent_to_grandparent_on_trigger" method="trigger"]
+[connection signal="killed_by_hit" from="hurt_handler" to="hard_collision/reparent_to_grandparent_on_trigger" method="trigger"]
 
 [editable path="out_of_sight_arrow"]

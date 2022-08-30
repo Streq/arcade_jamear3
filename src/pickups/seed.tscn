@@ -92,4 +92,11 @@ default_color = Color( 0.4, 0.501961, 1, 1 )
 texture = ExtResource( 8 )
 script = ExtResource( 7 )
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+lifetime = 2.0
+local_coords = false
+spread = 180.0
+gravity = Vector2( 0, 24 )
+initial_velocity = 5.0
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

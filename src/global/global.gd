@@ -21,7 +21,7 @@ func _input(event):
 
 
 func _player_died():
-	print("dude died")
+#	print("dude died")
 	yield(get_tree().create_timer(1.0),"timeout")
 	emit_signal("player_dead")
 	player_alive = false
