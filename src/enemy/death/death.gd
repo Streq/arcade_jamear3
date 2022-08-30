@@ -10,7 +10,6 @@ export var soft_collision_threshold = 100.0
 export var hard_collision_threshold = 500.0
 
 onready var sprite = $Sprite
-onready var animation_player = $AnimationPlayer
 
 var dir := Vector2()
 

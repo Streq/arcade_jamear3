@@ -7,19 +7,19 @@
 [ext_resource path="res://assets/audio/sfx/seed_power.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/font/ProggyClean.ttf/ProggyClean.ttf" type="DynamicFontData" id=6]
 
-[sub_resource type="Image" id=72]
+[sub_resource type="Image" id=74]
 data = {
-"data": PoolByteArray( 151, 0, 0, 255, 215, 86, 0, 255, 255, 255, 255, 255 ),
+"data": PoolByteArray( 151, 0, 0, 255, 214, 86, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=66]
+[sub_resource type="ImageTexture" id=73]
 flags = 0
 flags = 0
-image = SubResource( 72 )
+image = SubResource( 74 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=60]
@@ -28,7 +28,7 @@ shader = ExtResource( 2 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 66 )
+shader_param/palette = SubResource( 73 )
 
 [sub_resource type="CircleShape2D" id=64]
 radius = 7.07107

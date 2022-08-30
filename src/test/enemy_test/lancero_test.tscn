@@ -303,7 +303,7 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 42 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="terrain_palette" type="Node2D" parent="."]
 material = SubResource( 4 )
@@ -340,7 +340,6 @@ visible = false
 material = SubResource( 9 )
 
 [node name="palette" parent="flapper_with_energy/super_glider/Sprite" index="1"]
-palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
 material = SubResource( 9 )
 
 [node name="Camera2D" type="Camera2D" parent="flapper_with_energy/super_glider"]
