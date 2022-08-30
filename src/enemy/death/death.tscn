@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/enemy/death/death.gd" type="Script" id=1]
 [ext_resource path="res://src/pickups/out_of_sight_arrow.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=8]
 [ext_resource path="res://src/enemy/addon/player_finder.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/font/ProggyClean.ttf/ProggyClean.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://src/enemy/death/free_on_dead_player.gd" type="Script" id=11]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 16.0
@@ -130,5 +131,8 @@ custom_constants/shadow_as_outline = 1
 custom_fonts/font = SubResource( 22 )
 text = "TARDASTE MUCHO"
 align = 1
+
+[node name="free_on_dead_player" type="Node" parent="."]
+script = ExtResource( 11 )
 
 [editable path="out_of_sight_arrow"]

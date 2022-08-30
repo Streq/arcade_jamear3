@@ -8,6 +8,7 @@ signal soft_collision(prev_velocity,post_velocity)
 signal touch_collision(prev_velocity,post_velocity)
 signal graze(applied_friction)
 signal entered_portal(portal)
+signal seed_taken()
 signal die
 
 
@@ -67,6 +68,10 @@ func set_animation_speed(val):
 	animation_speed_multiplier = val
 	if state_animation:
 		state_animation.playback_speed = val
+
+func _on_seed_taken():
+	emit_signal("seed_taken")
+
 
 func _ready():
 	state_machine.initialize()

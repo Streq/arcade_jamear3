@@ -43,6 +43,7 @@ glide_opposite_break_threshold = 75.0
 glide_friction = 0.3
 broken_glide_friction = 0.01
 glide_opposite_friction = 0.2
+broken_glide_opposite_friction = 0.005
 hard_collision_threshold = 800.0
 animation_speed_multiplier = 4.0
 custom_animation_lengths = {

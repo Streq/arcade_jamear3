@@ -26,7 +26,7 @@ size = Vector2( 3, 1 )
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/palette_size = 3
-shader_param/offset = 0
+shader_param/offset = 1
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 73 )
 
@@ -65,7 +65,7 @@ material = SubResource( 60 )
 glow = true
 glow_speed = 6.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." groups=["magic_seed_effect"]]
 process_mode = 0
 wait_time = 15.0
 one_shot = true

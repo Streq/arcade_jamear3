@@ -7,7 +7,11 @@ var original_soft_collision_threshold = 0.0
 onready var energy_bar = $energy_bar
 onready var timer = $Timer
 
+var wait_time = 13.0
+export var increase_on_seed = 2.5
+
 func _ready():
+	timer.start(wait_time)
 	call_deferred("trigger")
 	
 func trigger():
@@ -27,13 +31,18 @@ func trigger():
 	remove_child(hitbox)
 	parent.add_child(hitbox)
 	hitbox.owner = parent
+	parent.turbo_flap = true
+	parent.connect("seed_taken",self,"_on_seed_taken")
 	pass
+
+func _on_seed_taken():
+	timer.start(min(wait_time, timer.time_left+increase_on_seed))
 
 func _physics_process(delta):
 	var parent = get_parent()
 	var energy = parent.get_node("energy")
 	energy.value = energy.max_value
-	energy_bar.ratio = timer.time_left/timer.wait_time
+	energy_bar.ratio = timer.time_left/wait_time
 func wear_off():
 	var parent = get_parent()
 #	if !parent.sprite:
@@ -45,6 +54,8 @@ func wear_off():
 	parent.hard_collision_threshold = original_hard_collision_threshold
 	parent.soft_collision_threshold = original_soft_collision_threshold
 	hitbox.queue_free()
+	
+	parent.turbo_flap = false
 	queue_free()
 
 

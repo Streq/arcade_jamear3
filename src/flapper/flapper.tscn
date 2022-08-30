@@ -64,7 +64,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 13.0 ]
+"values": [ 14.0 ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -79,7 +79,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 25.0, 23.0, 24.0, 13.0 ]
+"values": [ 27.0, 25.0, 26.0, 14.0 ]
 }
 
 [sub_resource type="Animation" id=26]
@@ -135,7 +135,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 20.0, 16.0, 15.0, 14.0, 0.0, 12.0, 13.0 ]
+"values": [ 22.0, 18.0, 17.0, 16.0, 15.0, 0.0, 14.0 ]
 }
 
 [sub_resource type="Animation" id=18]
@@ -164,7 +164,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 25.0, 9.0, 4.0, 3.0, 2.0, 1.0, 5.0 ]
+"values": [ 27.0, 9.0, 4.0, 3.0, 2.0, 1.0, 5.0 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -208,7 +208,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 20.0, 19.0, 18.0, 17.0, 13.0 ]
+"values": [ 22.0, 21.0, 20.0, 19.0, 14.0 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -223,7 +223,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 25.0 ]
+"values": [ 27.0 ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -239,7 +239,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 22.0, 21.0 ]
+"values": [ 24.0, 23.0 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -283,7 +283,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 25.0, 9.0, 8.0, 7.0, 6.0, 5.0 ]
+"values": [ 27.0, 9.0, 8.0, 7.0, 6.0, 5.0 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -314,7 +314,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 13.0, 24.0, 23.0, 25.0 ]
+"values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
 [sub_resource type="CircleShape2D" id=19]
@@ -342,7 +342,7 @@ fill_from = Vector2( 0, 1 )
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 4, 4 )
 
-[sub_resource type="Image" id=42]
+[sub_resource type="Image" id=44]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -354,7 +354,7 @@ data = {
 [sub_resource type="ImageTexture" id=41]
 flags = 0
 flags = 0
-image = SubResource( 42 )
+image = SubResource( 44 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=33]
@@ -365,7 +365,7 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
 shader_param/palette = SubResource( 41 )
 
-[sub_resource type="StreamTexture" id=27]
+[sub_resource type="StreamTexture" id=43]
 load_path = "res://.import/flapper.png-42d4f1390d9d9cceb01520b415ef9b37.stex"
 
 [sub_resource type="RectangleShape2D" id=15]
@@ -558,7 +558,7 @@ script = ExtResource( 33 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 33 )
-texture = SubResource( 27 )
+texture = SubResource( 43 )
 hframes = 6
 vframes = 5
 frame = 13

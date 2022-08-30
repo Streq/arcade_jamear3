@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://src/test/enemy_test/portal/portal_sprite.gd" type="Script" id=1]
 [ext_resource path="res://src/portal/portal.gd" type="Script" id=2]
@@ -8,6 +8,11 @@
 [ext_resource path="res://assets/audio/sfx/portal_hum2.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/texture/arrow.png" type="Texture" id=7]
 [ext_resource path="res://src/portal/attraction_area.gd" type="Script" id=8]
+[ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=9]
+[ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/pickups/out_of_sight_arrow.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/font/ProggyClean.ttf/ProggyClean.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://free.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Animation" id=32]
 resource_name = "play"
@@ -210,8 +215,34 @@ load_path = "res://.import/portal_orb.png-12f3895f12bcf5fcc259c4e66a058e39.stex"
 [sub_resource type="CircleShape2D" id=47]
 radius = 10.0038
 
+[sub_resource type="Image" id=55]
+data = {
+"data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 106, 98, 140, 255, 0, 207, 255, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 4
+}
+
+[sub_resource type="ImageTexture" id=54]
+flags = 0
+flags = 0
+image = SubResource( 55 )
+size = Vector2( 4, 1 )
+
+[sub_resource type="ShaderMaterial" id=52]
+resource_local_to_scene = true
+shader = ExtResource( 9 )
+shader_param/palette_size = 4
+shader_param/offset = 0
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 54 )
+
 [sub_resource type="CircleShape2D" id=49]
 radius = 69.0783
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 12 )
 
 [node name="portal" type="Node2D"]
 z_index = -1
@@ -264,7 +295,6 @@ volume_db = -28.8723
 attenuation = 3.86374
 
 [node name="nav_indicator" type="Node2D" parent="."]
-visible = false
 modulate = Color( 0.658824, 1, 0.984314, 1 )
 z_index = 2
 script = ExtResource( 5 )
@@ -281,10 +311,15 @@ width = 1.0
 default_color = Color( 0.4, 0.501961, 1, 1 )
 
 [node name="arrow" type="Sprite" parent="nav_indicator"]
+material = SubResource( 52 )
 texture = ExtResource( 7 )
 script = ExtResource( 4 )
 
-[node name="attraction_area" type="Area2D" parent="."]
+[node name="palette" parent="nav_indicator/arrow" instance=ExtResource( 10 )]
+palette = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0.415686, 0.384314, 0.54902, 1, 0, 0.811765, 1, 1 )
+material = SubResource( 52 )
+
+[node name="attraction_area" type="Area2D" parent="nav_indicator"]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource( 8 )
@@ -292,7 +327,91 @@ pull = 1e+07
 friction = 4.0
 max_pull = 1000.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="attraction_area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nav_indicator/attraction_area"]
 shape = SubResource( 49 )
 
+[node name="free" parent="nav_indicator" instance=ExtResource( 14 )]
+
+[node name="portalabiertoHUD" type="CanvasLayer" parent="nav_indicator"]
+
+[node name="pivot" type="Control" parent="nav_indicator/portalabiertoHUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="nav_indicator/portalabiertoHUD/pivot"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -266.0
+margin_right = 266.0
+margin_bottom = 31.0
+grow_horizontal = 2
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = SubResource( 1 )
+text = "Se abrió un portal!!"
+align = 1
+
+[node name="out_of_sight_arrow" parent="." instance=ExtResource( 11 )]
+
+[node name="Sprite" parent="out_of_sight_arrow/CanvasLayer/arrow" index="0"]
+material = SubResource( 52 )
+
+[node name="palette" parent="out_of_sight_arrow/CanvasLayer/arrow/Sprite" index="0"]
+palette = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0.415686, 0.384314, 0.54902, 1, 0, 0.811765, 1, 1 )
+material = SubResource( 52 )
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="out_of_sight_arrow"]
+
+[node name="pivot" type="Control" parent="out_of_sight_arrow/CanvasLayer2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="out_of_sight_arrow/CanvasLayer2/pivot"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -266.0
+margin_right = 266.0
+margin_bottom = 31.0
+grow_horizontal = 2
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = SubResource( 1 )
+text = "Se abrió un portal!!
+buscalo! está indicado por la flecha celeste al borde de la pantalla."
+align = 1
+
+[node name="free" parent="out_of_sight_arrow" instance=ExtResource( 14 )]
+should_free = false
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="pivot" type="Control" parent="CanvasLayer2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="CanvasLayer2/pivot"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -266.0
+margin_right = 266.0
+margin_bottom = 31.0
+grow_horizontal = 2
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = SubResource( 1 )
+text = "Se abrió un portal!!
+buscalo! Está en un punto aleatorio del mapa.
+(la flecha verde apunta a una semilla, no al portal)"
+align = 1
+
+[node name="free" parent="CanvasLayer2" instance=ExtResource( 14 )]
+
 [connection signal="body_entered" from="inside_area" to="inside_area" method="_on_body_entered"]
+
+[editable path="out_of_sight_arrow"]

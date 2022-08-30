@@ -10,6 +10,7 @@ font_data = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="pivot" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -26,6 +27,5 @@ custom_constants/shadow_offset_y = 1
 custom_constants/shadow_as_outline = 1
 custom_fonts/font = SubResource( 1 )
 text = "Se abrió un portal!!
-buscalo! está en un punto aleatorio del mapa.
-(la flechita verde apunta a una semilla, no al portal)"
+buscalo! está indicado por la flecha celeste al borde de la pantalla."
 align = 1

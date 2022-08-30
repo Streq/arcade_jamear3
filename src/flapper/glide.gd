@@ -30,11 +30,12 @@ func _physics_update(delta):
 	var projected :Vector2 = velocity.project(normal)
 	var projected_length = projected.length()
 	
+	var lift_is_below_wings = normal.dot(velocity) < 0.0
+#	if lift_is_below_wings:
 	emit_signal("glide_pressure", projected_length)
 	owner.state_animation.play("glide")
 	var lift_vec = projected*projected_length
 	var lift = projected.length_squared()
-	var lift_is_below_wings = normal.dot(velocity) < 0.0
 	if lift_is_below_wings:
 		var max_force_wings_can_handle = owner.glide_break_threshold
 		var max_force_bent_wings_can_recover_from = owner.glide_break_recovery_threshold

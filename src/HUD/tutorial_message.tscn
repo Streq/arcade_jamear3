@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/font/ProggyClean.ttf/ProggyClean.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/HUD/panel_border.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://src/enemy/bat.png" type="Texture" id=7]
 [ext_resource path="res://src/enemy/floaty.png" type="Texture" id=8]
 [ext_resource path="res://src/HUD/input_indicator.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/texture/buttons.png" type="Texture" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.129412, 0.129412, 0.129412, 1 )
@@ -16,17 +17,22 @@ bg_color = Color( 0.129412, 0.129412, 0.129412, 1 )
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 1 )
 
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="StreamTexture" id=5]
+resource_local_to_scene = true
+load_path = "res://.import/buttons.png-972e58b881dae0d92c4054933eb22561.stex"
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = SubResource( 5 )
+region = Rect2( 36, 0, 16, 16 )
+
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="StreamTexture" id=5]
-load_path = "res://.import/buttons.png-972e58b881dae0d92c4054933eb22561.stex"
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = SubResource( 5 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="Image" id=15]
+[sub_resource type="Image" id=16]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -35,10 +41,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=12]
+[sub_resource type="ImageTexture" id=13]
 flags = 0
 flags = 0
-image = SubResource( 15 )
+image = SubResource( 16 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=9]
@@ -47,9 +53,9 @@ shader = ExtResource( 3 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 12 )
+shader_param/palette = SubResource( 13 )
 
-[sub_resource type="Image" id=16]
+[sub_resource type="Image" id=17]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 86, 0, 130, 255, 255, 0, 232, 255 ),
 "format": "RGBA8",
@@ -58,10 +64,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=14]
+[sub_resource type="ImageTexture" id=15]
 flags = 0
 flags = 0
-image = SubResource( 16 )
+image = SubResource( 17 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=6]
@@ -70,7 +76,7 @@ shader = ExtResource( 3 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 14 )
+shader_param/palette = SubResource( 15 )
 
 [node name="tutorial_message" type="MarginContainer"]
 anchor_right = 1.0
@@ -100,42 +106,8 @@ margin_bottom = 98.0
 custom_constants/separation = 0
 alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-margin_right = 179.0
-margin_bottom = 98.0
-size_flags_horizontal = 3
-custom_constants/margin_right = 8
-custom_constants/margin_top = 8
-custom_constants/margin_left = 8
-custom_constants/margin_bottom = 8
-
-[node name="tutorial_text" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 171.0
-margin_bottom = 90.0
-grow_horizontal = 2
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 2 )
-text = "Teclado
-Z - aletear
-X - planear
-flechitas - girar
-F - pantalla completa"
-
-[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer"]
-margin_left = 179.0
-margin_right = 180.0
-margin_bottom = 98.0
-rect_min_size = Vector2( 1, 0 )
-custom_styles/panel = SubResource( 3 )
-
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 180.0
-margin_right = 359.0
+margin_right = 179.0
 margin_bottom = 98.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 8
@@ -183,6 +155,7 @@ alignment = 0
 [node name="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/play_again" index="0"]
 margin_left = 0.0
 margin_right = 16.0
+texture = SubResource( 11 )
 
 [node name="Label" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/play_again" index="1"]
 margin_left = 20.0
@@ -200,6 +173,40 @@ custom_constants/shadow_offset_y = 1
 custom_constants/shadow_as_outline = 1
 custom_fonts/font = SubResource( 2 )
 text = "analog stick - girar"
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer"]
+margin_left = 179.0
+margin_right = 180.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 1, 0 )
+custom_styles/panel = SubResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 180.0
+margin_right = 359.0
+margin_bottom = 98.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="tutorial_text" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 171.0
+margin_bottom = 90.0
+grow_horizontal = 2
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = SubResource( 2 )
+text = "Teclado
+Z - aletear
+X - planear
+flechitas - girar
+F - pantalla completa"
 
 [node name="Panel" type="Panel" parent="VBoxContainer"]
 margin_top = 98.0
