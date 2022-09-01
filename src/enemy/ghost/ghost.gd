@@ -42,5 +42,3 @@ func  _physics_process(delta):
 	
 	
 	
-func _ready():
-	target = Group.get_one("flapper")

@@ -16,7 +16,7 @@
 [ext_resource path="res://src/debug/show_in_debug_only.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/HUD/HUD_map.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/pickups/spawner/magic_seed_spawner.tscn" type="PackedScene" id=16]
-[ext_resource path="res://src/enemy/ghost.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/enemy/ghost/ghost.tscn" type="PackedScene" id=17]
 [ext_resource path="res://src/enemy/lancer/lancero.tscn" type="PackedScene" id=18]
 [ext_resource path="res://src/map/play_music.gd" type="Script" id=19]
 

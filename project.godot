@@ -116,6 +116,7 @@ Group="*res://src/global/group.gd"
 Difficulty="*res://src/global/difficulty.tscn"
 Music="*res://src/global/music.tscn"
 LoadingHud="*res://src/HUD/LoadingHUD.tscn"
+PlayerHud="*res://src/HUD/player_HUD.tscn"
 
 [display]
 

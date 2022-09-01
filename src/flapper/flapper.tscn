@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://src/flapper/flapper.gd" type="Script" id=1]
 [ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://assets/audio/sfx/glide.wav" type="AudioStream" id=31]
 [ext_resource path="res://assets/audio/sfx/pio.wav" type="AudioStream" id=32]
 [ext_resource path="res://src/flapper/addons/set_velocity_to_portal_exit.gd" type="Script" id=33]
+[ext_resource path="res://src/flapper/addons/hud_tracker.gd" type="Script" id=34]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 4 )
@@ -320,21 +321,21 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=19]
 radius = 3.0
 
-[sub_resource type="Gradient" id=38]
+[sub_resource type="Gradient" id=44]
 offsets = PoolRealArray( 0, 0.283237, 1 )
 colors = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1 )
 
 [sub_resource type="GradientTexture2D" id=21]
-gradient = SubResource( 38 )
+gradient = SubResource( 44 )
 width = 32
 height = 8
 fill_from = Vector2( 0, 1 )
 
-[sub_resource type="Gradient" id=39]
+[sub_resource type="Gradient" id=45]
 colors = PoolColorArray( 0, 1, 0.211914, 1, 0, 1, 0.282227, 1 )
 
 [sub_resource type="GradientTexture2D" id=23]
-gradient = SubResource( 39 )
+gradient = SubResource( 45 )
 width = 32
 height = 6
 fill_from = Vector2( 0, 1 )
@@ -342,7 +343,7 @@ fill_from = Vector2( 0, 1 )
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 4, 4 )
 
-[sub_resource type="Image" id=46]
+[sub_resource type="Image" id=48]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -351,10 +352,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=45]
+[sub_resource type="ImageTexture" id=47]
 flags = 0
 flags = 0
-image = SubResource( 46 )
+image = SubResource( 48 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=33]
@@ -363,7 +364,7 @@ shader = ExtResource( 11 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 45 )
+shader_param/palette = SubResource( 47 )
 
 [sub_resource type="StreamTexture" id=43]
 load_path = "res://.import/flapper.png-42d4f1390d9d9cceb01520b415ef9b37.stex"
@@ -541,6 +542,7 @@ flap_cost = 1.0
 regen = 0.0
 
 [node name="energy_bar" parent="." instance=ExtResource( 22 )]
+visible = false
 texture_under = SubResource( 21 )
 texture_progress = SubResource( 23 )
 texture_progress_offset = Vector2( 0, 1 )
@@ -579,6 +581,9 @@ disabled = true
 palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
 material = SubResource( 33 )
 glow_speed = 4.0
+
+[node name="hud_tracker" type="Node" parent="."]
+script = ExtResource( 34 )
 
 [connection signal="die" from="." to="hurtbox/CollisionShape2D" method="set_disabled" flags=3 binds= [ true ]]
 [connection signal="failed_flap" from="." to="pio" method="play"]

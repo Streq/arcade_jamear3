@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/enemy/death/death.gd" type="Script" id=1]
 [ext_resource path="res://src/pickups/out_of_sight_arrow.tscn" type="PackedScene" id=2]
@@ -11,11 +11,12 @@
 [ext_resource path="res://src/enemy/addon/player_finder.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/font/ProggyClean.ttf/ProggyClean.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://src/enemy/death/free_on_dead_player.gd" type="Script" id=11]
+[ext_resource path="res://assets/audio/sfx/failed_glide.wav" type="AudioStream" id=12]
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 16.0
+[sub_resource type="CircleShape2D" id=27]
+radius = 7.07107
 
-[sub_resource type="Image" id=27]
+[sub_resource type="Image" id=28]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 33, 0, 0, 255, 255, 221, 89, 255 ),
 "format": "RGBA8",
@@ -27,7 +28,7 @@ data = {
 [sub_resource type="ImageTexture" id=24]
 flags = 0
 flags = 0
-image = SubResource( 27 )
+image = SubResource( 28 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=11]
@@ -38,7 +39,10 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 24 )
 
-[sub_resource type="Image" id=28]
+[sub_resource type="CircleShape2D" id=2]
+radius = 16.0
+
+[sub_resource type="Image" id=29]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 255, 0, 0, 255, 0, 0, 0, 255 ),
 "format": "RGBA8",
@@ -50,7 +54,7 @@ data = {
 [sub_resource type="ImageTexture" id=26]
 flags = 0
 flags = 0
-image = SubResource( 28 )
+image = SubResource( 29 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=17]
@@ -72,7 +76,7 @@ speed = 1000.0
 hard_collision_threshold = 500000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+shape = SubResource( 27 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 11 )
@@ -134,5 +138,12 @@ align = 1
 
 [node name="free_on_dead_player" type="Node" parent="."]
 script = ExtResource( 11 )
+
+[node name="noise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+volume_db = 2.0
+pitch_scale = 0.01
+autoplay = true
+attenuation = 2.07053
 
 [editable path="out_of_sight_arrow"]

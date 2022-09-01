@@ -27,7 +27,7 @@ func trigger():
 	parent.hurtbox.monitorable = false
 	parent.hurtbox.monitoring = false
 	parent.hard_collision_threshold = 1000000.0
-#	parent.soft_collision_threshold = 1000000.0
+	parent.soft_collision_threshold = 1000000.0
 	remove_child(hitbox)
 	parent.add_child(hitbox)
 	hitbox.owner = parent
