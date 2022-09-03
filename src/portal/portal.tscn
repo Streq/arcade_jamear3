@@ -331,6 +331,7 @@ palette = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0.415686, 0.384314, 0.54902, 1
 material = SubResource( 52 )
 
 [node name="free" parent="nav_indicator" instance=ExtResource( 14 )]
+should_free = false
 
 [node name="portalabiertoHUD" type="CanvasLayer" parent="nav_indicator"]
 
@@ -381,7 +382,6 @@ buscalo! está indicado por la flecha celeste al borde de la pantalla."
 align = 1
 
 [node name="free" parent="out_of_sight_arrow" instance=ExtResource( 14 )]
-should_free = false
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 

@@ -46,3 +46,4 @@ func load_level():
 		yield(get_tree(),"idle_frame")
 	
 	AudioServer.set_bus_mute(0,false)
+	

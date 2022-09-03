@@ -6,6 +6,10 @@ signal portal_open()
 signal new_level()
 signal new_game()
 
+onready var gamemode = $gamemode
+
+
+
 export var records := PoolRealArray()
 
 export var exit_portal_velocity = Vector2()

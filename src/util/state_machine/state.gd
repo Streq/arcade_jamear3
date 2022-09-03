@@ -1,14 +1,28 @@
 extends Node
 class_name State
+
 signal finish(next_state, params)
+signal push(next_state, params)
+signal pop()
+signal clear(next_state, params)
+signal switch(next_state, params)
+
 signal entered
 signal exited
+signal suspended
+signal awakened
 signal updated(delta)
 signal physics_updated(delta)
 
 func enter(params):
 	_enter(params)
 	emit_signal("entered")
+func suspend():
+	_suspend()
+	emit_signal("suspended")
+func awaken():
+	_awaken()
+	emit_signal("awakened")
 func exit():
 	_exit()
 	emit_signal("exited")
@@ -23,11 +37,18 @@ func physics_update(delta: float):
 
 # Initialize the state. E.g. change the animation
 func _enter(params):
-	
-	pass
+	return
 
 # Clean up the state. Reinitialize values like a timer
 func _exit():
+	return
+	
+# Awake the state from suspension. E.g. Readd nodes to tree
+func _awaken():
+	return
+
+# Suspend the state. E.g. Remove nodes
+func _suspend():
 	return
 
 # Called during _process
@@ -47,3 +68,21 @@ func goto(state: String):
 
 func goto_args(state: String, args: Array):
 	emit_signal("finish", state, args)
+
+func push(state: String):
+	emit_signal("push", state, null)
+
+func push_args(state: String, args: Array):
+	emit_signal("push", state, args)
+
+func switch(state: String):
+	emit_signal("switch", state, null)
+
+func switch_args(state: String, args: Array):
+	emit_signal("switch", state, args)
+
+func pop():
+	emit_signal("pop")
+
+func clear():
+	emit_signal("clear")
