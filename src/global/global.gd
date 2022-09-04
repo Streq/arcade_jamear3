@@ -42,7 +42,7 @@ func new_level():
 
 func new_game():
 	emit_signal("new_game")
-	Levels.current_level = 0
-	Levels.load_level()
+#	Levels.current_level = 0
+#	Levels.load_level()
 	exit_portal_velocity = Vector2()
 	

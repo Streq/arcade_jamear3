@@ -7,7 +7,7 @@ onready var shooter = $aim/shooter
 onready var sight = $sight
 onready var aim = $aim
 onready var exclamation_anim = $exclamation_anim
-
+export var difficulty = 0.0
 
 var target = null
 

@@ -6,7 +6,7 @@ export var DEATH : PackedScene
 var spawned_instances = []
 onready var timer = $Timer
 
-
+export var difficulty = 0.0
 
 export var max_spawns := 1
 
@@ -14,7 +14,7 @@ func spawn():
 	var point = get_random_point()
 	
 	var instance = SPAWNED.instance()
-	get_tree().current_scene.add_child(instance)
+	get_parent().add_child(instance)
 	instance.global_position = point.global_position
 	spawned_instances.append(instance)
 	
@@ -53,7 +53,7 @@ func get_random_point():
 func spawn_death():
 	var point = get_random_point()
 	var instance = DEATH.instance()
-	get_tree().current_scene.add_child(instance)
+	get_parent().add_child(instance)
 	instance.global_position = point.global_position
 	
 

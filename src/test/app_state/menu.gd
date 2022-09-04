@@ -1,7 +1,7 @@
 extends State
 #OVERRIDABLE
 
-onready var canvas_layer = $CanvasLayer
+onready var canvas_layer = get_children()[0]
 
 func _ready():
 	remove_child(canvas_layer)

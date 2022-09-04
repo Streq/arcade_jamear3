@@ -1,0 +1,71 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/font/ProggyClean.ttf/ProggyClean.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/global/difficulty.gd" type="Script" id=4]
+[ext_resource path="res://src/global/level.gd" type="Script" id=5]
+[ext_resource path="res://src/test/app_state/endless.gd" type="Script" id=6]
+[ext_resource path="res://src/test/app_state/circuit.gd" type="Script" id=7]
+[ext_resource path="res://assets/texture/castle_background.png" type="Texture" id=8]
+[ext_resource path="res://assets/texture/forest_background.png" type="Texture" id=9]
+[ext_resource path="res://src/global/score.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/HUD/player_HUD.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/map/cave.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/map/forest.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/texture/cave_background.png" type="Texture" id=14]
+[ext_resource path="res://src/map/castle.tscn" type="PackedScene" id=15]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[node name="endless" type="CanvasLayer"]
+follow_viewport_enable = true
+script = ExtResource( 6 )
+
+[node name="score" parent="." instance=ExtResource( 10 )]
+visible = true
+
+[node name="difficulty" type="CanvasLayer" parent="."]
+script = ExtResource( 4 )
+start_difficulty = -5.0
+difficulty_increase_scale = 0.5
+difficulty_decrease_per_level_compeltion = 10.0
+difficulty_increase_per_level = 15.0
+
+[node name="dificultad_label" type="Label" parent="difficulty"]
+modulate = Color( 1, 0, 0, 1 )
+margin_top = 16.0543
+margin_right = 77.0
+margin_bottom = 30.0543
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = SubResource( 1 )
+text = "dificultad:"
+align = 1
+
+[node name="player_hud" type="Node" parent="."]
+
+[node name="circuit" type="Node" parent="."]
+script = ExtResource( 7 )
+root = NodePath("..")
+
+[node name="0" type="Node" parent="circuit"]
+script = ExtResource( 5 )
+scene = ExtResource( 12 )
+texture = ExtResource( 14 )
+
+[node name="1" type="Node" parent="circuit"]
+script = ExtResource( 5 )
+scene = ExtResource( 15 )
+texture = ExtResource( 8 )
+
+[node name="2" type="Node" parent="circuit"]
+script = ExtResource( 5 )
+scene = ExtResource( 13 )
+texture = ExtResource( 9 )
+
+[node name="player_HUD" parent="." instance=ExtResource( 11 )]
+layer = 2
+
+[connection signal="loaded_level" from="circuit" to="player_HUD" method="look_for_player"]

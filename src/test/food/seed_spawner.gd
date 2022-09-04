@@ -18,7 +18,7 @@ func spawn():
 		_seed = SEED.instance()
 		_seed.connect("tree_exited", self, "_seed_taken")
 		yield(get_tree(),"idle_frame")
-		get_tree().current_scene.add_child(_seed)
+		get_parent().add_child(_seed)
 		_seed.global_position = point
 		
 func spawn_portal():
@@ -26,8 +26,10 @@ func spawn_portal():
 		var point = spawn_area.get_random_point()
 		var portal = PORTAL.instance()
 		yield(get_tree(),"idle_frame")
-		get_tree().current_scene.add_child(portal)
+		get_parent().add_child(portal)
 		portal.global_position = point
+		portal.connect("player_exited",get_parent(),"area_completed")
+		
 		
 func _seed_taken():
 	emit_signal("seed_taken")

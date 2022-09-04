@@ -5,7 +5,7 @@ var _remote
 var player
 
 func _ready():
-	player = Group.get_one("flapper")
+	player = Group.get_all("flapper")[-1]
 	if player:
 		_remote.remote_path = get_path()
 		player.add_child(_remote)

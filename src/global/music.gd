@@ -26,3 +26,9 @@ func play_music(track_name:String):
 		var track : AudioStreamPlayer = tracks[track_name] if track_name else null
 		music_track = track_name
 		music_player.crossfade_to(track.stream if track else null)
+
+func play_music_no_crossfade(track_name:String):
+	if track_name != music_track:
+		var track : AudioStreamPlayer = tracks[track_name] if track_name else null
+		music_track = track_name
+		music_player.change_no_crossfade(track.stream if track else null)

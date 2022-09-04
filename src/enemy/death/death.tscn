@@ -16,7 +16,7 @@
 [sub_resource type="CircleShape2D" id=27]
 radius = 7.07107
 
-[sub_resource type="Image" id=28]
+[sub_resource type="Image" id=32]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 33, 0, 0, 255, 255, 221, 89, 255 ),
 "format": "RGBA8",
@@ -25,10 +25,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=24]
+[sub_resource type="ImageTexture" id=29]
 flags = 0
 flags = 0
-image = SubResource( 28 )
+image = SubResource( 32 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=11]
@@ -37,12 +37,12 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 24 )
+shader_param/palette = SubResource( 29 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 16.0
 
-[sub_resource type="Image" id=29]
+[sub_resource type="Image" id=33]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 255, 0, 0, 255, 0, 0, 0, 255 ),
 "format": "RGBA8",
@@ -51,10 +51,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=26]
+[sub_resource type="ImageTexture" id=31]
 flags = 0
 flags = 0
-image = SubResource( 29 )
+image = SubResource( 33 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=17]
@@ -63,7 +63,7 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 26 )
+shader_param/palette = SubResource( 31 )
 
 [sub_resource type="DynamicFont" id=22]
 font_data = ExtResource( 10 )

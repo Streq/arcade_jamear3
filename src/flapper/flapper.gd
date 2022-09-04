@@ -77,8 +77,8 @@ func _ready():
 	state_machine.initialize()
 	set_animation_speed(animation_speed_multiplier)
 	ready = true
-	Global._player_is_alive()
-	connect("die", Global, "_player_died")
+#	Global._player_is_alive()
+#	connect("die", Global, "_player_died")
 
 func _physics_process(delta):
 	delta *= delta_multiplier

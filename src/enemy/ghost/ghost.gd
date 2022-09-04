@@ -9,6 +9,7 @@ export var air_friction = 1.0
 
 onready var sprite = $Sprite
 onready var animation_player = $AnimationPlayer
+export var difficulty = 0.0
 
 
 export var facing_right := true

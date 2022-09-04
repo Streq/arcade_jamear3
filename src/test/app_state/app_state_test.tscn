@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/util/state_machine/stack_finite_state_machine.gd" type="Script" id=1]
 [ext_resource path="res://src/test/app_state/menu.gd" type="Script" id=2]
 [ext_resource path="res://src/test/app_state/app_state_test.gd" type="Script" id=3]
+[ext_resource path="res://src/test/app_state/endless_menu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/test/app_state/endless.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/test/app_state/menu.tscn" type="PackedScene" id=6]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
@@ -11,71 +14,13 @@ script = ExtResource( 3 )
 script = ExtResource( 1 )
 start_state = "menu"
 
-[node name="menu" type="Node" parent="state_machine"]
+[node name="menu" parent="state_machine" instance=ExtResource( 6 )]
+
+[node name="endless_menu" parent="state_machine" instance=ExtResource( 4 )]
+
+[node name="endless_game" type="Node" parent="state_machine"]
 script = ExtResource( 2 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="state_machine/menu"]
+[node name="endless" parent="state_machine/endless_game" instance=ExtResource( 5 )]
 
-[node name="Control" type="Control" parent="state_machine/menu/CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="state_machine/menu/CanvasLayer/Control"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -29.0
-margin_top = -20.0
-margin_right = 29.0
-margin_bottom = 20.0
-
-[node name="tutorial" type="Button" parent="state_machine/menu/CanvasLayer/Control/VBoxContainer"]
-margin_right = 103.0
-margin_bottom = 20.0
-text = "tutorial"
-
-[node name="endless" type="Button" parent="state_machine/menu/CanvasLayer/Control/VBoxContainer"]
-margin_top = 24.0
-margin_right = 103.0
-margin_bottom = 44.0
-text = "endless mode"
-
-[node name="endless" type="Node" parent="state_machine"]
-script = ExtResource( 2 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="state_machine/endless"]
-
-[node name="Control" type="Control" parent="state_machine/endless/CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="state_machine/endless/CanvasLayer/Control"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -29.0
-margin_top = -20.0
-margin_right = 29.0
-margin_bottom = 20.0
-
-[node name="easy" type="Button" parent="state_machine/endless/CanvasLayer/Control/VBoxContainer"]
-margin_right = 99.0
-margin_bottom = 20.0
-text = "easy"
-
-[node name="hard" type="Button" parent="state_machine/endless/CanvasLayer/Control/VBoxContainer"]
-margin_top = 24.0
-margin_right = 99.0
-margin_bottom = 44.0
-text = "hard"
-
-[node name="back_to_menu" type="Button" parent="state_machine/endless/CanvasLayer/Control/VBoxContainer"]
-margin_top = 48.0
-margin_right = 99.0
-margin_bottom = 68.0
-text = "back to menu"
-
-[connection signal="pressed" from="state_machine/menu/CanvasLayer/Control/VBoxContainer/endless" to="state_machine/menu" method="push" binds= [ "endless" ]]
-[connection signal="pressed" from="state_machine/endless/CanvasLayer/Control/VBoxContainer/back_to_menu" to="state_machine/endless" method="pop"]
+[connection signal="entered" from="state_machine/endless_game" to="state_machine/endless_game/endless" method="start"]

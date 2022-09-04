@@ -8,7 +8,7 @@ export var max_difficulty := 0.0
 
 func _physics_process(delta):
 	var mapped = range_lerp(
-			Difficulty.get_difficulty(),
+			owner.difficulty,
 			min_difficulty,
 			max_difficulty,
 			min_value,

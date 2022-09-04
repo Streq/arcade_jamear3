@@ -8,6 +8,7 @@ export var speed = 100.0
 export var air_friction = 1.0
 export var soft_collision_threshold = 100.0
 export var hard_collision_threshold = 500.0
+export var difficulty = 0.0
 
 onready var sprite = $Sprite
 

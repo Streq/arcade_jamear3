@@ -7,7 +7,7 @@
 [sub_resource type="AtlasTexture" id=1]
 flags = 2
 atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 32, 512 )
+region = Rect2( 0, 0, 188, 8 )
 
 [node name="player_HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -15,17 +15,18 @@ script = ExtResource( 2 )
 [node name="energy_bar" type="TextureProgress" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -256.0
-margin_right = 16.0
+margin_left = 772.0
+margin_top = -349.0
+margin_right = 960.0
+margin_bottom = -341.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_pivot_offset = Vector2( 0, 256 )
 max_value = 256.0
 step = 0.0
 value = 256.0
 texture_under = SubResource( 1 )
 texture_progress = SubResource( 1 )
-fill_mode = 3
+fill_mode = 1
 tint_under = Color( 1, 0, 0, 1 )
 tint_progress = Color( 0.129412, 1, 0, 1 )
 script = ExtResource( 1 )

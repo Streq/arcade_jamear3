@@ -7,6 +7,7 @@
 font_data = ExtResource( 2 )
 
 [node name="Difficulty" type="CanvasLayer"]
+visible = false
 script = ExtResource( 1 )
 start_difficulty = -5.0
 difficulty_increase_scale = 0.5

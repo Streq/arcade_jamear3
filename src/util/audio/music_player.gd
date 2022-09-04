@@ -36,3 +36,6 @@ func crossfade_to(audio_stream: AudioStream) -> void:
 			_track_2.stream = audio_stream
 			_track_2.play()
 			_anim_player.play("FadeToTrack2")
+func change_no_crossfade(audio_stream: AudioStream) -> void:
+	crossfade_to(audio_stream)
+	_anim_player.advance(_anim_player.current_animation_length)

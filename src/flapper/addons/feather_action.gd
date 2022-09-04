@@ -12,7 +12,7 @@ func throw_feathers(inertia, amount, rand_initial_speed, inertia_multiplier):
 		var instance = FEATHER.instance()
 		instance.rotation = randf()*TAU
 		instance.velocity = Vector2.LEFT.rotated(randf()*TAU)*rand_initial_speed
-		get_tree().current_scene.add_child(instance)
+		owner.get_parent().add_child(instance)
 		instance.global_position = owner.global_position
 		instance.velocity += inertia*inertia_multiplier
 		
