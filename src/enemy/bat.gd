@@ -20,7 +20,7 @@ var dir := Vector2()
 func  _physics_process(delta):
 	if get_tree().has_group("flapper"):
 		target = Group.get_one("flapper")
-	if is_instance_valid(target):
+	if is_instance_valid(target) and target.is_inside_tree():
 		velocity += dir*speed*delta
 		dir = global_position.direction_to(target.global_position)
 	else:

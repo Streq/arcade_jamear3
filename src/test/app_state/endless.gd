@@ -19,19 +19,17 @@ func start():
 	player = PLAYER.instance()
 	player.connect("die", self, "failure")
 	player.connect("entered_portal", self,"_on_portal")
-	next_level()
+	circuit.next_level()
 	player_alive = true
 	emit_signal("new_game")
 
 func _on_portal(portal):
 	yield(portal,"player_exited")
-	next_level()
-	
-func next_level():
+
+func _on_level_finished():
 	if player.is_inside_tree():
 		player.get_parent().remove_child(player)
-
-	yield(circuit.next_level(),"completed")
+func _on_next_level():
 	Group.get_one("player_spawn").spawn(player)
 	emit_signal("new_level", player)
 	
@@ -51,7 +49,7 @@ func _ready():
 func _input(event):
 	if OS.is_debug_build():
 		if event.is_action_pressed("next_level"):
-			next_level()
+			circuit.next_level()
 
 func _on_new_game():
 	start()

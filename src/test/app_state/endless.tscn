@@ -27,7 +27,7 @@ PLAYER = ExtResource( 2 )
 
 [node name="difficulty" type="CanvasLayer" parent="."]
 script = ExtResource( 4 )
-start_difficulty = -5.0
+start_difficulty = -15.0
 difficulty_increase_scale = 0.5
 difficulty_decrease_per_level_compeltion = 10.0
 difficulty_increase_per_level = 15.0
@@ -47,7 +47,7 @@ align = 1
 
 [node name="player_hud" type="Node" parent="."]
 
-[node name="circuit" type="Node" parent="."]
+[node name="circuit" type="Node" parent="." groups=["level_circuit"]]
 script = ExtResource( 7 )
 root = NodePath("..")
 
@@ -71,6 +71,9 @@ texture = ExtResource( 9 )
 [node name="player_HUD" parent="." instance=ExtResource( 11 )]
 
 [connection signal="new_level" from="." to="player_HUD" method="set_to"]
+[connection signal="level_finished" from="circuit" to="." method="_on_level_finished"]
+[connection signal="level_finished" from="circuit" to="difficulty" method="_on_level_completed"]
+[connection signal="next_level" from="circuit" to="." method="_on_next_level"]
 [connection signal="go_back" from="gameover_HUD" to="." method="_on_go_back"]
 [connection signal="new_game" from="gameover_HUD" to="." method="_on_new_game"]
 [connection signal="set_to" from="player_HUD" to="player_HUD/HUD_map" method="set_to"]

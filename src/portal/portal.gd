@@ -8,6 +8,10 @@ onready var hum = $"hum"
 onready var texture_rect = $Viewport/TextureRect
 
 func _ready():
+	var circuit = Group.get_one("level_circuit")
+	if circuit:
+		set_background(circuit.get_next_level().texture)
+	
 	state_change.play("open")
 	state_change.queue("hum")
 #	texture_rect.texture = Levels.get_next_level().texture
