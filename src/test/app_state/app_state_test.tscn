@@ -24,3 +24,4 @@ script = ExtResource( 2 )
 [node name="endless" parent="state_machine/endless_game" instance=ExtResource( 5 )]
 
 [connection signal="entered" from="state_machine/endless_game" to="state_machine/endless_game/endless" method="start"]
+[connection signal="go_back" from="state_machine/endless_game/endless" to="state_machine/endless_game" method="pop"]

@@ -9,7 +9,6 @@ export var air_friction = 1.0
 
 onready var sprite = $Sprite
 onready var animation_player = $AnimationPlayer
-export var difficulty = 0.0
 
 
 export var facing_right := true
@@ -27,8 +26,9 @@ func get_facing_dir():
 
 
 func  _physics_process(delta):
-	
-	if is_instance_valid(target):
+	if get_tree().has_group("flapper"):
+		target = Group.get_one("flapper")
+	if is_instance_valid(target) and target.is_inside_tree():
 		var dir = global_position.direction_to(target.global_position)
 		velocity += dir*speed*delta
 		if sign(dir.x)!=get_facing_dir():

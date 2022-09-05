@@ -1,13 +1,8 @@
 extends Node2D
 
-
-var target
-
 onready var shooter = $shooter
 export (float, 0.0,1.0) var prediction = 0.0
 
-func _ready():
-	target = Group.get_one("flapper")
 		
 #param target dude to aim at
 #param prediction how much to interpolate with the prediction of where the target will be

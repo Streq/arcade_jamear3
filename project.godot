@@ -105,21 +105,16 @@ _global_script_class_icons={
 [application]
 
 config/name="jamear3"
-run/main_scene="res://src/main.tscn"
+run/main_scene="res://src/test/app_state/endless.tscn"
 config/icon="res://assets/texture/icon.png"
 
 [autoload]
 
 Global="*res://src/global/global.tscn"
-GameOverHud="*res://src/HUD/game_over_HUD.tscn"
-PortalAbiertoHud="*res://src/HUD/portal_abierto_HUD.tscn"
-ScoreBoard="*res://src/HUD/score_board.tscn"
-SaveRecord="*res://src/HUD/save_record.tscn"
-ScoreDisplay="*res://src/global/ScoreDisplay.tscn"
 Group="*res://src/global/group.gd"
 Music="*res://src/global/music.tscn"
 LoadingHud="*res://src/HUD/LoadingHUD.tscn"
-Score="*res://src/global/score.tscn"
+ScoreBoard="*res://src/global/score_board.gd"
 
 [display]
 

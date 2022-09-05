@@ -16,5 +16,7 @@ func _ready():
 	state_machine.initialize()
 
 func _physics_process(delta):
+	if get_tree().has_group("flapper"):
+		target = Group.get_one("flapper")
 	state_machine.physics_update(delta)
 	animation_player.advance(delta)

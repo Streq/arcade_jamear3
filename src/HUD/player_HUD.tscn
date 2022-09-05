@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/HUD/energy_bar.gd" type="Script" id=1]
 [ext_resource path="res://src/HUD/energy_HUD.gd" type="Script" id=2]
 [ext_resource path="res://assets/texture/dither1x4.png" type="Texture" id=3]
+[ext_resource path="res://src/HUD/HUD_map.tscn" type="PackedScene" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 2
@@ -30,3 +31,10 @@ fill_mode = 1
 tint_under = Color( 1, 0, 0, 1 )
 tint_progress = Color( 0.129412, 1, 0, 1 )
 script = ExtResource( 1 )
+
+[node name="HUD_map" parent="." instance=ExtResource( 4 )]
+anchor_left = 1.0
+anchor_right = 1.0
+
+[connection signal="set_to" from="." to="HUD_map" method="set_to"]
+[connection signal="set_to" from="HUD_map" to="HUD_map/Control/MarginContainer/ViewportContainer/Viewport/follow_player" method="set_to"]

@@ -1,5 +1,5 @@
 extends CanvasLayer
-
+signal display_score
 
 export (String, MULTILINE) var char_list = """1234567890
 QWERTYUIOP
@@ -24,6 +24,8 @@ var resulting_name = ""
 onready var chars = $"%chars"
 onready var _name = $"%name"
 
+var score
+var ready = false
 
 func _ready():
 	var i = 0
@@ -62,6 +64,7 @@ func _ready():
 	add_wrap_around()
 	update_name()
 	disable()
+	ready = true
 
 func add_delete_button():
 	var button: Button = DEL_BUTTON.instance()
@@ -73,8 +76,9 @@ func add_accept_button():
 	chars.add_child(button)
 
 func _accept():
-	ScoreBoard.save_score(resulting_name, Score.total_time)
-	ScoreDisplay.enable()
+	ScoreBoard.save_score(resulting_name, score.total_time)
+#	ScoreDisplay.enable()
+	emit_signal("display_score")
 	self.disable()
 
 func disable():
@@ -126,6 +130,10 @@ func _input(event):
 	if event.is_action_pressed("B"):
 		_delete()
 
+func _enter_tree():
+	if ready:
+		call_deferred("add_wrap_around")
+
 func add_wrap_around():
 	var children = self.chars.get_children()
 	var rows = chars.get_child_count()/chars.columns
@@ -142,5 +150,4 @@ func add_wrap_around():
 			button.focus_neighbour_top = children[column+(rows-1)*columns].get_path()
 		if row == rows-1:
 			button.focus_neighbour_bottom = children[column].get_path()
-		
-		
+	

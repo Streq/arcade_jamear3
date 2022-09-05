@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://src/enemy/bat.gd" type="Script" id=1]
 [ext_resource path="res://src/pickups/out_of_sight_arrow.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://src/enemy/addon/player_finder.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/util/node/reparent_to_grandparent_on_trigger.gd" type="Script" id=15]
 [ext_resource path="res://src/flapper/addons/hurt_handler.gd" type="Script" id=16]
+[ext_resource path="res://src/enemy/difficulty.tscn" type="PackedScene" id=17]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 6.0
@@ -128,9 +129,10 @@ anims/RESET = SubResource( 14 )
 anims/flap = SubResource( 8 )
 
 [node name="set_to_difficulty" parent="AnimationPlayer" instance=ExtResource( 13 )]
+difficulty = NodePath("../../difficulty")
 prop = "playback_speed"
-max_value = 4.0
 min_value = 1.0
+max_value = 4.0
 max_difficulty = 240.0
 
 [node name="hitbox" type="Area2D" parent="." groups=["bat"]]
@@ -201,15 +203,17 @@ script = ExtResource( 12 )
 script = ExtResource( 12 )
 
 [node name="set_to_difficulty" parent="." instance=ExtResource( 13 )]
+difficulty = NodePath("../difficulty")
 prop = "speed"
-max_value = 1200.0
 min_value = 50.0
+max_value = 1200.0
 max_difficulty = 240.0
 
 [node name="set_col_resistance_to_difficulty" parent="." instance=ExtResource( 13 )]
+difficulty = NodePath("../difficulty")
 prop = "hard_collision_threshold"
-max_value = 1000.0
 min_value = 80.0
+max_value = 1000.0
 max_difficulty = 240.0
 
 [node name="player_finder" parent="." instance=ExtResource( 14 )]
@@ -234,6 +238,8 @@ __meta__ = {
 "_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PUFuaW1hdGlvblBsYXllcgpzb3VyY2V8PXJlczovL2Fzc2V0cy9hc2Vwcml0ZS9iYXQuYXNlcHJpdGUKbGF5ZXJ8PQpvcF9leHB8PUZhbHNlCm9fZm9sZGVyfD0Kb19uYW1lfD0Kb25seV92aXNpYmxlfD1GYWxzZQpvX2V4X3B8PQo="
 }
 palette = PoolColorArray( 1, 1, 1, 0, 0, 0, 0, 1, 0.509804, 0, 0, 1, 1, 0, 0, 1 )
+
+[node name="difficulty" parent="." instance=ExtResource( 17 )]
 
 [connection signal="dead" from="." to="hard_collision/reparent_to_grandparent_on_trigger" method="trigger"]
 [connection signal="hard_collision" from="." to="many_feathers_slow" method="_on_collision"]

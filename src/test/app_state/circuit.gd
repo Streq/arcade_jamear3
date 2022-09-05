@@ -14,7 +14,7 @@ func get_next_level():
 
 func next_level():
 	current_level = posmod(current_level+1,levels.size())
-	load_level()
+	yield(load_level(),"completed")
 	emit_signal("next_level")
 	
 func prev_level():
@@ -24,14 +24,7 @@ func prev_level():
 func curr_level():
 	load_level()
 
-func _input(event):
-	if OS.is_debug_build():
-		if event.is_action_pressed("next_level"):
-			next_level()
-		if event.is_action_pressed("prev_level"):
-			prev_level()
-		if event.is_action_pressed("curr_level"):
-			curr_level()
+
 			
 
 func load_level():

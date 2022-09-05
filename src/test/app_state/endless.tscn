@@ -1,6 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/font/ProggyClean.ttf/ProggyClean.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/flapper/presets/fast_glider.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/HUD/game_over_HUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/global/difficulty.gd" type="Script" id=4]
 [ext_resource path="res://src/global/level.gd" type="Script" id=5]
 [ext_resource path="res://src/test/app_state/endless.gd" type="Script" id=6]
@@ -17,12 +19,11 @@
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
 
-[node name="endless" type="CanvasLayer"]
-follow_viewport_enable = true
+[node name="endless" type="Node2D"]
 script = ExtResource( 6 )
+PLAYER = ExtResource( 2 )
 
 [node name="score" parent="." instance=ExtResource( 10 )]
-visible = true
 
 [node name="difficulty" type="CanvasLayer" parent="."]
 script = ExtResource( 4 )
@@ -65,7 +66,11 @@ script = ExtResource( 5 )
 scene = ExtResource( 13 )
 texture = ExtResource( 9 )
 
-[node name="player_HUD" parent="." instance=ExtResource( 11 )]
-layer = 2
+[node name="gameover_HUD" parent="." instance=ExtResource( 3 )]
 
-[connection signal="loaded_level" from="circuit" to="player_HUD" method="look_for_player"]
+[node name="player_HUD" parent="." instance=ExtResource( 11 )]
+
+[connection signal="new_level" from="." to="player_HUD" method="set_to"]
+[connection signal="go_back" from="gameover_HUD" to="." method="_on_go_back"]
+[connection signal="new_game" from="gameover_HUD" to="." method="_on_new_game"]
+[connection signal="set_to" from="player_HUD" to="player_HUD/HUD_map" method="set_to"]

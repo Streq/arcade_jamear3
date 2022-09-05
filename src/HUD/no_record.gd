@@ -1,5 +1,9 @@
 extends VBoxContainer
 
+signal display_score
+signal go_back
+
+
 func _ready():
 	disable()
 
@@ -12,8 +16,8 @@ func disable():
 	
 func _input(event):
 	if event.is_action_pressed("A"):
-		ScoreDisplay.enable()
+		emit_signal("display_score")
 		owner.disable()
 	if event.is_action_pressed("B"):
 		owner.disable()
-		Global.new_game()
+		emit_signal("go_back")

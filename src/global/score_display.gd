@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal go_back()
+
 export var RECORD : PackedScene
 onready var entry_list = $"%entry_list"
 onready var play_again = $"%play_again"
@@ -23,6 +25,7 @@ func update_display():
 		entry_list.remove_child(child)
 		
 	var records = ScoreBoard.board
+#	var records = []
 	var i = 0
 	for record in records:
 		i += 1
@@ -34,4 +37,4 @@ func update_display():
 func _input(event):
 	if event.is_action_pressed("B"):
 		disable()
-		Global.new_game()
+		emit_signal("go_back")

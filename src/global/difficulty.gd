@@ -40,3 +40,4 @@ func _on_level_completed():
 
 func _physics_process(delta):
 	dificultad_label.text = "dificultad: %.2f" % get_difficulty()
+	get_tree().set_group("difficulty","value",get_difficulty())

@@ -9,7 +9,7 @@ onready var tiempo_label = $tiempo_label
 export var total_time = 0.0
 
 func _physics_process(delta):
-	if Global.player_alive:
+	if get_parent().player_alive:
 		total_time += delta
 
 func _process(delta):
@@ -23,4 +23,3 @@ func _ready():
 
 func _on_new_game():
 	total_time = 0.0
-

@@ -1,4 +1,8 @@
 extends VBoxContainer
+
+signal go_back
+signal save_record
+
 func _ready():
 	disable()
 
@@ -11,8 +15,8 @@ func disable():
 	
 func _input(event):
 	if event.is_action_pressed("A"):
-		SaveRecord.enable()
+		emit_signal("save_record")
 		owner.disable()
 	if event.is_action_pressed("B"):
 		owner.disable()
-		Global.new_game()
+		emit_signal("go_back")

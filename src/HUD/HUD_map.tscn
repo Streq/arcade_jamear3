@@ -6,7 +6,7 @@
 [ext_resource path="res://src/HUD/map/follow_player.gd" type="Script" id=6]
 [ext_resource path="res://src/HUD/HUD_map.gd" type="Script" id=7]
 
-[node name="HUD_map" type="CanvasLayer"]
+[node name="HUD_map" type="Control"]
 script = ExtResource( 7 )
 minimap_tiles = ExtResource( 5 )
 
@@ -53,9 +53,12 @@ motion_scale = Vector2( 0.125, 0.125 )
 unique_name_in_owner = true
 
 [node name="minimap" type="Node2D" parent="Control/MarginContainer/ViewportContainer/Viewport/ParallaxBackground/ParallaxLayer/pivot"]
+z_index = 3
 script = ExtResource( 1 )
 
 [node name="follow_player" type="Camera2D" parent="Control/MarginContainer/ViewportContainer/Viewport"]
 position = Vector2( 827.829, 119.055 )
 current = true
 script = ExtResource( 6 )
+
+[connection signal="set_to" from="." to="Control/MarginContainer/ViewportContainer/Viewport/follow_player" method="set_to"]

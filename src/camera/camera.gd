@@ -7,5 +7,6 @@ func _physics_process(delta):
 func _on_portal(portal):
 	NodeUtils.reparent_keep_transform(self, portal)
 
-func _ready():
-	get_parent().connect("entered_portal", self, "_on_portal")
+func follow(player):
+	NodeUtils.reparent(self, player)
+	player.connect("entered_portal", self, "_on_portal")

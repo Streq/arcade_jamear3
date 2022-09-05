@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/font/ProggyClean.ttf/ProggyClean.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/HUD/game_over_HUD.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://src/HUD/new_record.gd" type="Script" id=4]
 [ext_resource path="res://src/HUD/no_record.gd" type="Script" id=5]
 [ext_resource path="res://src/HUD/panel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/HUD/save_record.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/global/ScoreDisplay.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -123,6 +125,17 @@ text = "ver récords"
 margin_top = 38.0
 margin_right = 196.0
 margin_bottom = 54.0
+
+[node name="ScoreDisplay" parent="." instance=ExtResource( 8 )]
+
+[node name="SaveRecord" parent="." instance=ExtResource( 7 )]
+
+[connection signal="go_back" from="pivot/MarginContainer/PanelContainer/VBoxContainer/new_record" to="." method="_on_go_back"]
+[connection signal="save_record" from="pivot/MarginContainer/PanelContainer/VBoxContainer/new_record" to="SaveRecord" method="enable"]
+[connection signal="display_score" from="pivot/MarginContainer/PanelContainer/VBoxContainer/no_record" to="ScoreDisplay" method="enable"]
+[connection signal="go_back" from="pivot/MarginContainer/PanelContainer/VBoxContainer/no_record" to="." method="_on_go_back"]
+[connection signal="go_back" from="ScoreDisplay" to="." method="_on_go_back"]
+[connection signal="display_score" from="SaveRecord" to="ScoreDisplay" method="enable"]
 
 [editable path="pivot/MarginContainer"]
 [editable path="pivot/MarginContainer/PanelContainer/VBoxContainer/new_record/save_record"]

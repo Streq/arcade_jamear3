@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/util/node/property_link_range_lerp.gd" type="Script" id=1]
+
+[node name="property_link_range_lerp" type="Node"]
+script = ExtResource( 1 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
 [ext_resource path="res://src/enemy/lancer/shooter.gd" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/texture/exclamation.png" type="Texture" id=17]
 [ext_resource path="res://src/enemy/lancer/set_to_difficulty.gd" type="Script" id=18]
 [ext_resource path="res://src/enemy/set_to_difficulty.tscn" type="PackedScene" id=19]
+[ext_resource path="res://src/enemy/difficulty.tscn" type="PackedScene" id=20]
 
 [sub_resource type="Image" id=45]
 data = {
@@ -328,7 +329,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=35]
-radius = 246.27
+radius = 246.0
 
 [sub_resource type="Animation" id=41]
 length = 0.001
@@ -425,12 +426,14 @@ ARROW = ExtResource( 7 )
 
 [node name="set_to_difficulty" type="Node" parent="aim/shooter"]
 script = ExtResource( 18 )
+difficulty = NodePath("../../../difficulty")
 prop = "shoot_speed"
-max_value = 1000.0
 min_value = 500.0
+max_value = 1000.0
 max_difficulty = 360.0
 
 [node name="set_to_difficulty" parent="aim" instance=ExtResource( 19 )]
+difficulty = NodePath("../../difficulty")
 
 [node name="Line2D" type="Line2D" parent="aim"]
 visible = false
@@ -455,9 +458,10 @@ anims/wake_up = SubResource( 31 )
 
 [node name="set_to_difficulty" type="Node" parent="AnimationPlayer"]
 script = ExtResource( 18 )
+difficulty = NodePath("../../difficulty")
 prop = "playback_speed"
-max_value = 4.0
 min_value = 1.0
+max_value = 4.0
 max_difficulty = 360.0
 
 [node name="state_machine" parent="." instance=ExtResource( 4 )]
@@ -495,9 +499,10 @@ script = ExtResource( 14 )
 shape = SubResource( 35 )
 
 [node name="set_to_difficulty" parent="hearing/CollisionShape2D" instance=ExtResource( 19 )]
+difficulty = NodePath("../../../difficulty")
 prop = "shape:radius"
-max_value = 492.0
 min_value = 246.0
+max_value = 492.0
 max_difficulty = 240.0
 
 [node name="alert" type="AudioStreamPlayer2D" parent="." groups=["alert"]]
@@ -508,6 +513,8 @@ script = ExtResource( 16 )
 [node name="exclamation_anim" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 41 )
 anims/play = SubResource( 42 )
+
+[node name="difficulty" parent="." instance=ExtResource( 20 )]
 
 [connection signal="timeout" from="state_machine/idle/Timer" to="state_machine/idle" method="_on_Timer_timeout"]
 [connection signal="entered" from="state_machine/wake_up" to="alert" method="trigger"]

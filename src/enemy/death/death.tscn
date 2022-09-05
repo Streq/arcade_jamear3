@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/enemy/death/death.gd" type="Script" id=1]
 [ext_resource path="res://src/pickups/out_of_sight_arrow.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/font/ProggyClean.ttf/ProggyClean.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://src/enemy/death/free_on_dead_player.gd" type="Script" id=11]
 [ext_resource path="res://assets/audio/sfx/failed_glide.wav" type="AudioStream" id=12]
+[ext_resource path="res://src/enemy/difficulty.tscn" type="PackedScene" id=13]
 
 [sub_resource type="CircleShape2D" id=27]
 radius = 7.07107
@@ -109,9 +110,10 @@ material = SubResource( 17 )
 script = ExtResource( 4 )
 
 [node name="set_to_difficulty" parent="." instance=ExtResource( 6 )]
+difficulty = NodePath("../difficulty")
 prop = "speed"
-max_value = 1500.0
 min_value = 600.0
+max_value = 1500.0
 max_difficulty = 240.0
 
 [node name="player_finder" parent="." instance=ExtResource( 9 )]
@@ -145,5 +147,7 @@ volume_db = 2.0
 pitch_scale = 0.01
 autoplay = true
 attenuation = 2.07053
+
+[node name="difficulty" parent="." instance=ExtResource( 13 )]
 
 [editable path="out_of_sight_arrow"]
