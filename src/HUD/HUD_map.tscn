@@ -6,7 +6,7 @@
 [ext_resource path="res://src/HUD/map/follow_player.gd" type="Script" id=6]
 [ext_resource path="res://src/HUD/HUD_map.gd" type="Script" id=7]
 
-[node name="HUD_map" type="Control"]
+[node name="HUD_map" type="Control" groups=["minimap"]]
 script = ExtResource( 7 )
 minimap_tiles = ExtResource( 5 )
 

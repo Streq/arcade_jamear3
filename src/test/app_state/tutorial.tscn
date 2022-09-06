@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/test/app_state/circuit_with_finish.gd" type="Script" id=1]
 [ext_resource path="res://src/test/app_state/tutorial.gd" type="Script" id=2]
@@ -6,9 +6,13 @@
 [ext_resource path="res://src/tutorial/1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/global/level.gd" type="Script" id=5]
 [ext_resource path="res://src/tutorial/2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/tutorial/3.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/texture/castle_background.png" type="Texture" id=8]
 [ext_resource path="res://assets/texture/forest_background.png" type="Texture" id=9]
+[ext_resource path="res://src/tutorial/4.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/HUD/player_HUD.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/tutorial/5.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/tutorial/6.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/texture/cave_background.png" type="Texture" id=14]
 
 [node name="tutorial" type="Node2D"]
@@ -35,9 +39,30 @@ script = ExtResource( 5 )
 scene = ExtResource( 6 )
 texture = ExtResource( 9 )
 
+[node name="3" type="Node" parent="circuit"]
+script = ExtResource( 5 )
+scene = ExtResource( 7 )
+texture = ExtResource( 9 )
+
+[node name="4" type="Node" parent="circuit"]
+script = ExtResource( 5 )
+scene = ExtResource( 10 )
+texture = ExtResource( 9 )
+
+[node name="5" type="Node" parent="circuit"]
+script = ExtResource( 5 )
+scene = ExtResource( 12 )
+texture = ExtResource( 9 )
+
+[node name="6" type="Node" parent="circuit"]
+script = ExtResource( 5 )
+scene = ExtResource( 13 )
+texture = ExtResource( 9 )
+
 [node name="player_HUD" parent="." instance=ExtResource( 11 )]
 
 [connection signal="new_level" from="." to="player_HUD" method="set_to"]
 [connection signal="finished" from="circuit" to="." method="_on_go_back"]
 [connection signal="level_finished" from="circuit" to="." method="_on_level_finished"]
 [connection signal="next_level" from="circuit" to="." method="_on_next_level"]
+[connection signal="set_to" from="player_HUD" to="player_HUD/HUD_map" method="set_to"]

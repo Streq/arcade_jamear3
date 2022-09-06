@@ -5,8 +5,9 @@ var _remote
 var player
 
 func set_to(player):
-	if !is_instance_valid(_remote):
-		_remote = RemoteTransform2D.new()
+	if is_instance_valid(_remote):
+		_remote.queue_free()
+	_remote = RemoteTransform2D.new()	
 	if player:
 		var parent = _remote.get_parent()
 		if parent:
