@@ -124,10 +124,10 @@ material = SubResource( 3 )
 position = Vector2( 861, 389 )
 
 [node name="MarginContainer" parent="." index="3"]
-margin_left = 476.0
-margin_top = 125.0
-margin_right = 709.0
-margin_bottom = 172.0
+margin_left = 486.0
+margin_top = 65.0
+margin_right = 719.0
+margin_bottom = 112.0
 
 [node name="tutorial_text" parent="MarginContainer" index="2"]
 margin_right = 225.0
@@ -160,8 +160,9 @@ material = SubResource( 9 )
 [node name="free" parent="player_HUD" index="2" instance=ExtResource( 6 )]
 
 [node name="Sprite" type="Sprite" parent="." index="6"]
-position = Vector2( 738, 180 )
-rotation = 0.523598
+position = Vector2( 708, 37 )
+rotation = -1.0472
 texture = ExtResource( 5 )
 
 [connection signal="area_entered" from="acid_zone" to="." method="_on_acid_zone_area_entered"]
+[connection signal="set_to" from="player_HUD" to="player_HUD/HUD_map" method="set_to"]

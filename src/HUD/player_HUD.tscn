@@ -8,7 +8,7 @@
 [sub_resource type="AtlasTexture" id=1]
 flags = 2
 atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 188, 8 )
+region = Rect2( 0, 0, 256, 8 )
 
 [node name="player_HUD" type="CanvasLayer"]
 script = ExtResource( 2 )

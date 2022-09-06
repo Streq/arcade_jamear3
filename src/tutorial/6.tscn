@@ -158,10 +158,10 @@ material = SubResource( 3 )
 position = Vector2( 736, 352 )
 
 [node name="MarginContainer" parent="." index="3"]
-margin_left = 256.0
-margin_top = 32.0
-margin_right = 566.0
-margin_bottom = 79.0
+margin_left = 264.0
+margin_top = 112.0
+margin_right = 574.0
+margin_bottom = 159.0
 
 [node name="tutorial_text" parent="MarginContainer" index="2"]
 margin_right = 302.0
@@ -198,18 +198,15 @@ script = ExtResource( 5 )
 
 [node name="MarginContainer2" parent="." index="7" instance=ExtResource( 10 )]
 margin_left = 288.0
-margin_top = 112.0
-margin_right = 521.0
-margin_bottom = 210.0
+margin_top = 200.0
+margin_right = 535.0
+margin_bottom = 247.0
 
 [node name="tutorial_text" parent="MarginContainer2" index="2" instance=ExtResource( 9 )]
-margin_right = 225.0
-margin_bottom = 90.0
-text = "Probá caer planeando 
-(de manera que estés 
-apuntando para la derecha)
-y apuntá arriba
-cuando estés por tocar el ácido"
+margin_right = 239.0
+margin_bottom = 39.0
+text = "Usá la velocidad de la caída para
+planear hacia el portal"
 align = 1
 
 [connection signal="area_entered" from="acid_zone" to="." method="_on_acid_zone_area_entered"]

@@ -32,4 +32,5 @@ margin_right = 103.0
 margin_bottom = 44.0
 text = "endless mode"
 
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/tutorial" to="." method="push" binds= [ "tutorial" ]]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/endless" to="." method="push" binds= [ "endless_menu" ]]
