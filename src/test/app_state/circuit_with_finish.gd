@@ -3,6 +3,8 @@ extends Node
 signal next_level()
 signal loaded_level()
 signal level_finished()
+signal finished()
+
 onready var levels = get_children()
 var current_level = -1
 
@@ -15,9 +17,12 @@ func get_next_level():
 
 func next_level():
 	emit_signal("level_finished")
-	current_level = posmod(current_level+1,levels.size())
-	yield(load_level(),"completed")
-	emit_signal("next_level")
+	if current_level+1 == levels.size():
+		emit_signal("finished")
+	else:
+		current_level = posmod(current_level+1,levels.size())
+		yield(load_level(),"completed")
+		emit_signal("next_level")
 	
 func prev_level():
 	current_level = posmod(current_level-1,levels.size())

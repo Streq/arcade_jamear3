@@ -1,0 +1,179 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://src/portal/attraction_area.gd" type="Script" id=1]
+[ext_resource path="res://src/portal/inside_area.gd" type="Script" id=2]
+[ext_resource path="res://src/portal/portal.gd" type="Script" id=3]
+[ext_resource path="res://src/pickups/out_of_sight_arrow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/test/enemy_test/portal/portal_sprite.gd" type="Script" id=7]
+[ext_resource path="res://free.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Animation" id=32]
+resource_name = "play"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0 ]
+}
+
+[sub_resource type="Animation" id=35]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="Animation" id=39]
+resource_name = "close"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1.93187, 0.267943 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="Animation" id=48]
+resource_name = "hum"
+length = 1.2
+loop = true
+
+[sub_resource type="Animation" id=36]
+resource_name = "open"
+length = 1.2
+step = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 0.267943, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Shader" id=42]
+code = "shader_type canvas_item;
+uniform sampler2D other_world;
+uniform vec2 position;
+uniform vec2 sprite_rect_offset;
+
+
+
+void fragment(){
+	vec4 tex = texture(TEXTURE, UV);
+	vec2 point = (UV-sprite_rect_offset*TEXTURE_PIXEL_SIZE)/TEXTURE_PIXEL_SIZE/53.0;
+	
+	COLOR.rgb = texture(other_world, point).rgb;
+	COLOR.rgb *= tex.r;
+//	COLOR.rgb = texture(other_world, UV).rgb;
+	COLOR.a = tex.a;
+	
+}"
+
+[sub_resource type="ViewportTexture" id=66]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="ShaderMaterial" id=67]
+resource_local_to_scene = true
+shader = SubResource( 42 )
+shader_param/position = null
+shader_param/sprite_rect_offset = null
+shader_param/other_world = SubResource( 66 )
+
+[sub_resource type="StreamTexture" id=31]
+load_path = "res://.import/portal_orb.png-12f3895f12bcf5fcc259c4e66a058e39.stex"
+
+[sub_resource type="CircleShape2D" id=47]
+radius = 10.0038
+
+[sub_resource type="CircleShape2D" id=49]
+radius = 69.0783
+
+[node name="portal" type="Node2D"]
+position = Vector2( 489, 149 )
+z_index = -1
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "play"
+anims/play = SubResource( 32 )
+
+[node name="state_change" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 35 )
+anims/close = SubResource( 39 )
+anims/hum = SubResource( 48 )
+anims/open = SubResource( 36 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 53, 53 )
+transparent_bg = true
+handle_input_locally = false
+render_target_v_flip = true
+render_target_update_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="Viewport"]
+margin_right = 170.0
+margin_bottom = 149.0
+stretch_mode = 3
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 67 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = SubResource( 31 )
+hframes = 4
+vframes = 4
+script = ExtResource( 7 )
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PXBvcnRhbC9BbmltYXRpb25QbGF5ZXIKc291cmNlfD1yZXM6Ly9hc3NldHMvYXNlcHJpdGUvcG9ydGFsX29yYi5hc2Vwcml0ZQpsYXllcnw9Cm9wX2V4cHw9VHJ1ZQpvX2ZvbGRlcnw9Cm9fbmFtZXw9Cm9ubHlfdmlzaWJsZXw9RmFsc2UKb19leF9wfD0K"
+}
+
+[node name="inside_area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="inside_area"]
+shape = SubResource( 47 )
+
+[node name="attraction_area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 1 )
+pull = 1e+07
+friction = 4.0
+max_pull = 1000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attraction_area"]
+shape = SubResource( 49 )
+
+[node name="out_of_sight_arrow" parent="." instance=ExtResource( 5 )]
+
+[node name="free" parent="out_of_sight_arrow" instance=ExtResource( 8 )]
+
+[connection signal="body_entered" from="inside_area" to="inside_area" method="_on_body_entered"]

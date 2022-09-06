@@ -4,7 +4,6 @@ signal player_exited
 
 var state = 0
 onready var state_change = $state_change
-onready var hum = $"hum"
 onready var texture_rect = $Viewport/TextureRect
 
 func _ready():

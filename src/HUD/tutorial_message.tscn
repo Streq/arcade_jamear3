@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/font/ProggyClean.ttf/ProggyClean.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/HUD/panel_border.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://src/enemy/floaty.png" type="Texture" id=8]
 [ext_resource path="res://src/HUD/input_indicator.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/texture/buttons.png" type="Texture" id=10]
+[ext_resource path="res://src/HUD/text.tscn" type="PackedScene" id=11]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.129412, 0.129412, 0.129412, 1 )
@@ -369,23 +370,16 @@ custom_constants/margin_top = 8
 custom_constants/margin_left = 8
 custom_constants/margin_bottom = 8
 
-[node name="tutorial_text" type="Label" parent="VBoxContainer/MarginContainer3"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 351.0
-margin_bottom = 107.0
-grow_horizontal = 2
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = SubResource( 2 )
+[node name="tutorial_text" parent="VBoxContainer/MarginContainer3" instance=ExtResource( 11 )]
 text = "Aletear cuesta energía (planear no)
 Las semillas dan energía
 Agarrar tres semillas abre un portal a otro nivel
 La dificultad aumenta con el tiempo!
 No te quedes mucho en un nivel!!
 Sobreviví el tiempo que puedas!!!!"
+__meta__ = {
+"_edit_pinned_properties_": [ "text" ]
+}
 
 [editable path="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/play_again2"]
 [editable path="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/play_again"]
