@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/test/app_state/circuit_with_finish.gd" type="Script" id=1]
 [ext_resource path="res://src/test/app_state/tutorial.gd" type="Script" id=2]
@@ -7,8 +7,6 @@
 [ext_resource path="res://src/global/level.gd" type="Script" id=5]
 [ext_resource path="res://src/tutorial/2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/tutorial/3.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/texture/castle_background.png" type="Texture" id=8]
-[ext_resource path="res://assets/texture/forest_background.png" type="Texture" id=9]
 [ext_resource path="res://src/tutorial/4.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/HUD/energy_bar.gd" type="Script" id=11]
 [ext_resource path="res://src/tutorial/5.tscn" type="PackedScene" id=12]
@@ -17,6 +15,12 @@
 [ext_resource path="res://src/tutorial/7.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/HUD/energy_HUD.gd" type="Script" id=16]
 [ext_resource path="res://assets/texture/dither1x4.png" type="Texture" id=17]
+[ext_resource path="res://src/tutorial/8.tscn" type="PackedScene" id=18]
+[ext_resource path="res://src/tutorial/9.tscn" type="PackedScene" id=19]
+[ext_resource path="res://src/tutorial/11.tscn" type="PackedScene" id=20]
+[ext_resource path="res://src/tutorial/10.tscn" type="PackedScene" id=21]
+[ext_resource path="res://src/tutorial/12.tscn" type="PackedScene" id=22]
+[ext_resource path="res://src/tutorial/13.tscn" type="PackedScene" id=23]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 2
@@ -40,37 +44,67 @@ texture = ExtResource( 14 )
 [node name="1" type="Node" parent="circuit"]
 script = ExtResource( 5 )
 scene = ExtResource( 4 )
-texture = ExtResource( 8 )
+texture = ExtResource( 14 )
 
 [node name="2" type="Node" parent="circuit"]
 script = ExtResource( 5 )
 scene = ExtResource( 6 )
-texture = ExtResource( 9 )
+texture = ExtResource( 14 )
 
 [node name="3" type="Node" parent="circuit"]
 script = ExtResource( 5 )
 scene = ExtResource( 7 )
-texture = ExtResource( 9 )
+texture = ExtResource( 14 )
 
 [node name="4" type="Node" parent="circuit"]
 script = ExtResource( 5 )
 scene = ExtResource( 10 )
-texture = ExtResource( 9 )
+texture = ExtResource( 14 )
 
 [node name="5" type="Node" parent="circuit"]
 script = ExtResource( 5 )
 scene = ExtResource( 12 )
-texture = ExtResource( 9 )
+texture = ExtResource( 14 )
 
 [node name="6" type="Node" parent="circuit"]
 script = ExtResource( 5 )
 scene = ExtResource( 13 )
-texture = ExtResource( 9 )
+texture = ExtResource( 14 )
 
 [node name="7" type="Node" parent="circuit"]
 script = ExtResource( 5 )
 scene = ExtResource( 15 )
-texture = ExtResource( 9 )
+texture = ExtResource( 14 )
+
+[node name="8" type="Node" parent="circuit"]
+script = ExtResource( 5 )
+scene = ExtResource( 18 )
+texture = ExtResource( 14 )
+
+[node name="9" type="Node" parent="circuit"]
+script = ExtResource( 5 )
+scene = ExtResource( 19 )
+texture = ExtResource( 14 )
+
+[node name="10" type="Node" parent="circuit"]
+script = ExtResource( 5 )
+scene = ExtResource( 21 )
+texture = ExtResource( 14 )
+
+[node name="11" type="Node" parent="circuit"]
+script = ExtResource( 5 )
+scene = ExtResource( 20 )
+texture = ExtResource( 14 )
+
+[node name="12" type="Node" parent="circuit"]
+script = ExtResource( 5 )
+scene = ExtResource( 22 )
+texture = ExtResource( 14 )
+
+[node name="13" type="Node" parent="circuit"]
+script = ExtResource( 5 )
+scene = ExtResource( 23 )
+texture = ExtResource( 14 )
 
 [node name="player_HUD" type="CanvasLayer" parent="."]
 script = ExtResource( 16 )

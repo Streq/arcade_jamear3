@@ -16,10 +16,10 @@ script = ExtResource( 2 )
 [node name="energy_bar" type="TextureProgress" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 772.0
-margin_top = -349.0
-margin_right = 960.0
-margin_bottom = -341.0
+margin_left = 511.0
+margin_top = -539.0
+margin_right = 767.0
+margin_bottom = -531.0
 grow_horizontal = 2
 grow_vertical = 2
 max_value = 256.0

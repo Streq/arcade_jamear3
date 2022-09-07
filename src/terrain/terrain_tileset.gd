@@ -5,12 +5,18 @@ const BLOCKS = 0
 const SQUARE = 2
 const SLOPE = 4
 const SPACE = 5
+const SQUARE_2 = 7
+const SQUARE_3 = 8
+const SLOPE_3 = 9
 
 var binds = {
 	SQUARE : [SLOPE],
 	SLOPE : [SQUARE],
 	BLOCKS : [],
-	SPACE : []
+	SPACE : [],
+	SQUARE_2 : [SLOPE_3, SQUARE_3],
+	SLOPE_3 : [SQUARE_2, SQUARE_3],
+	SQUARE_3 : [SLOPE_3, SQUARE_2]
 }
 
 func _is_tile_bound(drawn_id, neighbor_id):

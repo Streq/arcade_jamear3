@@ -6,3 +6,4 @@ export var value := 0.0 setget set_value
 func set_value(val):
 	value = val
 	emit_signal("value_changed", value)
+
