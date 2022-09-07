@@ -17,7 +17,7 @@
 [ext_resource path="res://src/color/palette.gd" type="Script" id=15]
 [ext_resource path="res://assets/texture/acid_texture.tres" type="Texture" id=16]
 
-[sub_resource type="Image" id=21]
+[sub_resource type="Image" id=25]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 49, 0, 75, 255, 202, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
@@ -26,10 +26,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=16]
+[sub_resource type="ImageTexture" id=22]
 flags = 0
 flags = 0
-image = SubResource( 21 )
+image = SubResource( 25 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
@@ -38,7 +38,7 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 16 )
+shader_param/palette = SubResource( 22 )
 
 [sub_resource type="NavigationPolygon" id=6]
 resource_local_to_scene = true
@@ -46,7 +46,7 @@ vertices = PoolVector2Array( -16, -16, 0, -16, -16, 0, 960, -16, 976, -16, 976, 
 polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 3, 4, 5 ), PoolIntArray( 6, 7, 8 ), PoolIntArray( 9, 10, 11 ), PoolIntArray( 12, 13, 14 ), PoolIntArray( 15, 12, 14, 16 ), PoolIntArray( 17, 13, 12, 18, 19, 20 ), PoolIntArray( 21, 20, 19, 22, 23 ), PoolIntArray( 24, 25, 26, 27 ), PoolIntArray( 28, 29, 30, 31 ), PoolIntArray( 32, 33, 34, 35 ), PoolIntArray( 32, 35, 36, 37 ), PoolIntArray( 36, 38, 37 ), PoolIntArray( 39, 32, 37, 40 ), PoolIntArray( 41, 42, 43 ), PoolIntArray( 44, 45, 46 ), PoolIntArray( 47, 48, 23, 22, 49, 50 ), PoolIntArray( 51, 52, 47, 50, 53, 54 ), PoolIntArray( 55, 54, 53, 56, 57 ), PoolIntArray( 58, 59, 55, 57, 60 ), PoolIntArray( 61, 62, 63, 64, 65 ), PoolIntArray( 65, 64, 66, 67 ), PoolIntArray( 65, 67, 68, 43 ), PoolIntArray( 44, 46, 69, 70, 71, 24, 27, 72 ), PoolIntArray( 27, 73, 28, 31, 74 ), PoolIntArray( 31, 30, 75, 76, 77 ), PoolIntArray( 76, 39, 40, 78, 79, 60, 80, 65, 81 ), PoolIntArray( 79, 82, 58, 60 ), PoolIntArray( 68, 83, 41, 43 ), PoolIntArray( 81, 84, 85, 86 ), PoolIntArray( 87, 88, 89, 90, 76 ), PoolIntArray( 90, 91, 77, 76 ), PoolIntArray( 74, 92, 72 ), PoolIntArray( 72, 93, 44 ), PoolIntArray( 46, 94, 69 ), PoolIntArray( 95, 96, 63, 70 ), PoolIntArray( 63, 62, 97, 70 ), PoolIntArray( 98, 99, 100, 101, 102, 15, 16 ), PoolIntArray( 101, 100, 103, 104, 105 ), PoolIntArray( 104, 106, 107, 105 ), PoolIntArray( 108, 16, 109, 110, 111, 70, 97 ), PoolIntArray( 108, 98, 16 ), PoolIntArray( 69, 95, 70 ), PoolIntArray( 74, 72, 27 ), PoolIntArray( 65, 43, 81 ), PoolIntArray( 76, 81, 86 ), PoolIntArray( 87, 76, 86 ) ]
 outlines = [ PoolVector2Array( -16, -16, 0, -16, -16, 0 ), PoolVector2Array( 960, -16, 976, -16, 976, 0 ), PoolVector2Array( 64, 384, 48, 384, 32, 368, 16, 368, 16, 192, 32, 176, 32, 160, 48, 144, 48, 128, 64, 128, 80, 112, 160, 112, 184, 88, 176, 80, 96, 80, 96, 48, 112, 48, 128, 32, 128, 16, 384, 16, 400, 32, 544, 32, 560, 48, 576, 48, 592, 64, 624, 64, 640, 80, 672, 80, 688, 64, 800, 64, 816, 80, 848, 80, 864, 96, 896, 96, 912, 112, 928, 112, 944, 128, 944, 352, 928, 368, 928, 384, 912, 400, 80, 400 ), PoolVector2Array( -16, 544, -16, 560, 0, 560 ), PoolVector2Array( 960, 560, 976, 544, 976, 560 ), PoolVector2Array( 400, 288, 400, 272, 384, 256, 368, 256, 352, 240, 336, 240, 336, 176, 320, 160, 304, 176, 288, 176, 272, 160, 256, 160, 240, 176, 208, 176, 192, 160, 160, 160, 152, 152, 144, 160, 160, 176, 176, 176, 192, 192, 256, 192, 272, 208, 304, 208, 304, 240, 320, 256, 320, 272, 352, 304, 384, 304, 400, 320, 416, 304 ), PoolVector2Array( 608, 272, 624, 256, 624, 240, 640, 224, 640, 192, 656, 176, 768, 176, 800, 208, 832, 208, 856, 232, 864, 224, 848, 208, 848, 192, 816, 160, 784, 160, 768, 144, 656, 144, 640, 160, 624, 160, 592, 192, 592, 208, 576, 224, 576, 240, 496, 320, 512, 336, 560, 336, 608, 288 ) ]
 
-[sub_resource type="Image" id=22]
+[sub_resource type="Image" id=26]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 205, 255, 0, 255, 1, 140, 0, 255, 128, 255, 0, 255 ),
 "format": "RGBA8",
@@ -55,10 +55,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=18]
+[sub_resource type="ImageTexture" id=24]
 flags = 0
 flags = 0
-image = SubResource( 22 )
+image = SubResource( 26 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=19]
@@ -67,7 +67,7 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 18 )
+shader_param/palette = SubResource( 24 )
 
 [sub_resource type="ConvexPolygonShape2D" id=12]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )

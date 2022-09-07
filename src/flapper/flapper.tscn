@@ -488,6 +488,7 @@ volume_db = -6.62745
 
 [node name="pio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 32 )
+volume_db = -15.1392
 
 [node name="explosion" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 19 )

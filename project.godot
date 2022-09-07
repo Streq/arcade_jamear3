@@ -105,7 +105,7 @@ _global_script_class_icons={
 [application]
 
 config/name="jamear3"
-run/main_scene="res://src/test/app_state/endless.tscn"
+run/main_scene="res://src/test/app_state/app_state_test.tscn"
 config/icon="res://assets/texture/icon.png"
 
 [autoload]

@@ -160,3 +160,5 @@ material = SubResource( 19 )
 
 [node name="portal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 814, 185 )
+
+[connection signal="player_exited" from="portal" to="." method="area_completed"]

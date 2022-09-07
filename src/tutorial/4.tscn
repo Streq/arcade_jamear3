@@ -8,7 +8,7 @@
 [ext_resource path="res://src/HUD/player_HUD.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=8]
 
-[sub_resource type="Image" id=25]
+[sub_resource type="Image" id=31]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -17,10 +17,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=19]
+[sub_resource type="ImageTexture" id=26]
 flags = 0
 flags = 0
-image = SubResource( 25 )
+image = SubResource( 31 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=17]
@@ -29,9 +29,9 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 19 )
+shader_param/palette = SubResource( 26 )
 
-[sub_resource type="Image" id=26]
+[sub_resource type="Image" id=32]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 49, 0, 75, 255, 202, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
@@ -40,10 +40,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=21]
+[sub_resource type="ImageTexture" id=28]
 flags = 0
 flags = 0
-image = SubResource( 26 )
+image = SubResource( 32 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
@@ -52,9 +52,9 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 21 )
+shader_param/palette = SubResource( 28 )
 
-[sub_resource type="Image" id=27]
+[sub_resource type="Image" id=33]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 205, 255, 0, 255, 1, 140, 0, 255, 128, 255, 0, 255 ),
 "format": "RGBA8",
@@ -63,10 +63,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=23]
+[sub_resource type="ImageTexture" id=30]
 flags = 0
 flags = 0
-image = SubResource( 27 )
+image = SubResource( 33 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=9]
@@ -75,7 +75,7 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 23 )
+shader_param/palette = SubResource( 30 )
 
 [sub_resource type="ConvexPolygonShape2D" id=24]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )

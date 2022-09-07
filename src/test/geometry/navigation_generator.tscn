@@ -15,7 +15,7 @@ block_size = 64
 use_parent_material = true
 tile_data = PoolIntArray(  )
 
-[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="." groups=["navigation"]]
 navpoly = SubResource( 1 )
 
 [node name="inflator" type="Node" parent="NavigationPolygonInstance"]

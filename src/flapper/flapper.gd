@@ -139,7 +139,7 @@ func die():
 	set_physics_process(false)
 	emit_signal("die")
 	if has_node("camera"):
-		NodeUtils.reparent_keep_transform(get_node("camera"),get_tree().current_scene)
+		NodeUtils.reparent_keep_transform(get_node("camera"),get_parent())
 	yield(get_tree().create_timer(3.0),"timeout")
 	queue_free()
 		
