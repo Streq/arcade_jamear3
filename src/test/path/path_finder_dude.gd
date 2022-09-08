@@ -17,7 +17,7 @@ func _physics_process(delta):
 #		agent.set_velocity(get_parent().velocity)
 		path = Navigation2DServer.map_get_path(agent.get_navigation_map(),current_pos,target_pos,true)
 		Navigation2DServer.map_force_update(agent.get_navigation_map())
-		print(Navigation2DServer.map_get_regions(agent.get_navigation_map()))
+#		print(Navigation2DServer.map_get_regions(agent.get_navigation_map()))
 	#	navigation_agent_2d.set_navigation_map(maps[0])
 	#	var path = navigation_agent_2d.get_nav_path()
 #		agent.get_final_location()

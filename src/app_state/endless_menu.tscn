@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/app_state/endless_menu.gd" type="Script" id=1]
+[ext_resource path="res://src/app_state/focus_keeper.tscn" type="PackedScene" id=2]
 
 [node name="endless_menu" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -29,6 +30,9 @@ margin_top = 24.0
 margin_right = 99.0
 margin_bottom = 44.0
 text = "back to menu"
+
+[node name="focus_keeper" parent="." instance=ExtResource( 2 )]
+first_focus = NodePath("../Control/VBoxContainer/play")
 
 [connection signal="pressed" from="Control/VBoxContainer/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/back_to_menu" to="." method="_on_back_to_menu_pressed"]

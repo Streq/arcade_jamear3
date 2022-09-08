@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/app_state/main_menu.gd" type="Script" id=1]
+[ext_resource path="res://src/HUD/char_select_button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/texture/nameathegame.png" type="Texture" id=3]
+[ext_resource path="res://src/app_state/focus_keeper.tscn" type="PackedScene" id=4]
 
 [node name="main_menu" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -9,26 +12,52 @@ script = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -29.0
-margin_top = -20.0
-margin_right = 29.0
-margin_bottom = 20.0
+margin_left = -160.0
+margin_top = -194.0
+margin_right = 160.0
+margin_bottom = 194.0
 
-[node name="tutorial" type="Button" parent="Control/VBoxContainer"]
-margin_right = 103.0
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer2"]
+margin_right = 320.0
+margin_bottom = 320.0
+texture = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer2"]
+margin_left = 108.0
+margin_top = 324.0
+margin_right = 211.0
+margin_bottom = 388.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="tutorial" type="Button" parent="Control/VBoxContainer2/VBoxContainer"]
+margin_left = 22.0
+margin_right = 80.0
 margin_bottom = 20.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "tutorial"
 
-[node name="endless" type="Button" parent="Control/VBoxContainer"]
+[node name="endless" type="Button" parent="Control/VBoxContainer2/VBoxContainer"]
 margin_top = 24.0
 margin_right = 103.0
 margin_bottom = 44.0
 text = "endless mode"
 
-[connection signal="pressed" from="Control/VBoxContainer/tutorial" to="." method="_on_tutorial_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/endless" to="." method="_on_endless_pressed"]
+[node name="Button" parent="Control/VBoxContainer2/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 48.0
+margin_right = 103.0
+margin_bottom = 64.0
+text = "HOLA AMIGOS"
+
+[node name="focus_keeper" parent="." instance=ExtResource( 4 )]
+first_focus = NodePath("../Control/VBoxContainer2/VBoxContainer/Button")
+
+[connection signal="pressed" from="Control/VBoxContainer2/VBoxContainer/tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer2/VBoxContainer/endless" to="." method="_on_endless_pressed"]
