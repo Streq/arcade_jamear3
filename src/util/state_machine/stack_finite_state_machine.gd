@@ -49,7 +49,7 @@ func _process_queue():
 	for op in queue:
 		match op.action:
 			Action.SWITCH:
-				_clear()
+				_change_state(op.name,op.params)
 			Action.PUSH:
 				_push_state(op.name,op.params)
 			Action.POP:
@@ -67,7 +67,11 @@ func push_state(state_name: String, params):
 func pop_state():
 	queue.push_back({"action":Action.POP})
 func change_state(state_name: String, params):
-	queue.push_back({"action":Action.SWITCH})
+	queue.push_back({
+		"action":Action.SWITCH,
+		"name": state_name,
+		"params": params
+	})
 func clear():
 	queue.push_back({"action":Action.CLEAR})
 

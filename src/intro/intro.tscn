@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/audio/sfx/woosh.wav" type="AudioStream" id=1]
+[ext_resource path="res://src/intro/intro.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -18,7 +19,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=1]
-length = 2.0
+length = 2.5
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Control/Sprite2:frame")
@@ -64,6 +65,7 @@ load_path = "res://.import/intro.png-823c2ce19bc572976e565ceda848bbce.stex"
 load_path = "res://.import/made_by_streq2.png-2e6acb73e3c4a09c613cd92bcbdbbbc9.stex"
 
 [node name="intro" type="CanvasLayer"]
+script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
@@ -97,3 +99,5 @@ __meta__ = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 volume_db = -12.4402
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

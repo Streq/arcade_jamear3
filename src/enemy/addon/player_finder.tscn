@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/test/path/path_finder_dude.gd" type="Script" id=1]
+[ext_resource path="res://src/debug/show_in_debug_only.tscn" type="PackedScene" id=2]
 
 [node name="player_finder" type="Node2D"]
 modulate = Color( 1, 0, 0, 1 )
@@ -11,3 +12,6 @@ script = ExtResource( 1 )
 [node name="Line2D" type="Line2D" parent="."]
 points = PoolVector2Array( 48, 7.99999, 8, 32, -40, 24, -24, -16, 0, -40, 40, -32, 56, -8, 64, 8 )
 width = 1.0
+
+[node name="show_in_debug_only" parent="Line2D" instance=ExtResource( 2 )]
+always_hide = true
