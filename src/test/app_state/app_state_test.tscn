@@ -3,9 +3,9 @@
 [ext_resource path="res://src/util/state_machine/stack_finite_state_machine.gd" type="Script" id=1]
 [ext_resource path="res://src/test/app_state/menu.gd" type="Script" id=2]
 [ext_resource path="res://src/test/app_state/app_state_test.gd" type="Script" id=3]
-[ext_resource path="res://src/test/app_state/endless_menu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/app_state/endless_menu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/test/app_state/endless.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/test/app_state/menu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/app_state/main_menu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/test/app_state/tutorial.tscn" type="PackedScene" id=7]
 
 [node name="Node2D" type="Node2D"]
@@ -15,21 +15,18 @@ script = ExtResource( 3 )
 script = ExtResource( 1 )
 start_state = "menu"
 
-[node name="menu" parent="state_machine" instance=ExtResource( 6 )]
-
-[node name="endless_menu" parent="state_machine" instance=ExtResource( 4 )]
-
-[node name="endless_game" type="Node" parent="state_machine"]
+[node name="menu" type="Node" parent="state_machine"]
 script = ExtResource( 2 )
+NODE = ExtResource( 6 )
 
-[node name="endless" parent="state_machine/endless_game" instance=ExtResource( 5 )]
+[node name="endless_menu" type="Node" parent="state_machine"]
+script = ExtResource( 2 )
+NODE = ExtResource( 4 )
+
+[node name="endless" type="Node" parent="state_machine"]
+script = ExtResource( 2 )
+NODE = ExtResource( 5 )
 
 [node name="tutorial" type="Node" parent="state_machine"]
 script = ExtResource( 2 )
-
-[node name="tutorial" parent="state_machine/tutorial" instance=ExtResource( 7 )]
-
-[connection signal="entered" from="state_machine/endless_game" to="state_machine/endless_game/endless" method="start"]
-[connection signal="go_back" from="state_machine/endless_game/endless" to="state_machine/endless_game" method="pop"]
-[connection signal="entered" from="state_machine/tutorial" to="state_machine/tutorial/tutorial" method="start"]
-[connection signal="go_back" from="state_machine/tutorial/tutorial" to="state_machine/tutorial" method="pop"]
+NODE = ExtResource( 7 )

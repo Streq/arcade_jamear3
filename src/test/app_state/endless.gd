@@ -11,6 +11,8 @@ signal new_level(player)
 signal new_game()
 signal go_back()
 
+var app_state_node
+
 var player_alive = false
 var player
 func start():
@@ -43,8 +45,7 @@ func failure():
 func _ready():
 	difficulty.score = score
 	gameover_hud.score = score
-	if get_tree().current_scene == self:
-		start()
+	start()
 		
 func _input(event):
 	if OS.is_debug_build():
@@ -56,4 +57,4 @@ func _on_new_game():
 
 
 func _on_go_back():
-	emit_signal("go_back")
+	app_state_node.pop()
