@@ -1,8 +1,6 @@
 extends CanvasLayer
 
 
-export var time_difficulty = 0.0
-export var level_difficulty = 0.0
 onready var tiempo_label = $tiempo_label
 
 

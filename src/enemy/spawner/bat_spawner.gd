@@ -40,7 +40,7 @@ func _on_Timer_timeout():
 func get_random_point():
 	var enabled_points = []
 	for point in get_children():
-		if "enabled" in point and point.enabled:
+		if point.is_in_group("npc_spawn_point") and point.enabled:
 			enabled_points.append(point)
 	
 	if !enabled_points.size():

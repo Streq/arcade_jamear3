@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/util/state_machine/stack_finite_state_machine.gd" type="Script" id=1]
 [ext_resource path="res://src/test/app_state/menu.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/app_state/main_menu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/test/app_state/tutorial.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/intro/intro.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/gamemode/single_room/single_room.tscn" type="PackedScene" id=9]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
@@ -31,6 +32,10 @@ NODE = ExtResource( 4 )
 [node name="endless" type="Node" parent="state_machine"]
 script = ExtResource( 2 )
 NODE = ExtResource( 5 )
+
+[node name="endless_single_room" type="Node" parent="state_machine"]
+script = ExtResource( 2 )
+NODE = ExtResource( 9 )
 
 [node name="tutorial" type="Node" parent="state_machine"]
 script = ExtResource( 2 )

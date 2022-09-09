@@ -76,4 +76,3 @@ texture = ExtResource( 9 )
 [connection signal="next_level" from="circuit" to="." method="_on_next_level"]
 [connection signal="go_back" from="gameover_HUD" to="." method="_on_go_back"]
 [connection signal="new_game" from="gameover_HUD" to="." method="_on_new_game"]
-[connection signal="set_to" from="player_HUD" to="player_HUD/HUD_map" method="set_to"]
