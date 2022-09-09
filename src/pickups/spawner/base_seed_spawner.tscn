@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/test/food/seed_spawner.gd" type="Script" id=1]
 [ext_resource path="res://src/test/spawning/spawn_area.gd" type="Script" id=2]
 [ext_resource path="res://src/debug/show_in_debug_only.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/debug/show_in_debug_only.gd" type="Script" id=4]
 [ext_resource path="res://src/portal/portal.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/pickups/seed_no_hud.tscn" type="PackedScene" id=6]
 
@@ -20,6 +19,5 @@ color = Color( 1, 0, 0, 0.494118 )
 polygon = PoolVector2Array( 17.1278, 23.4435, 164.959, 23.4435, 164.959, 108.63, 17.1278, 108.63 )
 script = ExtResource( 2 )
 
-[node name="show_in_debug_only" type="Node" parent="." instance=ExtResource( 3 )]
-script = ExtResource( 4 )
+[node name="show_in_debug_only" parent="." instance=ExtResource( 3 )]
 always_hide = true

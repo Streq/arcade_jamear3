@@ -30,6 +30,7 @@ func _ready():
 	ready = true
 
 func trigger(value):
+	
 	var mapped = range_lerp(
 			value,
 			min_difficulty,

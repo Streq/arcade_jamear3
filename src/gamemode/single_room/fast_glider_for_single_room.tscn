@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
+[ext_resource path="res://src/flapper/presets/fast_glider.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/enemy/set_to_difficulty.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/enemy/difficulty.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Image" id=6]
+data = {
+"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=5]
+flags = 0
+flags = 0
+image = SubResource( 6 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 1.0
+shader_param/palette = SubResource( 5 )
+
+[node name="fast_glider" instance=ExtResource( 2 )]
+
+[node name="difficulty" parent="." index="0" instance=ExtResource( 4 )]
+
+[node name="energy" parent="." index="25"]
+max_value = 64.0
+value = 64.0
+
+[node name="set_to_difficulty" parent="energy" index="0" instance=ExtResource( 3 )]
+difficulty = NodePath("../../difficulty")
+prop = "flap_cost"
+min_value = 1.0
+max_value = 4.0
+
+[node name="energy_bar" parent="." index="26"]
+visible = true
+
+[node name="Sprite" parent="." index="29"]
+material = SubResource( 3 )
+
+[node name="palette" parent="Sprite" index="1"]
+material = SubResource( 3 )

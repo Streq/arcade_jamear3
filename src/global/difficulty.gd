@@ -11,7 +11,12 @@ export var start_difficulty := 0.0
 export var difficulty_increase_scale := 1.0
 export var difficulty_decrease_per_level_compeltion := 20.0
 export var difficulty_increase_per_level := 10.0
-var score = null
+
+export var score_path : NodePath = NodePath("../score")
+
+onready var score = get_node(score_path) if has_node(score_path) else null 
+
+
 func get_difficulty():
 #	return 380.0
 	return start_difficulty + _get_base_difficulty()
