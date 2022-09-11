@@ -51,6 +51,9 @@ func _input(event):
 	if OS.is_debug_build():
 		if event.is_action_pressed("next_level"):
 			circuit.next_level()
+	if event.is_action_pressed("pause"):
+		pause()
+	
 
 func _on_new_game():
 	start()
@@ -58,3 +61,7 @@ func _on_new_game():
 
 func _on_go_back():
 	app_state_node.pop()
+
+func pause():
+	if player_alive:
+		app_state_node.push("pause")

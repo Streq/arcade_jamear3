@@ -6,9 +6,19 @@ export var gravity := 100.0
 export var friction := 10.0
 export var velocity := Vector2()
 onready var visibility_notifier_2d = $VisibilityNotifier2D
-
+const MAX_FEATHERS = 200
 
 var angular_inertia := 0.0
+
+func _ready():
+	var feathers : Array = Group.get_all("feather")
+	if feathers.size() > MAX_FEATHERS:
+#		for i in range(0, feathers.size()-MAX_FEATHERS):
+#			feathers[i].queue_free()
+#		queue_free()
+		pass
+	
+
 func _physics_process(delta):
 	global_position += velocity*delta
 	velocity.y += gravity*delta

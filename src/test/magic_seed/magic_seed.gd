@@ -12,7 +12,9 @@ export var EFFECT : PackedScene
 
 func _on_area_entered(area):
 	var flapper = area.get_parent()
-	flapper.add_child(EFFECT.instance())
+	var effect = EFFECT.instance()
+	flapper.add_child(effect)
+	effect.call_deferred("trigger")
 	if flapper.addons.has("energy"):
 		var energy = flapper.addons["energy"]
 		energy.set_value(energy.value+amount)

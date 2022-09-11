@@ -1,24 +1,40 @@
 extends Node
-onready var palette = $palette
-onready var hitbox = $hitbox
 
-var original_hard_collision_threshold = 0.0
-var original_soft_collision_threshold = 0.0
+export var original_hard_collision_threshold = 0.0
+export var original_soft_collision_threshold = 0.0
+
+onready var palette = $palette
+export var HITBOX :PackedScene
+
 onready var energy_bar = $energy_bar
 onready var timer = $Timer
 
-var wait_time = 13.0
+
+#onready var palette = _get_node("palette")
+#onready var hitbox = _get_node("hitbox")
+#
+#onready var energy_bar = _get_node("energy_bar")
+#onready var timer = _get_node("Timer")
+
+export var wait_time = 13.0
+
 export var increase_on_seed = 2.5
+#
+#func _get_node(lmao):
+#	return get_node(lmao)
 
 func _ready():
 	timer.start(wait_time)
-	call_deferred("trigger")
+	palette.update_parent_material()
+	
+#	call_deferred("trigger")
 	
 func trigger():
 	var parent = get_parent()
-#	if !parent.sprite:
-#		yield(parent,"ready")
-	
+	if parent.addons.has("magic_seed"):
+		parent.addons.magic_seed.wear_off()
+		yield(get_tree(),"idle_frame")
+	parent.addons.magic_seed = self
 	original_hard_collision_threshold = parent.hard_collision_threshold
 	original_soft_collision_threshold = parent.soft_collision_threshold
 
@@ -28,9 +44,10 @@ func trigger():
 	parent.hurtbox.monitoring = false
 	parent.hard_collision_threshold = 1000000.0
 	parent.soft_collision_threshold = 1000000.0
-	remove_child(hitbox)
+	var hitbox = HITBOX.instance()
 	parent.add_child(hitbox)
 	hitbox.owner = parent
+	connect("tree_exited",hitbox,"queue_free",[],CONNECT_PERSIST)
 	parent.turbo_flap = true
 	parent.connect("seed_taken",self,"_on_seed_taken")
 	pass
@@ -45,6 +62,7 @@ func _physics_process(delta):
 	energy_bar.ratio = timer.time_left/wait_time
 func wear_off():
 	var parent = get_parent()
+	parent.addons.erase("magic_seed")
 #	if !parent.sprite:
 #		yield(parent,"ready")
 	parent.sprite.material = parent.material
@@ -53,7 +71,7 @@ func wear_off():
 	parent.hurtbox.monitoring = true
 	parent.hard_collision_threshold = original_hard_collision_threshold
 	parent.soft_collision_threshold = original_soft_collision_threshold
-	hitbox.queue_free()
+#	hitbox.queue_free()
 	
 	parent.turbo_flap = false
 	queue_free()

@@ -1,0 +1,242 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://src/enemy/ghost/fast_ghost.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=2]
+[ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/test/center_of_mass/target_center_of_mass.gd" type="Script" id=4]
+[ext_resource path="res://src/flapper/presets/fast_glider.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/test/center_of_mass/explode_action.gd" type="Script" id=6]
+[ext_resource path="res://src/pickups/out_of_sight_arrow.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/enemy/set_to_difficulty.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/enemy/difficulty.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/enemy/ghost/hurt_handler.gd" type="Script" id=10]
+[ext_resource path="res://src/enemy/ghost/ghost.gd" type="Script" id=11]
+[ext_resource path="res://src/render/indexed_sprite.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/enemy/addon/player_targeter.gd" type="Script" id=13]
+[ext_resource path="res://src/enemy/ghost/update_target_to_closest.gd" type="Script" id=14]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 6.0
+
+[sub_resource type="Animation" id=1]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "turn_around"
+} ]
+}
+
+[sub_resource type="Image" id=15]
+data = {
+"data": PoolByteArray( 0, 0, 0, 255, 255, 0, 0, 255, 115, 0, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=14]
+flags = 0
+flags = 0
+image = SubResource( 15 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 14 )
+
+[sub_resource type="StreamTexture" id=8]
+load_path = "res://.import/floaty.png-1fe1175cb100e39cd3cfb4855d2c2c10.stex"
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 88.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ghost" parent="." instance=ExtResource( 1 )]
+position = Vector2( 352, 192 )
+
+[node name="ghost2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 256, 256 )
+
+[node name="ghost3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 472, 200 )
+
+[node name="ghost4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 216, 232 )
+
+[node name="ghost5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 264, 280 )
+
+[node name="ghost6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 168, 184 )
+
+[node name="ghost7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 576, 248 )
+
+[node name="ghost8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 328, 160 )
+
+[node name="ghost9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 248, 160 )
+
+[node name="ghost10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 576, 352 )
+
+[node name="explosive_ghost" type="KinematicBody2D" parent="." groups=["ghost"]]
+position = Vector2( 392, 320 )
+collision_layer = 128
+collision_mask = 128
+script = ExtResource( 11 )
+speed = 500.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="explosive_ghost"]
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="explosive_ghost"]
+autoplay = "floating"
+playback_process_mode = 0
+anims/floating = SubResource( 1 )
+anims/turn = SubResource( 12 )
+
+[node name="hitbox" type="Area2D" parent="explosive_ghost"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="explosive_ghost/hitbox"]
+shape = SubResource( 2 )
+
+[node name="out_of_sight_arrow" parent="explosive_ghost" instance=ExtResource( 7 )]
+
+[node name="Sprite" parent="explosive_ghost/out_of_sight_arrow/CanvasLayer/arrow" index="0"]
+modulate = Color( 1, 0, 0, 1 )
+
+[node name="set_to_difficulty" parent="explosive_ghost" instance=ExtResource( 8 )]
+difficulty = NodePath("../difficulty")
+prop = "speed"
+min_value = 50.0
+max_value = 1200.0
+max_difficulty = 400.0
+
+[node name="Sprite" parent="explosive_ghost" instance=ExtResource( 12 )]
+material = SubResource( 5 )
+use_parent_material = true
+texture = SubResource( 8 )
+hframes = 2
+vframes = 2
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PUFuaW1hdGlvblBsYXllcgpzb3VyY2V8PXJlczovL2Fzc2V0cy9hc2Vwcml0ZS9mbG9hdHkuYXNlcHJpdGUKbGF5ZXJ8PQpvcF9leHB8PUZhbHNlCm9fZm9sZGVyfD0Kb19uYW1lfD0Kb25seV92aXNpYmxlfD1GYWxzZQpvX2V4X3B8PQo="
+}
+palette = PoolColorArray( 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1 )
+
+[node name="hurtbox" type="Area2D" parent="explosive_ghost"]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="explosive_ghost/hurtbox"]
+shape = SubResource( 11 )
+
+[node name="hurt_handler" type="Node" parent="explosive_ghost"]
+script = ExtResource( 10 )
+
+[node name="player_targeter" type="Node" parent="explosive_ghost"]
+script = ExtResource( 13 )
+
+[node name="difficulty" parent="explosive_ghost" instance=ExtResource( 9 )]
+value = 30.0
+
+[node name="update_target_to_closest" type="Node" parent="explosive_ghost"]
+script = ExtResource( 14 )
+
+[node name="palette" parent="explosive_ghost" instance=ExtResource( 3 )]
+palette = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1, 0.45098, 0, 0, 1 )
+material = SubResource( 5 )
+glow = true
+glow_speed = 2.0
+
+[node name="target_center_of_mass" type="Node2D" parent="explosive_ghost"]
+script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="explosive_ghost/target_center_of_mass"]
+visible = false
+margin_left = -4.0
+margin_top = -4.0
+margin_right = 4.0
+margin_bottom = 4.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="explode_action" type="Node2D" parent="explosive_ghost"]
+script = ExtResource( 6 )
+
+[node name="enemy_detect" type="Area2D" parent="explosive_ghost/explode_action"]
+collision_layer = 0
+collision_mask = 130
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="explosive_ghost/explode_action/enemy_detect"]
+shape = SubResource( 7 )
+
+[node name="hitbox" type="Area2D" parent="explosive_ghost/explode_action"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="explosive_ghost/explode_action/hitbox"]
+shape = SubResource( 7 )
+disabled = true
+
+[node name="Timer" type="Timer" parent="explosive_ghost/explode_action"]
+process_mode = 0
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="fast_glider" parent="." instance=ExtResource( 5 )]
+position = Vector2( 632, 120 )
+
+[connection signal="area_entered" from="explosive_ghost/hurtbox" to="explosive_ghost/hurt_handler" method="_on_hit"]
+[connection signal="timeout" from="explosive_ghost/explode_action/Timer" to="explosive_ghost/explode_action" method="trigger"]
+
+[editable path="explosive_ghost/out_of_sight_arrow"]

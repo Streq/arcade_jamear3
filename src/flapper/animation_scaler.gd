@@ -8,6 +8,7 @@ func _ready():
 	var player = get_parent()
 	yield(owner,"ready")
 	
+	
 	for anim in player.get_animation_list():
 		originals[anim] = player.get_animation(anim).length
 	update_lengths()

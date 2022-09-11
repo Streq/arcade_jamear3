@@ -1,16 +1,19 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/util/state_machine/stack_finite_state_machine.gd" type="Script" id=1]
 [ext_resource path="res://src/test/app_state/menu.gd" type="Script" id=2]
 [ext_resource path="res://src/test/app_state/app_state_test.gd" type="Script" id=3]
 [ext_resource path="res://src/app_state/endless_menu.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/test/app_state/endless.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/test/app_state/playing_state.gd" type="Script" id=5]
 [ext_resource path="res://src/app_state/main_menu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/test/app_state/tutorial.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/intro/intro.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/gamemode/single_room/single_room.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/app_state/pause.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/test/app_state/endless.tscn" type="PackedScene" id=11]
 
 [node name="Node2D" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 3 )
 
 [node name="state_machine" type="Node" parent="."]
@@ -21,6 +24,10 @@ start_state = "intro"
 script = ExtResource( 2 )
 NODE = ExtResource( 8 )
 
+[node name="pause" type="Node" parent="state_machine"]
+script = ExtResource( 2 )
+NODE = ExtResource( 10 )
+
 [node name="menu" type="Node" parent="state_machine"]
 script = ExtResource( 2 )
 NODE = ExtResource( 6 )
@@ -30,13 +37,13 @@ script = ExtResource( 2 )
 NODE = ExtResource( 4 )
 
 [node name="endless" type="Node" parent="state_machine"]
-script = ExtResource( 2 )
-NODE = ExtResource( 5 )
+script = ExtResource( 5 )
+NODE = ExtResource( 11 )
 
 [node name="endless_single_room" type="Node" parent="state_machine"]
-script = ExtResource( 2 )
+script = ExtResource( 5 )
 NODE = ExtResource( 9 )
 
 [node name="tutorial" type="Node" parent="state_machine"]
-script = ExtResource( 2 )
+script = ExtResource( 5 )
 NODE = ExtResource( 7 )

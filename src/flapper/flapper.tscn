@@ -588,6 +588,7 @@ script = ExtResource( 34 )
 
 [connection signal="die" from="." to="hurtbox/CollisionShape2D" method="set_disabled" flags=3 binds= [ true ]]
 [connection signal="failed_flap" from="." to="pio" method="play"]
+[connection signal="failed_flap" from="." to="energy" method="_on_flapped"]
 [connection signal="flapped" from="." to="flap" method="play"]
 [connection signal="graze" from="." to="roce" method="trigger"]
 [connection signal="hard_collision" from="." to="many_feathers_slow" method="_on_collision"]

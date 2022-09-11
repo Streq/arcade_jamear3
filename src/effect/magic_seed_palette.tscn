@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
+[ext_resource path="res://src/color/palette.gd" type="Script" id=2]
+
+[sub_resource type="Image" id=74]
+data = {
+"data": PoolByteArray( 151, 0, 0, 255, 214, 86, 0, 255, 255, 255, 255, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=73]
+flags = 0
+flags = 0
+image = SubResource( 74 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=60]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 73 )
+
+[node name="palette" type="Node"]
+script = ExtResource( 2 )
+palette = PoolColorArray( 0.592157, 0, 0, 1, 0.843137, 0.337255, 0, 1, 1, 1, 1, 1 )
+material = SubResource( 60 )
+glow = true
+glow_speed = 6.0

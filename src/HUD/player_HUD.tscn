@@ -37,4 +37,3 @@ anchor_left = 1.0
 anchor_right = 1.0
 
 [connection signal="set_to" from="." to="HUD_map" method="set_to"]
-[connection signal="set_to" from="HUD_map" to="HUD_map/Control/MarginContainer/ViewportContainer/Viewport/follow_player" method="set_to"]

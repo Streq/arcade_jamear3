@@ -28,6 +28,7 @@ atlas = ExtResource( 17 )
 region = Rect2( 0, 0, 256, 8 )
 
 [node name="tutorial" type="Node2D"]
+pause_mode = 1
 script = ExtResource( 2 )
 
 [node name="player_hud" type="Node" parent="."]

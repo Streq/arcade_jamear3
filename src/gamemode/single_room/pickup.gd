@@ -2,12 +2,7 @@ extends Area2D
 signal picked_up(by)
 
 
-export var amount := 1000.0
-
 onready var pickup_sound = $pickup_sound
-
-onready var line = $nav_indicator/Line2D
-
 
 
 func _on_area_entered(area):

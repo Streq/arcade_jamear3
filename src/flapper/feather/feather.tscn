@@ -23,7 +23,7 @@ tracks/0/keys = {
 [sub_resource type="StreamTexture" id=2]
 load_path = "res://.import/feather.png-347bb46a10b1a965fddc43300a5bfedb.stex"
 
-[node name="feather" type="Node2D"]
+[node name="feather" type="Node2D" groups=["feather"]]
 script = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

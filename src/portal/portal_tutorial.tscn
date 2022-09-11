@@ -5,7 +5,7 @@
 [ext_resource path="res://src/portal/portal.gd" type="Script" id=3]
 [ext_resource path="res://src/pickups/out_of_sight_arrow.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/test/enemy_test/portal/portal_sprite.gd" type="Script" id=7]
-[ext_resource path="res://free.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/util/free.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=32]
 resource_name = "play"

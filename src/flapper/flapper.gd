@@ -9,6 +9,7 @@ signal touch_collision(prev_velocity,post_velocity)
 signal graze(applied_friction)
 signal entered_portal(portal)
 signal seed_taken()
+signal duplicated(clone)
 signal die
 
 
@@ -47,9 +48,10 @@ var can_flap = true
 var addons = {}
 
 var ready = false
+var dead = false
 
 var velocity = Vector2()
-var direction := Vector2.UP
+export var direction := Vector2.UP
 onready var state_machine := $state_machine
 onready var state_animation := $"%state_animation"
 onready var sprite = $Sprite
@@ -132,11 +134,11 @@ func _physics_process(delta):
 		velocity = new_velocity
 	
 
-
 func die():
 	
 	visible = false
 	set_physics_process(false)
+	dead = true
 	emit_signal("die")
 	if has_node("camera"):
 		NodeUtils.reparent_keep_transform(get_node("camera"),get_parent())

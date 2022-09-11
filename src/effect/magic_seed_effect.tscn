@@ -2,12 +2,13 @@
 
 [ext_resource path="res://src/HUD/small_energy_bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=2]
-[ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/effect/magic_seed_palette.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/effect/magic_seed_effect.gd" type="Script" id=4]
 [ext_resource path="res://assets/audio/sfx/seed_power.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/font/ProggyClean.ttf/ProggyClean.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://src/effect/magic_seed_hitbox.tscn" type="PackedScene" id=7]
 
-[sub_resource type="Image" id=74]
+[sub_resource type="Image" id=77]
 data = {
 "data": PoolByteArray( 151, 0, 0, 255, 214, 86, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -16,22 +17,19 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=73]
+[sub_resource type="ImageTexture" id=76]
 flags = 0
 flags = 0
-image = SubResource( 74 )
+image = SubResource( 77 )
 size = Vector2( 3, 1 )
 
-[sub_resource type="ShaderMaterial" id=60]
+[sub_resource type="ShaderMaterial" id=74]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/palette_size = 3
-shader_param/offset = 2
+shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 73 )
-
-[sub_resource type="CircleShape2D" id=64]
-radius = 7.07107
+shader_param/palette = SubResource( 76 )
 
 [sub_resource type="Gradient" id=34]
 offsets = PoolRealArray( 0, 0.283237, 1 )
@@ -56,27 +54,18 @@ fill_from = Vector2( 0, 1 )
 font_data = ExtResource( 6 )
 
 [node name="magic_seed_effect" type="Node2D"]
-material = SubResource( 60 )
+material = SubResource( 74 )
 script = ExtResource( 4 )
+HITBOX = ExtResource( 7 )
 
 [node name="palette" parent="." instance=ExtResource( 3 )]
-palette = PoolColorArray( 0.592157, 0, 0, 1, 0.843137, 0.337255, 0, 1, 1, 1, 1, 1 )
-material = SubResource( 60 )
-glow = true
-glow_speed = 6.0
+material = SubResource( 74 )
 
 [node name="Timer" type="Timer" parent="." groups=["magic_seed_effect"]]
 process_mode = 0
 wait_time = 15.0
 one_shot = true
 autostart = true
-
-[node name="hitbox" type="Area2D" parent="."]
-collision_layer = 32
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-shape = SubResource( 64 )
 
 [node name="energy_bar" parent="." instance=ExtResource( 1 )]
 texture_under = SubResource( 68 )

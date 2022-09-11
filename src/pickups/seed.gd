@@ -6,7 +6,7 @@ export var amount := 1000.0
 
 onready var pickup_sound = $pickup_sound
 
-onready var line = $nav_indicator/Line2D
+onready var line = $nav_indicator/Line2D if has_node("nav_indicator/Line2D") else null
 
 
 

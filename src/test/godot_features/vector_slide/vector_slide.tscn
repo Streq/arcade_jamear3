@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/test/godot_features/vector_slide/vector_slide.gd" type="Script" id=1]
+[ext_resource path="res://src/test/godot_features/vector_slide/connect.gd" type="Script" id=2]
+[ext_resource path="res://src/test/godot_features/vector_slide/plane.gd" type="Script" id=3]
+[ext_resource path="res://assets/font/proggy.tres" type="DynamicFont" id=4]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rot")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "play"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rot")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+vector = Vector2( 100, 100 )
+normal = Vector2( 1, 0 )
+result = Vector2( 0, 100 )
+
+[node name="plane" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 100, 0, -100 )
+width = 1.0
+default_color = Color( 1, 0, 0.937255, 1 )
+script = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="plane"]
+margin_top = 104.0
+margin_right = 40.0
+margin_bottom = 118.0
+rect_rotation = 89.9999
+custom_fonts/font = ExtResource( 4 )
+text = "plane"
+
+[node name="vector" type="Position2D" parent="."]
+position = Vector2( 100, 100 )
+
+[node name="line" type="Line2D" parent="vector"]
+position = Vector2( -100, -100 )
+points = PoolVector2Array( 100, 100, 0, 0 )
+width = 1.0
+default_color = Color( 0, 0.164706, 1, 1 )
+script = ExtResource( 2 )
+
+[node name="Label2" type="Label" parent="vector"]
+margin_left = -18.0
+margin_top = -8.0
+margin_right = 24.0
+margin_bottom = 6.0
+custom_fonts/font = ExtResource( 4 )
+text = "vector"
+
+[node name="normal" type="Position2D" parent="."]
+position = Vector2( 100, 0 )
+
+[node name="line" type="Line2D" parent="normal"]
+position = Vector2( -100, 0 )
+points = PoolVector2Array( 100, 0, 0, 0 )
+width = 1.0
+default_color = Color( 1, 0, 0, 1 )
+script = ExtResource( 2 )
+
+[node name="Label2" type="Label" parent="normal"]
+margin_left = -18.0
+margin_top = -8.0
+margin_right = 24.0
+margin_bottom = 6.0
+custom_fonts/font = ExtResource( 4 )
+text = "normal"
+
+[node name="result" type="Position2D" parent="."]
+position = Vector2( 0, 100 )
+
+[node name="line" type="Line2D" parent="result"]
+position = Vector2( 0, -100 )
+points = PoolVector2Array( 0, 100, 0, 0 )
+width = 1.0
+default_color = Color( 0, 1, 0.133333, 1 )
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "play"
+anims/RESET = SubResource( 1 )
+anims/play = SubResource( 2 )
+
+[connection signal="update" from="normal/line" to="plane" method="update_pos"]

@@ -26,8 +26,6 @@ func get_facing_dir():
 
 
 func  _physics_process(delta):
-	if get_tree().has_group("flapper"):
-		target = Group.get_one("flapper")
 	if is_instance_valid(target) and target.is_inside_tree():
 		var dir = global_position.direction_to(target.global_position)
 		velocity += dir*speed*delta
@@ -35,11 +33,9 @@ func  _physics_process(delta):
 			animation_player.play("turn")
 		elif !animation_player.is_playing():
 			animation_player.play("floating")
-	else:
-		_ready()
 	velocity = move_and_slide(velocity)
 	velocity *= (1.0-delta*air_friction)
 	
 	
 	
-	
+

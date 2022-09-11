@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
 [ext_resource path="res://src/flapper/presets/fast_glider.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/enemy/set_to_difficulty.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/enemy/difficulty.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/flapper/addons/kill_on_no_energy.gd" type="Script" id=5]
+[ext_resource path="res://src/flapper/addons/explode_action.gd" type="Script" id=6]
 
 [sub_resource type="Image" id=6]
 data = {
@@ -50,3 +52,15 @@ material = SubResource( 3 )
 
 [node name="palette" parent="Sprite" index="1"]
 material = SubResource( 3 )
+
+[node name="kill_on_no_energy" type="Node" parent="." index="31"]
+script = ExtResource( 5 )
+
+[node name="explode_action" type="Node" parent="." index="32"]
+script = ExtResource( 6 )
+
+[connection signal="trigger" from="kill_on_no_energy" to="explode_action" method="trigger"]
+[connection signal="trigger" from="explode_action" to="." method="die"]
+[connection signal="trigger" from="explode_action" to="many_feathers_slow" method="_on_collision_no_args"]
+[connection signal="trigger" from="explode_action" to="some_feathers_fast" method="_on_collision_no_args"]
+[connection signal="trigger" from="explode_action" to="explosion" method="play"]
