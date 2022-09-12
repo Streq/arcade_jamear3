@@ -1,6 +1,7 @@
 extends Node2D
 
 signal shoot(wearer)
+signal been_shot()
 
 var wearer
 
@@ -17,3 +18,6 @@ func pre_ready(wearer):
 
 func shoot():
 	emit_signal("shoot",wearer)
+#	wearer.velocity += Vector2.UP.rotated(global_rotation)*100
+	emit_signal("been_shot")
+	
