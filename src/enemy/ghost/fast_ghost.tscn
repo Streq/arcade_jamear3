@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/enemy/ghost/ghost.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/enemy/ghost/health.gd" type="Script" id=2]
+[ext_resource path="res://src/enemy/ghost/hit_animation.gd" type="Script" id=3]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -22,7 +24,7 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=7]
+[sub_resource type="Image" id=10]
 data = {
 "data": PoolByteArray( 255, 255, 255, 0, 255, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -34,15 +36,46 @@ data = {
 [sub_resource type="ImageTexture" id=6]
 flags = 0
 flags = 0
-image = SubResource( 7 )
+image = SubResource( 10 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
 shader = SubResource( 1 )
 shader_param/palette_size = 4
-shader_param/offset = null
+shader_param/offset = 0.0
 shader_param/palette = SubResource( 6 )
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2.0, 0.0 ]
+}
 
 [node name="ghost" instance=ExtResource( 1 )]
 
@@ -51,5 +84,16 @@ min_value = 50.0
 
 [node name="Sprite" parent="." index="5"]
 material = SubResource( 4 )
+
+[node name="health" type="Node" parent="." index="11"]
+script = ExtResource( 2 )
+
+[node name="hit_animation" type="AnimationPlayer" parent="." index="12"]
+anims/RESET = SubResource( 8 )
+anims/hit = SubResource( 9 )
+script = ExtResource( 3 )
+
+[connection signal="area_entered" from="hurtbox" to="health" method="_on_hit"]
+[connection signal="area_entered" from="hurtbox" to="hit_animation" method="_on_hit"]
 
 [editable path="out_of_sight_arrow"]

@@ -56,7 +56,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=3]
 length = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("pivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/imported = false
@@ -71,7 +71,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=12]
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("pivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/imported = false
@@ -127,7 +127,7 @@ tracks/0/keys = {
 } ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:frame")
+tracks/1/path = NodePath("pivot/Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/imported = false
@@ -156,7 +156,7 @@ tracks/0/keys = {
 } ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:frame")
+tracks/1/path = NodePath("pivot/Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/imported = false
@@ -200,7 +200,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:frame")
+tracks/2/path = NodePath("pivot/Sprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/imported = false
@@ -215,7 +215,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=5]
 length = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("pivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/imported = false
@@ -231,7 +231,7 @@ tracks/0/keys = {
 length = 0.2
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("pivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/imported = false
@@ -275,7 +275,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:frame")
+tracks/2/path = NodePath("pivot/Sprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/imported = false
@@ -291,7 +291,7 @@ tracks/2/keys = {
 length = 0.2
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("pivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/imported = false
@@ -306,7 +306,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=13]
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("pivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/imported = false
@@ -559,7 +559,10 @@ shape = SubResource( 24 )
 [node name="set_velocity_to_portal_exit" type="Node" parent="."]
 script = ExtResource( 33 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="pivot" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="pivot"]
+unique_name_in_owner = true
 material = SubResource( 33 )
 texture = SubResource( 43 )
 hframes = 6
@@ -569,16 +572,16 @@ __meta__ = {
 "_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PXN0YXRlX2FuaW1hdGlvbgpzb3VyY2V8PXJlczovL2Fzc2V0cy9hc2Vwcml0ZS9mbGFwcGVyLmFzZXByaXRlCmxheWVyfD0Kb3BfZXhwfD1GYWxzZQpvX2ZvbGRlcnw9cmVzOi8vYXNzZXRzL3RleHR1cmUKb19uYW1lfD0Kb25seV92aXNpYmxlfD1UcnVlCm9fZXhfcHw9Cg=="
 }
 
-[node name="ground_effect_detect" type="Area2D" parent="Sprite"]
+[node name="ground_effect_detect" type="Area2D" parent="pivot/Sprite"]
 unique_name_in_owner = true
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/ground_effect_detect"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/Sprite/ground_effect_detect"]
 position = Vector2( 0, 6 )
 shape = SubResource( 15 )
 disabled = true
 
-[node name="palette" parent="Sprite" instance=ExtResource( 13 )]
+[node name="palette" parent="pivot/Sprite" instance=ExtResource( 13 )]
 palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
 material = SubResource( 33 )
 glow_speed = 4.0
@@ -586,7 +589,9 @@ glow_speed = 4.0
 [node name="hud_tracker" type="Node" parent="."]
 script = ExtResource( 34 )
 
+[connection signal="die" from="." to="CollisionShape2D" method="set_disabled" flags=3 binds= [ true ]]
 [connection signal="die" from="." to="hurtbox/CollisionShape2D" method="set_disabled" flags=3 binds= [ true ]]
+[connection signal="die" from="." to="pickup_detect/CollisionShape2D" method="set_disabled" flags=3 binds= [ true ]]
 [connection signal="failed_flap" from="." to="pio" method="play"]
 [connection signal="failed_flap" from="." to="energy" method="_on_flapped"]
 [connection signal="flapped" from="." to="flap" method="play"]

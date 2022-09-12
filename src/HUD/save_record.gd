@@ -17,7 +17,7 @@ zxcvbnm
 export var CHAR_BUTTON : PackedScene
 export var SEND_BUTTON : PackedScene
 export var DEL_BUTTON : PackedScene
-export var max_name_length = 16
+export var max_name_length = 10
 export var columns = 10
 
 var resulting_name = "" 

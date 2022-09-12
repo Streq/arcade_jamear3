@@ -54,10 +54,11 @@ var velocity = Vector2()
 export var direction := Vector2.UP
 onready var state_machine := $state_machine
 onready var state_animation := $"%state_animation"
-onready var sprite = $Sprite
+onready var sprite = $"%Sprite"
 onready var animation_scaler = $"%animation_scaler"
-onready var palette = $Sprite/palette
+onready var palette = $"%Sprite/palette"
 onready var hurtbox = $hurtbox
+onready var pivot = $pivot
 
 
 func set_custom_animation_lengths(val):
@@ -90,7 +91,7 @@ func _physics_process(delta):
 		direction = Vector2.RIGHT.rotated(lerp_angle(direction.angle(),change_direction.angle(),delta*rotation_lerp))
 	
 	var point_dir = -direction.angle_to(Vector2.UP)
-	sprite.rotation = point_dir
+	pivot.rotation = point_dir
 #	sprite.rotation = stepify(point_dir,PI/8.0)
 #	print("point_dir:",point_dir," stepify:",stepify(point_dir,PI/8.0))
 	state_machine.physics_update(delta)
@@ -140,6 +141,7 @@ func die():
 	set_physics_process(false)
 	dead = true
 	emit_signal("die")
+	remove_from_group("flapper")
 	if has_node("camera"):
 		NodeUtils.reparent_keep_transform(get_node("camera"),get_parent())
 	yield(get_tree().create_timer(3.0),"timeout")

@@ -16,15 +16,10 @@ func apply(flapper:Node2D):
 #	clone(flapper, inertia + vel.rotated(hp*3))
 #	clone(flapper, inertia + vel.rotated(hp*4))
 	var loaded = load(flapper.filename)
-	clone(flapper, inertia + vel * 1,loaded)
-	clone(flapper, inertia + vel * 2,loaded)
-	clone(flapper, inertia + vel * -1,loaded)
-	clone(flapper, inertia + vel * -2,loaded)
-	clone(flapper, inertia + vel * 3,loaded)
-	clone(flapper, inertia + vel * 4,loaded)
-	clone(flapper, inertia + vel * -3,loaded)
-	clone(flapper, inertia + vel * -4,loaded)
-
+	for i in range(1,4):
+		clone(flapper, inertia + vel * i,loaded)
+		clone(flapper, inertia + vel * -i,loaded)
+	
 func clone(flapper:Node2D, dir, loaded):
 	call_deferred("_clone_from_file_deferred", flapper, dir, loaded)
 func clone2(flapper:Node2D, dir):

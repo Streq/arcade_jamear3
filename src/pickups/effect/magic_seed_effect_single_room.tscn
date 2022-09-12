@@ -3,7 +3,7 @@
 [ext_resource path="res://src/effect/magic_seed_effect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=2]
 
-[sub_resource type="Image" id=4]
+[sub_resource type="Image" id=6]
 data = {
 "data": PoolByteArray( 151, 0, 0, 255, 214, 86, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -12,19 +12,19 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=2]
+[sub_resource type="ImageTexture" id=5]
 flags = 0
 flags = 0
-image = SubResource( 4 )
+image = SubResource( 6 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/palette_size = 3
-shader_param/offset = 1
+shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 2 )
+shader_param/palette = SubResource( 5 )
 
 [node name="magic_seed_effect_single_room" instance=ExtResource( 1 )]
 material = SubResource( 3 )
