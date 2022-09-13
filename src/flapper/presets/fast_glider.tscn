@@ -3,7 +3,7 @@
 [ext_resource path="res://src/flapper/flapper.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=2]
 
-[sub_resource type="Image" id=6]
+[sub_resource type="Image" id=4]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -12,10 +12,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=5]
+[sub_resource type="ImageTexture" id=2]
 flags = 0
 flags = 0
-image = SubResource( 6 )
+image = SubResource( 4 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
@@ -24,7 +24,7 @@ shader = ExtResource( 2 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 5 )
+shader_param/palette = SubResource( 2 )
 
 [node name="fast_glider" instance=ExtResource( 1 )]
 __meta__ = {
@@ -61,8 +61,8 @@ inertia_multiplier = 0.5
 [node name="some_feathers_fast" parent="." index="8"]
 inertia_multiplier = 1.0
 
-[node name="Sprite" parent="." index="28"]
+[node name="Sprite" parent="pivot" index="0"]
 material = SubResource( 3 )
 
-[node name="palette" parent="Sprite" index="1"]
+[node name="palette" parent="pivot/Sprite" index="1"]
 material = SubResource( 3 )
