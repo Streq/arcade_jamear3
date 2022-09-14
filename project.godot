@@ -44,6 +44,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/global/math.gd"
 }, {
+"base": "Node",
+"class": "ModifierMap",
+"language": "GDScript",
+"path": "res://src/flapper/buffs/modifier_map.gd"
+}, {
+"base": "Node",
+"class": "ModifierNode",
+"language": "GDScript",
+"path": "res://src/flapper/buffs/modifier_list.gd"
+}, {
 "base": "Reference",
 "class": "NodeUtils",
 "language": "GDScript",
@@ -92,6 +102,8 @@ _global_script_class_icons={
 "GeometryUtils": "",
 "InputUtils": "",
 "Math": "",
+"ModifierMap": "",
+"ModifierNode": "",
 "NodeUtils": "",
 "PoolArray": "",
 "RenderUtils": "",

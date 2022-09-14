@@ -16,8 +16,12 @@ signal die
 export var gravity := 200.0
 export var air_friction := 0.0
 export (float, 0.0, 60.0) var rotation_lerp := 4.0
-export var strong_flap := 87.0
-export var weak_flap := 62.0
+export var strong_flap := 87.0 setget,get_strong_flap
+func get_strong_flap():
+	return modifiers.map.flap_power.apply(strong_flap)
+export var weak_flap := 62.0 setget,get_weak_flap
+func get_weak_flap():
+	return modifiers.map.flap_power.apply(weak_flap)
 export var failed_strong_flap := 50.0
 export var failed_weak_flap := 50.0
 export var glide_break_threshold := 200.0
@@ -30,15 +34,22 @@ export var glide_opposite_friction := 1.0
 export var broken_glide_opposite_friction := 0.01
 
 export var touch_collision_threshold := 50.0
-export var soft_collision_threshold := 200.0
-export var hard_collision_threshold := 500.0
+export var soft_collision_threshold := 200.0 setget,get_soft_collision_threshold
+func get_soft_collision_threshold():
+	return stats.resistance*soft_collision_threshold
+export var hard_collision_threshold := 500.0 setget,get_hard_collision_threshold
+func get_hard_collision_threshold():
+	return stats.resistance*hard_collision_threshold
+
 export var graze_threshold := 10.0
-export var delta_multiplier := 1.0
+export var delta_multiplier := 1.0 
 
 export var animation_speed_multiplier := 1.0 setget set_animation_speed
 export var custom_animation_lengths := {} setget set_custom_animation_lengths
 
-export var turbo_flap = false
+export var turbo_flap = false setget, has_turbo_flap
+func has_turbo_flap():
+	return turbo_flap
 
 export var bounciness = 0.25
 export var friction = 0.1
@@ -59,6 +70,8 @@ onready var animation_scaler = $"%animation_scaler"
 onready var palette = $"%Sprite/palette"
 onready var hurtbox = $hurtbox
 onready var pivot = $pivot
+onready var stats = $stats
+onready var modifiers = $modifier_map
 
 
 func set_custom_animation_lengths(val):

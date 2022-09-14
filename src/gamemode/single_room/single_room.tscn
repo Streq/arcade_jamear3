@@ -24,7 +24,7 @@
 [ext_resource path="res://src/pickups/spawner/fall_device.tscn" type="PackedScene" id=22]
 [ext_resource path="res://src/pickups/magic_seed_single_room.tscn" type="PackedScene" id=23]
 
-[sub_resource type="Image" id=76]
+[sub_resource type="Image" id=78]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 49, 0, 75, 255, 202, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
@@ -33,10 +33,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=72]
+[sub_resource type="ImageTexture" id=77]
 flags = 0
 flags = 0
-image = SubResource( 76 )
+image = SubResource( 78 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=62]
@@ -45,7 +45,7 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 72 )
+shader_param/palette = SubResource( 77 )
 
 [sub_resource type="Curve2D" id=66]
 _data = {
@@ -57,7 +57,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 904, 0 )
 }
 
-[sub_resource type="Image" id=77]
+[sub_resource type="Image" id=79]
 data = {
 "data": PoolByteArray( 135, 63, 0, 255, 235, 84, 31, 255, 255, 205, 58, 255, 255, 196, 0, 255 ),
 "format": "RGBA8",
@@ -69,7 +69,7 @@ data = {
 [sub_resource type="ImageTexture" id=74]
 flags = 0
 flags = 0
-image = SubResource( 77 )
+image = SubResource( 79 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=75]

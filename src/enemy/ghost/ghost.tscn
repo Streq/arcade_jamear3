@@ -77,7 +77,7 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=15]
+[sub_resource type="Image" id=17]
 data = {
 "data": PoolByteArray( 255, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -86,10 +86,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=13]
+[sub_resource type="ImageTexture" id=16]
 flags = 0
 flags = 0
-image = SubResource( 15 )
+image = SubResource( 17 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=7]
@@ -97,7 +97,7 @@ resource_local_to_scene = true
 shader = SubResource( 1 )
 shader_param/palette_size = 3
 shader_param/offset = 0.0
-shader_param/palette = SubResource( 13 )
+shader_param/palette = SubResource( 16 )
 
 [sub_resource type="StreamTexture" id=14]
 load_path = "res://.import/floaty.png-2a0073bf96087f1acf0b87e132d0ddb4.stex"

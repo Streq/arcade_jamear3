@@ -48,6 +48,7 @@ script = ExtResource( 1 )
 collision_layer = 32
 collision_mask = 0
 script = ExtResource( 10 )
+knockback = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource( 1 )
