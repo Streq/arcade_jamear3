@@ -1,53 +1,8 @@
-## Create project from skel
-```
-git clone https://github.com/Streq/GodotSkel.git miproject
-cd miproject
-rm -rf .git
-git init -b develop
-git add .
-git commit -m"first commit"
-gh repo create
+## Canario en la mina (titulo work in progress)
+jueguito que arrancó como entrega para JAMEAR 3, la cual GANÓ DESTRUYENDO A LA COMPETENCIA 
+![image](https://user-images.githubusercontent.com/8540266/189946999-e84e8bb3-634e-4da7-a7f4-6a9cfe17669d.png)
 
-? What would you like to do? Push an existing local repository to GitHub
-? Path to local repository .
-? Repository name miproject
-? Description description
-? Visibility Public
-✓ Created repository Streq/miproject on GitHub
-? Add a remote? Yes
-? What should the new remote be called? origin
-✓ Added remote git@github.com:Streq/miproject.git
-? Would you like to push commits from the current branch to "origin"? Yes
-✓ Pushed commits to git@github.com:Streq/miproject.git
+las limitaciones de la jam eran estas
+![image](https://user-images.githubusercontent.com/8540266/189947598-74cfc82a-fcd2-48e0-b01e-b32a85645780.png)
 
-```
-
-## Update secrets
-```
-cp secrets_template.sh secrets.sh
-chmod +x secrets.sh
-#edit secrets.sh with keys and configs
-./secrets.sh
-```
-
-## Create main
-```
-git checkout -b main
-git push origin main
-git push --set-upstream origin main
-git checkout develop
-```
-
-## Release
-```
-chmod +x release.sh
-./release.sh "release message"
-```
-
-## Versioning by commit message
-```
-#in develop
-git commit -m"(MAJOR) algo" # 1.0.0 -> 2.0.0
-git commit -m"(MINOR) algo" # 1.0.0 -> 1.1.0
-git commit -m"algo"         # 1.0.0 -> 1.0.1
-```
+El juego sigue en desarrollo, no tengo idea en qué dirección llevarlo ahora que terminó la jam pero me está dando ideas para otro juego tipo shooter donde el movimiento sea el mismo pero también puedas apuntar con la otra palanquita.
