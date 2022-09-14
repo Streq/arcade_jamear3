@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://src/gamemode/single_room/fast_glider_for_single_room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/gamemode/single_room/spawner.gd" type="Script" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://src/gamemode/single_room/fall_spawner.gd" type="Script" id=21]
 [ext_resource path="res://src/pickups/spawner/fall_device.tscn" type="PackedScene" id=22]
 [ext_resource path="res://src/pickups/magic_seed_single_room.tscn" type="PackedScene" id=23]
+[ext_resource path="res://src/pickups/sword.tscn" type="PackedScene" id=24]
 
 [sub_resource type="Image" id=78]
 data = {
@@ -139,6 +140,10 @@ script = ExtResource( 19 )
 
 [node name="gemini" parent="fall_spawner/spawn_source" instance=ExtResource( 18 )]
 scene = ExtResource( 6 )
+weight = 1.0
+
+[node name="sword" parent="fall_spawner/spawn_source" instance=ExtResource( 18 )]
+scene = ExtResource( 24 )
 weight = 1.0
 
 [node name="gun" parent="fall_spawner/spawn_source" instance=ExtResource( 18 )]

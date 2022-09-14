@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="StreamTexture" id=63]
+load_path = "res://.import/light.png-8f793d152d978730925beac65a7d342a.stex"
+
+[node name="Sprite" type="Sprite"]
+modulate = Color( 0.701961, 0.701961, 0.701961, 1 )
+show_behind_parent = true
+texture = SubResource( 63 )
+hframes = 3
+vframes = 3
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PUFuaW1hdGlvblBsYXllcgpzb3VyY2V8PXJlczovL2Fzc2V0cy9hc2Vwcml0ZS9saWdodC5hc2Vwcml0ZQpsYXllcnw9Cm9wX2V4cHw9VHJ1ZQpvX2ZvbGRlcnw9Cm9fbmFtZXw9Cm9ubHlfdmlzaWJsZXw9VHJ1ZQpvX2V4X3B8PQo="
+}

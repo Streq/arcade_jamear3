@@ -8,9 +8,9 @@ var wearer
 func _ready():
 	if !("addons" in wearer):
 		yield(wearer,"ready")
-	if wearer.addons.has("gun"):
-		wearer.addons["gun"].queue_free()
-	wearer.addons["gun"] = self
+	if wearer.addons.has("weapon"):
+		wearer.addons["weapon"].queue_free()
+	wearer.addons["weapon"] = self
 	wearer.connect("flapped", self, "shoot")
 
 func pre_ready(wearer):

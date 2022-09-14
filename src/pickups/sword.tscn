@@ -3,11 +3,11 @@
 [ext_resource path="res://src/pickups/player_magnet.gd" type="Script" id=1]
 [ext_resource path="res://src/pickups/gun_effect.gd" type="Script" id=2]
 [ext_resource path="res://assets/audio/sfx/seed.wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/texture/gun.png" type="Texture" id=4]
+[ext_resource path="res://assets/texture/sword.png" type="Texture" id=4]
 [ext_resource path="res://src/gamemode/single_room/pickup.gd" type="Script" id=5]
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=6]
 [ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/pickups/gun_addon.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/pickups/sword_addon.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/pickups/glow.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CircleShape2D" id=5]
@@ -18,7 +18,7 @@ radius = 5.09902
 
 [sub_resource type="Image" id=14]
 data = {
-"data": PoolByteArray( 0, 0, 0, 255, 68, 0, 0, 255, 255, 0, 0, 255 ),
+"data": PoolByteArray( 0, 0, 0, 255, 22, 112, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -86,7 +86,7 @@ tracks/1/keys = {
 "values": [ 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0 ]
 }
 
-[node name="gun" type="Area2D" groups=["seed"]]
+[node name="sword" type="Area2D" groups=["seed"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource( 5 )
@@ -114,7 +114,7 @@ material = SubResource( 8 )
 texture = ExtResource( 4 )
 
 [node name="palette" parent="Sprite" instance=ExtResource( 7 )]
-palette = PoolColorArray( 0, 0, 0, 1, 0.266667, 0, 0, 1, 1, 0, 0, 1 )
+palette = PoolColorArray( 0, 0, 0, 1, 0.0862745, 0.439216, 0, 1, 1, 1, 1, 1 )
 material = SubResource( 8 )
 
 [node name="Sprite2" parent="Sprite" instance=ExtResource( 9 )]
@@ -122,7 +122,7 @@ modulate = Color( 0.498039, 0, 0, 1 )
 use_parent_material = true
 position = Vector2( 0, -2 )
 texture = SubResource( 11 )
-frame = 1
+frame = 2
 __meta__ = {
 "_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PUFuaW1hdGlvblBsYXllcgpzb3VyY2V8PXJlczovL2Fzc2V0cy9hc2Vwcml0ZS9saWdodC5hc2Vwcml0ZQpsYXllcnw9Cm9wX2V4cHw9RmFsc2UKb19mb2xkZXJ8PQpvX25hbWV8PQpvbmx5X3Zpc2libGV8PVRydWUKb19leF9wfD0K"
 }

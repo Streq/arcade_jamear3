@@ -1,0 +1,75 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
+[ext_resource path="res://src/pickups/gun_addon.gd" type="Script" id=2]
+[ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/texture/sword_addon.png" type="Texture" id=4]
+[ext_resource path="res://src/pickups/effect/spread_shooter.gd" type="Script" id=5]
+[ext_resource path="res://src/pickups/effect/bullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/audio/sfx/gun.wav" type="AudioStream" id=7]
+[ext_resource path="res://src/pickups/effect/sword_hitbox.gd" type="Script" id=8]
+
+[sub_resource type="Image" id=9]
+data = {
+"data": PoolByteArray( 0, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=8]
+flags = 0
+flags = 0
+image = SubResource( 9 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 8 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 3, 12 )
+
+[node name="sword_addon" type="Node2D"]
+position = Vector2( 0, 8 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 3 )
+texture = ExtResource( 4 )
+
+[node name="palette" parent="Sprite" instance=ExtResource( 3 )]
+palette = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1 )
+material = SubResource( 3 )
+
+[node name="shooter" type="Node2D" parent="."]
+position = Vector2( 0, 4 )
+rotation = 1.57079
+script = ExtResource( 5 )
+ARROW = ExtResource( 6 )
+shoot_speed = 750.0
+spread_power = 35.0
+amount = 0
+spread_angle = 15.0
+
+[node name="shoot_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+volume_db = -80.0
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource( 8 )
+knockback = 500.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2( 0, 12 )
+shape = SubResource( 6 )
+
+[connection signal="been_shot" from="." to="shoot_sound" method="play"]
+[connection signal="shoot" from="." to="shooter" method="shoot"]
