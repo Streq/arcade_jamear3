@@ -18,7 +18,7 @@ radius = 5.09902
 
 [sub_resource type="Image" id=14]
 data = {
-"data": PoolByteArray( 0, 0, 0, 255, 21, 112, 0, 255, 255, 255, 255, 255 ),
+"data": PoolByteArray( 0, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -114,7 +114,7 @@ material = SubResource( 8 )
 texture = ExtResource( 4 )
 
 [node name="palette" parent="Sprite" instance=ExtResource( 7 )]
-palette = PoolColorArray( 0, 0, 0, 1, 0.0862745, 0.439216, 0, 1, 1, 1, 1, 1 )
+palette = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1 )
 material = SubResource( 8 )
 
 [node name="Sprite2" parent="Sprite" instance=ExtResource( 9 )]

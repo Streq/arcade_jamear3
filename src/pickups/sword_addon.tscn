@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
 [ext_resource path="res://src/pickups/gun_addon.gd" type="Script" id=2]
@@ -11,8 +11,12 @@
 [ext_resource path="res://src/pickups/sword/swing.gd" type="Script" id=9]
 [ext_resource path="res://src/pickups/sword/delay_rotation.gd" type="Script" id=10]
 [ext_resource path="res://src/pickups/sword/consume_energy_when_swinging.gd" type="Script" id=11]
+[ext_resource path="res://src/HUD/small_energy_bar.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/pickups/sword/energy.gd" type="Script" id=13]
+[ext_resource path="res://src/pickups/sword/reparent_to_wearer.gd" type="Script" id=14]
+[ext_resource path="res://src/pickups/sword/refill_on_seed.gd" type="Script" id=15]
 
-[sub_resource type="Image" id=9]
+[sub_resource type="Image" id=39]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -24,7 +28,7 @@ data = {
 [sub_resource type="ImageTexture" id=8]
 flags = 0
 flags = 0
-image = SubResource( 9 )
+image = SubResource( 39 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
@@ -37,6 +41,24 @@ shader_param/palette = SubResource( 8 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 3, 24 )
+
+[sub_resource type="Gradient" id=34]
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture2D" id=37]
+gradient = SubResource( 34 )
+width = 32
+height = 8
+fill_from = Vector2( 0, 1 )
+
+[sub_resource type="Gradient" id=35]
+colors = PoolColorArray( 1, 1, 0, 1, 1, 1, 0, 1 )
+
+[sub_resource type="GradientTexture2D" id=38]
+gradient = SubResource( 35 )
+width = 32
+height = 6
+fill_from = Vector2( 0, 1 )
 
 [node name="sword_addon" type="Node2D"]
 position = Vector2( 0, 8 )
@@ -93,8 +115,27 @@ knockback = 25.0
 position = Vector2( 0, 24 )
 shape = SubResource( 6 )
 
-[node name="consume_energy_when_swinging" type="Node" parent="."]
+[node name="energy_bar" parent="." instance=ExtResource( 12 )]
+margin_top = -28.0
+margin_bottom = -20.0
+texture_under = SubResource( 37 )
+texture_progress = SubResource( 38 )
+texture_progress_offset = Vector2( 0, 1 )
+
+[node name="reparent_to_wearer" type="Node" parent="energy_bar"]
+script = ExtResource( 14 )
+
+[node name="energy" type="Node" parent="."]
+script = ExtResource( 13 )
+
+[node name="consume_when_swinging" type="Node" parent="energy"]
 script = ExtResource( 11 )
 
+[node name="refill_on_seed" type="Node" parent="energy"]
+script = ExtResource( 15 )
+
 [connection signal="been_shot" from="." to="shoot_sound" method="play"]
+[connection signal="remove" from="." to="energy_bar" method="queue_free"]
 [connection signal="shoot" from="." to="shooter" method="shoot"]
+[connection signal="empty" from="energy" to="." method="remove"]
+[connection signal="value_changed" from="energy" to="energy_bar" method="update_values"]

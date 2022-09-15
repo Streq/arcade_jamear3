@@ -7,5 +7,5 @@ func apply(flapper:Node2D):
 func _instance(flapper:Node2D):
 	var gun = GUN.instance()
 	gun.pre_ready(flapper)
-	flapper.pivot.add_child(gun)
-	gun.owner = flapper
+	flapper.pivot.call_deferred("add_child",gun)
+	gun.set_deferred("owner",flapper)

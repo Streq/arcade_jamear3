@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/font/ProggyClean.ttf/ProggyClean.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://src/effect/magic_seed_hitbox.tscn" type="PackedScene" id=7]
 
-[sub_resource type="Image" id=77]
+[sub_resource type="Image" id=82]
 data = {
 "data": PoolByteArray( 151, 0, 0, 255, 214, 86, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -20,32 +20,31 @@ data = {
 [sub_resource type="ImageTexture" id=76]
 flags = 0
 flags = 0
-image = SubResource( 77 )
+image = SubResource( 82 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=74]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/palette_size = 3
-shader_param/offset = 0
+shader_param/offset = 2
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 76 )
 
-[sub_resource type="Gradient" id=34]
-offsets = PoolRealArray( 0, 0.283237, 1 )
-colors = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1 )
+[sub_resource type="Gradient" id=80]
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture2D" id=68]
-gradient = SubResource( 34 )
+[sub_resource type="GradientTexture2D" id=77]
+gradient = SubResource( 80 )
 width = 32
 height = 8
 fill_from = Vector2( 0, 1 )
 
-[sub_resource type="Gradient" id=35]
-colors = PoolColorArray( 0, 1, 0.211914, 1, 0, 1, 0.282227, 1 )
+[sub_resource type="Gradient" id=81]
+colors = PoolColorArray( 1, 1, 0, 1, 1, 1, 0, 1 )
 
-[sub_resource type="GradientTexture2D" id=69]
-gradient = SubResource( 35 )
+[sub_resource type="GradientTexture2D" id=78]
+gradient = SubResource( 81 )
 width = 32
 height = 6
 fill_from = Vector2( 0, 1 )
@@ -68,8 +67,10 @@ one_shot = true
 autostart = true
 
 [node name="energy_bar" parent="." instance=ExtResource( 1 )]
-texture_under = SubResource( 68 )
-texture_progress = SubResource( 69 )
+margin_top = -26.0
+margin_bottom = -18.0
+texture_under = SubResource( 77 )
+texture_progress = SubResource( 78 )
 texture_progress_offset = Vector2( 0, 1 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
