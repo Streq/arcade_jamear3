@@ -260,18 +260,15 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 557.0
 margin_top = 0.0
-margin_right = 657.0
+margin_right = 699.0
 margin_bottom = 47.0
 grow_vertical = 1
 
 [node name="tutorial_text" parent="CanvasLayer/Control/HBoxContainer/MarginContainer4" instance=ExtResource( 5 )]
 margin_top = 16.0
-margin_right = 92.0
+margin_right = 134.0
 margin_bottom = 30.0
-text = "Sobreviví!!!"
-
-[node name="sword" parent="." instance=ExtResource( 24 )]
-position = Vector2( 520, 264 )
+text = "SOBREVIVÍ 2 MIN!!!"
 
 [connection signal="timeout" from="ghost_spawner/Timer" to="ghost_spawner" method="_on_Timer_timeout" flags=3]
 [connection signal="seed_taken" from="seed_spawner" to="fall_spawner/spawner_trigger_on_seeds_taken" method="_on_seed_taken"]
