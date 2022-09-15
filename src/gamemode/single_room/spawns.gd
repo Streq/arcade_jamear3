@@ -18,7 +18,7 @@ func _on_child_exiting(child):
 	refresh()
 func get_spawn():
 	var r = rand_range(0,total_weight)
-	print(r)
+#	print(r)
 	for spawn in get_children():
 		if spawn.weight > r:
 			return spawn.scene

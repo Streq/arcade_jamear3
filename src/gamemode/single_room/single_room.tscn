@@ -168,19 +168,19 @@ script = ExtResource( 12 )
 
 [node name="torch" parent="." instance=ExtResource( 17 )]
 material = SubResource( 75 )
-position = Vector2( 168, 88 )
+position = Vector2( 168, 80 )
 
 [node name="torch2" parent="." instance=ExtResource( 17 )]
 material = SubResource( 75 )
-position = Vector2( 168, 360 )
+position = Vector2( 168, 352 )
 
 [node name="torch3" parent="." instance=ExtResource( 17 )]
 material = SubResource( 75 )
-position = Vector2( 800, 360 )
+position = Vector2( 800, 352 )
 
 [node name="torch4" parent="." instance=ExtResource( 17 )]
 material = SubResource( 75 )
-position = Vector2( 800, 88 )
+position = Vector2( 800, 80 )
 
 [node name="torch5" parent="." instance=ExtResource( 17 )]
 material = SubResource( 75 )
@@ -269,6 +269,9 @@ margin_top = 16.0
 margin_right = 92.0
 margin_bottom = 30.0
 text = "Sobreviví!!!"
+
+[node name="sword" parent="." instance=ExtResource( 24 )]
+position = Vector2( 520, 264 )
 
 [connection signal="timeout" from="ghost_spawner/Timer" to="ghost_spawner" method="_on_Timer_timeout" flags=3]
 [connection signal="seed_taken" from="seed_spawner" to="fall_spawner/spawner_trigger_on_seeds_taken" method="_on_seed_taken"]

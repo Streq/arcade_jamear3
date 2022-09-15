@@ -12,7 +12,7 @@
 
 [sub_resource type="Image" id=11]
 data = {
-"data": PoolByteArray( 116, 255, 0, 255, 0, 134, 8, 255, 247, 255, 0, 255 ),
+"data": PoolByteArray( 116, 255, 0, 255, 0, 133, 8, 255, 246, 255, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,

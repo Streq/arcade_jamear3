@@ -10,7 +10,7 @@ func trigger(by = null):
 	if !by:
 		trigger_velocity(owner.velocity)
 	else:
-		trigger_velocity(by.get_knockback()*3)
+		trigger_velocity(by.get_knockback(owner.global_position)*3)
 
 
 func trigger_velocity(velocity):

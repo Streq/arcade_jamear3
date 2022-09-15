@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
 [ext_resource path="res://src/pickups/gun_addon.gd" type="Script" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://src/pickups/effect/bullet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/audio/sfx/gun.wav" type="AudioStream" id=7]
 [ext_resource path="res://src/pickups/effect/sword_hitbox.gd" type="Script" id=8]
+[ext_resource path="res://src/pickups/sword/swing.gd" type="Script" id=9]
+[ext_resource path="res://src/pickups/sword/delay_rotation.gd" type="Script" id=10]
+[ext_resource path="res://src/pickups/sword/consume_energy_when_swinging.gd" type="Script" id=11]
 
 [sub_resource type="Image" id=9]
 data = {
@@ -33,14 +36,18 @@ shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 8 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 3, 12 )
+extents = Vector2( 3, 24 )
 
 [node name="sword_addon" type="Node2D"]
 position = Vector2( 0, 8 )
 script = ExtResource( 2 )
 
+[node name="swing" type="Node" parent="."]
+script = ExtResource( 9 )
+
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 3 )
+scale = Vector2( 1, 2 )
 texture = ExtResource( 4 )
 
 [node name="palette" parent="Sprite" instance=ExtResource( 3 )]
@@ -61,15 +68,33 @@ spread_angle = 15.0
 stream = ExtResource( 7 )
 volume_db = -80.0
 
-[node name="hitbox" type="Area2D" parent="."]
+[node name="hitbox_pivot" type="Node2D" parent="."]
+
+[node name="hitbox2" type="Area2D" parent="hitbox_pivot"]
 collision_layer = 32
 collision_mask = 0
 script = ExtResource( 8 )
-knockback = 500.0
+knockback = 25.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2( 0, 12 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_pivot/hitbox2"]
+position = Vector2( 0, 24 )
 shape = SubResource( 6 )
+
+[node name="delay_rotation" type="Node" parent="hitbox_pivot/hitbox2"]
+script = ExtResource( 10 )
+
+[node name="hitbox" type="Area2D" parent="hitbox_pivot"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource( 8 )
+knockback = 25.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_pivot/hitbox"]
+position = Vector2( 0, 24 )
+shape = SubResource( 6 )
+
+[node name="consume_energy_when_swinging" type="Node" parent="."]
+script = ExtResource( 11 )
 
 [connection signal="been_shot" from="." to="shoot_sound" method="play"]
 [connection signal="shoot" from="." to="shooter" method="shoot"]

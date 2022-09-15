@@ -5,6 +5,7 @@ signal been_shot()
 
 var wearer
 
+
 func _ready():
 	if !("addons" in wearer):
 		yield(wearer,"ready")

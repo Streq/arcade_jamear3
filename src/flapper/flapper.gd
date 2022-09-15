@@ -149,7 +149,8 @@ func _physics_process(delta):
 	
 
 func die():
-	
+	if dead:
+		return
 	visible = false
 	set_physics_process(false)
 	dead = true
@@ -157,6 +158,8 @@ func die():
 	remove_from_group("flapper")
 	if has_node("camera"):
 		NodeUtils.reparent_keep_transform(get_node("camera"),get_parent())
+	
+	pivot.queue_free()
 	yield(get_tree().create_timer(3.0),"timeout")
 	queue_free()
 		
