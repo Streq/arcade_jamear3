@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://src/gamemode/single_room/fast_glider_for_single_room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/gamemode/single_room/spawner.gd" type="Script" id=2]
@@ -24,6 +24,8 @@
 [ext_resource path="res://src/pickups/spawner/fall_device.tscn" type="PackedScene" id=22]
 [ext_resource path="res://src/pickups/magic_seed_single_room.tscn" type="PackedScene" id=23]
 [ext_resource path="res://src/pickups/sword.tscn" type="PackedScene" id=24]
+[ext_resource path="res://src/gamemode/single_room/set_score.gd" type="Script" id=25]
+[ext_resource path="res://src/HUD/game_over_HUD.tscn" type="PackedScene" id=26]
 
 [sub_resource type="Image" id=78]
 data = {
@@ -270,8 +272,29 @@ margin_right = 134.0
 margin_bottom = 30.0
 text = "SOBREVIVÍ 2 MIN!!!"
 
+[node name="gemini" parent="." instance=ExtResource( 6 )]
+position = Vector2( 472, 152 )
+
+[node name="magic_seed_single_room" parent="." instance=ExtResource( 23 )]
+position = Vector2( 384, 272 )
+
+[node name="gameover_HUD" parent="." instance=ExtResource( 26 )]
+
+[node name="set_score" type="Node" parent="gameover_HUD"]
+script = ExtResource( 25 )
+to = NodePath("../../score")
+
+[node name="wait_on_game_over" type="Timer" parent="."]
+process_mode = 0
+one_shot = true
+
+[connection signal="game_over" from="." to="gameover_HUD" method="enable"]
+[connection signal="player_alive" from="." to="wait_on_game_over" method="stop"]
+[connection signal="player_dead" from="." to="wait_on_game_over" method="start"]
 [connection signal="timeout" from="ghost_spawner/Timer" to="ghost_spawner" method="_on_Timer_timeout" flags=3]
 [connection signal="seed_taken" from="seed_spawner" to="fall_spawner/spawner_trigger_on_seeds_taken" method="_on_seed_taken"]
 [connection signal="trigger" from="fall_spawner/spawner_trigger_on_seeds_taken" to="fall_spawner" method="spawn"]
+[connection signal="go_back" from="gameover_HUD" to="." method="_on_go_back"]
+[connection signal="timeout" from="wait_on_game_over" to="." method="_on_wait_on_game_over_timeout"]
 
 [editable path="seed_spawner"]

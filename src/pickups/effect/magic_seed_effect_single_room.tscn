@@ -22,7 +22,7 @@ size = Vector2( 3, 1 )
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/palette_size = 3
-shader_param/offset = 0
+shader_param/offset = 1
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 5 )
 
