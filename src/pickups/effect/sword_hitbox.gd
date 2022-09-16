@@ -1,5 +1,7 @@
 extends Area2D
 
+signal hit(area)
+
 export var knockback := 200.0
 
 
@@ -12,19 +14,29 @@ func _physics_process(delta):
 	rot = owner.global_rotation
 	var delta_rot = Math.angle_distance(prev_rot, rot)
 	angular_speed = delta_rot
-
+	
 
 func apply_knockback(on):
-	on.velocity += get_knockback(on.global_position)
+	on.velocity += get_knockback(on)
 	
-func get_knockback(point_of_impact := Vector2()):
-	var point = point_of_impact - owner.global_position
-	if point:
-		var dist = point.length()
+func get_knockback(target):
+	
+	var global_point = target.global_position
+	var local_point = global_point - owner.global_position
+	if local_point:
+		var dist = local_point.length()
 		var linear_speed = dist * angular_speed
-		var dir = -point.tangent()/dist
-		var knockback = dir*linear_speed
-		print(knockback)
-		return knockback*self.knockback+owner.wearer.velocity
+		var tangent_dir = -local_point.tangent()/dist
+		var point_velocity_of_hitbox = tangent_dir*linear_speed
+		var center_linear_velocity = owner.wearer.velocity
+		var target_velocity = target.velocity
+		var velocity_of_impact = point_velocity_of_hitbox
+		var ret = knockback*velocity_of_impact-target_velocity+center_linear_velocity
+		return ret
 #		return Vector2.DOWN.rotated(global_rotation)*knockback
 	
+func can_hit(target):
+	return !(target.owner in get_parent().hits)
+
+func register_hit(area):
+	emit_signal("hit",area)

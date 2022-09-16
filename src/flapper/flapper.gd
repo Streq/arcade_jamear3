@@ -72,6 +72,7 @@ onready var hurtbox = $hurtbox
 onready var pivot = $pivot
 onready var stats = $stats
 onready var modifiers = $modifier_map
+onready var HUD = $HUD
 
 
 func set_custom_animation_lengths(val):

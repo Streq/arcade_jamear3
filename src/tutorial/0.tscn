@@ -56,9 +56,10 @@ margin_bottom = 360.0
 
 [node name="tutorial_text" parent="MarginContainer" instance=ExtResource( 5 )]
 margin_right = 246.0
-margin_bottom = 56.0
+margin_bottom = 73.0
 text = "Presiona 
 Z en el teclado o A en el joystick
-para aletear hacia el portal!"
+para aletear hacia el portal!
+(PAUSA con ENTER)"
 
 [connection signal="player_exited" from="portal" to="." method="area_completed"]

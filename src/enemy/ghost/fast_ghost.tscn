@@ -129,8 +129,8 @@ script = ExtResource( 5 )
 PARTICLES = ExtResource( 6 )
 material_owner_path = NodePath("../Sprite")
 
-[connection signal="area_entered" from="hurtbox" to="health" method="_on_hit"]
-[connection signal="area_entered" from="hurtbox" to="hit_animation" method="_on_hit"]
+[connection signal="hit" from="hurtbox" to="health" method="_on_hit"]
+[connection signal="hit" from="hurtbox" to="hit_animation" method="_on_hit"]
 [connection signal="dead" from="health" to="hit_animation" method="_on_dead"]
 [connection signal="dead" from="health" to="particles_on_dead" method="trigger"]
 

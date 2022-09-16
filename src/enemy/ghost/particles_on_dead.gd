@@ -7,11 +7,8 @@ onready var material_owner = get_node(material_owner_path)
 
 var emitted = false
 func trigger(by = null):
-	if !by:
-		trigger_velocity(owner.velocity)
-	else:
-		trigger_velocity(by.get_knockback(owner.global_position)*3)
-
+	trigger_velocity(owner.velocity*3)
+	
 
 func trigger_velocity(velocity):
 	if !emitted:

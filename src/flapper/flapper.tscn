@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://src/flapper/flapper.gd" type="Script" id=1]
 [ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=2]
@@ -37,6 +37,7 @@
 [ext_resource path="res://src/flapper/stats.gd" type="Script" id=35]
 [ext_resource path="res://src/flapper/buffs/prop_modifiers.tscn" type="PackedScene" id=36]
 [ext_resource path="res://src/flapper/buffs/modifier_map.gd" type="Script" id=37]
+[ext_resource path="res://assets/texture/battery.png" type="Texture" id=38]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 4 )
@@ -324,29 +325,10 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=19]
 radius = 3.0
 
-[sub_resource type="Gradient" id=44]
-offsets = PoolRealArray( 0, 0.283237, 1 )
-colors = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1 )
-
-[sub_resource type="GradientTexture2D" id=21]
-gradient = SubResource( 44 )
-width = 32
-height = 8
-fill_from = Vector2( 0, 1 )
-
-[sub_resource type="Gradient" id=45]
-colors = PoolColorArray( 0, 1, 0.211914, 1, 0, 1, 0.282227, 1 )
-
-[sub_resource type="GradientTexture2D" id=23]
-gradient = SubResource( 45 )
-width = 32
-height = 6
-fill_from = Vector2( 0, 1 )
-
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 4, 4 )
 
-[sub_resource type="Image" id=48]
+[sub_resource type="Image" id=50]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -355,10 +337,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=47]
+[sub_resource type="ImageTexture" id=49]
 flags = 0
 flags = 0
-image = SubResource( 48 )
+image = SubResource( 50 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=33]
@@ -367,13 +349,32 @@ shader = ExtResource( 11 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 47 )
+shader_param/palette = SubResource( 49 )
 
 [sub_resource type="StreamTexture" id=43]
 load_path = "res://.import/flapper.png-42d4f1390d9d9cceb01520b415ef9b37.stex"
 
 [sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 1, 6 )
+
+[sub_resource type="Gradient" id=46]
+offsets = PoolRealArray( 0, 0.283237, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture2D" id=21]
+gradient = SubResource( 46 )
+width = 32
+height = 8
+fill_from = Vector2( 0, 1 )
+
+[sub_resource type="Gradient" id=47]
+colors = PoolColorArray( 0, 1, 0.211914, 1, 0, 1, 0.282227, 1 )
+
+[sub_resource type="GradientTexture2D" id=23]
+gradient = SubResource( 47 )
+width = 32
+height = 6
+fill_from = Vector2( 0, 1 )
 
 [node name="flapper" type="KinematicBody2D" groups=["flapper"]]
 collision_layer = 2
@@ -545,12 +546,6 @@ value = 256.0
 flap_cost = 1.0
 regen = 0.0
 
-[node name="energy_bar" parent="." instance=ExtResource( 22 )]
-visible = false
-texture_under = SubResource( 21 )
-texture_progress = SubResource( 23 )
-texture_progress_offset = Vector2( 0, 1 )
-
 [node name="pickup_detect" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
@@ -600,6 +595,34 @@ script = ExtResource( 37 )
 
 [node name="flap_power" parent="modifier_map" instance=ExtResource( 36 )]
 
+[node name="HUD" type="VBoxContainer" parent="."]
+margin_left = -24.0
+margin_top = -21.0
+margin_right = 16.0
+margin_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
+margin_right = 40.0
+margin_bottom = 8.0
+custom_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="HUD/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 8.0
+margin_bottom = 8.0
+texture = ExtResource( 38 )
+
+[node name="energy_bar" parent="HUD/HBoxContainer" instance=ExtResource( 22 )]
+margin_left = 8.0
+margin_top = 0.0
+margin_right = 40.0
+margin_bottom = 8.0
+texture_under = SubResource( 21 )
+texture_progress = SubResource( 23 )
+texture_progress_offset = Vector2( 0, 1 )
+
 [connection signal="die" from="." to="CollisionShape2D" method="set_disabled" flags=3 binds= [ true ]]
 [connection signal="die" from="." to="hurtbox/CollisionShape2D" method="set_disabled" flags=3 binds= [ true ]]
 [connection signal="die" from="." to="pickup_detect/CollisionShape2D" method="set_disabled" flags=3 binds= [ true ]]
@@ -624,4 +647,4 @@ script = ExtResource( 37 )
 [connection signal="trigger" from="on_soft_collision" to="energy" method="add_value" binds= [ -5.0 ]]
 [connection signal="trigger" from="on_hard_collision" to="hard_collision" method="play"]
 [connection signal="trigger" from="on_touch_collision" to="touch_collision" method="play"]
-[connection signal="value_changed" from="energy" to="energy_bar" method="update_values"]
+[connection signal="value_changed" from="energy" to="HUD/HBoxContainer/energy_bar" method="update_values"]

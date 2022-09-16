@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
 [ext_resource path="res://src/pickups/gun_addon.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://src/pickups/effect/spread_shooter.gd" type="Script" id=5]
 [ext_resource path="res://src/pickups/effect/bullet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/audio/sfx/gun.wav" type="AudioStream" id=7]
+[ext_resource path="res://src/pickups/effect/trigger_on_clone.gd" type="Script" id=8]
+[ext_resource path="res://src/pickups/effect/on_clone_effect.gd" type="Script" id=9]
 
 [sub_resource type="Image" id=6]
 data = {
@@ -56,5 +58,12 @@ spread_angle = 15.0
 stream = ExtResource( 7 )
 volume_db = -21.3333
 
+[node name="trigger_on_clone" type="Node" parent="."]
+script = ExtResource( 8 )
+
+[node name="on_clone_effect" type="Node" parent="trigger_on_clone"]
+script = ExtResource( 9 )
+
 [connection signal="been_shot" from="." to="shoot_sound" method="play"]
 [connection signal="shoot" from="." to="shooter" method="shoot"]
+[connection signal="duplicated" from="trigger_on_clone" to="trigger_on_clone/on_clone_effect" method="apply"]

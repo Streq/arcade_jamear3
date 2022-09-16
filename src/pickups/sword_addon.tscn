@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
 [ext_resource path="res://src/pickups/gun_addon.gd" type="Script" id=2]
@@ -15,8 +15,38 @@
 [ext_resource path="res://src/pickups/sword/energy.gd" type="Script" id=13]
 [ext_resource path="res://src/pickups/sword/reparent_to_wearer.gd" type="Script" id=14]
 [ext_resource path="res://src/pickups/sword/refill_on_seed.gd" type="Script" id=15]
+[ext_resource path="res://src/pickups/sword/hitbox_pivot.gd" type="Script" id=16]
+[ext_resource path="res://assets/texture/sword_icon.png" type="Texture" id=17]
+[ext_resource path="res://src/pickups/effect/trigger_on_clone.gd" type="Script" id=18]
+[ext_resource path="res://src/pickups/effect/on_clone_effect.gd" type="Script" id=19]
 
-[sub_resource type="Image" id=39]
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 3, 24 )
+
+[sub_resource type="Image" id=63]
+data = {
+"data": PoolByteArray( 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=58]
+flags = 0
+flags = 0
+image = SubResource( 63 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=41]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 58 )
+
+[sub_resource type="Image" id=64]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -25,10 +55,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=8]
+[sub_resource type="ImageTexture" id=60]
 flags = 0
 flags = 0
-image = SubResource( 39 )
+image = SubResource( 64 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
@@ -37,25 +67,45 @@ shader = ExtResource( 1 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 8 )
+shader_param/palette = SubResource( 60 )
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 3, 24 )
+[sub_resource type="Image" id=65]
+data = {
+"data": PoolByteArray( 0, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
 
-[sub_resource type="Gradient" id=34]
+[sub_resource type="ImageTexture" id=62]
+flags = 0
+flags = 0
+image = SubResource( 65 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=56]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 62 )
+
+[sub_resource type="Gradient" id=46]
 colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
 
 [sub_resource type="GradientTexture2D" id=37]
-gradient = SubResource( 34 )
+gradient = SubResource( 46 )
 width = 32
 height = 8
 fill_from = Vector2( 0, 1 )
 
-[sub_resource type="Gradient" id=35]
+[sub_resource type="Gradient" id=47]
 colors = PoolColorArray( 1, 1, 0, 1, 1, 1, 0, 1 )
 
 [sub_resource type="GradientTexture2D" id=38]
-gradient = SubResource( 35 )
+gradient = SubResource( 47 )
 width = 32
 height = 6
 fill_from = Vector2( 0, 1 )
@@ -66,15 +116,6 @@ script = ExtResource( 2 )
 
 [node name="swing" type="Node" parent="."]
 script = ExtResource( 9 )
-
-[node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 3 )
-scale = Vector2( 1, 2 )
-texture = ExtResource( 4 )
-
-[node name="palette" parent="Sprite" instance=ExtResource( 3 )]
-palette = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1 )
-material = SubResource( 3 )
 
 [node name="shooter" type="Node2D" parent="."]
 position = Vector2( 0, 4 )
@@ -91,12 +132,13 @@ stream = ExtResource( 7 )
 volume_db = -80.0
 
 [node name="hitbox_pivot" type="Node2D" parent="."]
+script = ExtResource( 16 )
 
 [node name="hitbox2" type="Area2D" parent="hitbox_pivot"]
 collision_layer = 32
 collision_mask = 0
 script = ExtResource( 8 )
-knockback = 25.0
+knockback = 45.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_pivot/hitbox2"]
 position = Vector2( 0, 24 )
@@ -105,25 +147,24 @@ shape = SubResource( 6 )
 [node name="delay_rotation" type="Node" parent="hitbox_pivot/hitbox2"]
 script = ExtResource( 10 )
 
+[node name="Sprite" type="Sprite" parent="hitbox_pivot/hitbox2"]
+material = SubResource( 41 )
+scale = Vector2( 1, 2 )
+texture = ExtResource( 4 )
+
+[node name="palette" parent="hitbox_pivot/hitbox2/Sprite" instance=ExtResource( 3 )]
+palette = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1 )
+material = SubResource( 41 )
+
 [node name="hitbox" type="Area2D" parent="hitbox_pivot"]
 collision_layer = 32
 collision_mask = 0
 script = ExtResource( 8 )
-knockback = 25.0
+knockback = 45.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_pivot/hitbox"]
 position = Vector2( 0, 24 )
 shape = SubResource( 6 )
-
-[node name="energy_bar" parent="." instance=ExtResource( 12 )]
-margin_top = -28.0
-margin_bottom = -20.0
-texture_under = SubResource( 37 )
-texture_progress = SubResource( 38 )
-texture_progress_offset = Vector2( 0, 1 )
-
-[node name="reparent_to_wearer" type="Node" parent="energy_bar"]
-script = ExtResource( 14 )
 
 [node name="energy" type="Node" parent="."]
 script = ExtResource( 13 )
@@ -134,8 +175,51 @@ script = ExtResource( 11 )
 [node name="refill_on_seed" type="Node" parent="energy"]
 script = ExtResource( 15 )
 
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 3 )
+scale = Vector2( 1, 2 )
+texture = ExtResource( 4 )
+
+[node name="palette" parent="Sprite" instance=ExtResource( 3 )]
+palette = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1 )
+material = SubResource( 3 )
+
+[node name="display_bar" type="HBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 8.0
+custom_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="display_bar"]
+material = SubResource( 56 )
+margin_right = 8.0
+margin_bottom = 8.0
+texture = ExtResource( 17 )
+
+[node name="palette" parent="display_bar/TextureRect" instance=ExtResource( 3 )]
+palette = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1 )
+material = SubResource( 56 )
+
+[node name="energy_bar" parent="display_bar" instance=ExtResource( 12 )]
+margin_left = 8.0
+margin_top = 0.0
+margin_right = 40.0
+margin_bottom = 8.0
+texture_under = SubResource( 37 )
+texture_progress = SubResource( 38 )
+texture_progress_offset = Vector2( 0, 1 )
+
+[node name="reparent_to_wearer" type="Node" parent="display_bar"]
+script = ExtResource( 14 )
+
+[node name="trigger_on_clone" type="Node" parent="."]
+script = ExtResource( 18 )
+
+[node name="on_clone_effect" type="Node" parent="trigger_on_clone"]
+script = ExtResource( 19 )
+
 [connection signal="been_shot" from="." to="shoot_sound" method="play"]
-[connection signal="remove" from="." to="energy_bar" method="queue_free"]
+[connection signal="remove" from="." to="display_bar" method="queue_free"]
 [connection signal="shoot" from="." to="shooter" method="shoot"]
 [connection signal="empty" from="energy" to="." method="remove"]
-[connection signal="value_changed" from="energy" to="energy_bar" method="update_values"]
+[connection signal="value_changed" from="energy" to="display_bar/energy_bar" method="update_values"]
+[connection signal="duplicated" from="trigger_on_clone" to="trigger_on_clone/on_clone_effect" method="apply"]

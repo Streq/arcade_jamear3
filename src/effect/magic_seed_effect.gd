@@ -6,10 +6,12 @@ export var original_soft_collision_threshold = 0.0
 onready var palette = $palette
 export var HITBOX :PackedScene
 
-onready var energy_bar = $energy_bar
+onready var energy_bar = $display_bar/energy_bar
+onready var display_bar = $display_bar
+
 onready var timer = $Timer
 
-
+var wearer = null
 export var wait_time = 13.0
 
 export var increase_on_seed = 2.5
@@ -17,7 +19,7 @@ export var increase_on_seed = 2.5
 func _ready():
 	timer.start(wait_time)
 	palette.update_parent_material()
-	
+	wearer = get_parent()
 	
 func trigger():
 	var parent = get_parent()
@@ -50,6 +52,8 @@ func _physics_process(delta):
 	var energy = parent.get_node("energy")
 	energy.value = energy.max_value
 	energy_bar.ratio = timer.time_left/wait_time
+	
+	
 func wear_off():
 	var parent = get_parent()
 	parent.addons.erase("magic_seed")
@@ -64,6 +68,7 @@ func wear_off():
 #	hitbox.queue_free()
 	
 	parent.turbo_flap = false
+	display_bar.queue_free()
 	queue_free()
 
 

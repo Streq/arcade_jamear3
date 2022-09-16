@@ -3,8 +3,14 @@ extends Area2D
 export var knockback := 200.0
 
 func apply_knockback(on):
-	on.velocity += owner.velocity.normalized()*knockback
+	on.velocity += get_knockback(on)
 	
-func get_knockback(point := Vector2()):
+func get_knockback(target):
 	return owner.velocity.normalized()*knockback
 	
+func can_hit(area):
+	return true
+
+
+func register_hit(area):
+	pass
