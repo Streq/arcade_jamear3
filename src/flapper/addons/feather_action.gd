@@ -17,5 +17,5 @@ func throw_feathers(inertia, amount, rand_initial_speed, inertia_multiplier):
 		owner.get_parent().add_child(instance)
 		instance.global_position = owner.global_position
 		instance.velocity += inertia*inertia_multiplier
-		if is_instance_valid(owner):
+		if is_instance_valid(owner.sprite):
 			instance.sprite.material = owner.sprite.material

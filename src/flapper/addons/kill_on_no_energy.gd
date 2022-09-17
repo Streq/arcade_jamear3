@@ -28,6 +28,7 @@ func _on_energy_changed(value, max_value):
 
 
 func _on_timeout():
-	emit_signal("trigger")
-	energy.disconnect("value_changed", self, "_on_energy_changed")
+	if !owner.dead:
+		emit_signal("trigger")
+		energy.disconnect("value_changed", self, "_on_energy_changed")
 

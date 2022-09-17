@@ -44,20 +44,17 @@ prop = "flap_cost"
 min_value = 1.0
 max_value = 2.0
 
-[node name="energy_bar" parent="." index="26"]
-visible = true
+[node name="Sprite" parent="pivot" index="0"]
+material = SubResource( 18 )
+
+[node name="palette" parent="pivot/Sprite" index="1"]
+material = SubResource( 18 )
 
 [node name="kill_on_no_energy" type="Node" parent="." index="29"]
 script = ExtResource( 5 )
 
 [node name="explode_action" type="Node" parent="." index="30"]
 script = ExtResource( 6 )
-
-[node name="Sprite" parent="pivot" index="0"]
-material = SubResource( 18 )
-
-[node name="palette" parent="pivot/Sprite" index="1"]
-material = SubResource( 18 )
 
 [connection signal="trigger" from="kill_on_no_energy" to="explode_action" method="trigger"]
 [connection signal="trigger" from="explode_action" to="." method="die"]
