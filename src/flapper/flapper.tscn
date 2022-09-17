@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://src/flapper/flapper.gd" type="Script" id=1]
 [ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://src/flapper/buffs/prop_modifiers.tscn" type="PackedScene" id=36]
 [ext_resource path="res://src/flapper/buffs/modifier_map.gd" type="Script" id=37]
 [ext_resource path="res://assets/texture/battery.png" type="Texture" id=38]
+[ext_resource path="res://src/pickups/effect/only_sound_if_first.gd" type="Script" id=39]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 4 )
@@ -328,7 +329,7 @@ radius = 3.0
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 4, 4 )
 
-[sub_resource type="Image" id=48]
+[sub_resource type="Image" id=50]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -340,7 +341,7 @@ data = {
 [sub_resource type="ImageTexture" id=49]
 flags = 0
 flags = 0
-image = SubResource( 48 )
+image = SubResource( 50 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=33]
@@ -485,29 +486,38 @@ script = ExtResource( 18 )
 [node name="soft_collision" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 21 )
 volume_db = -11.7255
+bus = "piu"
 
-[node name="flap" type="AudioStreamPlayer2D" parent="."]
+[node name="flap" type="AudioStreamPlayer2D" parent="." groups=["flap_sound"]]
 stream = ExtResource( 25 )
 volume_db = -6.62745
+bus = "piu"
+script = ExtResource( 39 )
+group = "flap_sound"
 
 [node name="pio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 32 )
 volume_db = -15.1392
+bus = "piu"
 
 [node name="explosion" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 19 )
 volume_db = -6.11765
+bus = "piu"
 
 [node name="hard_collision" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 24 )
 volume_db = -9.68627
+bus = "piu"
 
 [node name="touch_collision" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 26 )
 volume_db = -6.62745
+bus = "piu"
 
 [node name="roce" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 27 )
+bus = "piu"
 script = ExtResource( 28 )
 min_volume = -20.0
 
@@ -516,6 +526,7 @@ script = ExtResource( 29 )
 
 [node name="failed_glide" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 27 )
+bus = "piu"
 script = ExtResource( 28 )
 min_volume = -50.0
 
@@ -524,6 +535,7 @@ script = ExtResource( 30 )
 
 [node name="glide" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 31 )
+bus = "piu"
 script = ExtResource( 28 )
 min_power = 100.0
 max_power = 400.0
@@ -624,6 +636,7 @@ texture_progress = SubResource( 23 )
 texture_progress_offset = Vector2( 0, 1 )
 
 [connection signal="die" from="." to="CollisionShape2D" method="set_disabled" flags=3 binds= [ true ]]
+[connection signal="die" from="." to="state_animation" method="queue_free"]
 [connection signal="die" from="." to="hurtbox/CollisionShape2D" method="set_disabled" flags=3 binds= [ true ]]
 [connection signal="die" from="." to="pickup_detect/CollisionShape2D" method="set_disabled" flags=3 binds= [ true ]]
 [connection signal="failed_flap" from="." to="pio" method="play"]

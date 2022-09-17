@@ -3,7 +3,7 @@
 [ext_resource path="res://src/pickups/player_magnet.gd" type="Script" id=1]
 [ext_resource path="res://src/pickups/gun_effect.gd" type="Script" id=2]
 [ext_resource path="res://assets/audio/sfx/seed.wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/texture/sword.png" type="Texture" id=4]
+[ext_resource path="res://assets/texture/bomb.png" type="Texture" id=4]
 [ext_resource path="res://src/gamemode/single_room/pickup.gd" type="Script" id=5]
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=6]
 [ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=7]
@@ -18,7 +18,7 @@ radius = 5.09902
 
 [sub_resource type="Image" id=12]
 data = {
-"data": PoolByteArray( 0, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255 ),
+"data": PoolByteArray( 0, 0, 0, 255, 255, 0, 0, 255, 255, 245, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -86,7 +86,7 @@ tracks/1/keys = {
 "values": [ 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0 ]
 }
 
-[node name="sword" type="Area2D" groups=["seed"]]
+[node name="bomb" type="Area2D" groups=["seed"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource( 5 )
@@ -114,11 +114,11 @@ material = SubResource( 8 )
 texture = ExtResource( 4 )
 
 [node name="palette" parent="Sprite" instance=ExtResource( 7 )]
-palette = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1 )
+palette = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1, 1, 0.960784, 0, 1 )
 material = SubResource( 8 )
 
 [node name="Sprite2" parent="Sprite" instance=ExtResource( 9 )]
-modulate = Color( 0.498039, 0, 0, 1 )
+modulate = Color( 0.4, 0.4, 0.4, 1 )
 use_parent_material = true
 position = Vector2( 0, -2 )
 texture = SubResource( 11 )

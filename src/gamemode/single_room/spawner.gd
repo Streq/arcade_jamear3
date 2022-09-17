@@ -34,3 +34,8 @@ func _on_instance_gone(who):
 
 func _on_Timer_timeout():
 	spawn()
+
+
+func _unhandled_key_input(event: InputEventKey) -> void:
+	if OS.is_debug_build() and event.pressed and event.scancode == KEY_G:
+		spawn()

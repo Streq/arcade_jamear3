@@ -13,4 +13,8 @@ func can_hit(area):
 
 
 func register_hit(area):
-	pass
+	area.take_knockback(get_knockback(area.owner))
+	area.take_damage(get_damage(area.owner))
+	
+func get_damage(target):
+	return 1.0

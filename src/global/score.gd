@@ -21,3 +21,8 @@ func _ready():
 
 func _on_new_game():
 	total_time = 0.0
+
+func _unhandled_key_input(event: InputEventKey) -> void:
+	if OS.is_debug_build():
+		if event.scancode == KEY_PLUS and event.pressed:
+			total_time += 60.0

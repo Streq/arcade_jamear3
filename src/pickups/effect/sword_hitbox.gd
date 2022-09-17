@@ -34,9 +34,24 @@ func get_knockback(target):
 		var ret = knockback*velocity_of_impact-target_velocity+center_linear_velocity
 		return ret
 #		return Vector2.DOWN.rotated(global_rotation)*knockback
-	
+
+func calc_damage(knockback_vec):
+	var knockback = knockback_vec.length_squared()
+	print_debug("knockback:",knockback)
+	if knockback > 500*500:
+		return 3.0
+	if knockback > 250*250:
+		return 2.0
+	return 1.0
+
+
 func can_hit(target):
 	return !(target.owner in get_parent().hits)
 
 func register_hit(area):
 	emit_signal("hit",area)
+	var knockback = get_knockback(area.owner)
+	area.take_knockback(knockback)
+	var damage = calc_damage(knockback)
+	print_debug("damage:", damage)
+	area.take_damage(damage)

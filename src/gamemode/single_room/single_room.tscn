@@ -280,6 +280,7 @@ text = "SOBREVIVÍ LO QUE PUEDAS!!!"
 
 [node name="wait_on_game_over" type="Timer" parent="."]
 process_mode = 0
+wait_time = 3.0
 one_shot = true
 
 [connection signal="game_over" from="." to="gameover_HUD" method="enable"]
