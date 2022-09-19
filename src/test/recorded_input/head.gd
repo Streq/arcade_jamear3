@@ -1,12 +1,19 @@
-extends Sprite
+extends Node2D
 
 export var radius := 10.0
 
+onready var head: Sprite = $rotate_transform/head
+onready var stick: Sprite = $stick
+onready var rotate_transform: Node2D = $rotate_transform
+
+
 
 func update_position(vector:Vector2):
-	print(vector)
-	position = vector*radius
-	
+#	print(vector)
+	var angle = vector.angle()+PI/2
+	rotate_transform.rotation = angle
+	rotate_transform.position = vector*radius
+	rotate_transform.scale.y = lerp(1.0,0.65,vector.length())
+	head.rotation = -angle
+	stick.rotation = angle
 
-func _physics_process(delta: float) -> void:
-	update_position(Input.get_vector("ui_left","ui_right","ui_up","ui_down"))

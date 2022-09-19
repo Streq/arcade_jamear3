@@ -14,7 +14,7 @@ func _physics_process(delta):
 	var new_mouse_pos = get_local_mouse_position()
 	mouse_delta = new_mouse_pos-old_mouse_pos
 	old_mouse_pos = new_mouse_pos
-	print(mouse_delta)
+#	print(mouse_delta)
 	label.text = str(get_child_count())
 	if Input.is_action_pressed("B"):
 		explode()

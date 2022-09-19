@@ -29,6 +29,9 @@ func set_palette(val):
 	palette = val
 	if ready:
 		update_tex_from_palette()
+		
+		material.set_shader_param("palette_size", palette.size())
+		property_list_changed_notify()
 
 func update_tex_from_palette():
 	var size = palette.size()
