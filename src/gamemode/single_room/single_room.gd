@@ -50,11 +50,13 @@ func _input(event):
 	if event.is_action_pressed("pause"):
 		pause()
 func pause():
-	app_state_node.push("pause")
+	if !game_over:
+		app_state_node.push("pause")
 
 func _on_go_back():
 	app_state_node.pop()
 
-
+var game_over = false
 func _on_wait_on_game_over_timeout():
+	game_over = true
 	emit_signal("game_over")
