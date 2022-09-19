@@ -53,7 +53,8 @@ script = ExtResource( 5 )
 ARROW = ExtResource( 6 )
 shoot_speed = 750.0
 spread_power = 35.0
-spread_angle = 15.0
+amount = 7
+spread_angle = 17.0
 
 [node name="shoot_sound" type="AudioStreamPlayer2D" parent="." groups=["shoot_sound"]]
 stream = ExtResource( 7 )

@@ -100,10 +100,8 @@ func _ready():
 func _physics_process(delta):
 	delta *= delta_multiplier
 	var change_direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
-	if change_direction:
-#		direction = change_direction
+	if change_direction.length_squared()>0.01:
 		direction = Vector2.RIGHT.rotated(lerp_angle(direction.angle(),change_direction.angle(),delta*rotation_lerp))
-	
 	var point_dir = -direction.angle_to(Vector2.UP)
 	pivot.rotation = point_dir
 #	sprite.rotation = stepify(point_dir,PI/8.0)
