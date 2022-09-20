@@ -304,6 +304,10 @@ B_demo={
 "deadzone": 0.1,
 "events": [  ]
 }
+next_demo={
+"deadzone": 0.5,
+"events": [  ]
+}
 
 [input_devices]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://src/gamemode/single_room/fast_glider_for_single_room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/gamemode/single_room/spawner.gd" type="Script" id=2]
@@ -26,8 +26,12 @@
 [ext_resource path="res://src/pickups/sword.tscn" type="PackedScene" id=24]
 [ext_resource path="res://src/gamemode/single_room/set_score.gd" type="Script" id=25]
 [ext_resource path="res://src/HUD/game_over_HUD.tscn" type="PackedScene" id=26]
+[ext_resource path="res://src/HUD/analog_stick/joystick_HUD.tscn" type="PackedScene" id=27]
+[ext_resource path="res://src/test/recorded_input/input_recorder.gd" type="Script" id=28]
+[ext_resource path="res://src/flapper/presets/fast_glider.tscn" type="PackedScene" id=29]
+[ext_resource path="res://src/test/recorded_input/input_feeder.gd" type="Script" id=30]
 
-[sub_resource type="Image" id=78]
+[sub_resource type="Image" id=100]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 49, 0, 75, 255, 202, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
@@ -36,10 +40,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=77]
+[sub_resource type="ImageTexture" id=96]
 flags = 0
 flags = 0
-image = SubResource( 78 )
+image = SubResource( 100 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=62]
@@ -48,7 +52,7 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 77 )
+shader_param/palette = SubResource( 96 )
 
 [sub_resource type="Curve2D" id=66]
 _data = {
@@ -60,7 +64,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 904, 0 )
 }
 
-[sub_resource type="Image" id=79]
+[sub_resource type="Image" id=101]
 data = {
 "data": PoolByteArray( 135, 63, 0, 255, 235, 84, 31, 255, 255, 205, 58, 255, 255, 196, 0, 255 ),
 "format": "RGBA8",
@@ -72,7 +76,7 @@ data = {
 [sub_resource type="ImageTexture" id=74]
 flags = 0
 flags = 0
-image = SubResource( 79 )
+image = SubResource( 101 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=75]
@@ -82,6 +86,309 @@ shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
 shader_param/palette = SubResource( 74 )
+
+[sub_resource type="Animation" id=80]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=81]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 14.0 ]
+}
+
+[sub_resource type="Animation" id=82]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 27.0, 25.0, 26.0, 14.0 ]
+}
+
+[sub_resource type="Animation" id=83]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hurtbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=84]
+length = 0.7
+tracks/0/type = "method"
+tracks/0/path = NodePath("flap_action")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "strong_failed"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("pivot/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 22.0, 18.0, 17.0, 16.0, 15.0, 0.0, 14.0 ]
+}
+
+[sub_resource type="Animation" id=85]
+length = 0.7
+tracks/0/type = "method"
+tracks/0/path = NodePath("flap_action")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "weak_failed"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("pivot/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 27.0, 9.0, 4.0, 3.0, 2.0, 1.0, 5.0 ]
+}
+
+[sub_resource type="Animation" id=86]
+length = 0.5
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath("flap_action")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "strong"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("state_machine/flap")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "clear_buffer"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("pivot/Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 22.0, 21.0, 20.0, 19.0, 14.0 ]
+}
+
+[sub_resource type="Animation" id=87]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 27.0 ]
+}
+
+[sub_resource type="Animation" id=88]
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 24.0, 23.0 ]
+}
+
+[sub_resource type="Animation" id=89]
+length = 0.6
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath("flap_action")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "weak"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("state_machine/glide_flap")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "clear_buffer"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("pivot/Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 27.0, 9.0, 8.0, 7.0, 6.0, 5.0 ]
+}
+
+[sub_resource type="Animation" id=90]
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 11.0, 10.0 ]
+}
+
+[sub_resource type="Animation" id=91]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 14.0, 26.0, 25.0, 27.0 ]
+}
+
+[sub_resource type="Image" id=102]
+data = {
+"data": PoolByteArray( 99, 99, 99, 255, 0, 255, 189, 255, 0, 255, 249, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=99]
+flags = 0
+flags = 0
+image = SubResource( 102 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=94]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 1.0
+shader_param/palette = SubResource( 99 )
 
 [node name="Node2D" type="Node2D"]
 pause_mode = 1
@@ -136,7 +443,7 @@ polygon = PoolVector2Array( 17.1278, 23.4435, 35.6068, 23.4435, 35.6068, 33.2728
 visible = true
 
 [node name="player_spawn_point" type="Position2D" parent="."]
-position = Vector2( 488, 224 )
+position = Vector2( 168, 368 )
 
 [node name="fall_spawner" type="Node" parent="."]
 script = ExtResource( 21 )
@@ -283,6 +590,110 @@ process_mode = 0
 wait_time = 3.0
 one_shot = true
 
+[node name="fast_glider2" parent="." instance=ExtResource( 29 )]
+position = Vector2( 179, 105 )
+
+[node name="state_animation" parent="fast_glider2" index="2"]
+anims/RESET = SubResource( 80 )
+anims/air = SubResource( 81 )
+anims/close_wings = SubResource( 82 )
+anims/die = SubResource( 83 )
+anims/failed_flap = SubResource( 84 )
+anims/failed_glide_flap = SubResource( 85 )
+anims/flap = SubResource( 86 )
+anims/glide = SubResource( 87 )
+anims/glide_fail = SubResource( 88 )
+anims/glide_flap = SubResource( 89 )
+anims/glide_opposite_fail = SubResource( 90 )
+anims/spread_wings = SubResource( 91 )
+
+[node name="hurtbox" parent="fast_glider2" index="10"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" parent="fast_glider2/hurtbox" index="0"]
+disabled = true
+
+[node name="soft_collision" parent="fast_glider2" index="12"]
+stream = null
+
+[node name="flap" parent="fast_glider2" index="13"]
+stream = null
+volume_db = -80.0
+
+[node name="pio" parent="fast_glider2" index="14"]
+stream = null
+volume_db = -80.0
+
+[node name="explosion" parent="fast_glider2" index="15"]
+stream = null
+volume_db = -80.0
+
+[node name="hard_collision" parent="fast_glider2" index="16"]
+stream = null
+volume_db = -80.0
+
+[node name="touch_collision" parent="fast_glider2" index="17"]
+stream = null
+volume_db = -80.0
+
+[node name="roce" parent="fast_glider2" index="18"]
+stream = null
+volume_db = -80.0
+
+[node name="failed_glide" parent="fast_glider2" index="19"]
+stream = null
+volume_db = -80.0
+
+[node name="glide" parent="fast_glider2" index="20"]
+stream = null
+volume_db = -80.0
+min_power = 0.0
+max_power = 10.0
+min_volume = -80.0
+max_volume = 0.0
+
+[node name="pickup_detect" parent="fast_glider2" index="25"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" parent="fast_glider2/pickup_detect" index="0"]
+disabled = true
+
+[node name="Sprite" parent="fast_glider2/pivot" index="0"]
+material = SubResource( 94 )
+
+[node name="palette" parent="fast_glider2/pivot/Sprite" index="1"]
+palette = PoolColorArray( 0.388235, 0.388235, 0.388235, 1, 0, 1, 0.741176, 1, 0, 1, 0.976471, 1 )
+material = SubResource( 94 )
+
+[node name="HUD" parent="fast_glider2" index="31"]
+visible = false
+
+[node name="energy_bar" parent="fast_glider2/HUD/HBoxContainer" index="1"]
+visible = false
+
+[node name="player_controller" parent="fast_glider2/input_state" index="0"]
+suffix = "_demo"
+
+[node name="joystick_HUD" parent="fast_glider2" instance=ExtResource( 27 )]
+unique_name_in_owner = true
+position = Vector2( -94, 9 )
+z_index = 5
+
+[node name="input_feeder" type="Node" parent="fast_glider2/joystick_HUD"]
+script = ExtResource( 30 )
+
+[node name="tutorial_text" parent="fast_glider2" instance=ExtResource( 5 )]
+margin_left = -67.0
+margin_top = -33.0
+margin_right = 80.0
+margin_bottom = -19.0
+text = "mira che asi se juega"
+
+[node name="input_recorder" type="Node" parent="."]
+script = ExtResource( 28 )
+
 [connection signal="game_over" from="." to="gameover_HUD" method="enable"]
 [connection signal="player_alive" from="." to="wait_on_game_over" method="stop"]
 [connection signal="player_dead" from="." to="wait_on_game_over" method="start"]
@@ -293,3 +704,4 @@ one_shot = true
 [connection signal="timeout" from="wait_on_game_over" to="." method="_on_wait_on_game_over_timeout"]
 
 [editable path="seed_spawner"]
+[editable path="fast_glider2"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://src/test/recorded_input/recorded_input_test.gd" type="Script" id=1]
 [ext_resource path="res://src/HUD/analog_stick/joystick_HUD.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=5]
 [ext_resource path="res://src/terrain/terrain.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/test/recorded_input/input_recorder.gd" type="Script" id=7]
+[ext_resource path="res://src/test/recorded_input/input_feeder.gd" type="Script" id=8]
 
 [sub_resource type="Image" id=48]
 data = {
@@ -237,7 +238,6 @@ script = ExtResource( 1 )
 position = Vector2( 179, 105 )
 
 [node name="fast_glider2" parent="." instance=ExtResource( 3 )]
-modulate = Color( 1, 1, 1, 0.513726 )
 position = Vector2( 179, 105 )
 
 [node name="soft_collision" parent="fast_glider2" index="12"]
@@ -295,12 +295,15 @@ visible = false
 [node name="player_controller" parent="fast_glider2/input_state" index="0"]
 suffix = "_demo"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="joystick_HUD" parent="CanvasLayer" instance=ExtResource( 2 )]
+[node name="joystick_HUD" parent="fast_glider2" instance=ExtResource( 2 )]
 unique_name_in_owner = true
-position = Vector2( 103, 246 )
-scale = Vector2( 4, 4 )
+position = Vector2( -94, 9 )
+z_index = 5
+
+[node name="input_feeder" type="Node" parent="fast_glider2/joystick_HUD"]
+script = ExtResource( 8 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="joystick_HUD2" parent="CanvasLayer" instance=ExtResource( 2 )]
 unique_name_in_owner = true

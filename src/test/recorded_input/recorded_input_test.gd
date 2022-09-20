@@ -13,10 +13,6 @@ func _physics_process(delta: float) -> void:
 	var a_mano2 = InputUtils.get_vector("ui_left_demo","ui_right_demo","ui_up_demo","ui_down_demo")
 	var baked = Input.get_vector("ui_left_demo","ui_right_demo","ui_up_demo","ui_down_demo")
 #	inverse_lerp(p_deadzone, 1.0f, length) / length
-	joystick_hud.feed_state(a_mano2,
-		Input.is_action_pressed("A_demo"),
-		Input.is_action_pressed("B_demo")
-		)
 	joystick_hud2.feed_state(InputUtils.get_vector("ui_left","ui_right","ui_up","ui_down"),Input.is_action_pressed("A_demo"),Input.is_action_pressed("B_demo"))
 
 
