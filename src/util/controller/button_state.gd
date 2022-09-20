@@ -12,3 +12,5 @@ func is_just_pressed():
 	return pressed and just_updated
 func is_just_released():
 	return !pressed and just_updated
+func is_pressed():
+	return pressed

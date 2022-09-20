@@ -281,29 +281,33 @@ weapon_down={
  ]
 }
 ui_left_demo={
-"deadzone": 0.5,
+"deadzone": 0.1,
 "events": [  ]
 }
 ui_right_demo={
-"deadzone": 0.5,
+"deadzone": 0.1,
 "events": [  ]
 }
 ui_up_demo={
-"deadzone": 0.5,
+"deadzone": 0.1,
 "events": [  ]
 }
 ui_down_demo={
-"deadzone": 0.5,
+"deadzone": 0.1,
 "events": [  ]
 }
 A_demo={
-"deadzone": 0.5,
+"deadzone": 0.1,
 "events": [  ]
 }
 B_demo={
-"deadzone": 0.5,
+"deadzone": 0.1,
 "events": [  ]
 }
+
+[input_devices]
+
+buffering/agile_event_flushing=true
 
 [layer_names]
 

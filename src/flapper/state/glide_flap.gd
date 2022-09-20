@@ -26,13 +26,13 @@ func _physics_update(delta):
 #
 #		owner.velocity -= projected*0.1
 
-	if owner.turbo_flap and Input.is_action_pressed("A") or Input.is_action_just_pressed("A"):
+	if owner.turbo_flap and owner.input_state.A.is_pressed() or owner.input_state.A.is_just_pressed():
 		buffered_flap = true
 
 
 func _on_animation_finished(anim_name):
 	if buffered_flap:
-		if Input.is_action_pressed("B"):
+		if owner.input_state.B.is_pressed():
 			goto("glide_flap")
 		else:
 			goto("flap")

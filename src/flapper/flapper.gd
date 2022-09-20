@@ -73,6 +73,7 @@ onready var pivot = $pivot
 onready var stats = $stats
 onready var modifiers = $modifier_map
 onready var HUD = $HUD
+onready var input_state: Node = $input_state
 
 
 func set_custom_animation_lengths(val):
@@ -99,7 +100,7 @@ func _ready():
 
 func _physics_process(delta):
 	delta *= delta_multiplier
-	var change_direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
+	var change_direction = input_state.dir
 	if change_direction.length_squared()>0.01:
 		direction = Vector2.RIGHT.rotated(lerp_angle(direction.angle(),change_direction.angle(),delta*rotation_lerp))
 	var point_dir = -direction.angle_to(Vector2.UP)

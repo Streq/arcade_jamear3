@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://src/flapper/flapper.gd" type="Script" id=1]
 [ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=2]
@@ -39,6 +39,8 @@
 [ext_resource path="res://src/flapper/buffs/modifier_map.gd" type="Script" id=37]
 [ext_resource path="res://assets/texture/battery.png" type="Texture" id=38]
 [ext_resource path="res://src/pickups/effect/only_sound_if_first.gd" type="Script" id=39]
+[ext_resource path="res://src/flapper/input_state.gd" type="Script" id=40]
+[ext_resource path="res://src/flapper/player_controller.gd" type="Script" id=41]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 4 )
@@ -634,6 +636,13 @@ margin_bottom = 8.0
 texture_under = SubResource( 21 )
 texture_progress = SubResource( 23 )
 texture_progress_offset = Vector2( 0, 1 )
+
+[node name="input_state" type="Node" parent="."]
+script = ExtResource( 40 )
+
+[node name="player_controller" type="Node" parent="input_state"]
+process_priority = -10
+script = ExtResource( 41 )
 
 [connection signal="die" from="." to="CollisionShape2D" method="set_disabled" flags=3 binds= [ true ]]
 [connection signal="die" from="." to="state_animation" method="queue_free"]

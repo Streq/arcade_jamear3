@@ -82,7 +82,7 @@ func _physics_update(delta):
 	var tangent = Vector2(normal.y,-normal.x)
 	emit_signal("glide_tangent", owner.velocity.project(tangent).length())
 	
-	if !Input.is_action_pressed("B"):
+	if !owner.input_state.B.is_pressed():
 		goto("close_wings")
-	if Input.is_action_just_pressed("A"):
+	if owner.input_state.A.is_just_pressed():
 		goto("glide_flap")

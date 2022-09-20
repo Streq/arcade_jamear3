@@ -11,7 +11,7 @@ func clear_buffer():
 	buffered_flap = false
 
 func _physics_update(delta):
-	if Input.is_action_just_pressed("A"):
+	if owner.input_state.A.is_just_pressed():
 		buffered_flap = true
 
 func _exit():
