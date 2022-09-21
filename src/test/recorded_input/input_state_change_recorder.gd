@@ -4,6 +4,7 @@ var recording := false
 var events := []
 var frame := 0
 var replay_index := 0
+export var autoplay := false
 
 
 var saved_events := []
@@ -11,7 +12,6 @@ export var record_input_state_path : NodePath
 onready var record_input_state : InputState = get_node(record_input_state_path) if has_node(record_input_state_path) else null
 export var replay_input_state_path : NodePath
 onready var replay_input_state : InputState = get_node(replay_input_state_path) if has_node(replay_input_state_path) else null
-
 
 enum STATE {
 	IDLE,
@@ -54,7 +54,10 @@ func replay():
 
 func _ready() -> void:
 	change_state(STATE.IDLE)
-	
+	if autoplay:
+		load_recording()
+		replay()
+
 
 func _physics_process(delta: float) -> void:
 	match state:

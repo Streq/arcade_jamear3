@@ -1,23 +1,26 @@
 extends Label
 
+export var autoplay := false
+
 
 export (PoolStringArray) var texts
 
-var index = -1
+var text_index = -1
 var frame = 0
 
 var frames_to_change = []
-
 func next():
-	index += 1
-	text = texts[index]
+	text_index += 1
+	text = texts[text_index]
 
 func _physics_process(delta: float) -> void:
 	if playing:
 		if frames_to_change.size() == frame_index:
 			playing = false
+#			yield(get_tree().create_timer(2.0),"timeout")
+#			queue_free()
 			return
-		if frames_to_change[frame_index] <= frame:
+		if frames_to_change[frame_index] == frame:
 			next()
 			frame_index += 1
 	frame += 1
@@ -36,8 +39,11 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 					play_recording()
 
 func _ready() -> void:
-	load_recording()
-	play_recording()
+	next()
+	if autoplay:
+		load_recording()
+		play_recording()
+	pass
 
 func record_next():
 	frames_to_change.push_back(frame)
