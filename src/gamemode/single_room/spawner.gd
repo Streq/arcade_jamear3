@@ -8,6 +8,7 @@ onready var transform_source = get_node(transform_source_path)
 var spawned_instances = []
 onready var timer = $Timer
 
+export var initial_cooldown = 10.0
 
 export var max_spawns := 1
 
@@ -26,6 +27,10 @@ func _on_free_slot():
 	if timer.is_stopped():
 		timer.start()
 
+
+func _ready() -> void:
+	yield(get_tree().create_timer(initial_cooldown),"timeout")
+	timer.start()
 
 func _on_instance_gone(who):
 	spawned_instances.remove(spawned_instances.find(who))
