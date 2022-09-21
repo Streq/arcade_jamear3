@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/test/godot_features/drop_node/GreatChild.gd" type="Script" id=1]
+[ext_resource path="res://src/test/godot_features/drop_node/Child.tscn" type="PackedScene" id=2]
+
+[node name="Root" type="Node"]
+
+[node name="Child" parent="." instance=ExtResource( 2 )]
+
+[node name="GreatChild" type="Node" parent="Child/GrandChild" index="0"]
+script = ExtResource( 1 )
+
+[editable path="Child"]

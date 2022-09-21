@@ -7,14 +7,14 @@
 
 [sub_resource type="Image" id=9]
 data = {
-"data": PoolByteArray( 0, 0, 0, 255, 15, 79, 0, 255, 255, 255, 255, 255 ),
+"data": PoolByteArray( 0, 0, 0, 255, 14, 79, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=5]
+[sub_resource type="ImageTexture" id=10]
 flags = 0
 flags = 0
 image = SubResource( 9 )
@@ -26,7 +26,7 @@ shader = ExtResource( 4 )
 shader_param/palette_size = 3
 shader_param/offset = 0.0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 5 )
+shader_param/palette = SubResource( 10 )
 
 [sub_resource type="Animation" id=6]
 length = 0.001
