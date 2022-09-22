@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://src/flapper/flapper.gd" type="Script" id=1]
 [ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=2]
@@ -41,6 +41,7 @@
 [ext_resource path="res://src/pickups/effect/only_sound_if_first.gd" type="Script" id=39]
 [ext_resource path="res://src/flapper/input_state.gd" type="Script" id=40]
 [ext_resource path="res://src/flapper/player_controller.gd" type="Script" id=41]
+[ext_resource path="res://src/flapper/low_energy_anim.gd" type="Script" id=42]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 4 )
@@ -331,9 +332,9 @@ radius = 3.0
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 4, 4 )
 
-[sub_resource type="Image" id=50]
+[sub_resource type="Image" id=53]
 data = {
-"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -343,7 +344,7 @@ data = {
 [sub_resource type="ImageTexture" id=49]
 flags = 0
 flags = 0
-image = SubResource( 50 )
+image = SubResource( 53 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=33]
@@ -361,8 +362,7 @@ load_path = "res://.import/flapper.png-42d4f1390d9d9cceb01520b415ef9b37.stex"
 extents = Vector2( 1, 6 )
 
 [sub_resource type="Gradient" id=46]
-offsets = PoolRealArray( 0, 0.283237, 1 )
-colors = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture2D" id=21]
 gradient = SubResource( 46 )
@@ -371,13 +371,69 @@ height = 8
 fill_from = Vector2( 0, 1 )
 
 [sub_resource type="Gradient" id=47]
-colors = PoolColorArray( 0, 1, 0.211914, 1, 0, 1, 0.282227, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture2D" id=23]
 gradient = SubResource( 47 )
 width = 32
 height = 6
 fill_from = Vector2( 0, 1 )
+
+[sub_resource type="Animation" id=51]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:tint_under")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=52]
+resource_name = "low"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 0, 0, 1 ), Color( 0, 1, 0.0156863, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:tint_under")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ) ]
+}
 
 [node name="flapper" type="KinematicBody2D" groups=["flapper"]]
 collision_layer = 2
@@ -636,6 +692,14 @@ margin_bottom = 8.0
 texture_under = SubResource( 21 )
 texture_progress = SubResource( 23 )
 texture_progress_offset = Vector2( 0, 1 )
+tint_under = Color( 0, 0, 0, 1 )
+tint_over = Color( 1, 0, 0, 1 )
+tint_progress = Color( 1, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/HBoxContainer/energy_bar"]
+anims/RESET = SubResource( 51 )
+anims/low = SubResource( 52 )
+script = ExtResource( 42 )
 
 [node name="input_state" type="Node" parent="."]
 script = ExtResource( 40 )

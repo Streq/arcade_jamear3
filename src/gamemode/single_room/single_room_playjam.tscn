@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://src/gamemode/single_room/fast_glider_for_single_room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/gamemode/single_room/spawner.gd" type="Script" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://src/gamemode/single_room/playjam_gameover.gd" type="Script" id=25]
 [ext_resource path="res://src/gamemode/single_room/playjam/win_text.gd" type="Script" id=26]
 [ext_resource path="res://src/HUD/analog_stick/joystick_HUD.tscn" type="PackedScene" id=27]
+[ext_resource path="res://src/gamemode/single_room/remove_flapper.gd" type="Script" id=28]
 [ext_resource path="res://src/flapper/presets/fast_glider.tscn" type="PackedScene" id=29]
 [ext_resource path="res://src/test/recorded_input/input_feeder.gd" type="Script" id=30]
 [ext_resource path="res://src/flapper/recorder.tscn" type="PackedScene" id=31]
@@ -34,7 +35,7 @@
 
 [sub_resource type="Image" id=100]
 data = {
-"data": PoolByteArray( 0, 0, 0, 255, 50, 0, 76, 255, 203, 100, 0, 255, 255, 167, 0, 255 ),
+"data": PoolByteArray( 0, 0, 0, 255, 49, 0, 75, 255, 202, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -434,10 +435,17 @@ polygon = PoolVector2Array( 17.1278, 23.4435, 35.6068, 23.4435, 35.6068, 33.2728
 
 [node name="score" parent="." instance=ExtResource( 14 )]
 
+[node name="tiempo_label" parent="score" index="0"]
+rect_scale = Vector2( 2, 2 )
+
 [node name="Difficulty" parent="." instance=ExtResource( 15 )]
 visible = true
 start_difficulty = -20.0
 difficulty_increase_scale = 0.75
+
+[node name="dificultad_label" parent="Difficulty" index="0"]
+margin_top = 32.0
+margin_bottom = 46.0
 
 [node name="player_spawn_point" type="Position2D" parent="."]
 position = Vector2( 168, 368 )
@@ -655,6 +663,9 @@ visible = false
 
 [node name="energy_bar" parent="fast_glider2/HUD/HBoxContainer" index="1"]
 visible = false
+tint_under = Color( 1, 1, 1, 1 )
+tint_over = Color( 1, 1, 1, 1 )
+tint_progress = Color( 1, 1, 1, 1 )
 
 [node name="player_controller" parent="fast_glider2/input_state" index="0"]
 disabled = true
@@ -701,6 +712,9 @@ margin_right = 151.0
 margin_bottom = 18.0
 color = Color( 0, 0, 0, 1 )
 
+[node name="remove_flapper_group" type="Node" parent="fast_glider2"]
+script = ExtResource( 28 )
+
 [node name="demo_player" parent="." instance=ExtResource( 31 )]
 autoplay = true
 record_input_state_path = NodePath("")
@@ -719,4 +733,6 @@ script = ExtResource( 25 )
 [connection signal="win" from="playjam_gameover" to="CanvasLayer/win_text" method="_on_win"]
 
 [editable path="seed_spawner"]
+[editable path="score"]
+[editable path="Difficulty"]
 [editable path="fast_glider2"]
