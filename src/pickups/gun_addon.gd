@@ -27,10 +27,15 @@ func _ready():
 				prev_weapons[1].remove()
 			
 			#add as secondary
-			wearer.addons["weapon2"] = self
+			for w in ["weapon","weapon2"]:
+				if !wearer.addons.has(w):
+					wearer.addons[w] = self
+					if w == "weapon2":
+						rotation = PI
+						position.y -= 16.0
+			
 			wearer.connect("flapped", self, "shoot")
-			rotation = PI
-			position.y -= 16.0
+			
 				
 		else:#replace all
 			for weapon in prev_weapons:

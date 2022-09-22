@@ -143,6 +143,7 @@ window/size/width=960
 window/size/height=540
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
+window/size/fullscreen.playjam=true
 
 [editor_plugins]
 

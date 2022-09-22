@@ -7,7 +7,7 @@
 [ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/pickups/gun_addon.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/audio/sfx/seed.wav" type="AudioStream" id=7]
-[ext_resource path="res://assets/texture/gun.png" type="Texture" id=8]
+[ext_resource path="res://assets/texture/phoenix_feather.png" type="Texture" id=8]
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 64.0
@@ -15,9 +15,9 @@ radius = 64.0
 [sub_resource type="CircleShape2D" id=4]
 radius = 5.09902
 
-[sub_resource type="Image" id=11]
+[sub_resource type="Image" id=9]
 data = {
-"data": PoolByteArray( 255, 0, 0, 255, 255, 255, 0, 255, 255, 255, 255, 255 ),
+"data": PoolByteArray( 62, 0, 0, 255, 255, 137, 0, 255, 255, 0, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -27,7 +27,7 @@ data = {
 [sub_resource type="ImageTexture" id=10]
 flags = 0
 flags = 0
-image = SubResource( 11 )
+image = SubResource( 9 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=8]
@@ -97,7 +97,7 @@ material = SubResource( 8 )
 texture = ExtResource( 8 )
 
 [node name="palette" parent="Sprite" instance=ExtResource( 5 )]
-palette = PoolColorArray( 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1 )
+palette = PoolColorArray( 0.243137, 0, 0, 1, 1, 0.537255, 0, 1, 1, 0, 0, 1 )
 material = SubResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

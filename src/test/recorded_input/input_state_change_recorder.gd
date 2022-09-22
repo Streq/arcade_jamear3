@@ -3,9 +3,9 @@ extends Node
 var recording := false
 var events := []
 var frame := 0
-var replay_index := 0
+export var replay_index := 0
 export var autoplay := false
-
+export var autorecord := false
 
 var saved_events := []
 export var record_input_state_path : NodePath
@@ -60,7 +60,9 @@ func _ready() -> void:
 	if autoplay:
 		load_recording()
 		replay()
-
+	elif autorecord:
+		record()
+	
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -124,7 +126,7 @@ func enter_current_state():
 			events = []
 			frame = 0
 		STATE.REPLAYING:
-			replay_index = 0
+#			replay_index = 0
 			frame = 0
 
 const PATH = "res://assets/data/"

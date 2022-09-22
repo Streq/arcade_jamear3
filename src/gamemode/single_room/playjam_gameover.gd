@@ -8,8 +8,6 @@ enum {
 onready var score: CanvasLayer = $"../score"
 var won = false
 
-func _ready() -> void:
-	OS.window_fullscreen = true
 
 func _physics_process(delta: float) -> void:
 	if score.total_time >= 120.0:

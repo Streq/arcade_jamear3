@@ -147,6 +147,7 @@ shape = SubResource( 6 )
 
 [node name="delay_rotation" type="Node" parent="hitbox_pivot/hitbox2"]
 script = ExtResource( 10 )
+amount = 0.33
 
 [node name="Sprite" type="Sprite" parent="hitbox_pivot/hitbox2"]
 material = SubResource( 41 )
@@ -154,6 +155,29 @@ scale = Vector2( 1, 2 )
 texture = ExtResource( 4 )
 
 [node name="palette" parent="hitbox_pivot/hitbox2/Sprite" instance=ExtResource( 3 )]
+palette = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1 )
+material = SubResource( 41 )
+
+[node name="hitbox3" type="Area2D" parent="hitbox_pivot"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource( 8 )
+knockback = 45.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_pivot/hitbox3"]
+position = Vector2( 0, 24 )
+shape = SubResource( 6 )
+
+[node name="delay_rotation" type="Node" parent="hitbox_pivot/hitbox3"]
+script = ExtResource( 10 )
+amount = 0.66
+
+[node name="Sprite" type="Sprite" parent="hitbox_pivot/hitbox3"]
+material = SubResource( 41 )
+scale = Vector2( 1, 2 )
+texture = ExtResource( 4 )
+
+[node name="palette" parent="hitbox_pivot/hitbox3/Sprite" instance=ExtResource( 3 )]
 palette = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1 )
 material = SubResource( 41 )
 
