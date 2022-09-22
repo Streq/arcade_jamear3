@@ -113,6 +113,7 @@ fill_from = Vector2( 0, 1 )
 [node name="sword_addon" type="Node2D"]
 position = Vector2( 0, 8 )
 script = ExtResource( 2 )
+weapon_name = "sword"
 
 [node name="swing" type="Node" parent="."]
 script = ExtResource( 9 )

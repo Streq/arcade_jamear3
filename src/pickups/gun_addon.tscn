@@ -37,6 +37,7 @@ shader_param/palette = SubResource( 5 )
 [node name="gun_addon" type="Node2D"]
 position = Vector2( 0, 8 )
 script = ExtResource( 2 )
+weapon_name = "gun"
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 3 )
