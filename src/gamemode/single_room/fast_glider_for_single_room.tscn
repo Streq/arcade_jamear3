@@ -35,8 +35,8 @@ shader_param/palette = SubResource( 20 )
 [node name="difficulty" parent="." index="0" instance=ExtResource( 4 )]
 
 [node name="energy" parent="." index="25"]
-max_value = 64.0
-value = 64.0
+max_value = 96.0
+value = 96.0
 
 [node name="set_to_difficulty" parent="energy" index="0" instance=ExtResource( 3 )]
 difficulty = NodePath("../../difficulty")

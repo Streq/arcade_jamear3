@@ -34,6 +34,7 @@ func spawn_portal():
 func _seed_taken():
 	emit_signal("seed_taken")
 	current_seeds += 1
+	print(current_seeds)
 	if current_seeds == required_seeds:
 		emit_signal("requirement_met")
 		spawn_portal()

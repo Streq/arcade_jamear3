@@ -705,7 +705,7 @@ text = "mira che asi se juega"
 align = 1
 script = ExtResource( 32 )
 autoplay = true
-texts = PoolStringArray( "mira che asi se juega", "con A (o Z en el teclado) aleteás", "y con B (o X en el teclado) planeás", "eso es todo, calate esta", "re piola", "la idea es que te comas las semillas verdes para ganar energía", "y que los fantasmitas no te maten", "tenés que aguantar 2 minutos", "bueno che me voy chau" )
+texts = PoolStringArray( "mira che asi se juega", "con A (o Z en el teclado) aleteás", "y con B (o X en el teclado) planeás", "eso es todo, calate esta", "re piola", "la idea es que te comas las semillas verdes para ganar energía", "y que los fantasmitas no te maten", "aguantá todo lo que puedas para MÁXIMO HIGHSCORE!!!!!!!", "bueno che me voy chau" )
 
 [node name="MarginContainer" type="MarginContainer" parent="fast_glider2/tutorial_pivot/tutorial_text"]
 show_behind_parent = true
