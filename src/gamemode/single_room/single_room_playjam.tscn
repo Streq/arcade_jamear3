@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://src/gamemode/single_room/fast_glider_for_single_room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/gamemode/single_room/spawner.gd" type="Script" id=2]
@@ -32,8 +32,11 @@
 [ext_resource path="res://src/test/recorded_input/input_feeder.gd" type="Script" id=30]
 [ext_resource path="res://src/flapper/recorder.tscn" type="PackedScene" id=31]
 [ext_resource path="res://src/gamemode/single_room/demo_dialog.gd" type="Script" id=32]
+[ext_resource path="res://assets/texture/nameathegame.png" type="Texture" id=33]
+[ext_resource path="res://src/gamemode/single_room/title.gd" type="Script" id=34]
+[ext_resource path="res://src/flapper/addons/energy_bar.gd" type="Script" id=35]
 
-[sub_resource type="Image" id=100]
+[sub_resource type="Image" id=112]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 49, 0, 75, 255, 202, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
@@ -42,10 +45,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=96]
+[sub_resource type="ImageTexture" id=106]
 flags = 0
 flags = 0
-image = SubResource( 100 )
+image = SubResource( 112 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=62]
@@ -54,7 +57,7 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 96 )
+shader_param/palette = SubResource( 106 )
 
 [sub_resource type="Curve2D" id=66]
 _data = {
@@ -66,7 +69,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 904, 0 )
 }
 
-[sub_resource type="Image" id=101]
+[sub_resource type="Image" id=113]
 data = {
 "data": PoolByteArray( 135, 63, 0, 255, 235, 84, 31, 255, 255, 205, 58, 255, 255, 196, 0, 255 ),
 "format": "RGBA8",
@@ -78,7 +81,7 @@ data = {
 [sub_resource type="ImageTexture" id=74]
 flags = 0
 flags = 0
-image = SubResource( 101 )
+image = SubResource( 113 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=75]
@@ -88,6 +91,29 @@ shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
 shader_param/palette = SubResource( 74 )
+
+[sub_resource type="Image" id=114]
+data = {
+"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=109]
+flags = 0
+flags = 0
+image = SubResource( 114 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=104]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 1.0
+shader_param/palette = SubResource( 109 )
 
 [sub_resource type="Animation" id=80]
 length = 0.001
@@ -369,7 +395,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=102]
+[sub_resource type="Image" id=115]
 data = {
 "data": PoolByteArray( 98, 98, 98, 255, 0, 255, 188, 255, 0, 255, 249, 255 ),
 "format": "RGBA8",
@@ -378,10 +404,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=99]
+[sub_resource type="ImageTexture" id=111]
 flags = 0
 flags = 0
-image = SubResource( 102 )
+image = SubResource( 115 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=94]
@@ -390,7 +416,7 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 99 )
+shader_param/palette = SubResource( 111 )
 
 [node name="Node2D" type="Node2D"]
 pause_mode = 1
@@ -506,6 +532,62 @@ position = Vector2( 800, 80 )
 [node name="torch5" parent="." instance=ExtResource( 17 )]
 material = SubResource( 75 )
 position = Vector2( 480, 280 )
+
+[node name="title_screen" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="title" type="Control" parent="title_screen"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 34 )
+
+[node name="ColorRect" type="ColorRect" parent="title_screen/title"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.121569, 0, 0.145098, 1 )
+
+[node name="TextureRect" type="TextureRect" parent="title_screen/title"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -160.0
+margin_right = 160.0
+margin_bottom = 160.0
+texture = ExtResource( 33 )
+
+[node name="fast_glider" parent="title_screen/title" instance=ExtResource( 1 )]
+position = Vector2( -181, 425 )
+collision_layer = 0
+collision_mask = 0
+velocity = Vector2( 400, -100 )
+direction = Vector2( 0.707107, -0.707107 )
+
+[node name="energy" parent="title_screen/title/fast_glider" index="25"]
+script = ExtResource( 35 )
+
+[node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider" index="27"]
+disabled = true
+
+[node name="Sprite" parent="title_screen/title/fast_glider/pivot" index="0"]
+material = SubResource( 104 )
+
+[node name="palette" parent="title_screen/title/fast_glider/pivot/Sprite" index="1"]
+material = SubResource( 104 )
+
+[node name="HUD" parent="title_screen/title/fast_glider" index="34"]
+visible = false
+
+[node name="player_controller" parent="title_screen/title/fast_glider/input_state" index="0"]
+disabled = true
+
+[node name="demo_player" parent="title_screen/title/fast_glider/input_state" index="1" instance=ExtResource( 31 )]
+autoplay = true
+record_input_state_path = NodePath("")
+replay_input_state_path = NodePath("..")
+demo_name = "demo_intro.dat"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -663,9 +745,7 @@ visible = false
 
 [node name="energy_bar" parent="fast_glider2/HUD/HBoxContainer" index="1"]
 visible = false
-tint_under = Color( 1, 1, 1, 1 )
 tint_over = Color( 1, 1, 1, 1 )
-tint_progress = Color( 1, 1, 1, 1 )
 
 [node name="player_controller" parent="fast_glider2/input_state" index="0"]
 disabled = true
@@ -720,6 +800,7 @@ autoplay = true
 record_input_state_path = NodePath("")
 
 [node name="playjam_gameover" type="Node" parent="."]
+pause_mode = 2
 script = ExtResource( 25 )
 
 [connection signal="game_over" from="." to="playjam_gameover" method="_on_game_over"]
@@ -728,6 +809,9 @@ script = ExtResource( 25 )
 [connection signal="timeout" from="ghost_spawner/Timer" to="ghost_spawner" method="_on_Timer_timeout" flags=3]
 [connection signal="seed_taken" from="seed_spawner" to="fall_spawner/spawner_trigger_on_seeds_taken" method="_on_seed_taken"]
 [connection signal="trigger" from="fall_spawner/spawner_trigger_on_seeds_taken" to="fall_spawner" method="spawn"]
+[connection signal="failed_flap" from="title_screen/title/fast_glider" to="title_screen/title/fast_glider/energy" method="_on_flapped"]
+[connection signal="trigger" from="title_screen/title/fast_glider/on_soft_collision" to="title_screen/title/fast_glider/energy" method="add_value" binds= [ -5.0 ]]
+[connection signal="value_changed" from="title_screen/title/fast_glider/energy" to="title_screen/title/fast_glider/HUD/HBoxContainer/energy_bar" method="update_values"]
 [connection signal="timeout" from="wait_on_game_over" to="." method="_on_wait_on_game_over_timeout"]
 [connection signal="die" from="fast_glider2" to="CanvasLayer/Control/HBoxContainer" method="set_visible" binds= [ true ]]
 [connection signal="win" from="playjam_gameover" to="CanvasLayer/win_text" method="_on_win"]
@@ -735,4 +819,5 @@ script = ExtResource( 25 )
 [editable path="seed_spawner"]
 [editable path="score"]
 [editable path="Difficulty"]
+[editable path="title_screen/title/fast_glider"]
 [editable path="fast_glider2"]

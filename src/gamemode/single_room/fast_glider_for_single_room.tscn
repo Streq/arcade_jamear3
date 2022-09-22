@@ -48,7 +48,6 @@ max_value = 2.0
 material = SubResource( 18 )
 
 [node name="palette" parent="pivot/Sprite" index="1"]
-palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
 material = SubResource( 18 )
 
 [node name="kill_on_no_energy" type="Node" parent="." index="29"]

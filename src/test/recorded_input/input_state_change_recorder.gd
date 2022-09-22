@@ -13,6 +13,9 @@ onready var record_input_state : InputState = get_node(record_input_state_path) 
 export var replay_input_state_path : NodePath
 onready var replay_input_state : InputState = get_node(replay_input_state_path) if has_node(replay_input_state_path) else null
 
+export var demo_name := "demo.dat"
+
+
 enum STATE {
 	IDLE,
 	RECORDING,
@@ -124,10 +127,10 @@ func enter_current_state():
 			replay_index = 0
 			frame = 0
 
-const PATH = "res://assets/data/demo.dat"
+const PATH = "res://assets/data/"
 func save_recording():
 	var file = File.new()
-	file.open(PATH, File.WRITE)
+	file.open(PATH+demo_name, File.WRITE)
 	var saved_as_dict = []
 	for event in saved_events:
 		saved_as_dict.push_back(event.to_dict())
@@ -135,7 +138,7 @@ func save_recording():
 	file.close()
 func load_recording():
 	var file = File.new()
-	file.open(PATH, File.READ)
+	file.open(PATH+demo_name, File.READ)
 	saved_events = []
 	var saved_as_dict = file.get_var()
 	for dict in saved_as_dict:

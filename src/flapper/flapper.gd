@@ -61,7 +61,7 @@ var addons = {}
 var ready = false
 var dead = false
 
-var velocity = Vector2()
+export var velocity := Vector2() setget set_velocity
 export var direction := Vector2.UP
 onready var state_machine := $state_machine
 onready var state_animation := $"%state_animation"
@@ -75,7 +75,10 @@ onready var modifiers = $modifier_map
 onready var HUD = $HUD
 onready var input_state: Node = $input_state
 
-
+func set_velocity(val):
+#	print_stack()
+	velocity = val
+	
 func set_custom_animation_lengths(val):
 	custom_animation_lengths = val
 	if ready:
