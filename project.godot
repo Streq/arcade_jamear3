@@ -124,7 +124,10 @@ _global_script_class_icons={
 
 config/name="jamear3"
 run/main_scene="res://src/test/app_state/app_state_test.tscn"
-config/icon="res://assets/texture/icon.png"
+boot_splash/show_image=false
+boot_splash/use_filter=false
+config/icon="res://assets/icon.png"
+run/main_scene.playjam="res://src/gamemode/single_room/single_room_playjam.tscn"
 
 [autoload]
 
