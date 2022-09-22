@@ -26,7 +26,7 @@ func _physics_update(delta):
 #
 #		owner.velocity -= projected*0.1
 
-	if owner.turbo_flap and owner.input_state.A.is_pressed() or owner.input_state.A.is_just_pressed():
+	if owner.turbo_flap or owner.input_state.A.is_just_pressed():
 		buffered_flap = true
 
 

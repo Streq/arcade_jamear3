@@ -26,6 +26,8 @@ func _physics_process(delta: float) -> void:
 	frame += 1
 
 func _unhandled_key_input(event: InputEventKey) -> void:
+	if autoplay:
+		return
 	if OS.is_debug_build():
 		if event.is_pressed():
 			match event.scancode:

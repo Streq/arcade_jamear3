@@ -6,7 +6,7 @@ func _enter(params):
 	pass
 
 func _physics_update(delta):
-	if owner.input_state.A.is_just_pressed():
+	if owner.input_state.A.is_just_pressed() or owner.turbo_flap:
 		goto("flap")
 	if owner.input_state.B.is_pressed():
 		goto("open_wings")
