@@ -5,13 +5,39 @@ export var palette: PoolColorArray setget set_palette
 export var material : ShaderMaterial
 export var glow = false setget set_glow
 export var glow_speed = 1.0
+
+export var string_val : String setget set_string_val
+
+
 var ready = false
 
 
 var tex = ImageTexture.new()
 
 
+
+func set_string_val(val):
+	var json = parse_json(val)
+	var res = []
+	
+	for color in json:
+		res.append(Color(color))
+#		print(color)
+	var palette = PoolColorArray()
+	for color in res:
+		palette.append(color)
+	string_val = val
+	set_palette(palette)
+
+
+func _set_string_val():
+	var ret = []
+	for color in palette:
+		ret.append(color.to_html(true))
+	string_val = to_json(ret)
+
 func _ready():
+	
 	ready = true
 	set_palette(palette)
 	material.set_shader_param("palette", tex)
@@ -31,6 +57,7 @@ func set_palette(val):
 		update_tex_from_palette()
 		
 		material.set_shader_param("palette_size", palette.size())
+		_set_string_val()
 		property_list_changed_notify()
 
 func update_tex_from_palette():

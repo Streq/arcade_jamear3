@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
 [ext_resource path="res://src/pickups/gun_effect.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/pickups/gun_addon.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/audio/sfx/seed.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/texture/phoenix_feather.png" type="Texture" id=8]
+[ext_resource path="res://src/pickups/glow.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 64.0
@@ -15,7 +16,7 @@ radius = 64.0
 [sub_resource type="CircleShape2D" id=4]
 radius = 5.09902
 
-[sub_resource type="Image" id=9]
+[sub_resource type="Image" id=13]
 data = {
 "data": PoolByteArray( 62, 0, 0, 255, 255, 137, 0, 255, 255, 0, 0, 255 ),
 "format": "RGBA8",
@@ -24,10 +25,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=10]
+[sub_resource type="ImageTexture" id=14]
 flags = 0
 flags = 0
-image = SubResource( 9 )
+image = SubResource( 13 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=8]
@@ -36,7 +37,10 @@ shader = ExtResource( 1 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 10 )
+shader_param/palette = SubResource( 14 )
+
+[sub_resource type="StreamTexture" id=12]
+load_path = "res://.import/light.png-82dc72683d47ad9e59dd2a08c64fa267.stex"
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -55,6 +59,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "play"
+length = 1.2
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:position")
@@ -68,8 +73,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 0, 2 ), Vector2( 0, -2 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Sprite2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0 ]
+}
 
 [node name="phoenix_feather" type="Area2D" groups=["seed"]]
+position = Vector2( 56, 40 )
 collision_layer = 4
 collision_mask = 0
 script = ExtResource( 3 )
@@ -99,6 +117,13 @@ texture = ExtResource( 8 )
 [node name="palette" parent="Sprite" instance=ExtResource( 5 )]
 palette = PoolColorArray( 0.243137, 0, 0, 1, 1, 0.537255, 0, 1, 1, 0, 0, 1 )
 material = SubResource( 8 )
+string_val = "[\"ff3e0000\",\"ffff8900\",\"ffff0000\"]"
+
+[node name="Sprite2" parent="Sprite" instance=ExtResource( 9 )]
+texture = SubResource( 12 )
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PUFuaW1hdGlvblBsYXllcgpzb3VyY2V8PXJlczovL2Fzc2V0cy9hc2Vwcml0ZS9saWdodC5hc2Vwcml0ZQpsYXllcnw9Cm9wX2V4cHw9RmFsc2UKb19mb2xkZXJ8PQpvX25hbWV8PQpvbmx5X3Zpc2libGV8PVRydWUKb19leF9wfD0K"
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "play"

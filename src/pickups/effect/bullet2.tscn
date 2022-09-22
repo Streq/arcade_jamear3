@@ -11,9 +11,9 @@
 [ext_resource path="res://src/pickups/effect/free_on_stop_moving.gd" type="Script" id=9]
 [ext_resource path="res://src/pickups/effect/hitbox.gd" type="Script" id=10]
 
-[sub_resource type="Image" id=6]
+[sub_resource type="Image" id=8]
 data = {
-"data": PoolByteArray( 255, 0, 0, 255, 246, 255, 0, 255, 255, 255, 255, 255 ),
+"data": PoolByteArray( 255, 0, 0, 255, 247, 255, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -23,7 +23,7 @@ data = {
 [sub_resource type="ImageTexture" id=7]
 flags = 0
 flags = 0
-image = SubResource( 6 )
+image = SubResource( 8 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=5]

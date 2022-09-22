@@ -2,8 +2,8 @@ extends Node
 export var amount := 0.5
 var prev_rotation = 0.0
 var curr_rotation = 0.0
-var prev_transform = Transform2D()
-var curr_transform = Transform2D()
+onready var prev_transform = get_parent().get_parent().global_transform
+onready var curr_transform = get_parent().get_parent().global_transform
 func _physics_process(delta):
 	
 #	prev_rotation = curr_rotation

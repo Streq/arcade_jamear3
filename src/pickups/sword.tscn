@@ -16,7 +16,7 @@ radius = 64.0
 [sub_resource type="CircleShape2D" id=4]
 radius = 5.09902
 
-[sub_resource type="Image" id=12]
+[sub_resource type="Image" id=14]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -28,7 +28,7 @@ data = {
 [sub_resource type="ImageTexture" id=13]
 flags = 0
 flags = 0
-image = SubResource( 12 )
+image = SubResource( 14 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=8]
@@ -116,6 +116,7 @@ texture = ExtResource( 4 )
 [node name="palette" parent="Sprite" instance=ExtResource( 7 )]
 palette = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1 )
 material = SubResource( 8 )
+string_val = "[\"ff000000\",\"ffff0000\",\"ffffffff\"]"
 
 [node name="Sprite2" parent="Sprite" instance=ExtResource( 9 )]
 modulate = Color( 0.498039, 0, 0, 1 )

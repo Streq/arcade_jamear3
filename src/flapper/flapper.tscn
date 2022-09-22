@@ -653,6 +653,7 @@ disabled = true
 palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
 material = SubResource( 33 )
 glow_speed = 4.0
+string_val = "[\"ff971818\",\"ffffb300\",\"ffd75600\"]"
 
 [node name="hud_tracker" type="Node" parent="."]
 script = ExtResource( 34 )

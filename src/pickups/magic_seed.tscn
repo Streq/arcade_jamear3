@@ -78,7 +78,7 @@ size = Vector2( 3, 1 )
 resource_local_to_scene = true
 shader = ExtResource( 1 )
 shader_param/palette_size = 3
-shader_param/offset = 1
+shader_param/offset = 2
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 62 )
 
@@ -117,6 +117,7 @@ palette = PoolColorArray( 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1 )
 material = SubResource( 60 )
 glow = true
 glow_speed = 6.0
+string_val = "[\"ff000000\",\"ffffff00\",\"ffffffff\"]"
 
 [node name="Sprite" parent="Sprite" instance=ExtResource( 4 )]
 

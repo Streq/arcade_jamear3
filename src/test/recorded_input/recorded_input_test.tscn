@@ -326,6 +326,7 @@ material = SubResource( 35 )
 [node name="palette" parent="fast_glider2/pivot/Sprite" index="1"]
 palette = PoolColorArray( 0.388235, 0.388235, 0.388235, 1, 0, 1, 0.741176, 1, 0, 1, 0.976471, 1 )
 material = SubResource( 35 )
+string_val = "[\"ff636363\",\"ff00ffbd\",\"ff00fff9\"]"
 
 [node name="HUD" parent="fast_glider2" index="31"]
 visible = false
@@ -390,7 +391,9 @@ visible = false
 material = SubResource( 10 )
 
 [node name="palette" parent="CanvasLayer/joystick_HUD2/analog_stick/base" index="0"]
+palette = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0.360784, 0.360784, 0.360784, 1 )
 material = SubResource( 10 )
+string_val = "[\"ff000000\",\"ff000000\",\"ff5c5c5c\"]"
 
 [node name="stick_base" parent="CanvasLayer/joystick_HUD2/analog_stick" index="1"]
 visible = false
@@ -401,7 +404,9 @@ visible = false
 material = SubResource( 13 )
 
 [node name="palette" parent="CanvasLayer/joystick_HUD2/analog_stick/stick" index="0"]
+palette = PoolColorArray( 0, 0, 0, 1, 0.192157, 0.192157, 0.192157, 1, 0.403922, 0.403922, 0.403922, 1 )
 material = SubResource( 13 )
+string_val = "[\"ff000000\",\"ff313131\",\"ff676767\"]"
 
 [node name="rotate_transform" parent="CanvasLayer/joystick_HUD2/analog_stick" index="3"]
 modulate = Color( 0, 128.498, 0, 0.356863 )
@@ -411,12 +416,15 @@ material = SubResource( 16 )
 
 [node name="palette" parent="CanvasLayer/joystick_HUD2/analog_stick/rotate_transform/head" index="0"]
 material = SubResource( 16 )
+string_val = "[\"ff000000\",\"ffffffff\",\"ffff0000\"]"
 
 [node name="Sprite" parent="CanvasLayer/joystick_HUD2/B" index="0"]
 material = SubResource( 19 )
 
 [node name="palette" parent="CanvasLayer/joystick_HUD2/B/Sprite" index="0"]
+palette = PoolColorArray( 0, 0, 0, 1, 0.513726, 0, 0, 1, 1, 1, 1, 1 )
 material = SubResource( 19 )
+string_val = "[\"ff000000\",\"ff830000\",\"ffffffff\"]"
 
 [node name="AnimationPlayer" parent="CanvasLayer/joystick_HUD2/B" index="1"]
 anims/RESET = SubResource( 20 )
@@ -430,6 +438,7 @@ tile_data = PoolIntArray( -1, 8, 8, -65536, 8, 10, -65535, 8, 10, -65534, 8, 10,
 [node name="palette" parent="TileMap" instance=ExtResource( 4 )]
 palette = PoolColorArray( 1, 0.74902, 0, 1, 0.211765, 0, 0.207843, 1, 1, 0.631373, 0, 1 )
 material = SubResource( 3 )
+string_val = "[\"ffffbf00\",\"ff360035\",\"ffffa100\"]"
 
 [node name="exit_area" type="Area2D" parent="."]
 position = Vector2( 760, 578 )

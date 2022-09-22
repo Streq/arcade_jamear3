@@ -5,7 +5,7 @@
 
 [sub_resource type="Image" id=5]
 data = {
-"data": PoolByteArray( 0, 0, 0, 255, 14, 47, 16, 255, 121, 140, 98, 255, 198, 221, 149, 255 ),
+"data": PoolByteArray( 255, 0, 0, 255, 14, 48, 16, 255, 122, 140, 98, 255, 0, 0, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -30,3 +30,4 @@ shader_param/palette = SubResource( 4 )
 script = ExtResource( 2 )
 palette = PoolColorArray( 0, 0, 0, 1, 0.054902, 0.188235, 0.0627451, 1, 0.478431, 0.54902, 0.384314, 1, 0, 0, 0, 1 )
 material = SubResource( 2 )
+string_val = "[\"ff000000\",\"ff0e3010\",\"ff7a8c62\",\"ff000000\"]"

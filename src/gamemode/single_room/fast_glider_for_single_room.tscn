@@ -7,9 +7,9 @@
 [ext_resource path="res://src/flapper/addons/kill_on_no_energy.gd" type="Script" id=5]
 [ext_resource path="res://src/flapper/addons/explode_action.gd" type="Script" id=6]
 
-[sub_resource type="Image" id=21]
+[sub_resource type="Image" id=19]
 data = {
-"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -19,7 +19,7 @@ data = {
 [sub_resource type="ImageTexture" id=20]
 flags = 0
 flags = 0
-image = SubResource( 21 )
+image = SubResource( 19 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=18]
