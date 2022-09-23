@@ -24,7 +24,8 @@ func _ready():
 	if !prev_weapons.empty():
 		if prev_weapons[0].stacks_with(self.weapon_name):
 			if prev_weapons.size()==2:#replace secondary
-				prev_weapons[1].remove()
+				if is_instance_valid(prev_weapons[1]):
+					prev_weapons[1].remove()
 			
 			#add as secondary
 			for w in affected_addons:
@@ -39,7 +40,8 @@ func _ready():
 				
 		else:#replace all
 			for weapon in prev_weapons:
-				weapon.remove()
+				if is_instance_valid(weapon):
+					weapon.remove()
 			wearer.addons[affected_addons[0]] = self
 			wearer.connect("pre_flap", self, "shoot")
 	else:#add normally

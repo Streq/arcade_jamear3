@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
 [ext_resource path="res://src/pickups/gun_addon.gd" type="Script" id=2]
@@ -9,8 +9,9 @@
 [ext_resource path="res://src/pickups/effect/palette_changer.gd" type="Script" id=7]
 [ext_resource path="res://src/pickups/effect/trigger_on_clone.gd" type="Script" id=8]
 [ext_resource path="res://src/pickups/effect/on_clone_effect.gd" type="Script" id=9]
+[ext_resource path="res://assets/font/ProggyClean.ttf/ProggyClean.ttf" type="DynamicFontData" id=10]
 
-[sub_resource type="Image" id=10]
+[sub_resource type="Image" id=13]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 48, 14, 14, 255, 255, 0, 0, 255 ),
 "format": "RGBA8",
@@ -22,7 +23,7 @@ data = {
 [sub_resource type="ImageTexture" id=5]
 flags = 0
 flags = 0
-image = SubResource( 10 )
+image = SubResource( 13 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
@@ -33,7 +34,7 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 5 )
 
-[sub_resource type="Image" id=11]
+[sub_resource type="Image" id=14]
 data = {
 "data": PoolByteArray( 255, 0, 0, 255, 255, 215, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -45,16 +46,19 @@ data = {
 [sub_resource type="ImageTexture" id=8]
 flags = 0
 flags = 0
-image = SubResource( 11 )
+image = SubResource( 14 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=9]
 resource_local_to_scene = true
 shader = ExtResource( 1 )
 shader_param/palette_size = 3
-shader_param/offset = 1
+shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 8 )
+
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 10 )
 
 [node name="phoenix_addon" type="Node2D"]
 script = ExtResource( 2 )
@@ -154,6 +158,33 @@ material = SubResource( 9 )
 glow = true
 string_val = "[\"ffff0000\",\"ffffd700\",\"ffffffff\"]"
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="tutorial_text" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.5
+margin_top = 113.0
+margin_right = 45.5
+margin_bottom = 127.0
+grow_horizontal = 2
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = SubResource( 12 )
+text = "MODO FÉNIX!!!"
+align = 1
+valign = 1
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
 [connection signal="ready" from="." to="palette_changer" method="setup"]
 [connection signal="remove" from="." to="palette_changer" method="remove"]
 [connection signal="shoot" from="." to="shooter" method="shoot"]
@@ -163,3 +194,4 @@ string_val = "[\"ffff0000\",\"ffffd700\",\"ffffffff\"]"
 [connection signal="timeout" from="bomb/Timer" to="bomb/shooter_spark" method="shoot"]
 [connection signal="timeout" from="bomb/Timer" to="bomb/shooter_bullet" method="shoot"]
 [connection signal="timeout" from="bomb/Timer" to="bomb/shooter_big_bullet" method="shoot"]
+[connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="queue_free"]

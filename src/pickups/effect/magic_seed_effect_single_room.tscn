@@ -22,7 +22,7 @@ size = Vector2( 3, 1 )
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/palette_size = 3
-shader_param/offset = 1
+shader_param/offset = 2
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 5 )
 
@@ -33,3 +33,8 @@ increase_on_seed = 1.0
 
 [node name="palette" parent="." index="0"]
 material = SubResource( 3 )
+string_val = "[\"ff970000\",\"ffd75600\",\"ffffffff\"]"
+
+[node name="tutorial_text" parent="CanvasLayer" index="0"]
+margin_top = 96.0
+margin_bottom = 110.0
