@@ -333,7 +333,7 @@ radius = 3.0
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 4, 4 )
 
-[sub_resource type="Image" id=56]
+[sub_resource type="Image" id=58]
 data = {
 "data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
 "format": "RGBA8",
@@ -342,10 +342,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=54]
+[sub_resource type="ImageTexture" id=57]
 flags = 0
 flags = 0
-image = SubResource( 56 )
+image = SubResource( 58 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=55]
@@ -354,7 +354,7 @@ shader = ExtResource( 11 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 54 )
+shader_param/palette = SubResource( 57 )
 
 [sub_resource type="StreamTexture" id=43]
 load_path = "res://.import/flapper.png-42d4f1390d9d9cceb01520b415ef9b37.stex"

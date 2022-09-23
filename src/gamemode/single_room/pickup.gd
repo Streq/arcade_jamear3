@@ -17,4 +17,4 @@ func _on_area_entered(area):
 	queue_free()
 	
 	emit_signal("picked_up", flapper)
-		
+

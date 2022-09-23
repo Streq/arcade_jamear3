@@ -1,7 +1,7 @@
 extends Area2D
 
 export var knockback := 200.0
-
+export var damage := 1.0
 func apply_knockback(on):
 	on.velocity += get_knockback(on)
 	
@@ -17,4 +17,4 @@ func register_hit(area):
 	area.take_damage(get_damage(area.owner))
 	
 func get_damage(target):
-	return 1.0
+	return damage

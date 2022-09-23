@@ -1,9 +1,9 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/enemy/lancer/arrow.gd" type="Script" id=1]
 [ext_resource path="res://assets/texture/bullet.png" type="Texture" id=2]
-[ext_resource path="res://assets/audio/sfx/arrow_on_wall.wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/audio/sfx/arrow2.wav" type="AudioStream" id=4]
+[ext_resource path="res://src/pickups/effect/float_up.gd" type="Script" id=3]
+[ext_resource path="res://src/pickups/effect/randomnize_time.gd" type="Script" id=4]
 [ext_resource path="res://src/pickups/effect/free_on_area_entered.gd" type="Script" id=5]
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=6]
 [ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=7]
@@ -11,6 +11,7 @@
 [ext_resource path="res://src/pickups/effect/free_on_stop_moving.gd" type="Script" id=9]
 [ext_resource path="res://src/pickups/effect/hitbox.gd" type="Script" id=10]
 [ext_resource path="res://src/pickups/effect/rotate_to_velocity.gd" type="Script" id=11]
+[ext_resource path="res://src/enemy/lancer/VisibilityNotifier2D.gd" type="Script" id=12]
 
 [sub_resource type="Image" id=8]
 data = {
@@ -43,7 +44,7 @@ extents = Vector2( 4, 2.5 )
 
 [node name="bullet" type="Node2D"]
 material = SubResource( 5 )
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 1 )
 
 [node name="hitbox" type="Area2D" parent="."]
@@ -61,16 +62,6 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="terrain_box"]
 shape = SubResource( 2 )
 
-[node name="shoot_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 4 )
-volume_db = -80.0
-
-[node name="hit_wall_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
-volume_db = -80.0
-
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." groups=["bullet"]]
-
 [node name="free_on_area_entered" type="Node" parent="."]
 script = ExtResource( 5 )
 
@@ -78,7 +69,7 @@ script = ExtResource( 5 )
 palette = PoolColorArray( 1, 0, 0, 1, 1, 0.470588, 0, 1, 1, 1, 1, 1 )
 material = SubResource( 5 )
 glow = true
-glow_speed = 4.0
+glow_speed = 2.0
 string_val = "[\"ffff0000\",\"ffff7800\",\"ffffffff\"]"
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -89,7 +80,7 @@ texture = ExtResource( 2 )
 
 [node name="drag" type="Node" parent="."]
 script = ExtResource( 8 )
-drag = 0.2
+drag = 5.0
 
 [node name="free_on_stop_moving" type="Node" parent="."]
 script = ExtResource( 9 )
@@ -100,12 +91,22 @@ script = ExtResource( 11 )
 
 [node name="Timer" type="Timer" parent="."]
 process_mode = 0
+wait_time = 0.25
 one_shot = true
 autostart = true
 
+[node name="randomnize_time" type="Node" parent="Timer"]
+script = ExtResource( 4 )
+random_range = 0.5
+
+[node name="float_up" type="Node" parent="."]
+script = ExtResource( 3 )
+acceleration = 1000.0
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+script = ExtResource( 12 )
+
 [connection signal="hit_wall" from="." to="." method="queue_free"]
-[connection signal="hit_wall" from="." to="hit_wall_sound" method="play"]
-[connection signal="ready" from="." to="shoot_sound" method="play"]
 [connection signal="area_entered" from="hitbox" to="free_on_area_entered" method="_on_area_entered"]
 [connection signal="body_entered" from="terrain_box" to="." method="_on_terrain_box_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="queue_free"]

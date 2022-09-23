@@ -10,20 +10,23 @@ export var amount = 5
 
 export var spread_angle = 5.0
 export var inertia_on_shoot := 0.0
+export var delay_random := 0.1
 
 
 var predict = false
 
-func shoot(wearer = owner):
+func shoot(wearer = owner.owner):
 	for i in amount:
 		shoot_bullet(wearer, global_rotation + rand_range(deg2rad(-spread_angle),deg2rad(spread_angle)),shoot_speed+rand_range(0,spread_power))
 	
 func shoot_bullet(wearer = owner, angle = 0.0, power = 0.0):
 	var arrow = ARROW.instance()
 	wearer.get_parent().add_child(arrow)
-	arrow.global_rotation = global_rotation
 	arrow.global_position = global_position
-	arrow.velocity = Vector2.RIGHT.rotated(angle)*power + inertia_on_shoot*wearer.velocity
+	var bullet_vel = Vector2.RIGHT.rotated(angle)*power
+	arrow.velocity = bullet_vel + inertia_on_shoot*wearer.velocity
+	arrow.global_rotation = bullet_vel.angle()
+	arrow.scale*=scale
 	if "velocity" in wearer:
 		arrow.velocity += wearer.velocity*0.1
 	

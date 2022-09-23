@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/enemy/ghost/palette_particles.gd" type="Script" id=1]
 [ext_resource path="res://assets/texture/ball_particle.png" type="Texture" id=2]
 [ext_resource path="res://assets/texture/indexed_pixel2.tres" type="Texture" id=3]
 [ext_resource path="res://assets/texture/idk_particle.png" type="Texture" id=4]
 [ext_resource path="res://src/enemy/ghost/particles/particle_finish_signal.gd" type="Script" id=5]
-[ext_resource path="res://assets/audio/sfx/explosion3.wav" type="AudioStream" id=6]
 
 [node name="palette_particles" type="Node2D"]
 script = ExtResource( 1 )
@@ -16,7 +15,6 @@ use_parent_material = true
 [node name="0" type="CPUParticles2D" parent="particles"]
 use_parent_material = true
 emitting = false
-one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 0.5
 texture = ExtResource( 2 )
@@ -31,7 +29,6 @@ script = ExtResource( 5 )
 use_parent_material = true
 emitting = false
 amount = 4
-one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 0.5
 texture = ExtResource( 4 )
@@ -45,7 +42,6 @@ script = ExtResource( 5 )
 [node name="2" type="CPUParticles2D" parent="particles"]
 use_parent_material = true
 emitting = false
-one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 0.5
 texture = ExtResource( 3 )
@@ -57,7 +53,6 @@ damping = 120.0
 script = ExtResource( 5 )
 
 [node name="explosion" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 6 )
 volume_db = -17.3333
 autoplay = true
 

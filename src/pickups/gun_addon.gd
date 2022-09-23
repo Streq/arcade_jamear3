@@ -3,7 +3,6 @@ extends Node2D
 signal shoot(wearer)
 signal been_shot()
 signal remove()
-
 var wearer
 
 export var weapon_name := ""
@@ -46,6 +45,7 @@ func _ready():
 	else:#add normally
 		wearer.addons[affected_addons[0]] = self
 		wearer.connect("pre_flap", self, "shoot")
+	
 	
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://src/gamemode/single_room/fast_glider_for_single_room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/gamemode/single_room/spawner.gd" type="Script" id=2]
@@ -27,12 +27,14 @@
 [ext_resource path="res://src/gamemode/single_room/set_score.gd" type="Script" id=25]
 [ext_resource path="res://src/HUD/game_over_HUD.tscn" type="PackedScene" id=26]
 [ext_resource path="res://src/HUD/analog_stick/joystick_HUD.tscn" type="PackedScene" id=27]
+[ext_resource path="res://src/pickups/phoenix_feather/phoenix_feather.tscn" type="PackedScene" id=28]
 [ext_resource path="res://src/flapper/presets/fast_glider.tscn" type="PackedScene" id=29]
 [ext_resource path="res://src/test/recorded_input/input_feeder.gd" type="Script" id=30]
 [ext_resource path="res://src/flapper/recorder.tscn" type="PackedScene" id=31]
 [ext_resource path="res://src/gamemode/single_room/demo_dialog.gd" type="Script" id=32]
+[ext_resource path="res://src/gamemode/single_room/change_weight_based_on_clone_count.gd" type="Script" id=33]
 
-[sub_resource type="Image" id=98]
+[sub_resource type="Image" id=103]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 50, 0, 76, 255, 203, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
@@ -41,10 +43,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=93]
+[sub_resource type="ImageTexture" id=99]
 flags = 0
 flags = 0
-image = SubResource( 98 )
+image = SubResource( 103 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=62]
@@ -53,7 +55,7 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 93 )
+shader_param/palette = SubResource( 99 )
 
 [sub_resource type="Curve2D" id=66]
 _data = {
@@ -65,7 +67,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 904, 0 )
 }
 
-[sub_resource type="Image" id=99]
+[sub_resource type="Image" id=104]
 data = {
 "data": PoolByteArray( 135, 63, 0, 255, 235, 84, 31, 255, 255, 205, 58, 255, 255, 196, 0, 255 ),
 "format": "RGBA8",
@@ -77,7 +79,7 @@ data = {
 [sub_resource type="ImageTexture" id=74]
 flags = 0
 flags = 0
-image = SubResource( 99 )
+image = SubResource( 104 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=75]
@@ -368,7 +370,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=100]
+[sub_resource type="Image" id=105]
 data = {
 "data": PoolByteArray( 24, 151, 151, 255, 0, 255, 255, 255, 0, 160, 215, 255 ),
 "format": "RGBA8",
@@ -377,10 +379,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=96]
+[sub_resource type="ImageTexture" id=102]
 flags = 0
 flags = 0
-image = SubResource( 100 )
+image = SubResource( 105 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=97]
@@ -389,7 +391,7 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 96 )
+shader_param/palette = SubResource( 102 )
 
 [node name="Node2D" type="Node2D"]
 pause_mode = 1
@@ -461,6 +463,9 @@ script = ExtResource( 19 )
 scene = ExtResource( 6 )
 weight = 1.0
 
+[node name="change_weight_based_on_clone_count" type="Node" parent="fall_spawner/spawn_source/gemini"]
+script = ExtResource( 33 )
+
 [node name="sword" parent="fall_spawner/spawn_source" instance=ExtResource( 18 )]
 scene = ExtResource( 24 )
 weight = 1.0
@@ -471,6 +476,10 @@ weight = 1.0
 
 [node name="magic_seed" parent="fall_spawner/spawn_source" instance=ExtResource( 18 )]
 scene = ExtResource( 23 )
+weight = 1.0
+
+[node name="phoenix_feather" parent="fall_spawner/spawn_source" instance=ExtResource( 18 )]
+scene = ExtResource( 28 )
 weight = 1.0
 
 [node name="spawner_trigger_on_seeds_taken" type="Node" parent="fall_spawner"]
@@ -682,8 +691,6 @@ visible = false
 
 [node name="energy_bar" parent="fast_glider2/HUD/HBoxContainer" index="1"]
 visible = false
-modulate = Color( 1, 1, 1, 1 )
-margin_right = 40.0
 
 [node name="player_controller" parent="fast_glider2/input_state" index="0"]
 disabled = true
@@ -740,9 +747,9 @@ record_input_state_path = NodePath("")
 [connection signal="go_back" from="gameover_HUD" to="." method="_on_go_back"]
 [connection signal="timeout" from="ghost_spawner/Timer" to="ghost_spawner" method="_on_Timer_timeout" flags=3]
 [connection signal="seed_taken" from="seed_spawner" to="fall_spawner/spawner_trigger_on_seeds_taken" method="_on_seed_taken"]
+[connection signal="pre_spawn" from="fall_spawner/spawn_source" to="fall_spawner/spawn_source/gemini/change_weight_based_on_clone_count" method="_on_pre_spawn"]
 [connection signal="trigger" from="fall_spawner/spawner_trigger_on_seeds_taken" to="fall_spawner" method="spawn"]
 [connection signal="timeout" from="wait_on_game_over" to="." method="_on_wait_on_game_over_timeout"]
-[connection signal="value_changed" from="fast_glider2/energy" to="fast_glider2/HUD/HBoxContainer/energy_bar" method="update_values"]
 
 [editable path="seed_spawner"]
 [editable path="fast_glider2"]

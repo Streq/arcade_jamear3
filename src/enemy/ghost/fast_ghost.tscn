@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=7]
 [ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=8]
 
-[sub_resource type="Image" id=15]
+[sub_resource type="Image" id=17]
 data = {
 "data": PoolByteArray( 255, 0, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -18,10 +18,10 @@ data = {
 "width": 2
 }
 
-[sub_resource type="ImageTexture" id=11]
+[sub_resource type="ImageTexture" id=14]
 flags = 0
 flags = 0
-image = SubResource( 15 )
+image = SubResource( 17 )
 size = Vector2( 2, 1 )
 
 [sub_resource type="ShaderMaterial" id=12]
@@ -30,7 +30,7 @@ shader = ExtResource( 7 )
 shader_param/palette_size = 2
 shader_param/offset = 1
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 11 )
+shader_param/palette = SubResource( 14 )
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -52,7 +52,7 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=16]
+[sub_resource type="Image" id=18]
 data = {
 "data": PoolByteArray( 255, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -61,10 +61,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=14]
+[sub_resource type="ImageTexture" id=16]
 flags = 0
 flags = 0
-image = SubResource( 16 )
+image = SubResource( 18 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=4]
@@ -72,7 +72,7 @@ resource_local_to_scene = true
 shader = SubResource( 1 )
 shader_param/palette_size = 3
 shader_param/offset = 0.0
-shader_param/palette = SubResource( 14 )
+shader_param/palette = SubResource( 16 )
 
 [sub_resource type="Animation" id=8]
 length = 0.001
@@ -188,6 +188,7 @@ palette = PoolColorArray( 1, 0, 0, 1, 1, 1, 1, 1 )
 material = SubResource( 12 )
 glow = true
 glow_speed = 4.0
+string_val = "[\"ffff0000\",\"ffffffff\"]"
 
 [node name="set_to_difficulty" parent="." index="4"]
 min_value = 50.0

@@ -5,8 +5,8 @@ onready var palette: Node = $palette
 onready var palette_entry = {"priority":1, "palette":palette}
 export var WING_GUN : PackedScene
 func _ready():
-	remove_child(palette)
-	fast_glider.palette_manager.add_palette(palette_entry)
+#	remove_child(palette)
+#	fast_glider.palette_manager.add_palette(palette_entry)
 	
 	for i in 1:
 		var addon0 = WING_GUN.instance()

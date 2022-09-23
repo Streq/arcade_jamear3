@@ -1,15 +1,16 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
 [ext_resource path="res://src/pickups/gun_addon.gd" type="Script" id=2]
 [ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/pickups/effect/phoenix_bullet.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/pickups/effect/spread_shooter.gd" type="Script" id=5]
+[ext_resource path="res://src/pickups/effect/bullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/pickups/effect/palette_changer.gd" type="Script" id=7]
 [ext_resource path="res://src/pickups/effect/trigger_on_clone.gd" type="Script" id=8]
 [ext_resource path="res://src/pickups/effect/on_clone_effect.gd" type="Script" id=9]
-[ext_resource path="res://src/pickups/effect/only_sound_if_first.gd" type="Script" id=10]
 
-[sub_resource type="Image" id=6]
+[sub_resource type="Image" id=10]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 48, 14, 14, 255, 255, 0, 0, 255 ),
 "format": "RGBA8",
@@ -21,7 +22,7 @@ data = {
 [sub_resource type="ImageTexture" id=5]
 flags = 0
 flags = 0
-image = SubResource( 6 )
+image = SubResource( 10 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
@@ -31,6 +32,29 @@ shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 5 )
+
+[sub_resource type="Image" id=11]
+data = {
+"data": PoolByteArray( 255, 0, 0, 255, 255, 215, 0, 255, 255, 255, 255, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=8]
+flags = 0
+flags = 0
+image = SubResource( 11 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=9]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/palette_size = 3
+shader_param/offset = 1
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 8 )
 
 [node name="phoenix_addon" type="Node2D"]
 script = ExtResource( 2 )
@@ -52,7 +76,7 @@ rotation = 0.523598
 script = ExtResource( 5 )
 ARROW = ExtResource( 4 )
 shoot_speed = 200.0
-spread_power = 35.0
+spread_power = 435.0
 spread_angle = 45.0
 inertia_on_shoot = 1.0
 
@@ -62,15 +86,9 @@ rotation = 2.61799
 script = ExtResource( 5 )
 ARROW = ExtResource( 4 )
 shoot_speed = 200.0
-spread_power = 35.0
+spread_power = 435.0
 spread_angle = 45.0
 inertia_on_shoot = 1.0
-
-[node name="shoot_sound" type="AudioStreamPlayer2D" parent="." groups=["shoot_sound"]]
-volume_db = -21.3333
-bus = "piu"
-script = ExtResource( 10 )
-group = "shoot_sound"
 
 [node name="trigger_on_clone" type="Node" parent="."]
 script = ExtResource( 8 )
@@ -78,7 +96,70 @@ script = ExtResource( 8 )
 [node name="on_clone_effect" type="Node" parent="trigger_on_clone"]
 script = ExtResource( 9 )
 
-[connection signal="been_shot" from="." to="shoot_sound" method="play"]
+[node name="shooter3" type="Node2D" parent="."]
+rotation = 0.523598
+script = ExtResource( 5 )
+ARROW = ExtResource( 4 )
+shoot_speed = 100.0
+spread_power = 100.0
+amount = 3
+spread_angle = 180.0
+inertia_on_shoot = 1.0
+
+[node name="Timer" type="Timer" parent="shooter3"]
+process_mode = 0
+wait_time = 0.2
+autostart = true
+
+[node name="bomb" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="bomb"]
+process_mode = 0
+wait_time = 0.5
+
+[node name="shooter_spark" type="Node2D" parent="bomb"]
+rotation = 0.523598
+script = ExtResource( 5 )
+ARROW = ExtResource( 4 )
+spread_power = 1000.0
+amount = 25
+spread_angle = 180.0
+inertia_on_shoot = 1.0
+
+[node name="shooter_bullet" type="Node2D" parent="bomb"]
+rotation = 0.523598
+scale = Vector2( 2, 2 )
+script = ExtResource( 5 )
+ARROW = ExtResource( 6 )
+spread_power = 1000.0
+amount = 25
+spread_angle = 180.0
+inertia_on_shoot = 1.0
+
+[node name="shooter_big_bullet" type="Node2D" parent="bomb"]
+rotation = 0.523598
+script = ExtResource( 5 )
+ARROW = ExtResource( 6 )
+spread_power = 1000.0
+amount = 25
+spread_angle = 180.0
+inertia_on_shoot = 1.0
+
+[node name="palette_changer" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="palette" parent="palette_changer" instance=ExtResource( 3 )]
+palette = PoolColorArray( 1, 0, 0, 1, 1, 0.843137, 0, 1, 1, 1, 1, 1 )
+material = SubResource( 9 )
+glow = true
+string_val = "[\"ffff0000\",\"ffffd700\",\"ffffffff\"]"
+
+[connection signal="ready" from="." to="palette_changer" method="setup"]
+[connection signal="remove" from="." to="palette_changer" method="remove"]
 [connection signal="shoot" from="." to="shooter" method="shoot"]
 [connection signal="shoot" from="." to="shooter2" method="shoot"]
 [connection signal="duplicated" from="trigger_on_clone" to="trigger_on_clone/on_clone_effect" method="apply"]
+[connection signal="timeout" from="shooter3/Timer" to="shooter3" method="shoot"]
+[connection signal="timeout" from="bomb/Timer" to="bomb/shooter_spark" method="shoot"]
+[connection signal="timeout" from="bomb/Timer" to="bomb/shooter_bullet" method="shoot"]
+[connection signal="timeout" from="bomb/Timer" to="bomb/shooter_big_bullet" method="shoot"]

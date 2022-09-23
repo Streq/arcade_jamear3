@@ -1,6 +1,7 @@
 extends Node
 
 var total_weight
+signal pre_spawn()
 
 func refresh():
 	total_weight = 0
@@ -17,9 +18,14 @@ func _on_child_entered(child):
 func _on_child_exiting(child):
 	refresh()
 func get_spawn():
+	emit_signal("pre_spawn")
+	refresh()
 	var r = rand_range(0,total_weight)
 #	print(r)
 	for spawn in get_children():
+		if !spawn.weight: 
+			print("no chance")
+			continue
 		if spawn.weight > r:
 			return spawn.scene
 		r -= spawn.weight

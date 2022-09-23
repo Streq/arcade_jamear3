@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/pickups/player_magnet.gd" type="Script" id=1]
 [ext_resource path="res://assets/texture/gemini.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/gamemode/single_room/pickup.gd" type="Script" id=5]
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=6]
 [ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/pickups/dim_glow.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 64.0
@@ -14,7 +15,7 @@ radius = 64.0
 [sub_resource type="CircleShape2D" id=4]
 radius = 5.09902
 
-[sub_resource type="Image" id=11]
+[sub_resource type="Image" id=16]
 data = {
 "data": PoolByteArray( 0, 255, 135, 255, 0, 93, 255, 255, 0, 219, 255, 255 ),
 "format": "RGBA8",
@@ -26,7 +27,7 @@ data = {
 [sub_resource type="ImageTexture" id=10]
 flags = 0
 flags = 0
-image = SubResource( 11 )
+image = SubResource( 16 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=8]
@@ -54,6 +55,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "play"
+length = 1.2
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:position")
@@ -67,13 +69,52 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 0, 2 ), Vector2( 0, -2 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0 ]
+}
 
-[node name="gemini" type="Area2D" groups=["seed"]]
+[sub_resource type="Image" id=17]
+data = {
+"data": PoolByteArray( 0, 152, 176, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 1
+}
+
+[sub_resource type="ImageTexture" id=13]
+flags = 0
+flags = 0
+image = SubResource( 17 )
+size = Vector2( 1, 1 )
+
+[sub_resource type="ShaderMaterial" id=14]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/palette_size = 1
+shader_param/offset = 0
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 13 )
+
+[sub_resource type="StreamTexture" id=15]
+load_path = "res://.import/light.png-8f793d152d978730925beac65a7d342a.stex"
+
+[node name="gemini" type="Area2D" groups=["gemini", "seed"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource( 5 )
 
 [node name="player_magnet" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 0
 script = ExtResource( 1 )
@@ -98,6 +139,7 @@ texture = ExtResource( 2 )
 [node name="palette" parent="Sprite" instance=ExtResource( 7 )]
 palette = PoolColorArray( 0, 1, 0.529412, 1, 0, 0.368627, 1, 1, 0, 0.858824, 1, 1 )
 material = SubResource( 8 )
+string_val = "[\"ff00ff87\",\"ff005eff\",\"ff00dbff\"]"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "play"
@@ -110,6 +152,18 @@ volume_db = -20.0
 
 [node name="effect" type="Node" parent="."]
 script = ExtResource( 4 )
+
+[node name="Sprite2" parent="." instance=ExtResource( 8 )]
+material = SubResource( 14 )
+texture = SubResource( 15 )
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PUFuaW1hdGlvblBsYXllcgpzb3VyY2V8PXJlczovL2Fzc2V0cy9hc2Vwcml0ZS9saWdodC5hc2Vwcml0ZQpsYXllcnw9Cm9wX2V4cHw9RmFsc2UKb19mb2xkZXJ8PQpvX25hbWV8PQpvbmx5X3Zpc2libGV8PVRydWUKb19leF9wfD0K"
+}
+
+[node name="palette" parent="Sprite2" instance=ExtResource( 7 )]
+palette = PoolColorArray( 0, 0.596078, 0.690196, 1 )
+material = SubResource( 14 )
+string_val = "[\"ff0098b0\"]"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="picked_up" from="." to="effect" method="apply"]
