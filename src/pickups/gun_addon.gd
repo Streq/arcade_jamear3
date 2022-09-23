@@ -8,6 +8,7 @@ var wearer
 
 export var weapon_name := ""
 
+export var affected_addons := PoolStringArray(["weapon", "weapon2"])
 func stacks_with(weapon)->bool:
 	return weapon == weapon_name
 
@@ -17,7 +18,7 @@ func _ready():
 	
 	#get weapon list
 	var prev_weapons = []
-	for w in ["weapon","weapon2"]:
+	for w in affected_addons:
 		if wearer.addons.has(w):
 			prev_weapons.append(wearer.addons[w])
 	
@@ -27,24 +28,24 @@ func _ready():
 				prev_weapons[1].remove()
 			
 			#add as secondary
-			for w in ["weapon","weapon2"]:
+			for w in affected_addons:
 				if !wearer.addons.has(w):
 					wearer.addons[w] = self
-					if w == "weapon2":
+					if w == affected_addons[1]:
 						rotation = PI
-						position.y -= 16.0
+						position -= position*2
 			
-			wearer.connect("flapped", self, "shoot")
+			wearer.connect("pre_flap", self, "shoot")
 			
 				
 		else:#replace all
 			for weapon in prev_weapons:
 				weapon.remove()
-			wearer.addons["weapon"] = self
-			wearer.connect("flapped", self, "shoot")
+			wearer.addons[affected_addons[0]] = self
+			wearer.connect("pre_flap", self, "shoot")
 	else:#add normally
-		wearer.addons["weapon"] = self
-		wearer.connect("flapped", self, "shoot")
+		wearer.addons[affected_addons[0]] = self
+		wearer.connect("pre_flap", self, "shoot")
 	
 
 

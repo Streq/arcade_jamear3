@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal flapped
+signal pre_flap
 signal failed_flap
 
 signal hard_collision(prev_velocity,post_velocity)
@@ -67,7 +68,7 @@ onready var state_machine := $state_machine
 onready var state_animation := $"%state_animation"
 onready var sprite = $"%Sprite"
 onready var animation_scaler = $"%animation_scaler"
-onready var palette = $"%Sprite/palette"
+onready var palette_manager = $"%Sprite/palette_manager"
 onready var hurtbox = $hurtbox
 onready var pivot = $pivot
 onready var stats = $stats

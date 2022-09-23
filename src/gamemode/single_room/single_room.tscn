@@ -32,19 +32,19 @@
 [ext_resource path="res://src/flapper/recorder.tscn" type="PackedScene" id=31]
 [ext_resource path="res://src/gamemode/single_room/demo_dialog.gd" type="Script" id=32]
 
-[sub_resource type="Image" id=100]
+[sub_resource type="Image" id=98]
 data = {
-"data": PoolByteArray( 0, 0, 0, 255, 49, 0, 75, 255, 202, 100, 0, 255, 255, 167, 0, 255 ),
+"data": PoolByteArray( 0, 0, 0, 255, 50, 0, 76, 255, 203, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=96]
+[sub_resource type="ImageTexture" id=93]
 flags = 0
 flags = 0
-image = SubResource( 100 )
+image = SubResource( 98 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=62]
@@ -53,7 +53,7 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 96 )
+shader_param/palette = SubResource( 93 )
 
 [sub_resource type="Curve2D" id=66]
 _data = {
@@ -65,7 +65,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 904, 0 )
 }
 
-[sub_resource type="Image" id=101]
+[sub_resource type="Image" id=99]
 data = {
 "data": PoolByteArray( 135, 63, 0, 255, 235, 84, 31, 255, 255, 205, 58, 255, 255, 196, 0, 255 ),
 "format": "RGBA8",
@@ -77,7 +77,7 @@ data = {
 [sub_resource type="ImageTexture" id=74]
 flags = 0
 flags = 0
-image = SubResource( 101 )
+image = SubResource( 99 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=75]
@@ -368,28 +368,28 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=102]
+[sub_resource type="Image" id=100]
 data = {
-"data": PoolByteArray( 98, 98, 98, 255, 0, 255, 188, 255, 0, 255, 249, 255 ),
+"data": PoolByteArray( 24, 151, 151, 255, 0, 255, 255, 255, 0, 160, 215, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=99]
+[sub_resource type="ImageTexture" id=96]
 flags = 0
 flags = 0
-image = SubResource( 102 )
+image = SubResource( 100 )
 size = Vector2( 3, 1 )
 
-[sub_resource type="ShaderMaterial" id=94]
+[sub_resource type="ShaderMaterial" id=97]
 resource_local_to_scene = true
 shader = ExtResource( 8 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 99 )
+shader_param/palette = SubResource( 96 )
 
 [node name="Node2D" type="Node2D"]
 pause_mode = 1
@@ -409,6 +409,7 @@ tile_data = PoolIntArray( -1, 8, 8, -65536, 8, 10, -65535, 8, 10, -65534, 8, 10,
 [node name="palette" parent="TileMap" instance=ExtResource( 9 )]
 palette = PoolColorArray( 0, 0, 0, 1, 0.196078, 0, 0.298039, 1, 0.796078, 0.392157, 0, 1, 1, 0.654902, 0, 1 )
 material = SubResource( 62 )
+string_val = "[\"ff000000\",\"ff32004c\",\"ffcb6400\",\"ffffa700\"]"
 
 [node name="ghost_spawner" type="Node2D" parent="."]
 script = ExtResource( 2 )
@@ -668,17 +669,21 @@ monitorable = false
 disabled = true
 
 [node name="Sprite" parent="fast_glider2/pivot" index="0"]
-material = SubResource( 94 )
+modulate = Color( 1, 1, 1, 0.466667 )
+material = SubResource( 97 )
 
-[node name="palette" parent="fast_glider2/pivot/Sprite" index="1"]
-palette = PoolColorArray( 0.388235, 0.388235, 0.388235, 1, 0, 1, 0.741176, 1, 0, 1, 0.976471, 1 )
-material = SubResource( 94 )
+[node name="palette" parent="fast_glider2/pivot/Sprite/palette_manager" index="0"]
+palette = PoolColorArray( 0.0941176, 0.592157, 0.592157, 1, 0, 1, 1, 1, 0, 0.627451, 0.843137, 1 )
+material = SubResource( 97 )
+string_val = "[\"ff189797\",\"ff00ffff\",\"ff00a0d7\"]"
 
 [node name="HUD" parent="fast_glider2" index="31"]
 visible = false
 
 [node name="energy_bar" parent="fast_glider2/HUD/HBoxContainer" index="1"]
 visible = false
+modulate = Color( 1, 1, 1, 1 )
+margin_right = 40.0
 
 [node name="player_controller" parent="fast_glider2/input_state" index="0"]
 disabled = true
@@ -737,6 +742,7 @@ record_input_state_path = NodePath("")
 [connection signal="seed_taken" from="seed_spawner" to="fall_spawner/spawner_trigger_on_seeds_taken" method="_on_seed_taken"]
 [connection signal="trigger" from="fall_spawner/spawner_trigger_on_seeds_taken" to="fall_spawner" method="spawn"]
 [connection signal="timeout" from="wait_on_game_over" to="." method="_on_wait_on_game_over_timeout"]
+[connection signal="value_changed" from="fast_glider2/energy" to="fast_glider2/HUD/HBoxContainer/energy_bar" method="update_values"]
 
 [editable path="seed_spawner"]
 [editable path="fast_glider2"]

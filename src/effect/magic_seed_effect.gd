@@ -4,6 +4,7 @@ export var original_hard_collision_threshold = 0.0
 export var original_soft_collision_threshold = 0.0
 
 onready var palette = $palette
+onready var palette_entry = {"priority":4, "palette":palette}
 export var HITBOX :PackedScene
 
 onready var energy_bar = $display_bar/energy_bar
@@ -35,8 +36,8 @@ func trigger():
 	original_hard_collision_threshold = wearer.hard_collision_threshold
 	original_soft_collision_threshold = wearer.soft_collision_threshold
 
-	wearer.sprite.material = palette.material
-	palette.update_parent_material()
+	remove_child(palette)
+	wearer.palette_manager.add_palette(palette_entry)
 	wearer.hurtbox.monitorable = false
 	wearer.hurtbox.monitoring = false
 	wearer.hard_collision_threshold = 1000000.0
@@ -62,8 +63,7 @@ func wear_off():
 	wearer.addons.erase("magic_seed")
 #	if !wearer.sprite:
 #		yield(wearer,"ready")
-	wearer.sprite.material = wearer.material
-	wearer.palette.update_parent_material()
+	wearer.palette_manager.remove_palette(palette_entry)
 	wearer.hurtbox.monitorable = true
 	wearer.hurtbox.monitoring = true
 	wearer.hard_collision_threshold = original_hard_collision_threshold

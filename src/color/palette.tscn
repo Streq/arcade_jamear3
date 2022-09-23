@@ -5,7 +5,7 @@
 
 [sub_resource type="Image" id=5]
 data = {
-"data": PoolByteArray( 255, 0, 0, 255, 14, 48, 16, 255, 122, 140, 98, 255, 0, 0, 0, 255 ),
+"data": PoolByteArray( 0, 0, 0, 255, 14, 48, 16, 255, 122, 140, 98, 255, 0, 0, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,

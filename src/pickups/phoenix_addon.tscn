@@ -1,12 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
 [ext_resource path="res://src/pickups/gun_addon.gd" type="Script" id=2]
 [ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/texture/gun_addon.png" type="Texture" id=4]
+[ext_resource path="res://src/pickups/effect/phoenix_bullet.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/pickups/effect/spread_shooter.gd" type="Script" id=5]
-[ext_resource path="res://src/pickups/effect/bullet.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/audio/sfx/gun.wav" type="AudioStream" id=7]
 [ext_resource path="res://src/pickups/effect/trigger_on_clone.gd" type="Script" id=8]
 [ext_resource path="res://src/pickups/effect/on_clone_effect.gd" type="Script" id=9]
 [ext_resource path="res://src/pickups/effect/only_sound_if_first.gd" type="Script" id=10]
@@ -34,14 +32,14 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 5 )
 
-[node name="gun_addon" type="Node2D"]
-position = Vector2( 0, 8 )
+[node name="phoenix_addon" type="Node2D"]
 script = ExtResource( 2 )
 weapon_name = "gun"
+affected_addons = PoolStringArray( "wing", "wing2" )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 3 )
-texture = ExtResource( 4 )
+position = Vector2( 8, 0 )
 
 [node name="palette" parent="Sprite" instance=ExtResource( 3 )]
 palette = PoolColorArray( 0, 0, 0, 1, 0.188235, 0.054902, 0.054902, 1, 1, 0, 0, 1 )
@@ -49,17 +47,26 @@ material = SubResource( 3 )
 string_val = "[\"ff000000\",\"ff300e0e\",\"ffff0000\"]"
 
 [node name="shooter" type="Node2D" parent="."]
-position = Vector2( 0, 4 )
-rotation = 1.57079
+position = Vector2( 8, 0 )
+rotation = 0.523598
 script = ExtResource( 5 )
-ARROW = ExtResource( 6 )
-shoot_speed = 750.0
+ARROW = ExtResource( 4 )
+shoot_speed = 200.0
 spread_power = 35.0
-amount = 7
-spread_angle = 17.0
+spread_angle = 45.0
+inertia_on_shoot = 1.0
+
+[node name="shooter2" type="Node2D" parent="."]
+position = Vector2( -8, 0 )
+rotation = 2.61799
+script = ExtResource( 5 )
+ARROW = ExtResource( 4 )
+shoot_speed = 200.0
+spread_power = 35.0
+spread_angle = 45.0
+inertia_on_shoot = 1.0
 
 [node name="shoot_sound" type="AudioStreamPlayer2D" parent="." groups=["shoot_sound"]]
-stream = ExtResource( 7 )
 volume_db = -21.3333
 bus = "piu"
 script = ExtResource( 10 )
@@ -73,4 +80,5 @@ script = ExtResource( 9 )
 
 [connection signal="been_shot" from="." to="shoot_sound" method="play"]
 [connection signal="shoot" from="." to="shooter" method="shoot"]
+[connection signal="shoot" from="." to="shooter2" method="shoot"]
 [connection signal="duplicated" from="trigger_on_clone" to="trigger_on_clone/on_clone_effect" method="apply"]

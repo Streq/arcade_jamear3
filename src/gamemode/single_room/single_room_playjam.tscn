@@ -1,4 +1,4 @@
-[gd_scene load_steps=173 format=2]
+[gd_scene load_steps=214 format=2]
 
 [ext_resource path="res://src/gamemode/single_room/fast_glider_for_single_room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/gamemode/single_room/spawner.gd" type="Script" id=2]
@@ -35,19 +35,19 @@
 [ext_resource path="res://assets/texture/nameathegame.png" type="Texture" id=33]
 [ext_resource path="res://src/gamemode/single_room/title.gd" type="Script" id=34]
 
-[sub_resource type="Image" id=235]
+[sub_resource type="Image" id=289]
 data = {
-"data": PoolByteArray( 0, 0, 0, 255, 49, 0, 75, 255, 202, 100, 0, 255, 255, 167, 0, 255 ),
+"data": PoolByteArray( 0, 0, 0, 255, 50, 0, 76, 255, 203, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=229]
+[sub_resource type="ImageTexture" id=254]
 flags = 0
 flags = 0
-image = SubResource( 235 )
+image = SubResource( 289 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=62]
@@ -56,7 +56,7 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 229 )
+shader_param/palette = SubResource( 254 )
 
 [sub_resource type="Curve2D" id=66]
 _data = {
@@ -68,7 +68,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 904, 0 )
 }
 
-[sub_resource type="Image" id=236]
+[sub_resource type="Image" id=290]
 data = {
 "data": PoolByteArray( 135, 63, 0, 255, 235, 84, 31, 255, 255, 205, 58, 255, 255, 196, 0, 255 ),
 "format": "RGBA8",
@@ -80,7 +80,7 @@ data = {
 [sub_resource type="ImageTexture" id=74]
 flags = 0
 flags = 0
-image = SubResource( 236 )
+image = SubResource( 290 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=75]
@@ -91,28 +91,28 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
 shader_param/palette = SubResource( 74 )
 
-[sub_resource type="Image" id=237]
+[sub_resource type="Image" id=291]
 data = {
-"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=232]
+[sub_resource type="ImageTexture" id=257]
 flags = 0
 flags = 0
-image = SubResource( 237 )
+image = SubResource( 291 )
 size = Vector2( 3, 1 )
 
-[sub_resource type="ShaderMaterial" id=104]
+[sub_resource type="ShaderMaterial" id=258]
 resource_local_to_scene = true
 shader = ExtResource( 8 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 232 )
+shader_param/palette = SubResource( 257 )
 
 [sub_resource type="Animation" id=110]
 length = 0.001
@@ -393,6 +393,29 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
+
+[sub_resource type="Image" id=292]
+data = {
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=260]
+flags = 0
+flags = 0
+image = SubResource( 292 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=261]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 1.0
+shader_param/palette = SubResource( 260 )
 
 [sub_resource type="Animation" id=122]
 length = 0.001
@@ -730,6 +753,29 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
+[sub_resource type="Image" id=293]
+data = {
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=263]
+flags = 0
+flags = 0
+image = SubResource( 293 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=264]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 1.0
+shader_param/palette = SubResource( 263 )
+
 [sub_resource type="Animation" id=142]
 length = 0.001
 tracks/0/type = "value"
@@ -758,6 +804,365 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=143]
+resource_name = "low"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 0, 0, 1 ), Color( 0, 1, 0.0156863, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:tint_under")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=239]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=240]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 14.0 ]
+}
+
+[sub_resource type="Animation" id=241]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 27.0, 25.0, 26.0, 14.0 ]
+}
+
+[sub_resource type="Animation" id=242]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hurtbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=243]
+length = 0.7
+tracks/0/type = "method"
+tracks/0/path = NodePath("flap_action")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "strong_failed"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("pivot/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 22.0, 18.0, 17.0, 16.0, 15.0, 0.0, 14.0 ]
+}
+
+[sub_resource type="Animation" id=244]
+length = 0.7
+tracks/0/type = "method"
+tracks/0/path = NodePath("flap_action")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "weak_failed"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("pivot/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 27.0, 9.0, 4.0, 3.0, 2.0, 1.0, 5.0 ]
+}
+
+[sub_resource type="Animation" id=245]
+length = 0.5
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath("flap_action")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "strong"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("state_machine/flap")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "clear_buffer"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("pivot/Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 22.0, 21.0, 20.0, 19.0, 14.0 ]
+}
+
+[sub_resource type="Animation" id=246]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 27.0 ]
+}
+
+[sub_resource type="Animation" id=247]
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 24.0, 23.0 ]
+}
+
+[sub_resource type="Animation" id=248]
+length = 0.6
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath("flap_action")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "weak"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("state_machine/glide_flap")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "clear_buffer"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("pivot/Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 27.0, 9.0, 8.0, 7.0, 6.0, 5.0 ]
+}
+
+[sub_resource type="Animation" id=249]
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 11.0, 10.0 ]
+}
+
+[sub_resource type="Animation" id=250]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 14.0, 26.0, 25.0, 27.0 ]
+}
+
+[sub_resource type="Image" id=294]
+data = {
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=266]
+flags = 0
+flags = 0
+image = SubResource( 294 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=267]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 1.0
+shader_param/palette = SubResource( 266 )
+
+[sub_resource type="Animation" id=251]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:tint_under")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=252]
 resource_name = "low"
 length = 0.5
 loop = true
@@ -1065,6 +1470,29 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
+
+[sub_resource type="Image" id=295]
+data = {
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=269]
+flags = 0
+flags = 0
+image = SubResource( 295 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=270]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 1.0
+shader_param/palette = SubResource( 269 )
 
 [sub_resource type="Animation" id=156]
 length = 0.001
@@ -1402,6 +1830,29 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
+[sub_resource type="Image" id=296]
+data = {
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=272]
+flags = 0
+flags = 0
+image = SubResource( 296 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=273]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 1.0
+shader_param/palette = SubResource( 272 )
+
 [sub_resource type="Animation" id=170]
 length = 0.001
 tracks/0/type = "value"
@@ -1737,6 +2188,29 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
+
+[sub_resource type="Image" id=297]
+data = {
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=275]
+flags = 0
+flags = 0
+image = SubResource( 297 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=276]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 1.0
+shader_param/palette = SubResource( 275 )
 
 [sub_resource type="Animation" id=184]
 length = 0.001
@@ -2074,6 +2548,29 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
+[sub_resource type="Image" id=298]
+data = {
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=278]
+flags = 0
+flags = 0
+image = SubResource( 298 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=279]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 1.0
+shader_param/palette = SubResource( 278 )
+
 [sub_resource type="Animation" id=198]
 length = 0.001
 tracks/0/type = "value"
@@ -2409,6 +2906,29 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
+
+[sub_resource type="Image" id=299]
+data = {
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=281]
+flags = 0
+flags = 0
+image = SubResource( 299 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=282]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 1.0
+shader_param/palette = SubResource( 281 )
 
 [sub_resource type="Animation" id=212]
 length = 0.001
@@ -2746,6 +3266,29 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
+[sub_resource type="Image" id=300]
+data = {
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=284]
+flags = 0
+flags = 0
+image = SubResource( 300 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=285]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 1.0
+shader_param/palette = SubResource( 284 )
+
 [sub_resource type="Animation" id=226]
 length = 0.001
 tracks/0/type = "value"
@@ -3082,28 +3625,28 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=238]
+[sub_resource type="Image" id=301]
 data = {
-"data": PoolByteArray( 98, 98, 98, 255, 0, 255, 188, 255, 0, 255, 249, 255 ),
+"data": PoolByteArray( 24, 151, 151, 255, 0, 255, 255, 255, 0, 160, 215, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=234]
+[sub_resource type="ImageTexture" id=287]
 flags = 0
 flags = 0
-image = SubResource( 238 )
+image = SubResource( 301 )
 size = Vector2( 3, 1 )
 
-[sub_resource type="ShaderMaterial" id=94]
+[sub_resource type="ShaderMaterial" id=288]
 resource_local_to_scene = true
 shader = ExtResource( 8 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 234 )
+shader_param/palette = SubResource( 287 )
 
 [node name="Node2D" type="Node2D"]
 pause_mode = 1
@@ -3256,13 +3799,17 @@ velocity = Vector2( 1000, -100 )
 disabled = true
 
 [node name="Sprite" parent="title_screen/title/fast_glider/pivot" index="0"]
-material = SubResource( 104 )
+material = SubResource( 258 )
 
-[node name="palette" parent="title_screen/title/fast_glider/pivot/Sprite" index="1"]
-material = SubResource( 104 )
+[node name="palette" parent="title_screen/title/fast_glider/pivot/Sprite/palette_manager" index="0"]
+material = SubResource( 258 )
 
 [node name="HUD" parent="title_screen/title/fast_glider" index="34"]
 visible = false
+
+[node name="energy_bar" parent="title_screen/title/fast_glider/HUD/HBoxContainer" index="1"]
+modulate = Color( 1, 1, 1, 1 )
+margin_right = 40.0
 
 [node name="player_controller" parent="title_screen/title/fast_glider/input_state" index="0"]
 disabled = true
@@ -3297,13 +3844,17 @@ anims/spread_wings = SubResource( 121 )
 disabled = true
 
 [node name="Sprite" parent="title_screen/title/fast_glider2/pivot" index="0"]
-material = SubResource( 104 )
+material = SubResource( 261 )
 
-[node name="palette" parent="title_screen/title/fast_glider2/pivot/Sprite" index="1"]
-material = SubResource( 104 )
+[node name="palette" parent="title_screen/title/fast_glider2/pivot/Sprite/palette_manager" index="0"]
+material = SubResource( 261 )
 
 [node name="HUD" parent="title_screen/title/fast_glider2" index="34"]
 visible = false
+
+[node name="energy_bar" parent="title_screen/title/fast_glider2/HUD/HBoxContainer" index="1"]
+modulate = Color( 1, 1, 1, 1 )
+margin_right = 40.0
 
 [node name="AnimationPlayer" parent="title_screen/title/fast_glider2/HUD/HBoxContainer/energy_bar" index="0"]
 anims/RESET = SubResource( 122 )
@@ -3343,13 +3894,17 @@ anims/spread_wings = SubResource( 141 )
 disabled = true
 
 [node name="Sprite" parent="title_screen/title/fast_glider3/pivot" index="0"]
-material = SubResource( 104 )
+material = SubResource( 264 )
 
-[node name="palette" parent="title_screen/title/fast_glider3/pivot/Sprite" index="1"]
-material = SubResource( 104 )
+[node name="palette" parent="title_screen/title/fast_glider3/pivot/Sprite/palette_manager" index="0"]
+material = SubResource( 264 )
 
 [node name="HUD" parent="title_screen/title/fast_glider3" index="34"]
 visible = false
+
+[node name="energy_bar" parent="title_screen/title/fast_glider3/HUD/HBoxContainer" index="1"]
+modulate = Color( 1, 1, 1, 1 )
+margin_right = 40.0
 
 [node name="AnimationPlayer" parent="title_screen/title/fast_glider3/HUD/HBoxContainer/energy_bar" index="0"]
 anims/RESET = SubResource( 142 )
@@ -3363,6 +3918,56 @@ autoplay = true
 record_input_state_path = NodePath("")
 replay_input_state_path = NodePath("..")
 demo_name = "demo_intro3.dat"
+
+[node name="fast_glider10" parent="title_screen/title" instance=ExtResource( 1 )]
+position = Vector2( -266, 378 )
+collision_layer = 0
+collision_mask = 0
+velocity = Vector2( 100, 0 )
+direction = Vector2( 0.707107, -0.707107 )
+
+[node name="state_animation" parent="title_screen/title/fast_glider10" index="3"]
+anims/RESET = SubResource( 239 )
+anims/air = SubResource( 240 )
+anims/close_wings = SubResource( 241 )
+anims/die = SubResource( 242 )
+anims/failed_flap = SubResource( 243 )
+anims/failed_glide_flap = SubResource( 244 )
+anims/flap = SubResource( 245 )
+anims/glide = SubResource( 246 )
+anims/glide_fail = SubResource( 247 )
+anims/glide_flap = SubResource( 248 )
+anims/glide_opposite_fail = SubResource( 249 )
+anims/spread_wings = SubResource( 250 )
+
+[node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider10" index="27"]
+disabled = true
+
+[node name="Sprite" parent="title_screen/title/fast_glider10/pivot" index="0"]
+material = SubResource( 267 )
+
+[node name="palette" parent="title_screen/title/fast_glider10/pivot/Sprite/palette_manager" index="0"]
+material = SubResource( 267 )
+
+[node name="HUD" parent="title_screen/title/fast_glider10" index="34"]
+visible = false
+
+[node name="energy_bar" parent="title_screen/title/fast_glider10/HUD/HBoxContainer" index="1"]
+modulate = Color( 1, 1, 1, 1 )
+margin_right = 40.0
+
+[node name="AnimationPlayer" parent="title_screen/title/fast_glider10/HUD/HBoxContainer/energy_bar" index="0"]
+anims/RESET = SubResource( 251 )
+anims/low = SubResource( 252 )
+
+[node name="player_controller" parent="title_screen/title/fast_glider10/input_state" index="0"]
+disabled = true
+
+[node name="demo_player" parent="title_screen/title/fast_glider10/input_state" index="1" instance=ExtResource( 31 )]
+autoplay = true
+record_input_state_path = NodePath("")
+replay_input_state_path = NodePath("..")
+demo_name = "demo_intro4.dat"
 
 [node name="fast_glider4" parent="title_screen/title" instance=ExtResource( 1 )]
 position = Vector2( -198, -2 )
@@ -3389,13 +3994,17 @@ anims/spread_wings = SubResource( 155 )
 disabled = true
 
 [node name="Sprite" parent="title_screen/title/fast_glider4/pivot" index="0"]
-material = SubResource( 104 )
+material = SubResource( 270 )
 
-[node name="palette" parent="title_screen/title/fast_glider4/pivot/Sprite" index="1"]
-material = SubResource( 104 )
+[node name="palette" parent="title_screen/title/fast_glider4/pivot/Sprite/palette_manager" index="0"]
+material = SubResource( 270 )
 
 [node name="HUD" parent="title_screen/title/fast_glider4" index="34"]
 visible = false
+
+[node name="energy_bar" parent="title_screen/title/fast_glider4/HUD/HBoxContainer" index="1"]
+modulate = Color( 1, 1, 1, 1 )
+margin_right = 40.0
 
 [node name="AnimationPlayer" parent="title_screen/title/fast_glider4/HUD/HBoxContainer/energy_bar" index="0"]
 anims/RESET = SubResource( 156 )
@@ -3436,13 +4045,17 @@ anims/spread_wings = SubResource( 169 )
 disabled = true
 
 [node name="Sprite" parent="title_screen/title/fast_glider5/pivot" index="0"]
-material = SubResource( 104 )
+material = SubResource( 273 )
 
-[node name="palette" parent="title_screen/title/fast_glider5/pivot/Sprite" index="1"]
-material = SubResource( 104 )
+[node name="palette" parent="title_screen/title/fast_glider5/pivot/Sprite/palette_manager" index="0"]
+material = SubResource( 273 )
 
 [node name="HUD" parent="title_screen/title/fast_glider5" index="34"]
 visible = false
+
+[node name="energy_bar" parent="title_screen/title/fast_glider5/HUD/HBoxContainer" index="1"]
+modulate = Color( 1, 1, 1, 1 )
+margin_right = 40.0
 
 [node name="AnimationPlayer" parent="title_screen/title/fast_glider5/HUD/HBoxContainer/energy_bar" index="0"]
 anims/RESET = SubResource( 170 )
@@ -3483,13 +4096,17 @@ anims/spread_wings = SubResource( 183 )
 disabled = true
 
 [node name="Sprite" parent="title_screen/title/fast_glider6/pivot" index="0"]
-material = SubResource( 104 )
+material = SubResource( 276 )
 
-[node name="palette" parent="title_screen/title/fast_glider6/pivot/Sprite" index="1"]
-material = SubResource( 104 )
+[node name="palette" parent="title_screen/title/fast_glider6/pivot/Sprite/palette_manager" index="0"]
+material = SubResource( 276 )
 
 [node name="HUD" parent="title_screen/title/fast_glider6" index="34"]
 visible = false
+
+[node name="energy_bar" parent="title_screen/title/fast_glider6/HUD/HBoxContainer" index="1"]
+modulate = Color( 1, 1, 1, 1 )
+margin_right = 40.0
 
 [node name="AnimationPlayer" parent="title_screen/title/fast_glider6/HUD/HBoxContainer/energy_bar" index="0"]
 anims/RESET = SubResource( 184 )
@@ -3530,13 +4147,17 @@ anims/spread_wings = SubResource( 197 )
 disabled = true
 
 [node name="Sprite" parent="title_screen/title/fast_glider7/pivot" index="0"]
-material = SubResource( 104 )
+material = SubResource( 279 )
 
-[node name="palette" parent="title_screen/title/fast_glider7/pivot/Sprite" index="1"]
-material = SubResource( 104 )
+[node name="palette" parent="title_screen/title/fast_glider7/pivot/Sprite/palette_manager" index="0"]
+material = SubResource( 279 )
 
 [node name="HUD" parent="title_screen/title/fast_glider7" index="34"]
 visible = false
+
+[node name="energy_bar" parent="title_screen/title/fast_glider7/HUD/HBoxContainer" index="1"]
+modulate = Color( 1, 1, 1, 1 )
+margin_right = 40.0
 
 [node name="AnimationPlayer" parent="title_screen/title/fast_glider7/HUD/HBoxContainer/energy_bar" index="0"]
 anims/RESET = SubResource( 198 )
@@ -3577,13 +4198,17 @@ anims/spread_wings = SubResource( 211 )
 disabled = true
 
 [node name="Sprite" parent="title_screen/title/fast_glider8/pivot" index="0"]
-material = SubResource( 104 )
+material = SubResource( 282 )
 
-[node name="palette" parent="title_screen/title/fast_glider8/pivot/Sprite" index="1"]
-material = SubResource( 104 )
+[node name="palette" parent="title_screen/title/fast_glider8/pivot/Sprite/palette_manager" index="0"]
+material = SubResource( 282 )
 
 [node name="HUD" parent="title_screen/title/fast_glider8" index="34"]
 visible = false
+
+[node name="energy_bar" parent="title_screen/title/fast_glider8/HUD/HBoxContainer" index="1"]
+modulate = Color( 1, 1, 1, 1 )
+margin_right = 40.0
 
 [node name="AnimationPlayer" parent="title_screen/title/fast_glider8/HUD/HBoxContainer/energy_bar" index="0"]
 anims/RESET = SubResource( 212 )
@@ -3624,13 +4249,17 @@ anims/spread_wings = SubResource( 225 )
 disabled = true
 
 [node name="Sprite" parent="title_screen/title/fast_glider9/pivot" index="0"]
-material = SubResource( 104 )
+material = SubResource( 285 )
 
-[node name="palette" parent="title_screen/title/fast_glider9/pivot/Sprite" index="1"]
-material = SubResource( 104 )
+[node name="palette" parent="title_screen/title/fast_glider9/pivot/Sprite/palette_manager" index="0"]
+material = SubResource( 285 )
 
 [node name="HUD" parent="title_screen/title/fast_glider9" index="34"]
 visible = false
+
+[node name="energy_bar" parent="title_screen/title/fast_glider9/HUD/HBoxContainer" index="1"]
+modulate = Color( 1, 1, 1, 1 )
+margin_right = 40.0
 
 [node name="AnimationPlayer" parent="title_screen/title/fast_glider9/HUD/HBoxContainer/energy_bar" index="0"]
 anims/RESET = SubResource( 226 )
@@ -3791,18 +4420,21 @@ monitorable = false
 disabled = true
 
 [node name="Sprite" parent="fast_glider2/pivot" index="0"]
-material = SubResource( 94 )
+modulate = Color( 1, 1, 1, 0.466667 )
+material = SubResource( 288 )
 
-[node name="palette" parent="fast_glider2/pivot/Sprite" index="1"]
-palette = PoolColorArray( 0.388235, 0.388235, 0.388235, 1, 0, 1, 0.741176, 1, 0, 1, 0.976471, 1 )
-material = SubResource( 94 )
-string_val = "[\"ff636363\",\"ff00ffbd\",\"ff00fff9\"]"
+[node name="palette" parent="fast_glider2/pivot/Sprite/palette_manager" index="0"]
+palette = PoolColorArray( 0.0941176, 0.592157, 0.592157, 1, 0, 1, 1, 1, 0, 0.627451, 0.843137, 1 )
+material = SubResource( 288 )
+string_val = "[\"ff189797\",\"ff00ffff\",\"ff00a0d7\"]"
 
 [node name="HUD" parent="fast_glider2" index="31"]
 visible = false
 
 [node name="energy_bar" parent="fast_glider2/HUD/HBoxContainer" index="1"]
 visible = false
+modulate = Color( 1, 1, 1, 1 )
+margin_right = 40.0
 tint_over = Color( 1, 1, 1, 1 )
 
 [node name="player_controller" parent="fast_glider2/input_state" index="0"]
@@ -3867,71 +4499,19 @@ script = ExtResource( 25 )
 [connection signal="timeout" from="ghost_spawner/Timer" to="ghost_spawner" method="_on_Timer_timeout" flags=3]
 [connection signal="seed_taken" from="seed_spawner" to="fall_spawner/spawner_trigger_on_seeds_taken" method="_on_seed_taken"]
 [connection signal="trigger" from="fall_spawner/spawner_trigger_on_seeds_taken" to="fall_spawner" method="spawn"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider" to="title_screen/title/fast_glider/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider/on_soft_collision" to="title_screen/title/fast_glider/energy" method="add_value" binds= [ -5.0 ]]
 [connection signal="value_changed" from="title_screen/title/fast_glider/energy" to="title_screen/title/fast_glider/HUD/HBoxContainer/energy_bar" method="update_values"]
-[connection signal="trigger" from="title_screen/title/fast_glider/kill_on_no_energy" to="title_screen/title/fast_glider/explode_action" method="trigger"]
-[connection signal="trigger" from="title_screen/title/fast_glider/explode_action" to="title_screen/title/fast_glider/many_feathers_slow" method="_on_collision_no_args"]
-[connection signal="trigger" from="title_screen/title/fast_glider/explode_action" to="title_screen/title/fast_glider/some_feathers_fast" method="_on_collision_no_args"]
-[connection signal="trigger" from="title_screen/title/fast_glider/explode_action" to="title_screen/title/fast_glider/explosion" method="play"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider2" to="title_screen/title/fast_glider2/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider2/on_soft_collision" to="title_screen/title/fast_glider2/energy" method="add_value" binds= [ -5.0 ]]
 [connection signal="value_changed" from="title_screen/title/fast_glider2/energy" to="title_screen/title/fast_glider2/HUD/HBoxContainer/energy_bar" method="update_values"]
-[connection signal="trigger" from="title_screen/title/fast_glider2/kill_on_no_energy" to="title_screen/title/fast_glider2/explode_action" method="trigger"]
-[connection signal="trigger" from="title_screen/title/fast_glider2/explode_action" to="title_screen/title/fast_glider2/many_feathers_slow" method="_on_collision_no_args"]
-[connection signal="trigger" from="title_screen/title/fast_glider2/explode_action" to="title_screen/title/fast_glider2/some_feathers_fast" method="_on_collision_no_args"]
-[connection signal="trigger" from="title_screen/title/fast_glider2/explode_action" to="title_screen/title/fast_glider2/explosion" method="play"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider3" to="title_screen/title/fast_glider3/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider3/on_soft_collision" to="title_screen/title/fast_glider3/energy" method="add_value" binds= [ -5.0 ]]
 [connection signal="value_changed" from="title_screen/title/fast_glider3/energy" to="title_screen/title/fast_glider3/HUD/HBoxContainer/energy_bar" method="update_values"]
-[connection signal="trigger" from="title_screen/title/fast_glider3/kill_on_no_energy" to="title_screen/title/fast_glider3/explode_action" method="trigger"]
-[connection signal="trigger" from="title_screen/title/fast_glider3/explode_action" to="title_screen/title/fast_glider3/many_feathers_slow" method="_on_collision_no_args"]
-[connection signal="trigger" from="title_screen/title/fast_glider3/explode_action" to="title_screen/title/fast_glider3/some_feathers_fast" method="_on_collision_no_args"]
-[connection signal="trigger" from="title_screen/title/fast_glider3/explode_action" to="title_screen/title/fast_glider3/explosion" method="play"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider4" to="title_screen/title/fast_glider4/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider4/on_soft_collision" to="title_screen/title/fast_glider4/energy" method="add_value" binds= [ -5.0 ]]
+[connection signal="value_changed" from="title_screen/title/fast_glider10/energy" to="title_screen/title/fast_glider10/HUD/HBoxContainer/energy_bar" method="update_values"]
 [connection signal="value_changed" from="title_screen/title/fast_glider4/energy" to="title_screen/title/fast_glider4/HUD/HBoxContainer/energy_bar" method="update_values"]
-[connection signal="trigger" from="title_screen/title/fast_glider4/kill_on_no_energy" to="title_screen/title/fast_glider4/explode_action" method="trigger"]
-[connection signal="trigger" from="title_screen/title/fast_glider4/explode_action" to="title_screen/title/fast_glider4/many_feathers_slow" method="_on_collision_no_args"]
-[connection signal="trigger" from="title_screen/title/fast_glider4/explode_action" to="title_screen/title/fast_glider4/some_feathers_fast" method="_on_collision_no_args"]
-[connection signal="trigger" from="title_screen/title/fast_glider4/explode_action" to="title_screen/title/fast_glider4/explosion" method="play"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider5" to="title_screen/title/fast_glider5/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider5/on_soft_collision" to="title_screen/title/fast_glider5/energy" method="add_value" binds= [ -5.0 ]]
 [connection signal="value_changed" from="title_screen/title/fast_glider5/energy" to="title_screen/title/fast_glider5/HUD/HBoxContainer/energy_bar" method="update_values"]
-[connection signal="trigger" from="title_screen/title/fast_glider5/kill_on_no_energy" to="title_screen/title/fast_glider5/explode_action" method="trigger"]
-[connection signal="trigger" from="title_screen/title/fast_glider5/explode_action" to="title_screen/title/fast_glider5/many_feathers_slow" method="_on_collision_no_args"]
-[connection signal="trigger" from="title_screen/title/fast_glider5/explode_action" to="title_screen/title/fast_glider5/some_feathers_fast" method="_on_collision_no_args"]
-[connection signal="trigger" from="title_screen/title/fast_glider5/explode_action" to="title_screen/title/fast_glider5/explosion" method="play"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider6" to="title_screen/title/fast_glider6/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider6/on_soft_collision" to="title_screen/title/fast_glider6/energy" method="add_value" binds= [ -5.0 ]]
 [connection signal="value_changed" from="title_screen/title/fast_glider6/energy" to="title_screen/title/fast_glider6/HUD/HBoxContainer/energy_bar" method="update_values"]
-[connection signal="trigger" from="title_screen/title/fast_glider6/kill_on_no_energy" to="title_screen/title/fast_glider6/explode_action" method="trigger"]
-[connection signal="trigger" from="title_screen/title/fast_glider6/explode_action" to="title_screen/title/fast_glider6/many_feathers_slow" method="_on_collision_no_args"]
-[connection signal="trigger" from="title_screen/title/fast_glider6/explode_action" to="title_screen/title/fast_glider6/some_feathers_fast" method="_on_collision_no_args"]
-[connection signal="trigger" from="title_screen/title/fast_glider6/explode_action" to="title_screen/title/fast_glider6/explosion" method="play"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider7" to="title_screen/title/fast_glider7/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider7/on_soft_collision" to="title_screen/title/fast_glider7/energy" method="add_value" binds= [ -5.0 ]]
 [connection signal="value_changed" from="title_screen/title/fast_glider7/energy" to="title_screen/title/fast_glider7/HUD/HBoxContainer/energy_bar" method="update_values"]
-[connection signal="trigger" from="title_screen/title/fast_glider7/kill_on_no_energy" to="title_screen/title/fast_glider7/explode_action" method="trigger"]
-[connection signal="trigger" from="title_screen/title/fast_glider7/explode_action" to="title_screen/title/fast_glider7/many_feathers_slow" method="_on_collision_no_args"]
-[connection signal="trigger" from="title_screen/title/fast_glider7/explode_action" to="title_screen/title/fast_glider7/some_feathers_fast" method="_on_collision_no_args"]
-[connection signal="trigger" from="title_screen/title/fast_glider7/explode_action" to="title_screen/title/fast_glider7/explosion" method="play"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider8" to="title_screen/title/fast_glider8/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider8/on_soft_collision" to="title_screen/title/fast_glider8/energy" method="add_value" binds= [ -5.0 ]]
 [connection signal="value_changed" from="title_screen/title/fast_glider8/energy" to="title_screen/title/fast_glider8/HUD/HBoxContainer/energy_bar" method="update_values"]
-[connection signal="trigger" from="title_screen/title/fast_glider8/kill_on_no_energy" to="title_screen/title/fast_glider8/explode_action" method="trigger"]
-[connection signal="trigger" from="title_screen/title/fast_glider8/explode_action" to="title_screen/title/fast_glider8/many_feathers_slow" method="_on_collision_no_args"]
-[connection signal="trigger" from="title_screen/title/fast_glider8/explode_action" to="title_screen/title/fast_glider8/some_feathers_fast" method="_on_collision_no_args"]
-[connection signal="trigger" from="title_screen/title/fast_glider8/explode_action" to="title_screen/title/fast_glider8/explosion" method="play"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider9" to="title_screen/title/fast_glider9/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider9/on_soft_collision" to="title_screen/title/fast_glider9/energy" method="add_value" binds= [ -5.0 ]]
 [connection signal="value_changed" from="title_screen/title/fast_glider9/energy" to="title_screen/title/fast_glider9/HUD/HBoxContainer/energy_bar" method="update_values"]
-[connection signal="trigger" from="title_screen/title/fast_glider9/kill_on_no_energy" to="title_screen/title/fast_glider9/explode_action" method="trigger"]
-[connection signal="trigger" from="title_screen/title/fast_glider9/explode_action" to="title_screen/title/fast_glider9/many_feathers_slow" method="_on_collision_no_args"]
-[connection signal="trigger" from="title_screen/title/fast_glider9/explode_action" to="title_screen/title/fast_glider9/some_feathers_fast" method="_on_collision_no_args"]
-[connection signal="trigger" from="title_screen/title/fast_glider9/explode_action" to="title_screen/title/fast_glider9/explosion" method="play"]
 [connection signal="timeout" from="wait_on_game_over" to="." method="_on_wait_on_game_over_timeout"]
 [connection signal="die" from="fast_glider2" to="CanvasLayer/Control/HBoxContainer" method="set_visible" binds= [ true ]]
+[connection signal="value_changed" from="fast_glider2/energy" to="fast_glider2/HUD/HBoxContainer/energy_bar" method="update_values"]
 [connection signal="win" from="playjam_gameover" to="CanvasLayer/win_text" method="_on_win"]
 
 [editable path="seed_spawner"]
@@ -3940,6 +4520,7 @@ script = ExtResource( 25 )
 [editable path="title_screen/title/fast_glider"]
 [editable path="title_screen/title/fast_glider2"]
 [editable path="title_screen/title/fast_glider3"]
+[editable path="title_screen/title/fast_glider10"]
 [editable path="title_screen/title/fast_glider4"]
 [editable path="title_screen/title/fast_glider5"]
 [editable path="title_screen/title/fast_glider6"]

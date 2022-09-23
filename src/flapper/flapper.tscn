@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://src/flapper/flapper.gd" type="Script" id=1]
 [ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=2]
@@ -42,6 +42,7 @@
 [ext_resource path="res://src/flapper/input_state.gd" type="Script" id=40]
 [ext_resource path="res://src/flapper/player_controller.gd" type="Script" id=41]
 [ext_resource path="res://src/flapper/low_energy_anim.gd" type="Script" id=42]
+[ext_resource path="res://src/test/center_of_mass/palette_manager.gd" type="Script" id=43]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 4 )
@@ -332,28 +333,28 @@ radius = 3.0
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 4, 4 )
 
-[sub_resource type="Image" id=53]
+[sub_resource type="Image" id=56]
 data = {
-"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=49]
+[sub_resource type="ImageTexture" id=54]
 flags = 0
 flags = 0
-image = SubResource( 53 )
+image = SubResource( 56 )
 size = Vector2( 3, 1 )
 
-[sub_resource type="ShaderMaterial" id=33]
+[sub_resource type="ShaderMaterial" id=55]
 resource_local_to_scene = true
 shader = ExtResource( 11 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 49 )
+shader_param/palette = SubResource( 54 )
 
 [sub_resource type="StreamTexture" id=43]
 load_path = "res://.import/flapper.png-42d4f1390d9d9cceb01520b415ef9b37.stex"
@@ -631,7 +632,7 @@ script = ExtResource( 33 )
 
 [node name="Sprite" type="Sprite" parent="pivot"]
 unique_name_in_owner = true
-material = SubResource( 33 )
+material = SubResource( 55 )
 texture = SubResource( 43 )
 hframes = 6
 vframes = 5
@@ -649,10 +650,12 @@ position = Vector2( 0, 6 )
 shape = SubResource( 15 )
 disabled = true
 
-[node name="palette" parent="pivot/Sprite" instance=ExtResource( 13 )]
+[node name="palette_manager" type="Node" parent="pivot/Sprite"]
+script = ExtResource( 43 )
+
+[node name="palette" parent="pivot/Sprite/palette_manager" instance=ExtResource( 13 )]
 palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
-material = SubResource( 33 )
-glow_speed = 4.0
+material = SubResource( 55 )
 string_val = "[\"ff971818\",\"ffffb300\",\"ffd75600\"]"
 
 [node name="hud_tracker" type="Node" parent="."]
@@ -693,9 +696,9 @@ margin_bottom = 8.0
 texture_under = SubResource( 21 )
 texture_progress = SubResource( 23 )
 texture_progress_offset = Vector2( 0, 1 )
-tint_under = Color( 0, 0, 0, 1 )
+tint_under = Color( 1, 0, 0, 1 )
 tint_over = Color( 1, 0, 0, 1 )
-tint_progress = Color( 1, 0, 0, 1 )
+tint_progress = Color( 0, 1, 0, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/HBoxContainer/energy_bar"]
 anims/RESET = SubResource( 51 )

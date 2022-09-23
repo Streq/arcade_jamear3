@@ -9,6 +9,7 @@ export var spread_power = 20.0
 export var amount = 5
 
 export var spread_angle = 5.0
+export var inertia_on_shoot := 0.0
 
 
 var predict = false
@@ -22,7 +23,7 @@ func shoot_bullet(wearer = owner, angle = 0.0, power = 0.0):
 	wearer.get_parent().add_child(arrow)
 	arrow.global_rotation = global_rotation
 	arrow.global_position = global_position
-	arrow.velocity = Vector2.RIGHT.rotated(angle)*power
+	arrow.velocity = Vector2.RIGHT.rotated(angle)*power + inertia_on_shoot*wearer.velocity
 	if "velocity" in wearer:
 		arrow.velocity += wearer.velocity*0.1
 	
