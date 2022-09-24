@@ -7,7 +7,7 @@
 [ext_resource path="res://src/flapper/addons/kill_on_no_energy.gd" type="Script" id=5]
 [ext_resource path="res://src/flapper/addons/explode_action.gd" type="Script" id=6]
 
-[sub_resource type="Image" id=21]
+[sub_resource type="Image" id=4]
 data = {
 "data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
 "format": "RGBA8",
@@ -16,19 +16,19 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=20]
+[sub_resource type="ImageTexture" id=2]
 flags = 0
 flags = 0
-image = SubResource( 21 )
+image = SubResource( 4 )
 size = Vector2( 3, 1 )
 
-[sub_resource type="ShaderMaterial" id=18]
+[sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
 shader = ExtResource( 1 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 20 )
+shader_param/palette = SubResource( 2 )
 
 [node name="fast_glider" instance=ExtResource( 2 )]
 
@@ -45,10 +45,10 @@ min_value = 1.0
 max_value = 2.0
 
 [node name="Sprite" parent="pivot" index="0"]
-material = SubResource( 18 )
+material = SubResource( 3 )
 
-[node name="palette" parent="pivot/Sprite" index="1"]
-material = SubResource( 18 )
+[node name="palette" parent="pivot/Sprite/palette_manager" index="0"]
+material = SubResource( 3 )
 
 [node name="kill_on_no_energy" type="Node" parent="." index="29"]
 script = ExtResource( 5 )

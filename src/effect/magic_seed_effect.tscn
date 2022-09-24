@@ -32,7 +32,7 @@ size = Vector2( 3, 1 )
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/palette_size = 3
-shader_param/offset = 0
+shader_param/offset = 1
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 83 )
 
@@ -64,6 +64,7 @@ HITBOX = ExtResource( 7 )
 
 [node name="palette" parent="." instance=ExtResource( 3 )]
 material = SubResource( 74 )
+string_val = "[\"ff970000\",\"ffd75600\",\"ffffffff\"]"
 
 [node name="Timer" type="Timer" parent="." groups=["magic_seed_effect"]]
 process_mode = 0

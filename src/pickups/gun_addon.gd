@@ -21,34 +21,36 @@ func _ready():
 		if wearer.addons.has(w):
 			prev_weapons.append(wearer.addons[w])
 	
-	if !prev_weapons.empty():
-		if prev_weapons[0].stacks_with(self.weapon_name):
-			if prev_weapons.size()==2:#replace secondary
-				if is_instance_valid(prev_weapons[1]):
-					prev_weapons[1].remove()
-			
-			#add as secondary
-			for w in affected_addons:
+	if prev_weapons.empty():
+		wearer.addons[affected_addons[0]] = self
+	elif prev_weapons[0].stacks_with(self.weapon_name):
+		#if there's room
+		if prev_weapons.size() < affected_addons.size():
+			for i in affected_addons.size():
+				var w = affected_addons[i]
 				if !wearer.addons.has(w):
 					wearer.addons[w] = self
-					if w == affected_addons[1]:
+					if i == 1:
 						rotation = PI
 						position -= position*2
-			
-			wearer.connect("pre_flap", self, "shoot")
-			
-				
-		else:#replace all
-			for weapon in prev_weapons:
-				if is_instance_valid(weapon):
-					weapon.remove()
+					break
+		#otherwise hijack the first one
+		else:
+			var prev = wearer.addons[affected_addons[0]]
+			if is_instance_valid(prev):
+				prev.remove()
 			wearer.addons[affected_addons[0]] = self
-			wearer.connect("pre_flap", self, "shoot")
-	else:#add normally
+	#if it doesn't stack just delete all entries
+	else:
+		for w in affected_addons:
+			if wearer.addons.has(w):
+				var prev = wearer.addons[w]
+				if is_instance_valid(prev):
+					prev.remove()
 		wearer.addons[affected_addons[0]] = self
-		wearer.connect("pre_flap", self, "shoot")
 	
-	
+	wearer.connect("pre_flap", self, "shoot")
+
 
 
 func pre_ready(wearer):

@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/object_pool/phoenix_bullet_pool.gd" type="Script" id=1]
+[ext_resource path="res://src/pickups/effect/phoenix_bullet_performant.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=3]
+[ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Image" id=4]
+data = {
+"data": PoolByteArray( 255, 0, 0, 255, 255, 120, 0, 255, 255, 255, 255, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=2]
+flags = 0
+flags = 0
+image = SubResource( 4 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/palette_size = 3
+shader_param/offset = 2
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 2 )
+
+[node name="phoenix_bullet_pool" type="Node2D" groups=["phoenix_bullet_pool"]]
+material = SubResource( 3 )
+script = ExtResource( 1 )
+size = 5000
+OBJECT = ExtResource( 2 )
+
+[node name="palette" parent="." instance=ExtResource( 4 )]
+palette = PoolColorArray( 1, 0, 0, 1, 1, 0.470588, 0, 1, 1, 1, 1, 1 )
+material = SubResource( 3 )
+glow = true
+glow_speed = 2.0
+string_val = "[\"ffff0000\",\"ffff7800\",\"ffffffff\"]"

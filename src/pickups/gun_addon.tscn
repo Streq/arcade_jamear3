@@ -12,7 +12,7 @@
 [ext_resource path="res://src/pickups/effect/only_sound_if_first.gd" type="Script" id=10]
 [ext_resource path="res://assets/font/ProggyClean.ttf/ProggyClean.ttf" type="DynamicFontData" id=11]
 
-[sub_resource type="Image" id=7]
+[sub_resource type="Image" id=9]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 48, 14, 14, 255, 255, 0, 0, 255 ),
 "format": "RGBA8",
@@ -21,10 +21,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=5]
+[sub_resource type="ImageTexture" id=8]
 flags = 0
 flags = 0
-image = SubResource( 7 )
+image = SubResource( 9 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
@@ -33,7 +33,7 @@ shader = ExtResource( 1 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 5 )
+shader_param/palette = SubResource( 8 )
 
 [sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 11 )
