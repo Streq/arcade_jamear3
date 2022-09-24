@@ -7,4 +7,4 @@ func _ready() -> void:
 	yield(get_tree().create_timer(3.0,true),"timeout")
 	get_tree().paused = false
 	queue_free()
-	Music.play_music("castle")
+	Music.play_music_no_crossfade("castle")

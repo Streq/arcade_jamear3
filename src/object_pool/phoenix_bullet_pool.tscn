@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=3]
 [ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Image" id=4]
+[sub_resource type="Image" id=6]
 data = {
 "data": PoolByteArray( 255, 0, 0, 255, 255, 120, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -14,19 +14,19 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=2]
+[sub_resource type="ImageTexture" id=5]
 flags = 0
 flags = 0
-image = SubResource( 4 )
+image = SubResource( 6 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
 shader = ExtResource( 3 )
 shader_param/palette_size = 3
-shader_param/offset = 2
+shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 2 )
+shader_param/palette = SubResource( 5 )
 
 [node name="phoenix_bullet_pool" type="Node2D" groups=["phoenix_bullet_pool"]]
 material = SubResource( 3 )

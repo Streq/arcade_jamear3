@@ -15,7 +15,7 @@
 
 [sub_resource type="Image" id=84]
 data = {
-"data": PoolByteArray( 151, 0, 0, 255, 214, 86, 0, 255, 255, 255, 255, 255 ),
+"data": PoolByteArray( 151, 0, 0, 255, 215, 86, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -63,6 +63,7 @@ script = ExtResource( 4 )
 HITBOX = ExtResource( 7 )
 
 [node name="palette" parent="." instance=ExtResource( 3 )]
+palette = PoolColorArray( 0.592157, 0, 0, 1, 0.843137, 0.337255, 0, 1, 1, 1, 1, 1 )
 material = SubResource( 74 )
 string_val = "[\"ff970000\",\"ffd75600\",\"ffffffff\"]"
 

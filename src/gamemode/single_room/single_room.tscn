@@ -36,7 +36,7 @@
 [ext_resource path="res://src/object_pool/phoenix_bullet_pool.tscn" type="PackedScene" id=34]
 [ext_resource path="res://src/gamemode/single_room/remove_flapper.gd" type="Script" id=35]
 
-[sub_resource type="Image" id=106]
+[sub_resource type="Image" id=98]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 50, 0, 76, 255, 203, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
@@ -48,7 +48,7 @@ data = {
 [sub_resource type="ImageTexture" id=99]
 flags = 0
 flags = 0
-image = SubResource( 106 )
+image = SubResource( 98 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=62]
@@ -69,7 +69,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 904, 0 )
 }
 
-[sub_resource type="Image" id=107]
+[sub_resource type="Image" id=100]
 data = {
 "data": PoolByteArray( 135, 63, 0, 255, 235, 84, 31, 255, 255, 205, 58, 255, 255, 196, 0, 255 ),
 "format": "RGBA8",
@@ -81,7 +81,7 @@ data = {
 [sub_resource type="ImageTexture" id=74]
 flags = 0
 flags = 0
-image = SubResource( 107 )
+image = SubResource( 100 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=75]
@@ -372,7 +372,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=108]
+[sub_resource type="Image" id=101]
 data = {
 "data": PoolByteArray( 24, 151, 151, 255, 0, 255, 255, 255, 0, 160, 215, 255 ),
 "format": "RGBA8",
@@ -384,7 +384,7 @@ data = {
 [sub_resource type="ImageTexture" id=102]
 flags = 0
 flags = 0
-image = SubResource( 108 )
+image = SubResource( 101 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=97]
@@ -395,7 +395,7 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
 shader_param/palette = SubResource( 102 )
 
-[sub_resource type="Image" id=109]
+[sub_resource type="Image" id=103]
 data = {
 "data": PoolByteArray( 255, 0, 0, 255, 255, 120, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -407,14 +407,14 @@ data = {
 [sub_resource type="ImageTexture" id=104]
 flags = 0
 flags = 0
-image = SubResource( 109 )
+image = SubResource( 103 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=105]
 resource_local_to_scene = true
 shader = ExtResource( 8 )
 shader_param/palette_size = 3
-shader_param/offset = 1
+shader_param/offset = 2
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 104 )
 
@@ -778,7 +778,6 @@ material = SubResource( 105 )
 [connection signal="go_back" from="gameover_HUD" to="." method="_on_go_back"]
 [connection signal="timeout" from="ghost_spawner/Timer" to="ghost_spawner" method="_on_Timer_timeout" flags=3]
 [connection signal="seed_taken" from="seed_spawner" to="fall_spawner/spawner_trigger_on_seeds_taken" method="_on_seed_taken"]
-[connection signal="pre_spawn" from="fall_spawner/spawn_source" to="fall_spawner/spawn_source/gemini/change_weight_based_on_clone_count" method="_on_pre_spawn"]
 [connection signal="trigger" from="fall_spawner/spawner_trigger_on_seeds_taken" to="fall_spawner" method="spawn"]
 [connection signal="timeout" from="wait_on_game_over" to="." method="_on_wait_on_game_over_timeout"]
 
