@@ -17,3 +17,5 @@ func can_hit(area):
 func get_damage(target):
 	return 1.0
 
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	area._on_area_entered(self)

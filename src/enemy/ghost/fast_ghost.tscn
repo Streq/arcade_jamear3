@@ -28,7 +28,7 @@ size = Vector2( 2, 1 )
 resource_local_to_scene = true
 shader = ExtResource( 7 )
 shader_param/palette_size = 2
-shader_param/offset = 1
+shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 14 )
 
@@ -195,6 +195,11 @@ min_value = 50.0
 
 [node name="Sprite" parent="." index="5"]
 material = SubResource( 4 )
+
+[node name="hurtbox" parent="." index="6"]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
 
 [node name="health" type="Node" parent="." index="11"]
 script = ExtResource( 2 )

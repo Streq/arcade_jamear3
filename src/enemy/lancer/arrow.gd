@@ -6,13 +6,10 @@ onready var hitbox = $hitbox
 
 var disappear_on_screen_exit = false
 
-onready var visibility_notifier_2d = $VisibilityNotifier2D
 
 func _physics_process(delta):
 	global_position += velocity*delta
-	if disappear_on_screen_exit and !visibility_notifier_2d.is_on_screen():
-		queue_free()
-
+	
 func _on_terrain_box_body_entered(body):
 	velocity = Vector2()
 	hitbox.set_deferred("monitorable", false)

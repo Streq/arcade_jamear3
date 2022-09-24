@@ -55,3 +55,9 @@ func register_hit(area):
 	var damage = calc_damage(knockback)
 	print_debug("damage:", damage)
 	area.take_damage(damage)
+	
+func _ready() -> void:
+	connect("area_entered",self,"_on_area_entered")
+
+func _on_area_entered(area:Area2D):
+	area._on_area_entered(self)

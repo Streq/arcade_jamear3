@@ -18,3 +18,9 @@ func register_hit(area):
 	
 func get_damage(target):
 	return damage
+
+func _on_area_entered(area:Area2D):
+	area._on_area_entered(self)
+
+func _ready():
+	connect("area_entered",self,"_on_area_entered")
