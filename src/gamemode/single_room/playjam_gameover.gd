@@ -18,11 +18,16 @@ func _physics_process(delta: float) -> void:
 
 func _on_game_over():
 	if won:
+		print("WIN")
+	
 		get_tree().quit(WIN)
 	else:
+		print("LOSE")
+	
 		get_tree().quit(LOSE)
 
 func _on_game_won():
+	print("WIN")
 	get_tree().quit(WIN)
 	
 func _unhandled_key_input(event: InputEventKey) -> void:
