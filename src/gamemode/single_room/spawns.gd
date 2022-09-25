@@ -24,7 +24,7 @@ func get_spawn():
 #	print(r)
 	for spawn in get_children():
 		if !spawn.weight: 
-			print("no chance")
+#			print("no chance")
 			continue
 		if spawn.weight > r:
 			return spawn.scene

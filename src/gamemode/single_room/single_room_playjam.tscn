@@ -3890,6 +3890,8 @@ collision_layer = 0
 collision_mask = 8
 monitoring = true
 
+[node name="flap" parent="title_screen/title/fast_glider" index="14" groups=["flap_sound"]]
+
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider" index="27"]
 disabled = true
 
@@ -3935,6 +3937,8 @@ anims/spread_wings = SubResource( 121 )
 collision_layer = 0
 collision_mask = 8
 monitoring = true
+
+[node name="flap" parent="title_screen/title/fast_glider2" index="14" groups=["flap_sound"]]
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider2" index="27"]
 disabled = true
@@ -3987,6 +3991,8 @@ collision_layer = 0
 collision_mask = 8
 monitoring = true
 
+[node name="flap" parent="title_screen/title/fast_glider3" index="14" groups=["flap_sound"]]
+
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider3" index="27"]
 disabled = true
 
@@ -4038,6 +4044,8 @@ collision_layer = 0
 collision_mask = 8
 monitoring = true
 
+[node name="flap" parent="title_screen/title/fast_glider10" index="14" groups=["flap_sound"]]
+
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider10" index="27"]
 disabled = true
 
@@ -4088,6 +4096,8 @@ anims/spread_wings = SubResource( 155 )
 collision_layer = 0
 collision_mask = 8
 monitoring = true
+
+[node name="flap" parent="title_screen/title/fast_glider4" index="14" groups=["flap_sound"]]
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider4" index="27"]
 disabled = true
@@ -4141,6 +4151,8 @@ collision_layer = 0
 collision_mask = 8
 monitoring = true
 
+[node name="flap" parent="title_screen/title/fast_glider5" index="14" groups=["flap_sound"]]
+
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider5" index="27"]
 disabled = true
 
@@ -4192,6 +4204,8 @@ anims/spread_wings = SubResource( 183 )
 collision_layer = 0
 collision_mask = 8
 monitoring = true
+
+[node name="flap" parent="title_screen/title/fast_glider6" index="14" groups=["flap_sound"]]
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider6" index="27"]
 disabled = true
@@ -4245,6 +4259,8 @@ collision_layer = 0
 collision_mask = 8
 monitoring = true
 
+[node name="flap" parent="title_screen/title/fast_glider7" index="14" groups=["flap_sound"]]
+
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider7" index="27"]
 disabled = true
 
@@ -4297,6 +4313,8 @@ collision_layer = 0
 collision_mask = 8
 monitoring = true
 
+[node name="flap" parent="title_screen/title/fast_glider8" index="14" groups=["flap_sound"]]
+
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider8" index="27"]
 disabled = true
 
@@ -4348,6 +4366,8 @@ anims/spread_wings = SubResource( 225 )
 collision_layer = 0
 collision_mask = 8
 monitoring = true
+
+[node name="flap" parent="title_screen/title/fast_glider9" index="14" groups=["flap_sound"]]
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider9" index="27"]
 disabled = true
@@ -4480,6 +4500,7 @@ stream = null
 [node name="flap" parent="fast_glider2" index="13"]
 stream = null
 volume_db = -80.0
+group = "ghost_flap_sound"
 
 [node name="pio" parent="fast_glider2" index="14"]
 stream = null

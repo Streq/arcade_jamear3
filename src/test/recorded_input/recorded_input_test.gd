@@ -20,4 +20,5 @@ func _input(event: InputEvent) -> void:
 	if !event.is_pressed():
 		for action in ["ui_left_demo","ui_right_demo","ui_up_demo","ui_down_demo"]:
 			if event.is_action(action):
-				print(action+" released:")
+				pass
+#				print(action+" released:")

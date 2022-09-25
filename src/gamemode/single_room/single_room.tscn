@@ -418,7 +418,7 @@ size = Vector2( 3, 1 )
 resource_local_to_scene = true
 shader = ExtResource( 8 )
 shader_param/palette_size = 3
-shader_param/offset = 1
+shader_param/offset = 2
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 104 )
 
@@ -718,6 +718,7 @@ stream = null
 [node name="flap" parent="fast_glider2" index="13"]
 stream = null
 volume_db = -80.0
+group = "ghost_flap_sound"
 
 [node name="pio" parent="fast_glider2" index="14"]
 stream = null

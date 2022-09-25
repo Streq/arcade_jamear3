@@ -65,4 +65,5 @@ inertia_multiplier = 1.0
 material = SubResource( 3 )
 
 [node name="palette" parent="pivot/Sprite/palette_manager" index="0"]
+palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
 material = SubResource( 3 )

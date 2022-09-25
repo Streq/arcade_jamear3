@@ -548,7 +548,7 @@ stream = ExtResource( 21 )
 volume_db = -11.7255
 bus = "piu"
 
-[node name="flap" type="AudioStreamPlayer2D" parent="." groups=["flap_sound"]]
+[node name="flap" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 25 )
 volume_db = -6.62745
 bus = "piu"

@@ -22,7 +22,7 @@ size = Vector2( 3, 1 )
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/palette_size = 3
-shader_param/offset = 0
+shader_param/offset = 2
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 5 )
 
@@ -32,7 +32,6 @@ wait_time = 7.5
 increase_on_seed = 1.0
 
 [node name="palette" parent="." index="0"]
-palette = PoolColorArray( 0.592157, 0, 0, 1, 0.843137, 0.337255, 0, 1, 1, 1, 1, 1 )
 material = SubResource( 3 )
 
 [node name="tutorial_text" parent="CanvasLayer" index="0"]
