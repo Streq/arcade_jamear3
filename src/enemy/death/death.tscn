@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/enemy/death/death.gd" type="Script" id=1]
 [ext_resource path="res://src/pickups/out_of_sight_arrow.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://src/enemy/death/free_on_dead_player.gd" type="Script" id=11]
 [ext_resource path="res://assets/audio/sfx/failed_glide.wav" type="AudioStream" id=12]
 [ext_resource path="res://src/enemy/difficulty.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/enemy/ghost/hitbox.gd" type="Script" id=14]
 
 [sub_resource type="CircleShape2D" id=27]
 radius = 7.07107
@@ -89,10 +90,13 @@ __meta__ = {
 [node name="palette" parent="Sprite" instance=ExtResource( 3 )]
 palette = PoolColorArray( 0, 0, 0, 1, 0.129412, 0, 0, 1, 1, 0.870588, 0.352941, 1 )
 material = SubResource( 11 )
+string_val = "[\"ff000000\",\"ff210000\",\"ffffde5a\"]"
 
 [node name="hitbox" type="Area2D" parent="." groups=["bat"]]
-collision_layer = 8
-collision_mask = 0
+collision_layer = 0
+collision_mask = 512
+monitorable = false
+script = ExtResource( 14 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource( 2 )
@@ -105,6 +109,7 @@ material = SubResource( 17 )
 [node name="palette" parent="out_of_sight_arrow/CanvasLayer/arrow/Sprite" index="0" instance=ExtResource( 5 )]
 palette = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1 )
 material = SubResource( 17 )
+string_val = "[\"ff000000\",\"ff000000\",\"ffff0000\",\"ff000000\"]"
 
 [node name="turn_to_dir" type="Node" parent="."]
 script = ExtResource( 4 )
@@ -149,5 +154,7 @@ autoplay = true
 attenuation = 2.07053
 
 [node name="difficulty" parent="." instance=ExtResource( 13 )]
+
+[connection signal="area_entered" from="hitbox" to="hitbox" method="_on_area_entered"]
 
 [editable path="out_of_sight_arrow"]

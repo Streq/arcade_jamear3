@@ -31,6 +31,8 @@ func _ready():
 
 func trigger(value):
 	
+	value = clamp(value, min_difficulty, max_difficulty)
+	
 	var mapped = range_lerp(
 			value,
 			min_difficulty,
@@ -38,7 +40,6 @@ func trigger(value):
 			min_value,
 			max_value
 		)
-	var val = clamp(mapped, min_value, max_value)
 
-	get_parent().set_indexed(prop, val)
+	get_parent().set_indexed(prop, mapped)
 	pass

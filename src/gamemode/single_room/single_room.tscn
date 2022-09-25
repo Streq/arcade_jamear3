@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://src/gamemode/single_room/fast_glider_for_single_room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/gamemode/single_room/spawner.gd" type="Script" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://src/object_pool/gun_bullet_pool.tscn" type="PackedScene" id=36]
 [ext_resource path="res://src/object_pool/wide_bullet_pool.tscn" type="PackedScene" id=37]
 [ext_resource path="res://src/gamemode/single_room/play_music_no_crossfade.gd" type="Script" id=38]
+[ext_resource path="res://src/enemy/set_to_difficulty.tscn" type="PackedScene" id=39]
 
 [sub_resource type="Image" id=112]
 data = {
@@ -417,7 +418,7 @@ size = Vector2( 3, 1 )
 resource_local_to_scene = true
 shader = ExtResource( 8 )
 shader_param/palette_size = 3
-shader_param/offset = 2
+shader_param/offset = 1
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 104 )
 
@@ -498,6 +499,11 @@ max_spawns = 10000
 process_mode = 0
 wait_time = 2.5
 one_shot = true
+
+[node name="set_to_difficulty" parent="ghost_spawner/Timer" instance=ExtResource( 39 )]
+difficulty = NodePath("../../difficulty")
+prop = "wait_time"
+min_value = 4.0
 
 [node name="difficulty" parent="ghost_spawner" instance=ExtResource( 10 )]
 value = 10000.0
