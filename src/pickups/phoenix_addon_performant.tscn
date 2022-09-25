@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
 [ext_resource path="res://src/pickups/gun_addon.gd" type="Script" id=2]
 [ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/pickups/phoenix_feather/phoenix_feather_pool_shooter.gd" type="Script" id=4]
+[ext_resource path="res://src/pickups/effect/spread_shooter.gd" type="Script" id=5]
 [ext_resource path="res://src/pickups/effect/palette_changer.gd" type="Script" id=7]
 [ext_resource path="res://src/pickups/effect/trigger_on_clone.gd" type="Script" id=8]
 [ext_resource path="res://src/pickups/effect/on_clone_effect.gd" type="Script" id=9]
@@ -60,7 +61,7 @@ font_data = ExtResource( 10 )
 
 [node name="phoenix_addon" type="Node2D"]
 script = ExtResource( 2 )
-weapon_name = "gun"
+weapon_name = "wing"
 affected_addons = PoolStringArray( "wing" )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -91,6 +92,29 @@ spread_power = 435.0
 amount = 16
 spread_angle = 45.0
 inertia_on_shoot = 1.0
+
+[node name="wide_shooter" type="Node2D" parent="."]
+position = Vector2( 8, 0 )
+script = ExtResource( 5 )
+shoot_speed = 800.0
+spread_power = 0.0
+amount = 1
+spread_angle = 0.0
+inertia_on_shoot = 1.0
+delay_random = 0.0
+pool_name = "wide_bullet_pool"
+
+[node name="wide_shooter2" type="Node2D" parent="."]
+position = Vector2( -8, 0 )
+rotation = 3.14159
+script = ExtResource( 5 )
+shoot_speed = 800.0
+spread_power = 0.0
+amount = 1
+spread_angle = 0.0
+inertia_on_shoot = 1.0
+delay_random = 0.0
+pool_name = "wide_bullet_pool"
 
 [node name="trigger_on_clone" type="Node" parent="."]
 script = ExtResource( 8 )
@@ -152,6 +176,8 @@ autostart = true
 [connection signal="remove" from="." to="palette_changer" method="remove"]
 [connection signal="shoot" from="." to="shooter" method="shoot"]
 [connection signal="shoot" from="." to="shooter2" method="shoot"]
+[connection signal="shoot" from="." to="wide_shooter" method="shoot"]
+[connection signal="shoot" from="." to="wide_shooter2" method="shoot"]
 [connection signal="duplicated" from="trigger_on_clone" to="trigger_on_clone/on_clone_effect" method="apply"]
 [connection signal="timeout" from="shooter3/Timer" to="shooter3" method="shoot"]
 [connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="queue_free"]

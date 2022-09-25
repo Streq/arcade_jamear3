@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
 [ext_resource path="res://src/pickups/gun_addon.gd" type="Script" id=2]
 [ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/texture/gun_addon.png" type="Texture" id=4]
 [ext_resource path="res://src/pickups/effect/spread_shooter.gd" type="Script" id=5]
-[ext_resource path="res://src/pickups/effect/bullet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/audio/sfx/gun.wav" type="AudioStream" id=7]
 [ext_resource path="res://src/pickups/effect/trigger_on_clone.gd" type="Script" id=8]
 [ext_resource path="res://src/pickups/effect/on_clone_effect.gd" type="Script" id=9]
@@ -56,7 +55,6 @@ string_val = "[\"ff000000\",\"ff300e0e\",\"ffff0000\"]"
 position = Vector2( 0, 4 )
 rotation = 1.57079
 script = ExtResource( 5 )
-ARROW = ExtResource( 6 )
 shoot_speed = 750.0
 spread_power = 35.0
 amount = 7

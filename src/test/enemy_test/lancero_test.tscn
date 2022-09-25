@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://src/portal/portal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/render/indexed_sprite.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/camera/camera.gd" type="Script" id=5]
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=6]
 [ext_resource path="res://src/enemy/lancer/lancero.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/object_pool/arrow_pool.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -28,7 +29,7 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=10]
+[sub_resource type="Image" id=47]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 172, 56, 0, 255 ),
 "format": "RGBA8",
@@ -40,7 +41,7 @@ data = {
 [sub_resource type="ImageTexture" id=11]
 flags = 0
 flags = 0
-image = SubResource( 10 )
+image = SubResource( 47 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=4]
@@ -50,9 +51,9 @@ shader_param/palette_size = 4
 shader_param/offset = null
 shader_param/palette = SubResource( 11 )
 
-[sub_resource type="Image" id=12]
+[sub_resource type="Image" id=48]
 data = {
-"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -62,7 +63,7 @@ data = {
 [sub_resource type="ImageTexture" id=13]
 flags = 0
 flags = 0
-image = SubResource( 12 )
+image = SubResource( 48 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=9]
@@ -73,9 +74,9 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
 shader_param/palette = SubResource( 13 )
 
-[sub_resource type="Image" id=14]
+[sub_resource type="Image" id=49]
 data = {
-"data": PoolByteArray( 56, 0, 0, 255, 0, 61, 94, 255, 253, 255, 0, 255 ),
+"data": PoolByteArray( 57, 0, 0, 255, 0, 61, 95, 255, 253, 255, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -85,7 +86,7 @@ data = {
 [sub_resource type="ImageTexture" id=15]
 flags = 0
 flags = 0
-image = SubResource( 14 )
+image = SubResource( 49 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=16]
@@ -96,9 +97,9 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 15 )
 
-[sub_resource type="Image" id=17]
+[sub_resource type="Image" id=50]
 data = {
-"data": PoolByteArray( 56, 0, 0, 255, 0, 61, 94, 255, 253, 255, 0, 255 ),
+"data": PoolByteArray( 57, 0, 0, 255, 0, 61, 95, 255, 253, 255, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -108,7 +109,7 @@ data = {
 [sub_resource type="ImageTexture" id=18]
 flags = 0
 flags = 0
-image = SubResource( 17 )
+image = SubResource( 50 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=19]
@@ -119,9 +120,9 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 18 )
 
-[sub_resource type="Image" id=20]
+[sub_resource type="Image" id=51]
 data = {
-"data": PoolByteArray( 56, 0, 0, 255, 0, 61, 94, 255, 253, 255, 0, 255 ),
+"data": PoolByteArray( 57, 0, 0, 255, 0, 61, 95, 255, 253, 255, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -131,7 +132,7 @@ data = {
 [sub_resource type="ImageTexture" id=21]
 flags = 0
 flags = 0
-image = SubResource( 20 )
+image = SubResource( 51 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=22]
@@ -142,9 +143,9 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 21 )
 
-[sub_resource type="Image" id=23]
+[sub_resource type="Image" id=52]
 data = {
-"data": PoolByteArray( 56, 0, 0, 255, 0, 61, 94, 255, 253, 255, 0, 255 ),
+"data": PoolByteArray( 57, 0, 0, 255, 0, 61, 95, 255, 253, 255, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -154,7 +155,7 @@ data = {
 [sub_resource type="ImageTexture" id=24]
 flags = 0
 flags = 0
-image = SubResource( 23 )
+image = SubResource( 52 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=25]
@@ -165,9 +166,9 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 24 )
 
-[sub_resource type="Image" id=26]
+[sub_resource type="Image" id=53]
 data = {
-"data": PoolByteArray( 56, 0, 0, 255, 0, 61, 94, 255, 253, 255, 0, 255 ),
+"data": PoolByteArray( 57, 0, 0, 255, 0, 61, 95, 255, 253, 255, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -177,7 +178,7 @@ data = {
 [sub_resource type="ImageTexture" id=27]
 flags = 0
 flags = 0
-image = SubResource( 26 )
+image = SubResource( 53 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=28]
@@ -188,9 +189,9 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 27 )
 
-[sub_resource type="Image" id=29]
+[sub_resource type="Image" id=54]
 data = {
-"data": PoolByteArray( 56, 0, 0, 255, 0, 61, 94, 255, 253, 255, 0, 255 ),
+"data": PoolByteArray( 57, 0, 0, 255, 0, 61, 95, 255, 253, 255, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -200,7 +201,7 @@ data = {
 [sub_resource type="ImageTexture" id=30]
 flags = 0
 flags = 0
-image = SubResource( 29 )
+image = SubResource( 54 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=31]
@@ -211,9 +212,9 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 30 )
 
-[sub_resource type="Image" id=32]
+[sub_resource type="Image" id=55]
 data = {
-"data": PoolByteArray( 56, 0, 0, 255, 0, 61, 94, 255, 253, 255, 0, 255 ),
+"data": PoolByteArray( 57, 0, 0, 255, 0, 61, 95, 255, 253, 255, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -223,7 +224,7 @@ data = {
 [sub_resource type="ImageTexture" id=33]
 flags = 0
 flags = 0
-image = SubResource( 32 )
+image = SubResource( 55 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=34]
@@ -234,9 +235,9 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 33 )
 
-[sub_resource type="Image" id=35]
+[sub_resource type="Image" id=56]
 data = {
-"data": PoolByteArray( 56, 0, 0, 255, 0, 61, 94, 255, 253, 255, 0, 255 ),
+"data": PoolByteArray( 57, 0, 0, 255, 0, 61, 95, 255, 253, 255, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -246,7 +247,7 @@ data = {
 [sub_resource type="ImageTexture" id=36]
 flags = 0
 flags = 0
-image = SubResource( 35 )
+image = SubResource( 56 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=37]
@@ -257,9 +258,9 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 36 )
 
-[sub_resource type="Image" id=38]
+[sub_resource type="Image" id=57]
 data = {
-"data": PoolByteArray( 56, 0, 0, 255, 0, 61, 94, 255, 253, 255, 0, 255 ),
+"data": PoolByteArray( 57, 0, 0, 255, 0, 61, 95, 255, 253, 255, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -269,7 +270,7 @@ data = {
 [sub_resource type="ImageTexture" id=39]
 flags = 0
 flags = 0
-image = SubResource( 38 )
+image = SubResource( 57 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=40]
@@ -280,9 +281,9 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 39 )
 
-[sub_resource type="Image" id=41]
+[sub_resource type="Image" id=58]
 data = {
-"data": PoolByteArray( 56, 0, 0, 255, 0, 61, 94, 255, 253, 255, 0, 255 ),
+"data": PoolByteArray( 57, 0, 0, 255, 0, 61, 95, 255, 253, 255, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -292,7 +293,7 @@ data = {
 [sub_resource type="ImageTexture" id=42]
 flags = 0
 flags = 0
-image = SubResource( 41 )
+image = SubResource( 58 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=43]
@@ -302,6 +303,29 @@ shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 42 )
+
+[sub_resource type="Image" id=59]
+data = {
+"data": PoolByteArray( 255, 0, 0, 255, 247, 255, 0, 255, 255, 255, 255, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=45]
+flags = 0
+flags = 0
+image = SubResource( 59 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=46]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 45 )
 
 [node name="Node2D2" type="Node2D"]
 
@@ -333,13 +357,10 @@ volume_db = 0.0
 [node name="glide" parent="flapper_with_energy/super_glider" index="20"]
 max_volume = -10.0
 
-[node name="energy_bar" parent="flapper_with_energy/super_glider" index="25"]
-visible = false
-
-[node name="Sprite" parent="flapper_with_energy/super_glider" index="28"]
+[node name="Sprite" parent="flapper_with_energy/super_glider/pivot" index="0"]
 material = SubResource( 9 )
 
-[node name="palette" parent="flapper_with_energy/super_glider/Sprite" index="1"]
+[node name="palette" parent="flapper_with_energy/super_glider/pivot/Sprite/palette_manager" index="0"]
 material = SubResource( 9 )
 
 [node name="Camera2D" type="Camera2D" parent="flapper_with_energy/super_glider"]
@@ -392,5 +413,9 @@ rotation = -8.11577
 material = SubResource( 43 )
 position = Vector2( 250, 848 )
 rotation = 3.14159
+
+[node name="arrow_pool" parent="." instance=ExtResource( 8 )]
+material = SubResource( 46 )
+size = 1
 
 [editable path="flapper_with_energy/super_glider"]

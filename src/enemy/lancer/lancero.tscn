@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
 [ext_resource path="res://src/enemy/lancer/shooter.gd" type="Script" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/enemy/lancer/aim.gd" type="Script" id=5]
 [ext_resource path="res://src/enemy/lancer/state/asleep.gd" type="Script" id=6]
-[ext_resource path="res://src/enemy/lancer/arrow.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/enemy/lancer/lancero.gd" type="Script" id=8]
 [ext_resource path="res://src/enemy/lancer/state/shoot.gd" type="Script" id=9]
 [ext_resource path="res://src/enemy/lancer/state/idle.gd" type="Script" id=10]
@@ -422,7 +421,6 @@ __meta__ = {
 
 [node name="shooter" type="Node2D" parent="aim"]
 script = ExtResource( 2 )
-ARROW = ExtResource( 7 )
 
 [node name="set_to_difficulty" type="Node" parent="aim/shooter"]
 script = ExtResource( 18 )
@@ -443,6 +441,7 @@ width = 1.0
 [node name="palette" parent="." instance=ExtResource( 3 )]
 palette = PoolColorArray( 0.223529, 0, 0, 1, 0, 0.239216, 0.372549, 1, 0.992157, 1, 0, 1 )
 material = SubResource( 16 )
+string_val = "[\"ff390000\",\"ff003d5f\",\"fffdff00\"]"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -3 )

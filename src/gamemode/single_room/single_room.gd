@@ -16,6 +16,7 @@ onready var player_spawn_point = $player_spawn_point
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	start()
+	
 
 func set_player_alive(val):
 	player_alive = val

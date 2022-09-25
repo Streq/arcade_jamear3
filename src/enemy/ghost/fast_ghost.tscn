@@ -28,7 +28,7 @@ size = Vector2( 2, 1 )
 resource_local_to_scene = true
 shader = ExtResource( 7 )
 shader_param/palette_size = 2
-shader_param/offset = 0
+shader_param/offset = 1
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 14 )
 
@@ -178,6 +178,9 @@ tracks/3/keys = {
 }
 
 [node name="ghost" instance=ExtResource( 1 )]
+
+[node name="hitbox" parent="." index="2"]
+monitorable = true
 
 [node name="Sprite" parent="out_of_sight_arrow/CanvasLayer/arrow" index="0"]
 modulate = Color( 1, 1, 1, 1 )

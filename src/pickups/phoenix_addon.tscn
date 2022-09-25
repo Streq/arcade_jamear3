@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=1]
 [ext_resource path="res://src/pickups/gun_addon.gd" type="Script" id=2]
 [ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/pickups/effect/phoenix_bullet.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/pickups/effect/spread_shooter.gd" type="Script" id=5]
 [ext_resource path="res://src/pickups/effect/palette_changer.gd" type="Script" id=7]
 [ext_resource path="res://src/pickups/effect/trigger_on_clone.gd" type="Script" id=8]
@@ -77,7 +76,6 @@ string_val = "[\"ff000000\",\"ff300e0e\",\"ffff0000\"]"
 position = Vector2( 8, 0 )
 rotation = 0.523598
 script = ExtResource( 5 )
-ARROW = ExtResource( 4 )
 shoot_speed = 200.0
 spread_power = 435.0
 amount = 500
@@ -88,12 +86,33 @@ inertia_on_shoot = 1.0
 position = Vector2( -8, 0 )
 rotation = 2.61799
 script = ExtResource( 5 )
-ARROW = ExtResource( 4 )
 shoot_speed = 200.0
 spread_power = 435.0
 amount = 500
 spread_angle = 45.0
 inertia_on_shoot = 1.0
+
+[node name="wide_shooter" type="Node2D" parent="."]
+position = Vector2( 8, 0 )
+rotation = 0.523598
+script = ExtResource( 5 )
+shoot_speed = 200.0
+spread_power = 435.0
+amount = 1
+spread_angle = 0.0
+inertia_on_shoot = 1.0
+pool_name = "wide_bullet_pool"
+
+[node name="wide_shooter2" type="Node2D" parent="."]
+position = Vector2( -8, 0 )
+rotation = 2.61799
+script = ExtResource( 5 )
+shoot_speed = 200.0
+spread_power = 435.0
+amount = 1
+spread_angle = 0.0
+inertia_on_shoot = 1.0
+pool_name = "wide_bullet_pool"
 
 [node name="trigger_on_clone" type="Node" parent="."]
 script = ExtResource( 8 )
@@ -104,7 +123,6 @@ script = ExtResource( 9 )
 [node name="shooter3" type="Node2D" parent="."]
 rotation = 0.523598
 script = ExtResource( 5 )
-ARROW = ExtResource( 4 )
 shoot_speed = 100.0
 spread_power = 100.0
 amount = 3
@@ -125,7 +143,6 @@ wait_time = 0.5
 [node name="shooter_spark" type="Node2D" parent="bomb"]
 rotation = 0.523598
 script = ExtResource( 5 )
-ARROW = ExtResource( 4 )
 spread_power = 1000.0
 amount = 25
 spread_angle = 180.0
@@ -135,7 +152,6 @@ inertia_on_shoot = 1.0
 rotation = 0.523598
 scale = Vector2( 2, 2 )
 script = ExtResource( 5 )
-ARROW = ExtResource( 4 )
 spread_power = 1000.0
 amount = 25
 spread_angle = 180.0
@@ -144,7 +160,6 @@ inertia_on_shoot = 1.0
 [node name="shooter_big_bullet" type="Node2D" parent="bomb"]
 rotation = 0.523598
 script = ExtResource( 5 )
-ARROW = ExtResource( 4 )
 spread_power = 1000.0
 amount = 25
 spread_angle = 180.0

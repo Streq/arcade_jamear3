@@ -1,15 +1,14 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/enemy/lancer/arrow.gd" type="Script" id=1]
-[ext_resource path="res://assets/texture/bullet.png" type="Texture" id=2]
+[ext_resource path="res://assets/texture/wide_bullet.png" type="Texture" id=2]
 [ext_resource path="res://src/pickups/effect/free_on_area_entered.gd" type="Script" id=5]
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=6]
 [ext_resource path="res://src/pickups/effect/drag.gd" type="Script" id=8]
-[ext_resource path="res://src/pickups/effect/free_on_stop_moving.gd" type="Script" id=9]
 [ext_resource path="res://src/pickups/effect/hitbox.gd" type="Script" id=10]
 [ext_resource path="res://src/enemy/lancer/VisibilityNotifier2D.gd" type="Script" id=11]
 
-[sub_resource type="Image" id=8]
+[sub_resource type="Image" id=11]
 data = {
 "data": PoolByteArray( 255, 0, 0, 255, 247, 255, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -21,7 +20,7 @@ data = {
 [sub_resource type="ImageTexture" id=7]
 flags = 0
 flags = 0
-image = SubResource( 8 )
+image = SubResource( 11 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=5]
@@ -32,11 +31,11 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 7 )
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 2.5 )
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 4, 16 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 4, 2.5 )
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 4, 16 )
 
 [node name="bullet" type="Node2D"]
 material = SubResource( 5 )
@@ -48,16 +47,17 @@ collision_layer = 0
 collision_mask = 16
 monitorable = false
 script = ExtResource( 10 )
-knockback = 50.0
+knockback = 400.0
+damage = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-shape = SubResource( 1 )
+shape = SubResource( 9 )
 
 [node name="terrain_box" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="terrain_box"]
-shape = SubResource( 2 )
+shape = SubResource( 10 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." groups=["bullet"]]
 script = ExtResource( 11 )
@@ -68,25 +68,23 @@ script = ExtResource( 5 )
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 5 )
 use_parent_material = true
-position = Vector2( 0, -0.5 )
 texture = ExtResource( 2 )
 
 [node name="drag" type="Node" parent="."]
 script = ExtResource( 8 )
-drag = 5.0
+drag = 8.0
 
-[node name="free_on_stop_moving" type="Node" parent="."]
-script = ExtResource( 9 )
-threshold_squared = 40000.0
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
 
 [connection signal="disable" from="." to="hitbox" method="set_monitoring" flags=3 binds= [ false ]]
 [connection signal="disable" from="." to="terrain_box" method="set_monitoring" flags=3 binds= [ false ]]
 [connection signal="disable" from="." to="drag" method="set_physics_process" flags=3 binds= [ false ]]
-[connection signal="disable" from="." to="free_on_stop_moving" method="set_physics_process" flags=3 binds= [ false ]]
 [connection signal="enable" from="." to="hitbox" method="set_monitoring" flags=3 binds= [ true ]]
 [connection signal="enable" from="." to="terrain_box" method="set_monitoring" flags=3 binds= [ true ]]
 [connection signal="enable" from="." to="drag" method="set_physics_process" flags=3 binds= [ true ]]
-[connection signal="enable" from="." to="free_on_stop_moving" method="set_physics_process" flags=3 binds= [ true ]]
+[connection signal="enable" from="." to="Timer" method="start"]
 [connection signal="hit_wall" from="." to="." method="disable"]
 [connection signal="area_entered" from="hitbox" to="free_on_area_entered" method="_on_area_entered"]
 [connection signal="body_entered" from="terrain_box" to="." method="_on_terrain_box_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="disable"]

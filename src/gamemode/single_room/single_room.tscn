@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://src/gamemode/single_room/fast_glider_for_single_room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/gamemode/single_room/spawner.gd" type="Script" id=2]
@@ -35,8 +35,11 @@
 [ext_resource path="res://src/gamemode/single_room/change_weight_based_on_clone_count.gd" type="Script" id=33]
 [ext_resource path="res://src/object_pool/phoenix_bullet_pool.tscn" type="PackedScene" id=34]
 [ext_resource path="res://src/gamemode/single_room/remove_flapper.gd" type="Script" id=35]
+[ext_resource path="res://src/object_pool/gun_bullet_pool.tscn" type="PackedScene" id=36]
+[ext_resource path="res://src/object_pool/wide_bullet_pool.tscn" type="PackedScene" id=37]
+[ext_resource path="res://src/gamemode/single_room/play_music_no_crossfade.gd" type="Script" id=38]
 
-[sub_resource type="Image" id=98]
+[sub_resource type="Image" id=112]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 50, 0, 76, 255, 203, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
@@ -48,7 +51,7 @@ data = {
 [sub_resource type="ImageTexture" id=99]
 flags = 0
 flags = 0
-image = SubResource( 98 )
+image = SubResource( 112 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=62]
@@ -69,7 +72,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 904, 0 )
 }
 
-[sub_resource type="Image" id=100]
+[sub_resource type="Image" id=113]
 data = {
 "data": PoolByteArray( 135, 63, 0, 255, 235, 84, 31, 255, 255, 205, 58, 255, 255, 196, 0, 255 ),
 "format": "RGBA8",
@@ -81,7 +84,7 @@ data = {
 [sub_resource type="ImageTexture" id=74]
 flags = 0
 flags = 0
-image = SubResource( 100 )
+image = SubResource( 113 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=75]
@@ -372,7 +375,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=101]
+[sub_resource type="Image" id=114]
 data = {
 "data": PoolByteArray( 24, 151, 151, 255, 0, 255, 255, 255, 0, 160, 215, 255 ),
 "format": "RGBA8",
@@ -384,7 +387,7 @@ data = {
 [sub_resource type="ImageTexture" id=102]
 flags = 0
 flags = 0
-image = SubResource( 101 )
+image = SubResource( 114 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=97]
@@ -395,7 +398,7 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
 shader_param/palette = SubResource( 102 )
 
-[sub_resource type="Image" id=103]
+[sub_resource type="Image" id=115]
 data = {
 "data": PoolByteArray( 255, 0, 0, 255, 255, 120, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -407,7 +410,7 @@ data = {
 [sub_resource type="ImageTexture" id=104]
 flags = 0
 flags = 0
-image = SubResource( 103 )
+image = SubResource( 115 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=105]
@@ -417,6 +420,52 @@ shader_param/palette_size = 3
 shader_param/offset = 2
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 104 )
+
+[sub_resource type="Image" id=116]
+data = {
+"data": PoolByteArray( 255, 0, 0, 255, 247, 255, 0, 255, 255, 255, 255, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=107]
+flags = 0
+flags = 0
+image = SubResource( 116 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=108]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 107 )
+
+[sub_resource type="Image" id=117]
+data = {
+"data": PoolByteArray( 255, 0, 0, 255, 247, 255, 0, 255, 255, 255, 255, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=110]
+flags = 0
+flags = 0
+image = SubResource( 117 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=111]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 110 )
 
 [node name="Node2D" type="Node2D"]
 pause_mode = 1
@@ -650,7 +699,8 @@ anims/glide_opposite_fail = SubResource( 90 )
 anims/spread_wings = SubResource( 91 )
 
 [node name="hurtbox" parent="fast_glider2" index="10"]
-monitoring = false
+collision_layer = 0
+collision_mask = 8
 monitorable = false
 
 [node name="CollisionShape2D" parent="fast_glider2/hurtbox" index="0"]
@@ -771,6 +821,16 @@ record_input_state_path = NodePath("")
 
 [node name="phoenix_bullet_pool" parent="." instance=ExtResource( 34 )]
 material = SubResource( 105 )
+
+[node name="gun_bullet_pool" parent="." instance=ExtResource( 36 )]
+material = SubResource( 108 )
+
+[node name="wide_bullet_pool" parent="." instance=ExtResource( 37 )]
+material = SubResource( 111 )
+
+[node name="play_music_no_crossfade" type="Node" parent="."]
+script = ExtResource( 38 )
+song = "castle"
 
 [connection signal="game_over" from="." to="gameover_HUD" method="enable"]
 [connection signal="player_alive" from="." to="wait_on_game_over" method="stop"]

@@ -17,9 +17,19 @@ func _ready() -> void:
 
 func get_one():
 	if unused_bullets.empty():
-		return null
+		return create_instance()
 	var index = unused_bullets.pop_back()
 	var bullet = bullets[index]
 	bullet.enable()
 	return bullet
+	
+
+func create_instance():
+	var instance = OBJECT.instance()
+	instance.index = size
+	size += 1
+	bullets.push_back(instance)
+	call_deferred("add_child",instance)
+	instance.call_deferred("enable")
+	return instance
 	

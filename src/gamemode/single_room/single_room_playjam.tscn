@@ -1,4 +1,4 @@
-[gd_scene load_steps=221 format=2]
+[gd_scene load_steps=229 format=2]
 
 [ext_resource path="res://src/gamemode/single_room/fast_glider_for_single_room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/gamemode/single_room/spawner.gd" type="Script" id=2]
@@ -38,8 +38,10 @@
 [ext_resource path="res://src/gamemode/single_room/title_screen.gd" type="Script" id=36]
 [ext_resource path="res://src/object_pool/phoenix_bullet_pool.tscn" type="PackedScene" id=37]
 [ext_resource path="res://src/gamemode/single_room/change_weight_based_on_clone_count.gd" type="Script" id=38]
+[ext_resource path="res://src/object_pool/gun_bullet_pool.tscn" type="PackedScene" id=39]
+[ext_resource path="res://src/object_pool/wide_bullet_pool.tscn" type="PackedScene" id=40]
 
-[sub_resource type="Image" id=317]
+[sub_resource type="Image" id=323]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 50, 0, 76, 255, 203, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
@@ -51,7 +53,7 @@ data = {
 [sub_resource type="ImageTexture" id=290]
 flags = 0
 flags = 0
-image = SubResource( 317 )
+image = SubResource( 323 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=62]
@@ -72,7 +74,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 904, 0 )
 }
 
-[sub_resource type="Image" id=318]
+[sub_resource type="Image" id=324]
 data = {
 "data": PoolByteArray( 135, 63, 0, 255, 235, 84, 31, 255, 255, 205, 58, 255, 255, 196, 0, 255 ),
 "format": "RGBA8",
@@ -84,7 +86,7 @@ data = {
 [sub_resource type="ImageTexture" id=74]
 flags = 0
 flags = 0
-image = SubResource( 318 )
+image = SubResource( 324 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=75]
@@ -95,9 +97,9 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
 shader_param/palette = SubResource( 74 )
 
-[sub_resource type="Image" id=319]
+[sub_resource type="Image" id=325]
 data = {
-"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -107,7 +109,7 @@ data = {
 [sub_resource type="ImageTexture" id=293]
 flags = 0
 flags = 0
-image = SubResource( 319 )
+image = SubResource( 325 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=258]
@@ -398,9 +400,9 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=320]
+[sub_resource type="Image" id=326]
 data = {
-"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -410,7 +412,7 @@ data = {
 [sub_resource type="ImageTexture" id=295]
 flags = 0
 flags = 0
-image = SubResource( 320 )
+image = SubResource( 326 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=261]
@@ -757,9 +759,9 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=321]
+[sub_resource type="Image" id=327]
 data = {
-"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -769,7 +771,7 @@ data = {
 [sub_resource type="ImageTexture" id=297]
 flags = 0
 flags = 0
-image = SubResource( 321 )
+image = SubResource( 327 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=264]
@@ -1116,9 +1118,9 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=322]
+[sub_resource type="Image" id=328]
 data = {
-"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -1128,7 +1130,7 @@ data = {
 [sub_resource type="ImageTexture" id=299]
 flags = 0
 flags = 0
-image = SubResource( 322 )
+image = SubResource( 328 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=267]
@@ -1475,9 +1477,9 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=323]
+[sub_resource type="Image" id=329]
 data = {
-"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -1487,7 +1489,7 @@ data = {
 [sub_resource type="ImageTexture" id=301]
 flags = 0
 flags = 0
-image = SubResource( 323 )
+image = SubResource( 329 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=270]
@@ -1834,9 +1836,9 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=324]
+[sub_resource type="Image" id=330]
 data = {
-"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -1846,7 +1848,7 @@ data = {
 [sub_resource type="ImageTexture" id=303]
 flags = 0
 flags = 0
-image = SubResource( 324 )
+image = SubResource( 330 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=273]
@@ -2193,9 +2195,9 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=325]
+[sub_resource type="Image" id=331]
 data = {
-"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -2205,7 +2207,7 @@ data = {
 [sub_resource type="ImageTexture" id=305]
 flags = 0
 flags = 0
-image = SubResource( 325 )
+image = SubResource( 331 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=276]
@@ -2552,9 +2554,9 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=326]
+[sub_resource type="Image" id=332]
 data = {
-"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -2564,7 +2566,7 @@ data = {
 [sub_resource type="ImageTexture" id=307]
 flags = 0
 flags = 0
-image = SubResource( 326 )
+image = SubResource( 332 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=279]
@@ -2911,9 +2913,9 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=327]
+[sub_resource type="Image" id=333]
 data = {
-"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -2923,7 +2925,7 @@ data = {
 [sub_resource type="ImageTexture" id=309]
 flags = 0
 flags = 0
-image = SubResource( 327 )
+image = SubResource( 333 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=282]
@@ -3270,9 +3272,9 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=328]
+[sub_resource type="Image" id=334]
 data = {
-"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
+"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -3282,7 +3284,7 @@ data = {
 [sub_resource type="ImageTexture" id=311]
 flags = 0
 flags = 0
-image = SubResource( 328 )
+image = SubResource( 334 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=285]
@@ -3629,7 +3631,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=329]
+[sub_resource type="Image" id=335]
 data = {
 "data": PoolByteArray( 24, 151, 151, 255, 0, 255, 255, 255, 0, 160, 215, 255 ),
 "format": "RGBA8",
@@ -3641,7 +3643,7 @@ data = {
 [sub_resource type="ImageTexture" id=313]
 flags = 0
 flags = 0
-image = SubResource( 329 )
+image = SubResource( 335 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=288]
@@ -3652,7 +3654,7 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
 shader_param/palette = SubResource( 313 )
 
-[sub_resource type="Image" id=330]
+[sub_resource type="Image" id=336]
 data = {
 "data": PoolByteArray( 255, 0, 0, 255, 255, 120, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -3664,16 +3666,62 @@ data = {
 [sub_resource type="ImageTexture" id=315]
 flags = 0
 flags = 0
-image = SubResource( 330 )
+image = SubResource( 336 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=316]
 resource_local_to_scene = true
 shader = ExtResource( 8 )
 shader_param/palette_size = 3
-shader_param/offset = 1
+shader_param/offset = 2
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 315 )
+
+[sub_resource type="Image" id=337]
+data = {
+"data": PoolByteArray( 255, 0, 0, 255, 247, 255, 0, 255, 255, 255, 255, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=318]
+flags = 0
+flags = 0
+image = SubResource( 337 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=319]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 318 )
+
+[sub_resource type="Image" id=338]
+data = {
+"data": PoolByteArray( 255, 0, 0, 255, 247, 255, 0, 255, 255, 255, 255, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=321]
+flags = 0
+flags = 0
+image = SubResource( 338 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=322]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 321 )
 
 [node name="Node2D" type="Node2D"]
 pause_mode = 1
@@ -3829,6 +3877,11 @@ collision_layer = 0
 collision_mask = 0
 velocity = Vector2( 1000, -100 )
 
+[node name="hurtbox" parent="title_screen/title/fast_glider" index="11"]
+collision_layer = 0
+collision_mask = 8
+monitoring = true
+
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider" index="27"]
 disabled = true
 
@@ -3869,6 +3922,11 @@ anims/glide_fail = SubResource( 118 )
 anims/glide_flap = SubResource( 119 )
 anims/glide_opposite_fail = SubResource( 120 )
 anims/spread_wings = SubResource( 121 )
+
+[node name="hurtbox" parent="title_screen/title/fast_glider2" index="11"]
+collision_layer = 0
+collision_mask = 8
+monitoring = true
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider2" index="27"]
 disabled = true
@@ -3916,6 +3974,11 @@ anims/glide_flap = SubResource( 139 )
 anims/glide_opposite_fail = SubResource( 140 )
 anims/spread_wings = SubResource( 141 )
 
+[node name="hurtbox" parent="title_screen/title/fast_glider3" index="11"]
+collision_layer = 0
+collision_mask = 8
+monitoring = true
+
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider3" index="27"]
 disabled = true
 
@@ -3962,6 +4025,11 @@ anims/glide_flap = SubResource( 248 )
 anims/glide_opposite_fail = SubResource( 249 )
 anims/spread_wings = SubResource( 250 )
 
+[node name="hurtbox" parent="title_screen/title/fast_glider10" index="11"]
+collision_layer = 0
+collision_mask = 8
+monitoring = true
+
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider10" index="27"]
 disabled = true
 
@@ -4007,6 +4075,11 @@ anims/glide_fail = SubResource( 152 )
 anims/glide_flap = SubResource( 153 )
 anims/glide_opposite_fail = SubResource( 154 )
 anims/spread_wings = SubResource( 155 )
+
+[node name="hurtbox" parent="title_screen/title/fast_glider4" index="11"]
+collision_layer = 0
+collision_mask = 8
+monitoring = true
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider4" index="27"]
 disabled = true
@@ -4055,6 +4128,11 @@ anims/glide_flap = SubResource( 167 )
 anims/glide_opposite_fail = SubResource( 168 )
 anims/spread_wings = SubResource( 169 )
 
+[node name="hurtbox" parent="title_screen/title/fast_glider5" index="11"]
+collision_layer = 0
+collision_mask = 8
+monitoring = true
+
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider5" index="27"]
 disabled = true
 
@@ -4101,6 +4179,11 @@ anims/glide_fail = SubResource( 180 )
 anims/glide_flap = SubResource( 181 )
 anims/glide_opposite_fail = SubResource( 182 )
 anims/spread_wings = SubResource( 183 )
+
+[node name="hurtbox" parent="title_screen/title/fast_glider6" index="11"]
+collision_layer = 0
+collision_mask = 8
+monitoring = true
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider6" index="27"]
 disabled = true
@@ -4149,6 +4232,11 @@ anims/glide_flap = SubResource( 195 )
 anims/glide_opposite_fail = SubResource( 196 )
 anims/spread_wings = SubResource( 197 )
 
+[node name="hurtbox" parent="title_screen/title/fast_glider7" index="11"]
+collision_layer = 0
+collision_mask = 8
+monitoring = true
+
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider7" index="27"]
 disabled = true
 
@@ -4196,6 +4284,11 @@ anims/glide_flap = SubResource( 209 )
 anims/glide_opposite_fail = SubResource( 210 )
 anims/spread_wings = SubResource( 211 )
 
+[node name="hurtbox" parent="title_screen/title/fast_glider8" index="11"]
+collision_layer = 0
+collision_mask = 8
+monitoring = true
+
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider8" index="27"]
 disabled = true
 
@@ -4242,6 +4335,11 @@ anims/glide_fail = SubResource( 222 )
 anims/glide_flap = SubResource( 223 )
 anims/glide_opposite_fail = SubResource( 224 )
 anims/spread_wings = SubResource( 225 )
+
+[node name="hurtbox" parent="title_screen/title/fast_glider9" index="11"]
+collision_layer = 0
+collision_mask = 8
+monitoring = true
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider9" index="27"]
 disabled = true
@@ -4361,7 +4459,8 @@ anims/glide_opposite_fail = SubResource( 90 )
 anims/spread_wings = SubResource( 91 )
 
 [node name="hurtbox" parent="fast_glider2" index="10"]
-monitoring = false
+collision_layer = 0
+collision_mask = 8
 monitorable = false
 
 [node name="CollisionShape2D" parent="fast_glider2/hurtbox" index="0"]
@@ -4487,6 +4586,12 @@ script = ExtResource( 25 )
 
 [node name="phoenix_bullet_pool" parent="." instance=ExtResource( 37 )]
 material = SubResource( 316 )
+
+[node name="gun_bullet_pool" parent="." instance=ExtResource( 39 )]
+material = SubResource( 319 )
+
+[node name="wide_bullet_pool" parent="." instance=ExtResource( 40 )]
+material = SubResource( 322 )
 
 [connection signal="game_over" from="." to="playjam_gameover" method="_on_game_over"]
 [connection signal="player_alive" from="." to="wait_on_game_over" method="stop"]

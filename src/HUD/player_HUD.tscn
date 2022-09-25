@@ -14,6 +14,7 @@ region = Rect2( 0, 0, 256, 8 )
 script = ExtResource( 2 )
 
 [node name="energy_bar" type="TextureProgress" parent="."]
+visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 511.0
