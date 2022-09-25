@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=7]
 [ext_resource path="res://src/color/palette.tscn" type="PackedScene" id=8]
 
-[sub_resource type="Image" id=17]
+[sub_resource type="Image" id=13]
 data = {
 "data": PoolByteArray( 255, 0, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -21,7 +21,7 @@ data = {
 [sub_resource type="ImageTexture" id=14]
 flags = 0
 flags = 0
-image = SubResource( 17 )
+image = SubResource( 13 )
 size = Vector2( 2, 1 )
 
 [sub_resource type="ShaderMaterial" id=12]
@@ -52,7 +52,7 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=18]
+[sub_resource type="Image" id=15]
 data = {
 "data": PoolByteArray( 255, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -64,7 +64,7 @@ data = {
 [sub_resource type="ImageTexture" id=16]
 flags = 0
 flags = 0
-image = SubResource( 18 )
+image = SubResource( 15 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=4]
