@@ -1,4 +1,4 @@
-[gd_scene load_steps=231 format=2]
+[gd_scene load_steps=230 format=2]
 
 [ext_resource path="res://src/gamemode/single_room/fast_glider_for_single_room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/gamemode/single_room/spawner.gd" type="Script" id=2]
@@ -41,7 +41,6 @@
 [ext_resource path="res://src/object_pool/gun_bullet_pool.tscn" type="PackedScene" id=39]
 [ext_resource path="res://src/object_pool/wide_bullet_pool.tscn" type="PackedScene" id=40]
 [ext_resource path="res://src/enemy/set_to_difficulty.tscn" type="PackedScene" id=41]
-[ext_resource path="res://src/pickups/effect/only_sound_if_first.gd" type="Script" id=42]
 
 [sub_resource type="Image" id=323]
 data = {
@@ -101,7 +100,7 @@ shader_param/palette = SubResource( 74 )
 
 [sub_resource type="Image" id=325]
 data = {
-"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -404,7 +403,7 @@ tracks/0/keys = {
 
 [sub_resource type="Image" id=326]
 data = {
-"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -763,7 +762,7 @@ tracks/0/keys = {
 
 [sub_resource type="Image" id=327]
 data = {
-"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -1122,7 +1121,7 @@ tracks/0/keys = {
 
 [sub_resource type="Image" id=328]
 data = {
-"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -1481,7 +1480,7 @@ tracks/0/keys = {
 
 [sub_resource type="Image" id=329]
 data = {
-"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -1840,7 +1839,7 @@ tracks/0/keys = {
 
 [sub_resource type="Image" id=330]
 data = {
-"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -2199,7 +2198,7 @@ tracks/0/keys = {
 
 [sub_resource type="Image" id=331]
 data = {
-"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -2558,7 +2557,7 @@ tracks/0/keys = {
 
 [sub_resource type="Image" id=332]
 data = {
-"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -2917,7 +2916,7 @@ tracks/0/keys = {
 
 [sub_resource type="Image" id=333]
 data = {
-"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -3276,7 +3275,7 @@ tracks/0/keys = {
 
 [sub_resource type="Image" id=334]
 data = {
-"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -3891,8 +3890,10 @@ collision_layer = 0
 collision_mask = 8
 monitoring = true
 
+[node name="soft_collision" parent="title_screen/title/fast_glider" index="13"]
+volume_db = -16.5071
+
 [node name="flap" parent="title_screen/title/fast_glider" index="14" groups=["flap_sound"]]
-script = ExtResource( 42 )
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider" index="27"]
 disabled = true
@@ -3901,7 +3902,6 @@ disabled = true
 material = SubResource( 258 )
 
 [node name="palette" parent="title_screen/title/fast_glider/pivot/Sprite/palette_manager" index="0"]
-palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
 material = SubResource( 258 )
 
 [node name="HUD" parent="title_screen/title/fast_glider" index="34"]
@@ -3941,8 +3941,10 @@ collision_layer = 0
 collision_mask = 8
 monitoring = true
 
+[node name="soft_collision" parent="title_screen/title/fast_glider2" index="13"]
+volume_db = -16.5071
+
 [node name="flap" parent="title_screen/title/fast_glider2" index="14" groups=["flap_sound"]]
-script = ExtResource( 42 )
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider2" index="27"]
 disabled = true
@@ -3951,7 +3953,6 @@ disabled = true
 material = SubResource( 261 )
 
 [node name="palette" parent="title_screen/title/fast_glider2/pivot/Sprite/palette_manager" index="0"]
-palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
 material = SubResource( 261 )
 
 [node name="HUD" parent="title_screen/title/fast_glider2" index="34"]
@@ -3996,8 +3997,10 @@ collision_layer = 0
 collision_mask = 8
 monitoring = true
 
+[node name="soft_collision" parent="title_screen/title/fast_glider3" index="13"]
+volume_db = -16.5071
+
 [node name="flap" parent="title_screen/title/fast_glider3" index="14" groups=["flap_sound"]]
-script = ExtResource( 42 )
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider3" index="27"]
 disabled = true
@@ -4006,7 +4009,6 @@ disabled = true
 material = SubResource( 264 )
 
 [node name="palette" parent="title_screen/title/fast_glider3/pivot/Sprite/palette_manager" index="0"]
-palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
 material = SubResource( 264 )
 
 [node name="HUD" parent="title_screen/title/fast_glider3" index="34"]
@@ -4051,8 +4053,10 @@ collision_layer = 0
 collision_mask = 8
 monitoring = true
 
+[node name="soft_collision" parent="title_screen/title/fast_glider10" index="13"]
+volume_db = -16.5071
+
 [node name="flap" parent="title_screen/title/fast_glider10" index="14" groups=["flap_sound"]]
-script = ExtResource( 42 )
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider10" index="27"]
 disabled = true
@@ -4061,7 +4065,6 @@ disabled = true
 material = SubResource( 267 )
 
 [node name="palette" parent="title_screen/title/fast_glider10/pivot/Sprite/palette_manager" index="0"]
-palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
 material = SubResource( 267 )
 
 [node name="HUD" parent="title_screen/title/fast_glider10" index="34"]
@@ -4106,8 +4109,10 @@ collision_layer = 0
 collision_mask = 8
 monitoring = true
 
+[node name="soft_collision" parent="title_screen/title/fast_glider4" index="13"]
+volume_db = -16.5071
+
 [node name="flap" parent="title_screen/title/fast_glider4" index="14" groups=["flap_sound"]]
-script = ExtResource( 42 )
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider4" index="27"]
 disabled = true
@@ -4116,7 +4121,6 @@ disabled = true
 material = SubResource( 270 )
 
 [node name="palette" parent="title_screen/title/fast_glider4/pivot/Sprite/palette_manager" index="0"]
-palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
 material = SubResource( 270 )
 
 [node name="HUD" parent="title_screen/title/fast_glider4" index="34"]
@@ -4162,8 +4166,10 @@ collision_layer = 0
 collision_mask = 8
 monitoring = true
 
+[node name="soft_collision" parent="title_screen/title/fast_glider5" index="13"]
+volume_db = -16.5071
+
 [node name="flap" parent="title_screen/title/fast_glider5" index="14" groups=["flap_sound"]]
-script = ExtResource( 42 )
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider5" index="27"]
 disabled = true
@@ -4172,7 +4178,6 @@ disabled = true
 material = SubResource( 273 )
 
 [node name="palette" parent="title_screen/title/fast_glider5/pivot/Sprite/palette_manager" index="0"]
-palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
 material = SubResource( 273 )
 
 [node name="HUD" parent="title_screen/title/fast_glider5" index="34"]
@@ -4218,8 +4223,10 @@ collision_layer = 0
 collision_mask = 8
 monitoring = true
 
+[node name="soft_collision" parent="title_screen/title/fast_glider6" index="13"]
+volume_db = -16.5071
+
 [node name="flap" parent="title_screen/title/fast_glider6" index="14" groups=["flap_sound"]]
-script = ExtResource( 42 )
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider6" index="27"]
 disabled = true
@@ -4228,7 +4235,6 @@ disabled = true
 material = SubResource( 276 )
 
 [node name="palette" parent="title_screen/title/fast_glider6/pivot/Sprite/palette_manager" index="0"]
-palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
 material = SubResource( 276 )
 
 [node name="HUD" parent="title_screen/title/fast_glider6" index="34"]
@@ -4274,8 +4280,10 @@ collision_layer = 0
 collision_mask = 8
 monitoring = true
 
+[node name="soft_collision" parent="title_screen/title/fast_glider7" index="13"]
+volume_db = -16.5071
+
 [node name="flap" parent="title_screen/title/fast_glider7" index="14" groups=["flap_sound"]]
-script = ExtResource( 42 )
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider7" index="27"]
 disabled = true
@@ -4284,7 +4292,6 @@ disabled = true
 material = SubResource( 279 )
 
 [node name="palette" parent="title_screen/title/fast_glider7/pivot/Sprite/palette_manager" index="0"]
-palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
 material = SubResource( 279 )
 
 [node name="HUD" parent="title_screen/title/fast_glider7" index="34"]
@@ -4330,8 +4337,10 @@ collision_layer = 0
 collision_mask = 8
 monitoring = true
 
+[node name="soft_collision" parent="title_screen/title/fast_glider8" index="13"]
+volume_db = -16.5071
+
 [node name="flap" parent="title_screen/title/fast_glider8" index="14" groups=["flap_sound"]]
-script = ExtResource( 42 )
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider8" index="27"]
 disabled = true
@@ -4340,7 +4349,6 @@ disabled = true
 material = SubResource( 282 )
 
 [node name="palette" parent="title_screen/title/fast_glider8/pivot/Sprite/palette_manager" index="0"]
-palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
 material = SubResource( 282 )
 
 [node name="HUD" parent="title_screen/title/fast_glider8" index="34"]
@@ -4386,8 +4394,10 @@ collision_layer = 0
 collision_mask = 8
 monitoring = true
 
+[node name="soft_collision" parent="title_screen/title/fast_glider9" index="13"]
+volume_db = -16.5071
+
 [node name="flap" parent="title_screen/title/fast_glider9" index="14" groups=["flap_sound"]]
-script = ExtResource( 42 )
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider9" index="27"]
 disabled = true
@@ -4396,7 +4406,6 @@ disabled = true
 material = SubResource( 285 )
 
 [node name="palette" parent="title_screen/title/fast_glider9/pivot/Sprite/palette_manager" index="0"]
-palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
 material = SubResource( 285 )
 
 [node name="HUD" parent="title_screen/title/fast_glider9" index="34"]
@@ -4517,11 +4526,11 @@ disabled = true
 
 [node name="soft_collision" parent="fast_glider2" index="12"]
 stream = null
+volume_db = -16.5071
 
 [node name="flap" parent="fast_glider2" index="13"]
 stream = null
 volume_db = -80.0
-script = ExtResource( 42 )
 group = "ghost_flap_sound"
 
 [node name="pio" parent="fast_glider2" index="14"]
