@@ -16,7 +16,7 @@ func spawn():
 	if is_inside_tree():
 		var point = spawn_area.get_random_point()
 		_seed = SEED.instance()
-		_seed.connect("tree_exited", self, "_seed_taken")
+		_seed.connect("tree_exiting", self, "_seed_taken")
 		yield(get_tree(),"idle_frame")
 		get_parent().add_child(_seed)
 		_seed.global_position = point

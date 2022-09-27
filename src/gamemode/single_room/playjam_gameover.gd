@@ -19,17 +19,11 @@ func _physics_process(delta: float) -> void:
 func _on_game_over():
 	if won:
 		print("WIN")
-	
-		get_tree().quit(WIN)
+		get_tree().call_deferred("quit", WIN)
 	else:
 		print("LOSE")
-	
-		get_tree().quit(LOSE)
+		get_tree().call_deferred("quit", LOSE)
 
-func _on_game_won():
-	print("WIN")
-	get_tree().quit(WIN)
-	
 func _unhandled_key_input(event: InputEventKey) -> void:
 	if event.scancode == KEY_ESCAPE and event.is_pressed():
-		get_tree().quit(QUIT)
+		get_tree().call_deferred("quit",QUIT)
