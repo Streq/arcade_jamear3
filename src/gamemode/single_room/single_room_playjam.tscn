@@ -3663,24 +3663,6 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
 shader_param/palette = SubResource( 349 )
 
-[sub_resource type="Gradient" id=46]
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture2D" id=21]
-gradient = SubResource( 46 )
-width = 32
-height = 8
-fill_from = Vector2( 0, 1 )
-
-[sub_resource type="Gradient" id=47]
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture2D" id=23]
-gradient = SubResource( 47 )
-width = 32
-height = 6
-fill_from = Vector2( 0, 1 )
-
 [sub_resource type="Animation" id=51]
 length = 0.001
 tracks/0/type = "value"
@@ -3736,6 +3718,24 @@ tracks/1/keys = {
 "update": 1,
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ) ]
 }
+
+[sub_resource type="Gradient" id=46]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture2D" id=21]
+gradient = SubResource( 46 )
+width = 32
+height = 8
+fill_from = Vector2( 0, 1 )
+
+[sub_resource type="Gradient" id=47]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture2D" id=23]
+gradient = SubResource( 47 )
+width = 32
+height = 6
+fill_from = Vector2( 0, 1 )
 
 [sub_resource type="Image" id=372]
 data = {
@@ -4584,6 +4584,7 @@ margin_right = 724.0
 text = "NO TOCAR FANTASMITAS"
 
 [node name="win_text" parent="CanvasLayer" instance=ExtResource( 5 )]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -4702,6 +4703,39 @@ palette = PoolColorArray( 0.0941176, 0.592157, 0.592157, 1, 0, 1, 1, 1, 0, 0.627
 material = SubResource( 288 )
 string_val = "[\"ff189797\",\"ff00ffff\",\"ff00a0d7\"]"
 
+[node name="HBoxContainer" parent="fast_glider2/HUD" index="0"]
+margin_right = 48.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="fast_glider2/HUD/HBoxContainer/energy_bar" index="1"]
+anims/RESET = SubResource( 51 )
+anims/low = SubResource( 52 )
+script = ExtResource( 44 )
+
+[node name="TextureRect" type="TextureRect" parent="fast_glider2/HUD/HBoxContainer" index="2"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 40.0
+margin_right = 48.0
+margin_bottom = 8.0
+texture = ExtResource( 46 )
+
+[node name="energy_bar" parent="fast_glider2/HUD/HBoxContainer" index="3" instance=ExtResource( 45 )]
+visible = false
+margin_left = 8.0
+margin_top = 0.0
+margin_right = 40.0
+margin_bottom = 8.0
+texture_under = SubResource( 21 )
+texture_progress = SubResource( 23 )
+texture_progress_offset = Vector2( 0, 1 )
+tint_under = Color( 1, 0, 0, 1 )
+tint_progress = Color( 0, 1, 0, 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="fast_glider2/HUD" index="1"]
+margin_top = 12.0
+margin_right = 48.0
+margin_bottom = 12.0
+custom_constants/separation = 0
+
 [node name="player_controller" parent="fast_glider2/input_state" index="0"]
 disabled = true
 suffix = "_demo"
@@ -4714,34 +4748,6 @@ margin_right = 16.0
 margin_bottom = -13.0
 grow_horizontal = 0
 grow_vertical = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="fast_glider2/HUD"]
-margin_right = 40.0
-margin_bottom = 8.0
-custom_constants/separation = 0
-
-[node name="TextureRect" type="TextureRect" parent="fast_glider2/HUD/HBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_right = 8.0
-margin_bottom = 8.0
-texture = ExtResource( 46 )
-
-[node name="energy_bar" parent="fast_glider2/HUD/HBoxContainer" instance=ExtResource( 45 )]
-visible = false
-margin_left = 8.0
-margin_top = 0.0
-margin_right = 40.0
-margin_bottom = 8.0
-texture_under = SubResource( 21 )
-texture_progress = SubResource( 23 )
-texture_progress_offset = Vector2( 0, 1 )
-tint_under = Color( 1, 0, 0, 1 )
-tint_progress = Color( 0, 1, 0, 1 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="fast_glider2/HUD/HBoxContainer/energy_bar"]
-anims/RESET = SubResource( 51 )
-anims/low = SubResource( 52 )
-script = ExtResource( 44 )
 
 [node name="joystick_HUD" parent="fast_glider2" instance=ExtResource( 27 )]
 unique_name_in_owner = true
