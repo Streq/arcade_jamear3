@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://src/test/recorded_input/recorded_input_test.gd" type="Script" id=1]
 [ext_resource path="res://src/HUD/analog_stick/joystick_HUD.tscn" type="PackedScene" id=2]
@@ -10,55 +10,54 @@
 [ext_resource path="res://src/test/recorded_input/input_feeder.gd" type="Script" id=8]
 [ext_resource path="res://src/HUD/text.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/gamemode/single_room/demo_dialog.gd" type="Script" id=10]
-[ext_resource path="res://src/color/palette.gd" type="Script" id=11]
 
-[sub_resource type="Image" id=65]
+[sub_resource type="Image" id=39]
 data = {
-"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=52]
+[sub_resource type="ImageTexture" id=24]
 flags = 0
 flags = 0
-image = SubResource( 65 )
+image = SubResource( 39 )
 size = Vector2( 3, 1 )
 
-[sub_resource type="ShaderMaterial" id=50]
+[sub_resource type="ShaderMaterial" id=25]
 resource_local_to_scene = true
 shader = ExtResource( 5 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 52 )
+shader_param/palette = SubResource( 24 )
 
-[sub_resource type="Image" id=66]
+[sub_resource type="Image" id=40]
 data = {
-"data": PoolByteArray( 99, 99, 99, 255, 0, 255, 189, 255, 0, 255, 249, 255 ),
+"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=54]
+[sub_resource type="ImageTexture" id=27]
 flags = 0
 flags = 0
-image = SubResource( 66 )
+image = SubResource( 40 )
 size = Vector2( 3, 1 )
 
-[sub_resource type="ShaderMaterial" id=35]
+[sub_resource type="ShaderMaterial" id=28]
 resource_local_to_scene = true
 shader = ExtResource( 5 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 54 )
+shader_param/palette = SubResource( 27 )
 
-[sub_resource type="Image" id=67]
+[sub_resource type="Image" id=41]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 0, 0, 0, 255, 92, 92, 92, 255 ),
 "format": "RGBA8",
@@ -67,10 +66,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=56]
+[sub_resource type="ImageTexture" id=30]
 flags = 0
 flags = 0
-image = SubResource( 67 )
+image = SubResource( 41 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=10]
@@ -79,9 +78,9 @@ shader = ExtResource( 5 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 56 )
+shader_param/palette = SubResource( 30 )
 
-[sub_resource type="Image" id=68]
+[sub_resource type="Image" id=42]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 49, 49, 49, 255, 103, 103, 103, 255 ),
 "format": "RGBA8",
@@ -90,10 +89,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=58]
+[sub_resource type="ImageTexture" id=32]
 flags = 0
 flags = 0
-image = SubResource( 68 )
+image = SubResource( 42 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=13]
@@ -102,9 +101,9 @@ shader = ExtResource( 5 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 58 )
+shader_param/palette = SubResource( 32 )
 
-[sub_resource type="Image" id=69]
+[sub_resource type="Image" id=43]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 255 ),
 "format": "RGBA8",
@@ -113,10 +112,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=60]
+[sub_resource type="ImageTexture" id=34]
 flags = 0
 flags = 0
-image = SubResource( 69 )
+image = SubResource( 43 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=16]
@@ -125,9 +124,9 @@ shader = ExtResource( 5 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 60 )
+shader_param/palette = SubResource( 34 )
 
-[sub_resource type="Image" id=70]
+[sub_resource type="Image" id=44]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 131, 0, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -136,10 +135,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=62]
+[sub_resource type="ImageTexture" id=36]
 flags = 0
 flags = 0
-image = SubResource( 70 )
+image = SubResource( 44 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=19]
@@ -148,7 +147,7 @@ shader = ExtResource( 5 )
 shader_param/palette_size = 3
 shader_param/offset = 0.0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 62 )
+shader_param/palette = SubResource( 36 )
 
 [sub_resource type="Animation" id=20]
 length = 0.001
@@ -231,7 +230,7 @@ tracks/1/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Image" id=71]
+[sub_resource type="Image" id=45]
 data = {
 "data": PoolByteArray( 255, 191, 0, 255, 54, 0, 53, 255, 255, 161, 0, 255 ),
 "format": "RGBA8",
@@ -240,10 +239,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=64]
+[sub_resource type="ImageTexture" id=38]
 flags = 0
 flags = 0
-image = SubResource( 71 )
+image = SubResource( 45 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
@@ -252,7 +251,7 @@ shader = ExtResource( 5 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 64 )
+shader_param/palette = SubResource( 38 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 707, 79 )
@@ -271,17 +270,10 @@ direction = Vector2( 0.707107, -0.707107 )
 disabled = true
 
 [node name="Sprite" parent="fast_glider/pivot" index="0"]
-material = SubResource( 50 )
+material = SubResource( 25 )
 
-[node name="palette" parent="fast_glider/pivot/Sprite" index="1"]
-script = ExtResource( 11 )
-palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
-material = SubResource( 50 )
-glow_speed = 4.0
-
-[node name="energy_bar" parent="fast_glider/HUD/HBoxContainer" index="1"]
-modulate = Color( 1, 1, 1, 1 )
-margin_right = 40.0
+[node name="palette" parent="fast_glider/pivot/Sprite/palette_manager" index="0"]
+material = SubResource( 25 )
 
 [node name="fast_glider2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 179, 105 )
@@ -329,22 +321,16 @@ max_volume = 0.0
 disabled = true
 
 [node name="Sprite" parent="fast_glider2/pivot" index="0"]
-material = SubResource( 35 )
+material = SubResource( 28 )
 
-[node name="palette" parent="fast_glider2/pivot/Sprite" index="1"]
-script = ExtResource( 11 )
-palette = PoolColorArray( 0.388235, 0.388235, 0.388235, 1, 0, 1, 0.741176, 1, 0, 1, 0.976471, 1 )
-material = SubResource( 35 )
-glow_speed = 4.0
-string_val = "[\"ff636363\",\"ff00ffbd\",\"ff00fff9\"]"
+[node name="palette" parent="fast_glider2/pivot/Sprite/palette_manager" index="0"]
+material = SubResource( 28 )
 
 [node name="HUD" parent="fast_glider2" index="31"]
 visible = false
 
 [node name="energy_bar" parent="fast_glider2/HUD/HBoxContainer" index="1"]
 visible = false
-modulate = Color( 1, 1, 1, 1 )
-margin_right = 40.0
 
 [node name="player_controller" parent="fast_glider2/input_state" index="0"]
 disabled = true
@@ -403,9 +389,7 @@ visible = false
 material = SubResource( 10 )
 
 [node name="palette" parent="CanvasLayer/joystick_HUD2/analog_stick/base" index="0"]
-palette = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0.360784, 0.360784, 0.360784, 1 )
 material = SubResource( 10 )
-string_val = "[\"ff000000\",\"ff000000\",\"ff5c5c5c\"]"
 
 [node name="stick_base" parent="CanvasLayer/joystick_HUD2/analog_stick" index="1"]
 visible = false
@@ -416,9 +400,7 @@ visible = false
 material = SubResource( 13 )
 
 [node name="palette" parent="CanvasLayer/joystick_HUD2/analog_stick/stick" index="0"]
-palette = PoolColorArray( 0, 0, 0, 1, 0.192157, 0.192157, 0.192157, 1, 0.403922, 0.403922, 0.403922, 1 )
 material = SubResource( 13 )
-string_val = "[\"ff000000\",\"ff313131\",\"ff676767\"]"
 
 [node name="rotate_transform" parent="CanvasLayer/joystick_HUD2/analog_stick" index="3"]
 modulate = Color( 0, 128.498, 0, 0.356863 )
@@ -428,7 +410,6 @@ material = SubResource( 16 )
 
 [node name="palette" parent="CanvasLayer/joystick_HUD2/analog_stick/rotate_transform/head" index="0"]
 material = SubResource( 16 )
-string_val = "[\"ff000000\",\"ffffffff\",\"ffff0000\"]"
 
 [node name="Sprite" parent="CanvasLayer/joystick_HUD2/B" index="0"]
 material = SubResource( 19 )
@@ -436,7 +417,6 @@ material = SubResource( 19 )
 [node name="palette" parent="CanvasLayer/joystick_HUD2/B/Sprite" index="0"]
 palette = PoolColorArray( 0, 0, 0, 1, 0.513726, 0, 0, 1, 1, 1, 1, 1 )
 material = SubResource( 19 )
-string_val = "[\"ff000000\",\"ff830000\",\"ffffffff\"]"
 
 [node name="AnimationPlayer" parent="CanvasLayer/joystick_HUD2/B" index="1"]
 anims/RESET = SubResource( 20 )
@@ -498,9 +478,6 @@ margin_left = 153.0
 margin_top = 436.0
 margin_right = 193.0
 margin_bottom = 450.0
-
-[connection signal="value_changed" from="fast_glider/energy" to="fast_glider/HUD/HBoxContainer/energy_bar" method="update_values"]
-[connection signal="value_changed" from="fast_glider2/energy" to="fast_glider2/HUD/HBoxContainer/energy_bar" method="update_values"]
 
 [editable path="fast_glider"]
 [editable path="fast_glider2"]
