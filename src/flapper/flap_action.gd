@@ -5,8 +5,10 @@ func trigger(speed):
 
 func weak():
 	owner.emit_signal("pre_flap")
+	owner.emit_signal("glide_pre_flap")
 	owner.velocity += owner.weak_flap*owner.direction
 	owner.emit_signal("flapped")
+	owner.emit_signal("glide_flapped")
 
 func strong():
 	owner.emit_signal("pre_flap")

@@ -31,8 +31,9 @@ func set_seed(val):
 
 
 func _ready() -> void:
-	yield(get_tree(),"idle_frame")
-
+	if !Engine.editor_hint:
+#		draw_map()
+		pass	
 func random_seed(val:=false):
 	set_seed(randi())
 

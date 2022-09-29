@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 signal flapped
+signal glide_flapped
+signal glide_pre_flap
 signal pre_flap
 signal failed_flap
 

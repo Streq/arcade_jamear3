@@ -1,7 +1,7 @@
 [gd_resource type="NoiseTexture" load_steps=2 format=2]
 
 [sub_resource type="OpenSimplexNoise" id=4]
-seed = -1951455114
+seed = -1264269668
 octaves = 1
 period = 55.0
 persistence = 1.0
