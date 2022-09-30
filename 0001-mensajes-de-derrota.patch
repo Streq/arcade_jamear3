@@ -1,0 +1,470 @@
+From 4d209bc005ef78a4fa7f22ea8c0671c97a92471f Mon Sep 17 00:00:00 2001
+From: Santiago Requena <santiago.requena@despegar.com>
+Date: Fri, 30 Sep 2022 14:44:09 -0300
+Subject: [PATCH] mensajes de derrota
+
+---
+ assets/texture/random_map.bmp                 | Bin 36934 -> 0 bytes
+ assets/texture/random_map.bmp.import          |  30 -----------
+ src/HUD/lose_text.gd                          |  13 +++++
+ src/flapper/addons/hard_collision_detect.gd   |   2 +-
+ src/flapper/addons/hurt_handler.gd            |   2 +-
+ src/flapper/flapper.gd                        |   6 ++-
+ src/gamemode/single_room/playjam_gameover.gd  |  19 +++++--
+ src/gamemode/single_room/single_room.gd       |  14 ++---
+ .../single_room/single_room_playjam.tscn      |  50 +++++++++++++++++-
+ src/gamemode/single_room/test_text_trigger.gd |  11 ++++
+ 10 files changed, 100 insertions(+), 47 deletions(-)
+ delete mode 100644 assets/texture/random_map.bmp
+ delete mode 100644 assets/texture/random_map.bmp.import
+ create mode 100644 src/HUD/lose_text.gd
+ create mode 100644 src/gamemode/single_room/test_text_trigger.gd
+
+diff --git a/assets/texture/random_map.bmp b/assets/texture/random_map.bmp
+deleted file mode 100644
+index 2b8db894a4d18e5ce0f7f08a66e3a1bd93e01ffc..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 36934
+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
+RT$^+V?|dhuGDG4A{r?~ng_-~W
+
+diff --git a/assets/texture/random_map.bmp.import b/assets/texture/random_map.bmp.import
+deleted file mode 100644
+index 380aff5..0000000
+--- a/assets/texture/random_map.bmp.import
++++ /dev/null
+@@ -1,30 +0,0 @@
+-[remap]
+-
+-importer="texture"
+-type="StreamTexture"
+-valid=false
+-
+-[deps]
+-
+-source_file="res://assets/texture/random_map.bmp"
+-[params]
+-
+-compress/mode=0
+-compress/lossy_quality=0.7
+-compress/hdr_mode=0
+-compress/bptc_ldr=0
+-compress/normal_map=0
+-flags/repeat=0
+-flags/filter=false
+-flags/mipmaps=false
+-flags/anisotropic=false
+-flags/srgb=2
+-process/fix_alpha_border=true
+-process/premult_alpha=false
+-process/HDR_as_SRGB=false
+-process/invert_color=false
+-process/normal_map_invert_y=false
+-stream=false
+-size_limit=0
+-detect_3d=true
+-svg/scale=1.0
+diff --git a/src/HUD/lose_text.gd b/src/HUD/lose_text.gd
+new file mode 100644
+index 0000000..5cfd8b4
+--- /dev/null
++++ b/src/HUD/lose_text.gd
+@@ -0,0 +1,13 @@
++extends Label
++
++export (Array, String, MULTILINE) var messages_ghost 
++export (Array, String, MULTILINE) var messages_wall 
++
++func _on_lose(cause):
++	match cause:
++		"hit":
++			text = messages_ghost[randi()%messages_ghost.size()]
++		"wall":
++			text = messages_wall[randi()%messages_wall.size()]
++	text+="\n(PERDISTE)"
++	visible = true
+diff --git a/src/flapper/addons/hard_collision_detect.gd b/src/flapper/addons/hard_collision_detect.gd
+index 24f56fd..767872e 100644
+--- a/src/flapper/addons/hard_collision_detect.gd
++++ b/src/flapper/addons/hard_collision_detect.gd
+@@ -4,4 +4,4 @@ extends Node
+ func _on_hard_collision(prev_vel, _post_vel):
+ 	_on_hard_collision_no_args()
+ func _on_hard_collision_no_args():
+-	owner.die()
++	owner.die("wall")
+diff --git a/src/flapper/addons/hurt_handler.gd b/src/flapper/addons/hurt_handler.gd
+index 4689dda..735b6f4 100644
+--- a/src/flapper/addons/hurt_handler.gd
++++ b/src/flapper/addons/hurt_handler.gd
+@@ -4,4 +4,4 @@ func _on_hit(by:Area2D):
+ 	if "velocity" in by.owner:
+ 		owner.velocity = (owner.velocity + by.owner.velocity)/2.0
+ 	emit_signal("killed_by_hit")
+-	owner.die()
++	owner.die("hit")
+diff --git a/src/flapper/flapper.gd b/src/flapper/flapper.gd
+index abc63ec..2320f4b 100644
+--- a/src/flapper/flapper.gd
++++ b/src/flapper/flapper.gd
+@@ -13,7 +13,8 @@ signal graze(applied_friction)
+ signal entered_portal(portal)
+ signal seed_taken()
+ signal duplicated(clone)
+-signal die
++signal die()
++signal killed_by(cause)
+ 
+ 
+ export var gravity := 200.0
+@@ -154,13 +155,14 @@ func _physics_process(delta):
+ 		velocity = new_velocity
+ 	
+ 
+-func die():
++func die(cause := ""):
+ 	if dead:
+ 		return
+ 	visible = false
+ 	set_physics_process(false)
+ 	dead = true
+ 	emit_signal("die")
++	emit_signal("killed_by",cause)
+ 	remove_from_group("flapper")
+ 	if has_node("camera"):
+ 		NodeUtils.reparent_keep_transform(get_node("camera"),get_parent())
+diff --git a/src/gamemode/single_room/playjam_gameover.gd b/src/gamemode/single_room/playjam_gameover.gd
+index 0338496..6b0be82 100644
+--- a/src/gamemode/single_room/playjam_gameover.gd
++++ b/src/gamemode/single_room/playjam_gameover.gd
+@@ -1,5 +1,6 @@
+ extends Node
+ signal win
++signal loss(cause)
+ enum {
+ 	WIN = 1,
+ 	LOSE = 2,
+@@ -11,19 +12,27 @@ var won = false
+ 
+ func _physics_process(delta: float) -> void:
+ 	if score.total_time >= 120.0:
+-		emit_signal("win")
+ 		won = true
+-		yield(get_tree().create_timer(3.0),"timeout")
+-		_on_game_over()
+-
+-func _on_game_over():
++		_on_game_over("win")
++signal skip
++func _on_game_over(cause):
+ 	if won:
++		emit_signal("win")
++		yield(get_tree().create_timer(3.0),"timeout")
+ 		print("WIN")
+ 		get_tree().call_deferred("quit", WIN)
+ 	else:
++		emit_signal("loss", cause)
++		var timer = get_tree().create_timer(5.0)
++		yield(get_tree().create_timer(1.5),"timeout")
++		connect("skip",timer,"emit_signal",["timeout"])
++		yield(timer,"timeout")
+ 		print("LOSE")
+ 		get_tree().call_deferred("quit", LOSE)
+ 
+ func _unhandled_key_input(event: InputEventKey) -> void:
+ 	if event.scancode == KEY_ESCAPE and event.is_pressed():
+ 		get_tree().call_deferred("quit",QUIT)
++func _unhandled_input(event):
++	if event.is_action_pressed("A"):
++		emit_signal("skip")
+diff --git a/src/gamemode/single_room/single_room.gd b/src/gamemode/single_room/single_room.gd
+index 5ce2201..4fe415d 100644
+--- a/src/gamemode/single_room/single_room.gd
++++ b/src/gamemode/single_room/single_room.gd
+@@ -1,5 +1,5 @@
+ extends Node2D
+-signal game_over
++signal game_over(cause)
+ signal player_alive
+ signal player_dead
+ 
+@@ -32,15 +32,16 @@ func start():
+ 	player.position = player_spawn_point.position
+ 
+ func _on_new_player_instance(instance):
+-	instance.connect("die",self,"_on_player_died",[], CONNECT_PERSIST)
++	instance.connect("killed_by",self,"_on_player_died",[], CONNECT_PERSIST)
+ 	instance.connect("duplicated",self,"_on_new_player_instance")
+ 
+-func _on_player_died():
++func _on_player_died(cause):
+ 	for flapper in Group.get_all("flapper"):
+ 		if !flapper.dead:
+ 			return
+ 	self.player_alive = false
+-	
++#	self.cause_of_death = cause
++	emit_signal("game_over",cause)
+ func _input(event):
+ 	if OS.is_debug_build():
+ 		if event.is_action_pressed("next_level"):
+@@ -59,5 +60,6 @@ func _on_go_back():
+ 
+ var game_over = false
+ func _on_wait_on_game_over_timeout():
+-	game_over = true
+-	emit_signal("game_over")
++	pass
++#	game_over = true
++#	emit_signal("game_over")
+diff --git a/src/gamemode/single_room/single_room_playjam.tscn b/src/gamemode/single_room/single_room_playjam.tscn
+index 15676b4..5a6860b 100644
+--- a/src/gamemode/single_room/single_room_playjam.tscn
++++ b/src/gamemode/single_room/single_room_playjam.tscn
+@@ -1,4 +1,4 @@
+-[gd_scene load_steps=242 format=2]
++[gd_scene load_steps=244 format=2]
+ 
+ [ext_resource path="res://src/gamemode/single_room/fast_glider_for_single_room.tscn" type="PackedScene" id=1]
+ [ext_resource path="res://src/gamemode/single_room/spawner.gd" type="Script" id=2]
+@@ -46,6 +46,8 @@
+ [ext_resource path="res://src/flapper/low_energy_anim.gd" type="Script" id=44]
+ [ext_resource path="res://src/HUD/small_energy_bar.tscn" type="PackedScene" id=45]
+ [ext_resource path="res://assets/texture/battery.png" type="Texture" id=46]
++[ext_resource path="res://src/HUD/lose_text.gd" type="Script" id=47]
++[ext_resource path="res://src/gamemode/single_room/test_text_trigger.gd" type="Script" id=48]
+ 
+ [sub_resource type="Image" id=359]
+ data = {
+@@ -3756,7 +3758,7 @@ size = Vector2( 3, 1 )
+ resource_local_to_scene = true
+ shader = ExtResource( 8 )
+ shader_param/palette_size = 3
+-shader_param/offset = 0
++shader_param/offset = 1
+ shader_param/blue_index_offset = 0.0
+ shader_param/palette = SubResource( 351 )
+ 
+@@ -4616,6 +4618,49 @@ margin_right = 145.0
+ margin_bottom = 75.0
+ color = Color( 0, 0, 0, 1 )
+ 
++[node name="lose_text_ghost" parent="CanvasLayer" instance=ExtResource( 5 )]
++visible = false
++anchor_left = 0.5
++anchor_top = 0.5
++anchor_right = 0.5
++anchor_bottom = 0.5
++margin_left = -140.0
++margin_top = -68.0
++margin_right = 1.0
++margin_bottom = 3.0
++grow_vertical = 2
++rect_scale = Vector2( 2, 2 )
++align = 1
++valign = 1
++autowrap = true
++script = ExtResource( 47 )
++messages_ghost = [ "TE AGARRARON LOS FANTASMITAS
++Y TE MORISTE", "TE MATARON", "EL CANARIO FALLECIÓ!!!!", "TE MATARON Y PERDISTE EL JUEGO Y AHORA SE VA A CERRAR CHAU", "SE SUSPENDE EL JUEGO PORQUE
++AL CANARIO LO MATARON", "EL CANARIO ESTÁ MUERTO", "TE FAJARON LOS FANTASMITAS", "JUSTO JUSTITO TE TOCÓ UN FANTASMITA AHHH JUSTITO ESTABAS AHÍ NOMÁS" ]
++messages_wall = [ "VOLASTE MUY RÁPIDO Y TE LA DISTE CON UNA PARED", "CHOCASTE A LAS CHAPAS Y ESPELOTÓ TODO", "EL CANARIO CHOCÓ MUY FUERTE Y MURIÓ", "EL CANARIO ESTÁ FALLECIDO", "POR VOLAR MUY RÁPIDO EL CANARIO 
++SE LA DIO RE FUERTE CONTRA LA PARED 
++Y AHORA ESTÁ MUERTO", "EL CANARIO VOLÓ SOBRE EL LÍMITE PERMITIDO Y PAGÓ EL PRECIO MÁXIMO (se chocó y se murió)" ]
++
++[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/lose_text_ghost"]
++show_behind_parent = true
++anchor_right = 1.0
++anchor_bottom = 1.0
++custom_constants/margin_right = -4
++custom_constants/margin_top = -4
++custom_constants/margin_left = -4
++custom_constants/margin_bottom = -4
++
++[node name="ColorRect" type="ColorRect" parent="CanvasLayer/lose_text_ghost/MarginContainer"]
++show_behind_parent = true
++margin_left = -4.0
++margin_top = -4.0
++margin_right = 145.0
++margin_bottom = 75.0
++color = Color( 0, 0, 0, 1 )
++
++[node name="test_text_trigger" type="Node" parent="CanvasLayer/lose_text_ghost"]
++script = ExtResource( 48 )
++
+ [node name="wait_on_game_over" type="Timer" parent="."]
+ process_mode = 0
+ wait_time = 2.0
+@@ -4818,6 +4863,7 @@ material = SubResource( 358 )
+ [connection signal="trigger" from="fall_spawner/spawner_trigger_on_seeds_taken" to="fall_spawner" method="spawn"]
+ [connection signal="timeout" from="wait_on_game_over" to="." method="_on_wait_on_game_over_timeout"]
+ [connection signal="die" from="fast_glider2" to="CanvasLayer/Control/HBoxContainer" method="set_visible" binds= [ true ]]
++[connection signal="loss" from="playjam_gameover" to="CanvasLayer/lose_text_ghost" method="_on_lose"]
+ [connection signal="win" from="playjam_gameover" to="CanvasLayer/win_text" method="_on_win"]
+ 
+ [editable path="seed_spawner"]
+diff --git a/src/gamemode/single_room/test_text_trigger.gd b/src/gamemode/single_room/test_text_trigger.gd
+new file mode 100644
+index 0000000..35b4449
+--- /dev/null
++++ b/src/gamemode/single_room/test_text_trigger.gd
+@@ -0,0 +1,11 @@
++extends Node
++
++
++# Declare member variables here. Examples:
++# var a = 2
++# var b = "text"
++
++func _input(event):
++#	if event.is_action_pressed("C"):
++#		get_parent()._on_lose("hit")
++	pass
+-- 
+2.25.1
+

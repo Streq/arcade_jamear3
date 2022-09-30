@@ -9,7 +9,7 @@
 
 [sub_resource type="Image" id=6]
 data = {
-"data": PoolByteArray( 151, 24, 24, 255, 255, 179, 0, 255, 215, 86, 0, 255 ),
+"data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -57,7 +57,7 @@ script = ExtResource( 5 )
 script = ExtResource( 6 )
 
 [connection signal="trigger" from="kill_on_no_energy" to="explode_action" method="trigger"]
-[connection signal="trigger" from="explode_action" to="." method="die"]
+[connection signal="trigger" from="explode_action" to="." method="die" binds= [ "energy" ]]
 [connection signal="trigger" from="explode_action" to="many_feathers_slow" method="_on_collision_no_args"]
 [connection signal="trigger" from="explode_action" to="some_feathers_fast" method="_on_collision_no_args"]
 [connection signal="trigger" from="explode_action" to="explosion" method="play"]

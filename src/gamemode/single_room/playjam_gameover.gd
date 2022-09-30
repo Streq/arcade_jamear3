@@ -22,8 +22,9 @@ func _on_game_over(cause):
 		print("WIN")
 		get_tree().call_deferred("quit", WIN)
 	else:
+		yield(get_tree().create_timer(0.5),"timeout")
 		emit_signal("loss", cause)
-		var timer = get_tree().create_timer(5.0)
+		var timer = get_tree().create_timer(6.0)
 		yield(get_tree().create_timer(1.5),"timeout")
 		connect("skip",timer,"emit_signal",["timeout"])
 		yield(timer,"timeout")
