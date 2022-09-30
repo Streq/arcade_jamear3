@@ -1,5 +1,5 @@
 extends Node2D
-signal game_over
+signal game_over(cause)
 signal player_alive
 signal player_dead
 
@@ -32,15 +32,16 @@ func start():
 	player.position = player_spawn_point.position
 
 func _on_new_player_instance(instance):
-	instance.connect("die",self,"_on_player_died",[], CONNECT_PERSIST)
+	instance.connect("killed_by",self,"_on_player_died",[], CONNECT_PERSIST)
 	instance.connect("duplicated",self,"_on_new_player_instance")
 
-func _on_player_died():
+func _on_player_died(cause):
 	for flapper in Group.get_all("flapper"):
 		if !flapper.dead:
 			return
 	self.player_alive = false
-	
+#	self.cause_of_death = cause
+	emit_signal("game_over",cause)
 func _input(event):
 	if OS.is_debug_build():
 		if event.is_action_pressed("next_level"):
@@ -59,5 +60,6 @@ func _on_go_back():
 
 var game_over = false
 func _on_wait_on_game_over_timeout():
-	game_over = true
-	emit_signal("game_over")
+	pass
+#	game_over = true
+#	emit_signal("game_over")

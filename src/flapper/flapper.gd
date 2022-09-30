@@ -13,7 +13,8 @@ signal graze(applied_friction)
 signal entered_portal(portal)
 signal seed_taken()
 signal duplicated(clone)
-signal die
+signal die()
+signal killed_by(cause)
 
 
 export var gravity := 200.0
@@ -154,13 +155,14 @@ func _physics_process(delta):
 		velocity = new_velocity
 	
 
-func die():
+func die(cause := ""):
 	if dead:
 		return
 	visible = false
 	set_physics_process(false)
 	dead = true
 	emit_signal("die")
+	emit_signal("killed_by",cause)
 	remove_from_group("flapper")
 	if has_node("camera"):
 		NodeUtils.reparent_keep_transform(get_node("camera"),get_parent())

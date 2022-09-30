@@ -1,4 +1,4 @@
-[gd_scene load_steps=242 format=2]
+[gd_scene load_steps=244 format=2]
 
 [ext_resource path="res://src/gamemode/single_room/fast_glider_for_single_room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/gamemode/single_room/spawner.gd" type="Script" id=2]
@@ -46,6 +46,8 @@
 [ext_resource path="res://src/flapper/low_energy_anim.gd" type="Script" id=44]
 [ext_resource path="res://src/HUD/small_energy_bar.tscn" type="PackedScene" id=45]
 [ext_resource path="res://assets/texture/battery.png" type="Texture" id=46]
+[ext_resource path="res://src/HUD/lose_text.gd" type="Script" id=47]
+[ext_resource path="res://src/gamemode/single_room/test_text_trigger.gd" type="Script" id=48]
 
 [sub_resource type="Image" id=359]
 data = {
@@ -3756,7 +3758,7 @@ size = Vector2( 3, 1 )
 resource_local_to_scene = true
 shader = ExtResource( 8 )
 shader_param/palette_size = 3
-shader_param/offset = 0
+shader_param/offset = 1
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 351 )
 
@@ -4616,6 +4618,49 @@ margin_right = 145.0
 margin_bottom = 75.0
 color = Color( 0, 0, 0, 1 )
 
+[node name="lose_text_ghost" parent="CanvasLayer" instance=ExtResource( 5 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.0
+margin_top = -68.0
+margin_right = 1.0
+margin_bottom = 3.0
+grow_vertical = 2
+rect_scale = Vector2( 2, 2 )
+align = 1
+valign = 1
+autowrap = true
+script = ExtResource( 47 )
+messages_ghost = [ "TE AGARRARON LOS FANTASMITAS
+Y TE MORISTE", "TE MATARON", "EL CANARIO FALLECIÓ!!!!", "TE MATARON Y PERDISTE EL JUEGO Y AHORA SE VA A CERRAR CHAU", "SE SUSPENDE EL JUEGO PORQUE
+AL CANARIO LO MATARON", "EL CANARIO ESTÁ MUERTO", "TE FAJARON LOS FANTASMITAS", "JUSTO JUSTITO TE TOCÓ UN FANTASMITA AHHH JUSTITO ESTABAS AHÍ NOMÁS" ]
+messages_wall = [ "VOLASTE MUY RÁPIDO Y TE LA DISTE CON UNA PARED", "CHOCASTE A LAS CHAPAS Y ESPELOTÓ TODO", "EL CANARIO CHOCÓ MUY FUERTE Y MURIÓ", "EL CANARIO ESTÁ FALLECIDO", "POR VOLAR MUY RÁPIDO EL CANARIO 
+SE LA DIO RE FUERTE CONTRA LA PARED 
+Y AHORA ESTÁ MUERTO", "EL CANARIO VOLÓ SOBRE EL LÍMITE PERMITIDO Y PAGÓ EL PRECIO MÁXIMO (se chocó y se murió)" ]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/lose_text_ghost"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = -4
+custom_constants/margin_top = -4
+custom_constants/margin_left = -4
+custom_constants/margin_bottom = -4
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/lose_text_ghost/MarginContainer"]
+show_behind_parent = true
+margin_left = -4.0
+margin_top = -4.0
+margin_right = 145.0
+margin_bottom = 75.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="test_text_trigger" type="Node" parent="CanvasLayer/lose_text_ghost"]
+script = ExtResource( 48 )
+
 [node name="wait_on_game_over" type="Timer" parent="."]
 process_mode = 0
 wait_time = 2.0
@@ -4818,6 +4863,7 @@ material = SubResource( 358 )
 [connection signal="trigger" from="fall_spawner/spawner_trigger_on_seeds_taken" to="fall_spawner" method="spawn"]
 [connection signal="timeout" from="wait_on_game_over" to="." method="_on_wait_on_game_over_timeout"]
 [connection signal="die" from="fast_glider2" to="CanvasLayer/Control/HBoxContainer" method="set_visible" binds= [ true ]]
+[connection signal="loss" from="playjam_gameover" to="CanvasLayer/lose_text_ghost" method="_on_lose"]
 [connection signal="win" from="playjam_gameover" to="CanvasLayer/win_text" method="_on_win"]
 
 [editable path="seed_spawner"]
