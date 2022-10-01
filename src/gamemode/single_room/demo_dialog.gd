@@ -1,7 +1,12 @@
 extends Label
 
 export var autoplay := false
-
+#HOW TO USE
+#FIRST OF ALL CHOOSE A FILENAME, CAREFUL NOT TO OVERWRITE
+#IF AUTOPLAY IS FALSE THEN IT'S RECORDING
+#W STEP FORWARD
+#E SAVE RECORDING
+#T PLAY RECORDING
 
 export (PoolStringArray) var texts
 
@@ -50,16 +55,16 @@ func _ready() -> void:
 func record_next():
 	frames_to_change.push_back(frame)
 	
-	
-const PATH = "res://assets/data/demo_text.dat"
+export var file_name = "demo_text.dat"
+const PATH = "res://assets/data/"
 func save_recording():
 	var file = File.new()
-	file.open(PATH, File.WRITE)
+	file.open(PATH+file_name, File.WRITE)
 	file.store_var(frames_to_change)
 	file.close()
 func load_recording():
 	var file = File.new()
-	file.open(PATH, File.READ)
+	file.open(PATH+file_name, File.READ)
 	frames_to_change = file.get_var()
 	file.close()
 var playing = false

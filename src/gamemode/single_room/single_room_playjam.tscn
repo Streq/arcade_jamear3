@@ -1,4 +1,4 @@
-[gd_scene load_steps=245 format=2]
+[gd_scene load_steps=244 format=2]
 
 [ext_resource path="res://src/gamemode/single_room/fast_glider_for_single_room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/gamemode/single_room/spawner.gd" type="Script" id=2]
@@ -48,9 +48,8 @@
 [ext_resource path="res://assets/texture/battery.png" type="Texture" id=46]
 [ext_resource path="res://src/HUD/lose_text.gd" type="Script" id=47]
 [ext_resource path="res://src/gamemode/single_room/test_text_trigger.gd" type="Script" id=48]
-[ext_resource path="res://src/flapper/addons/energy_bar.gd" type="Script" id=49]
 
-[sub_resource type="Image" id=359]
+[sub_resource type="Image" id=361]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 50, 0, 76, 255, 203, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
@@ -62,7 +61,7 @@ data = {
 [sub_resource type="ImageTexture" id=326]
 flags = 0
 flags = 0
-image = SubResource( 359 )
+image = SubResource( 361 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=62]
@@ -86,7 +85,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 904, 0 )
 }
 
-[sub_resource type="Image" id=360]
+[sub_resource type="Image" id=362]
 data = {
 "data": PoolByteArray( 135, 63, 0, 255, 235, 84, 31, 255, 255, 205, 58, 255, 255, 196, 0, 255 ),
 "format": "RGBA8",
@@ -98,7 +97,7 @@ data = {
 [sub_resource type="ImageTexture" id=74]
 flags = 0
 flags = 0
-image = SubResource( 360 )
+image = SubResource( 362 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=75]
@@ -109,7 +108,7 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
 shader_param/palette = SubResource( 74 )
 
-[sub_resource type="Image" id=361]
+[sub_resource type="Image" id=363]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -121,7 +120,7 @@ data = {
 [sub_resource type="ImageTexture" id=329]
 flags = 0
 flags = 0
-image = SubResource( 361 )
+image = SubResource( 363 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=258]
@@ -412,7 +411,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=362]
+[sub_resource type="Image" id=364]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -424,7 +423,7 @@ data = {
 [sub_resource type="ImageTexture" id=331]
 flags = 0
 flags = 0
-image = SubResource( 362 )
+image = SubResource( 364 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=261]
@@ -771,7 +770,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=363]
+[sub_resource type="Image" id=365]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -783,7 +782,7 @@ data = {
 [sub_resource type="ImageTexture" id=333]
 flags = 0
 flags = 0
-image = SubResource( 363 )
+image = SubResource( 365 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=264]
@@ -1130,7 +1129,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=364]
+[sub_resource type="Image" id=366]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -1142,7 +1141,7 @@ data = {
 [sub_resource type="ImageTexture" id=335]
 flags = 0
 flags = 0
-image = SubResource( 364 )
+image = SubResource( 366 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=267]
@@ -1489,7 +1488,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=365]
+[sub_resource type="Image" id=367]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -1501,7 +1500,7 @@ data = {
 [sub_resource type="ImageTexture" id=337]
 flags = 0
 flags = 0
-image = SubResource( 365 )
+image = SubResource( 367 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=270]
@@ -1848,7 +1847,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=366]
+[sub_resource type="Image" id=368]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -1860,7 +1859,7 @@ data = {
 [sub_resource type="ImageTexture" id=339]
 flags = 0
 flags = 0
-image = SubResource( 366 )
+image = SubResource( 368 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=273]
@@ -2207,7 +2206,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=367]
+[sub_resource type="Image" id=369]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -2219,7 +2218,7 @@ data = {
 [sub_resource type="ImageTexture" id=341]
 flags = 0
 flags = 0
-image = SubResource( 367 )
+image = SubResource( 369 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=276]
@@ -2566,7 +2565,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=368]
+[sub_resource type="Image" id=370]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -2578,7 +2577,7 @@ data = {
 [sub_resource type="ImageTexture" id=343]
 flags = 0
 flags = 0
-image = SubResource( 368 )
+image = SubResource( 370 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=279]
@@ -2925,7 +2924,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=369]
+[sub_resource type="Image" id=371]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -2937,7 +2936,7 @@ data = {
 [sub_resource type="ImageTexture" id=345]
 flags = 0
 flags = 0
-image = SubResource( 369 )
+image = SubResource( 371 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=282]
@@ -3284,7 +3283,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=370]
+[sub_resource type="Image" id=372]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -3296,7 +3295,7 @@ data = {
 [sub_resource type="ImageTexture" id=347]
 flags = 0
 flags = 0
-image = SubResource( 370 )
+image = SubResource( 372 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=285]
@@ -3643,7 +3642,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=371]
+[sub_resource type="Image" id=373]
 data = {
 "data": PoolByteArray( 24, 151, 151, 255, 0, 255, 255, 255, 0, 160, 215, 255 ),
 "format": "RGBA8",
@@ -3655,7 +3654,7 @@ data = {
 [sub_resource type="ImageTexture" id=349]
 flags = 0
 flags = 0
-image = SubResource( 371 )
+image = SubResource( 373 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=288]
@@ -3722,25 +3721,25 @@ tracks/1/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Gradient" id=46]
+[sub_resource type="Gradient" id=350]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture2D" id=21]
-gradient = SubResource( 46 )
+gradient = SubResource( 350 )
 width = 32
 height = 8
 fill_from = Vector2( 0, 1 )
 
-[sub_resource type="Gradient" id=47]
+[sub_resource type="Gradient" id=351]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture2D" id=23]
-gradient = SubResource( 47 )
+gradient = SubResource( 351 )
 width = 32
 height = 6
 fill_from = Vector2( 0, 1 )
 
-[sub_resource type="Image" id=372]
+[sub_resource type="Image" id=374]
 data = {
 "data": PoolByteArray( 255, 0, 0, 255, 255, 120, 0, 255, 255, 255, 255, 255 ),
 "format": "RGBA8",
@@ -3749,65 +3748,65 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=351]
-flags = 0
-flags = 0
-image = SubResource( 372 )
-size = Vector2( 3, 1 )
-
-[sub_resource type="ShaderMaterial" id=352]
-resource_local_to_scene = true
-shader = ExtResource( 8 )
-shader_param/palette_size = 3
-shader_param/offset = 1
-shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 351 )
-
-[sub_resource type="Image" id=373]
-data = {
-"data": PoolByteArray( 255, 0, 0, 255, 247, 255, 0, 255, 255, 255, 255, 255 ),
-"format": "RGBA8",
-"height": 1,
-"mipmaps": false,
-"width": 3
-}
-
-[sub_resource type="ImageTexture" id=354]
-flags = 0
-flags = 0
-image = SubResource( 373 )
-size = Vector2( 3, 1 )
-
-[sub_resource type="ShaderMaterial" id=355]
-resource_local_to_scene = true
-shader = ExtResource( 8 )
-shader_param/palette_size = 3
-shader_param/offset = 0
-shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 354 )
-
-[sub_resource type="Image" id=374]
-data = {
-"data": PoolByteArray( 255, 0, 0, 255, 247, 255, 0, 255, 255, 255, 255, 255 ),
-"format": "RGBA8",
-"height": 1,
-"mipmaps": false,
-"width": 3
-}
-
-[sub_resource type="ImageTexture" id=357]
+[sub_resource type="ImageTexture" id=353]
 flags = 0
 flags = 0
 image = SubResource( 374 )
 size = Vector2( 3, 1 )
 
-[sub_resource type="ShaderMaterial" id=358]
+[sub_resource type="ShaderMaterial" id=354]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 2
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 353 )
+
+[sub_resource type="Image" id=375]
+data = {
+"data": PoolByteArray( 255, 0, 0, 255, 247, 255, 0, 255, 255, 255, 255, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=356]
+flags = 0
+flags = 0
+image = SubResource( 375 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=357]
 resource_local_to_scene = true
 shader = ExtResource( 8 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 357 )
+shader_param/palette = SubResource( 356 )
+
+[sub_resource type="Image" id=376]
+data = {
+"data": PoolByteArray( 255, 0, 0, 255, 247, 255, 0, 255, 255, 255, 255, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=359]
+flags = 0
+flags = 0
+image = SubResource( 376 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=360]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 359 )
 
 [node name="Node2D" type="Node2D"]
 pause_mode = 1
@@ -4068,9 +4067,6 @@ volume_db = -16.5071
 
 [node name="flap" parent="title_screen/title/fast_glider2" index="14" groups=["flap_sound"]]
 
-[node name="energy" parent="title_screen/title/fast_glider2" index="25"]
-script = ExtResource( 49 )
-
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider2" index="27"]
 disabled = true
 
@@ -4126,9 +4122,6 @@ monitoring = true
 volume_db = -16.5071
 
 [node name="flap" parent="title_screen/title/fast_glider3" index="14" groups=["flap_sound"]]
-
-[node name="energy" parent="title_screen/title/fast_glider3" index="25"]
-script = ExtResource( 49 )
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider3" index="27"]
 disabled = true
@@ -4186,9 +4179,6 @@ volume_db = -16.5071
 
 [node name="flap" parent="title_screen/title/fast_glider10" index="14" groups=["flap_sound"]]
 
-[node name="energy" parent="title_screen/title/fast_glider10" index="25"]
-script = ExtResource( 49 )
-
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider10" index="27"]
 disabled = true
 
@@ -4244,9 +4234,6 @@ monitoring = true
 volume_db = -16.5071
 
 [node name="flap" parent="title_screen/title/fast_glider4" index="14" groups=["flap_sound"]]
-
-[node name="energy" parent="title_screen/title/fast_glider4" index="25"]
-script = ExtResource( 49 )
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider4" index="27"]
 disabled = true
@@ -4305,9 +4292,6 @@ volume_db = -16.5071
 
 [node name="flap" parent="title_screen/title/fast_glider5" index="14" groups=["flap_sound"]]
 
-[node name="energy" parent="title_screen/title/fast_glider5" index="25"]
-script = ExtResource( 49 )
-
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider5" index="27"]
 disabled = true
 
@@ -4364,9 +4348,6 @@ monitoring = true
 volume_db = -16.5071
 
 [node name="flap" parent="title_screen/title/fast_glider6" index="14" groups=["flap_sound"]]
-
-[node name="energy" parent="title_screen/title/fast_glider6" index="25"]
-script = ExtResource( 49 )
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider6" index="27"]
 disabled = true
@@ -4425,9 +4406,6 @@ volume_db = -16.5071
 
 [node name="flap" parent="title_screen/title/fast_glider7" index="14" groups=["flap_sound"]]
 
-[node name="energy" parent="title_screen/title/fast_glider7" index="25"]
-script = ExtResource( 49 )
-
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider7" index="27"]
 disabled = true
 
@@ -4485,9 +4463,6 @@ volume_db = -16.5071
 
 [node name="flap" parent="title_screen/title/fast_glider8" index="14" groups=["flap_sound"]]
 
-[node name="energy" parent="title_screen/title/fast_glider8" index="25"]
-script = ExtResource( 49 )
-
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider8" index="27"]
 disabled = true
 
@@ -4544,9 +4519,6 @@ monitoring = true
 volume_db = -16.5071
 
 [node name="flap" parent="title_screen/title/fast_glider9" index="14" groups=["flap_sound"]]
-
-[node name="energy" parent="title_screen/title/fast_glider9" index="25"]
-script = ExtResource( 49 )
 
 [node name="set_velocity_to_portal_exit" parent="title_screen/title/fast_glider9" index="27"]
 disabled = true
@@ -4875,13 +4847,13 @@ pause_mode = 2
 script = ExtResource( 25 )
 
 [node name="phoenix_bullet_pool" parent="." instance=ExtResource( 37 )]
-material = SubResource( 352 )
+material = SubResource( 354 )
 
 [node name="gun_bullet_pool" parent="." instance=ExtResource( 39 )]
-material = SubResource( 355 )
+material = SubResource( 357 )
 
 [node name="wide_bullet_pool" parent="." instance=ExtResource( 40 )]
-material = SubResource( 358 )
+material = SubResource( 360 )
 
 [connection signal="game_over" from="." to="playjam_gameover" method="_on_game_over"]
 [connection signal="player_alive" from="." to="wait_on_game_over" method="stop"]
@@ -4889,72 +4861,42 @@ material = SubResource( 358 )
 [connection signal="timeout" from="ghost_spawner/Timer" to="ghost_spawner" method="_on_Timer_timeout" flags=3]
 [connection signal="seed_taken" from="seed_spawner" to="fall_spawner/spawner_trigger_on_seeds_taken" method="_on_seed_taken"]
 [connection signal="trigger" from="fall_spawner/spawner_trigger_on_seeds_taken" to="fall_spawner" method="spawn"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider" to="title_screen/title/fast_glider/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider/on_soft_collision" to="title_screen/title/fast_glider/energy" method="add_value" binds= [ -5.0 ]]
-[connection signal="value_changed" from="title_screen/title/fast_glider/energy" to="title_screen/title/fast_glider/HUD/HBoxContainer/energy_bar" method="update_values"]
 [connection signal="trigger" from="title_screen/title/fast_glider/kill_on_no_energy" to="title_screen/title/fast_glider/explode_action" method="trigger"]
 [connection signal="trigger" from="title_screen/title/fast_glider/explode_action" to="title_screen/title/fast_glider/many_feathers_slow" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider/explode_action" to="title_screen/title/fast_glider/some_feathers_fast" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider/explode_action" to="title_screen/title/fast_glider/explosion" method="play"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider2" to="title_screen/title/fast_glider2/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider2/on_soft_collision" to="title_screen/title/fast_glider2/energy" method="add_value" binds= [ -5.0 ]]
-[connection signal="value_changed" from="title_screen/title/fast_glider2/energy" to="title_screen/title/fast_glider2/HUD/HBoxContainer/energy_bar" method="update_values"]
 [connection signal="trigger" from="title_screen/title/fast_glider2/kill_on_no_energy" to="title_screen/title/fast_glider2/explode_action" method="trigger"]
 [connection signal="trigger" from="title_screen/title/fast_glider2/explode_action" to="title_screen/title/fast_glider2/many_feathers_slow" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider2/explode_action" to="title_screen/title/fast_glider2/some_feathers_fast" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider2/explode_action" to="title_screen/title/fast_glider2/explosion" method="play"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider3" to="title_screen/title/fast_glider3/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider3/on_soft_collision" to="title_screen/title/fast_glider3/energy" method="add_value" binds= [ -5.0 ]]
-[connection signal="value_changed" from="title_screen/title/fast_glider3/energy" to="title_screen/title/fast_glider3/HUD/HBoxContainer/energy_bar" method="update_values"]
 [connection signal="trigger" from="title_screen/title/fast_glider3/kill_on_no_energy" to="title_screen/title/fast_glider3/explode_action" method="trigger"]
 [connection signal="trigger" from="title_screen/title/fast_glider3/explode_action" to="title_screen/title/fast_glider3/many_feathers_slow" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider3/explode_action" to="title_screen/title/fast_glider3/some_feathers_fast" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider3/explode_action" to="title_screen/title/fast_glider3/explosion" method="play"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider10" to="title_screen/title/fast_glider10/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider10/on_soft_collision" to="title_screen/title/fast_glider10/energy" method="add_value" binds= [ -5.0 ]]
-[connection signal="value_changed" from="title_screen/title/fast_glider10/energy" to="title_screen/title/fast_glider10/HUD/HBoxContainer/energy_bar" method="update_values"]
 [connection signal="trigger" from="title_screen/title/fast_glider10/kill_on_no_energy" to="title_screen/title/fast_glider10/explode_action" method="trigger"]
 [connection signal="trigger" from="title_screen/title/fast_glider10/explode_action" to="title_screen/title/fast_glider10/many_feathers_slow" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider10/explode_action" to="title_screen/title/fast_glider10/some_feathers_fast" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider10/explode_action" to="title_screen/title/fast_glider10/explosion" method="play"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider4" to="title_screen/title/fast_glider4/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider4/on_soft_collision" to="title_screen/title/fast_glider4/energy" method="add_value" binds= [ -5.0 ]]
-[connection signal="value_changed" from="title_screen/title/fast_glider4/energy" to="title_screen/title/fast_glider4/HUD/HBoxContainer/energy_bar" method="update_values"]
 [connection signal="trigger" from="title_screen/title/fast_glider4/kill_on_no_energy" to="title_screen/title/fast_glider4/explode_action" method="trigger"]
 [connection signal="trigger" from="title_screen/title/fast_glider4/explode_action" to="title_screen/title/fast_glider4/many_feathers_slow" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider4/explode_action" to="title_screen/title/fast_glider4/some_feathers_fast" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider4/explode_action" to="title_screen/title/fast_glider4/explosion" method="play"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider5" to="title_screen/title/fast_glider5/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider5/on_soft_collision" to="title_screen/title/fast_glider5/energy" method="add_value" binds= [ -5.0 ]]
-[connection signal="value_changed" from="title_screen/title/fast_glider5/energy" to="title_screen/title/fast_glider5/HUD/HBoxContainer/energy_bar" method="update_values"]
 [connection signal="trigger" from="title_screen/title/fast_glider5/kill_on_no_energy" to="title_screen/title/fast_glider5/explode_action" method="trigger"]
 [connection signal="trigger" from="title_screen/title/fast_glider5/explode_action" to="title_screen/title/fast_glider5/many_feathers_slow" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider5/explode_action" to="title_screen/title/fast_glider5/some_feathers_fast" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider5/explode_action" to="title_screen/title/fast_glider5/explosion" method="play"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider6" to="title_screen/title/fast_glider6/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider6/on_soft_collision" to="title_screen/title/fast_glider6/energy" method="add_value" binds= [ -5.0 ]]
-[connection signal="value_changed" from="title_screen/title/fast_glider6/energy" to="title_screen/title/fast_glider6/HUD/HBoxContainer/energy_bar" method="update_values"]
 [connection signal="trigger" from="title_screen/title/fast_glider6/kill_on_no_energy" to="title_screen/title/fast_glider6/explode_action" method="trigger"]
 [connection signal="trigger" from="title_screen/title/fast_glider6/explode_action" to="title_screen/title/fast_glider6/many_feathers_slow" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider6/explode_action" to="title_screen/title/fast_glider6/some_feathers_fast" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider6/explode_action" to="title_screen/title/fast_glider6/explosion" method="play"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider7" to="title_screen/title/fast_glider7/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider7/on_soft_collision" to="title_screen/title/fast_glider7/energy" method="add_value" binds= [ -5.0 ]]
-[connection signal="value_changed" from="title_screen/title/fast_glider7/energy" to="title_screen/title/fast_glider7/HUD/HBoxContainer/energy_bar" method="update_values"]
 [connection signal="trigger" from="title_screen/title/fast_glider7/kill_on_no_energy" to="title_screen/title/fast_glider7/explode_action" method="trigger"]
 [connection signal="trigger" from="title_screen/title/fast_glider7/explode_action" to="title_screen/title/fast_glider7/many_feathers_slow" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider7/explode_action" to="title_screen/title/fast_glider7/some_feathers_fast" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider7/explode_action" to="title_screen/title/fast_glider7/explosion" method="play"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider8" to="title_screen/title/fast_glider8/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider8/on_soft_collision" to="title_screen/title/fast_glider8/energy" method="add_value" binds= [ -5.0 ]]
-[connection signal="value_changed" from="title_screen/title/fast_glider8/energy" to="title_screen/title/fast_glider8/HUD/HBoxContainer/energy_bar" method="update_values"]
 [connection signal="trigger" from="title_screen/title/fast_glider8/kill_on_no_energy" to="title_screen/title/fast_glider8/explode_action" method="trigger"]
 [connection signal="trigger" from="title_screen/title/fast_glider8/explode_action" to="title_screen/title/fast_glider8/many_feathers_slow" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider8/explode_action" to="title_screen/title/fast_glider8/some_feathers_fast" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider8/explode_action" to="title_screen/title/fast_glider8/explosion" method="play"]
-[connection signal="failed_flap" from="title_screen/title/fast_glider9" to="title_screen/title/fast_glider9/energy" method="_on_flapped"]
-[connection signal="trigger" from="title_screen/title/fast_glider9/on_soft_collision" to="title_screen/title/fast_glider9/energy" method="add_value" binds= [ -5.0 ]]
-[connection signal="value_changed" from="title_screen/title/fast_glider9/energy" to="title_screen/title/fast_glider9/HUD/HBoxContainer/energy_bar" method="update_values"]
 [connection signal="trigger" from="title_screen/title/fast_glider9/kill_on_no_energy" to="title_screen/title/fast_glider9/explode_action" method="trigger"]
 [connection signal="trigger" from="title_screen/title/fast_glider9/explode_action" to="title_screen/title/fast_glider9/many_feathers_slow" method="_on_collision_no_args"]
 [connection signal="trigger" from="title_screen/title/fast_glider9/explode_action" to="title_screen/title/fast_glider9/some_feathers_fast" method="_on_collision_no_args"]

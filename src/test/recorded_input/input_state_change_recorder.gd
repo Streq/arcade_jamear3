@@ -1,5 +1,18 @@
 extends Node
 
+#to use this class you would first record gameplay
+#HOW TO RECORD GAMEPLAY
+#set autoplay off in the editor
+#set the demo name (careful not to overwrite existing demos)
+#assign the flapper you wanna record
+#assign the flapper you wanna replay if there is one
+#run the scene
+#start recording by pressing 1
+#when you are done press 2
+#save the recording with 3
+#exit the scene
+#load the recording with 4
+
 var recording := false
 var events := []
 var frame := 0

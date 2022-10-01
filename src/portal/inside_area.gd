@@ -16,5 +16,6 @@ func _on_body_entered(body : KinematicBody2D):
 	body.emit_signal("entered_portal", owner)
 	NodeUtils.reparent(body, viewport)
 	body.global_position = pos
-	get_parent()._on_exited()
+	if body.is_in_group("flapper"):
+		get_parent()._on_exited()
 	
