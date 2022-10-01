@@ -17,7 +17,7 @@
 [ext_resource path="res://src/flapper/recorder.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/tutorial/disappear.gd" type="Script" id=16]
 
-[sub_resource type="Image" id=84]
+[sub_resource type="Image" id=86]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -29,7 +29,7 @@ data = {
 [sub_resource type="ImageTexture" id=77]
 flags = 0
 flags = 0
-image = SubResource( 84 )
+image = SubResource( 86 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=50]
@@ -40,7 +40,7 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
 shader_param/palette = SubResource( 77 )
 
-[sub_resource type="Image" id=85]
+[sub_resource type="Image" id=87]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 50, 0, 76, 255, 203, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
@@ -52,7 +52,7 @@ data = {
 [sub_resource type="ImageTexture" id=79]
 flags = 0
 flags = 0
-image = SubResource( 85 )
+image = SubResource( 87 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
@@ -63,7 +63,7 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 79 )
 
-[sub_resource type="Image" id=86]
+[sub_resource type="Image" id=88]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 205, 255, 0, 255, 1, 140, 0, 255, 128, 255, 0, 255 ),
 "format": "RGBA8",
@@ -75,7 +75,7 @@ data = {
 [sub_resource type="ImageTexture" id=81]
 flags = 0
 flags = 0
-image = SubResource( 86 )
+image = SubResource( 88 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=9]
@@ -419,7 +419,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=87]
+[sub_resource type="Image" id=89]
 data = {
 "data": PoolByteArray( 24, 151, 151, 255, 0, 255, 255, 255, 0, 160, 215, 255 ),
 "format": "RGBA8",
@@ -431,7 +431,7 @@ data = {
 [sub_resource type="ImageTexture" id=83]
 flags = 0
 flags = 0
-image = SubResource( 87 )
+image = SubResource( 89 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=69]
@@ -554,20 +554,20 @@ tracks/1/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Gradient" id=46]
+[sub_resource type="Gradient" id=84]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture2D" id=74]
-gradient = SubResource( 46 )
+gradient = SubResource( 84 )
 width = 32
 height = 8
 fill_from = Vector2( 0, 1 )
 
-[sub_resource type="Gradient" id=47]
+[sub_resource type="Gradient" id=85]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture2D" id=75]
-gradient = SubResource( 47 )
+gradient = SubResource( 85 )
 width = 32
 height = 6
 fill_from = Vector2( 0, 1 )
