@@ -19,7 +19,7 @@
 [ext_resource path="res://src/util/free.tscn" type="PackedScene" id=17]
 [ext_resource path="res://src/tutorial/disappear.gd" type="Script" id=18]
 
-[sub_resource type="Image" id=111]
+[sub_resource type="Image" id=113]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -31,7 +31,7 @@ data = {
 [sub_resource type="ImageTexture" id=106]
 flags = 0
 flags = 0
-image = SubResource( 111 )
+image = SubResource( 113 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=65]
@@ -378,7 +378,7 @@ tracks/1/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Image" id=112]
+[sub_resource type="Image" id=114]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 50, 0, 76, 255, 203, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
@@ -390,7 +390,7 @@ data = {
 [sub_resource type="ImageTexture" id=108]
 flags = 0
 flags = 0
-image = SubResource( 112 )
+image = SubResource( 114 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=62]
@@ -681,7 +681,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=113]
+[sub_resource type="Image" id=115]
 data = {
 "data": PoolByteArray( 24, 151, 151, 255, 0, 255, 255, 255, 0, 160, 215, 255 ),
 "format": "RGBA8",
@@ -693,7 +693,7 @@ data = {
 [sub_resource type="ImageTexture" id=110]
 flags = 0
 flags = 0
-image = SubResource( 113 )
+image = SubResource( 115 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=82]
@@ -816,20 +816,20 @@ tracks/1/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Gradient" id=46]
+[sub_resource type="Gradient" id=111]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture2D" id=87]
-gradient = SubResource( 46 )
+gradient = SubResource( 111 )
 width = 32
 height = 8
 fill_from = Vector2( 0, 1 )
 
-[sub_resource type="Gradient" id=47]
+[sub_resource type="Gradient" id=112]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture2D" id=88]
-gradient = SubResource( 47 )
+gradient = SubResource( 112 )
 width = 32
 height = 6
 fill_from = Vector2( 0, 1 )
