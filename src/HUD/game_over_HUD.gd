@@ -28,7 +28,7 @@ func show_no_record():
 	new_record.disable()
 	no_record.enable()
 
-func enable():
+func enable(param=null):
 	if ScoreBoard.is_new_record(score.total_time):
 		show_new_record()
 	else:

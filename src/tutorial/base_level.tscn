@@ -1,7 +1,8 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://src/HUD/text.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/HUD/panel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/map/play_music.gd" type="Script" id=3]
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=4]
 [ext_resource path="res://src/portal/portal_tutorial.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/map/map.gd" type="Script" id=8]
@@ -464,6 +465,10 @@ autoplay = true
 record_input_state_path = NodePath("../fast_glider2/input_state")
 replay_input_state_path = NodePath("")
 demo_name = "demo_tutorial_0.dat"
+
+[node name="play_music" type="Node" parent="."]
+script = ExtResource( 3 )
+song = "cave"
 
 [connection signal="player_exited" from="portal" to="." method="area_completed"]
 

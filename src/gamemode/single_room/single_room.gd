@@ -5,6 +5,8 @@ signal player_dead
 
 export var PLAYER : PackedScene
 
+export var yield_time_after_death := 0.0
+
 var player
 var player_alive = true setget set_player_alive
 var app_state_node
@@ -41,6 +43,8 @@ func _on_player_died(cause):
 			return
 	self.player_alive = false
 #	self.cause_of_death = cause
+	if yield_time_after_death > 0.0:
+		yield(get_tree().create_timer(yield_time_after_death),"timeout")
 	emit_signal("game_over",cause)
 func _input(event):
 	if OS.is_debug_build():

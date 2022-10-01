@@ -36,7 +36,7 @@ func curr_level():
 func load_level():
 	AudioServer.set_bus_mute(0,true)
 	LoadingHud.visible = true
-	Music.play_music_no_crossfade("")
+#	Music.play_music_no_crossfade("")
 	
 	for i in 1:
 		yield(get_tree(),"idle_frame")

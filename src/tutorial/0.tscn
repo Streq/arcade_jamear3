@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://src/flapper/presets/fast_glider.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/portal/portal_tutorial.tscn" type="PackedScene" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://src/gamemode/single_room/remove_flapper.gd" type="Script" id=16]
 [ext_resource path="res://src/util/free.tscn" type="PackedScene" id=17]
 [ext_resource path="res://src/tutorial/disappear.gd" type="Script" id=18]
+[ext_resource path="res://src/map/play_music.gd" type="Script" id=19]
 
 [sub_resource type="Image" id=119]
 data = {
@@ -895,7 +896,7 @@ margin_bottom = 360.0
 
 [node name="tutorial_text" parent="MarginContainer" instance=ExtResource( 5 )]
 margin_right = 246.0
-margin_bottom = 73.0
+margin_bottom = 56.0
 text = "Presiona 
 Z en el teclado o A en el joystick
 para aletear hacia el portal!"
@@ -1089,6 +1090,10 @@ autoplay = true
 record_input_state_path = NodePath("../../fast_glider2/input_state")
 replay_input_state_path = NodePath("../demo_glider/input_state")
 demo_name = "demo_tutorial_0.dat"
+
+[node name="play_music" type="Node" parent="."]
+script = ExtResource( 19 )
+song = "cave"
 
 [connection signal="player_exited" from="portal" to="." method="area_completed"]
 [connection signal="entered_portal" from="demo/demo_glider" to="demo/demo_glider/disappear" method="trigger"]

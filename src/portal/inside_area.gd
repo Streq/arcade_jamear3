@@ -30,4 +30,5 @@ func _on_body_entered(body : KinematicBody2D):
 	
 
 func _on_body_exited(body : KinematicBody2D):
-	print("exit")
+#	print("exit")
+	pass
