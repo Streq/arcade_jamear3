@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/test/app_state/circuit_with_finish.gd" type="Script" id=1]
 [ext_resource path="res://src/test/app_state/tutorial.gd" type="Script" id=2]
@@ -8,13 +8,10 @@
 [ext_resource path="res://src/tutorial/2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/tutorial/3.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/tutorial/4.tscn" type="PackedScene" id=10]
-[ext_resource path="res://src/HUD/energy_bar.gd" type="Script" id=11]
 [ext_resource path="res://src/tutorial/5.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/tutorial/6.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/texture/cave_background.png" type="Texture" id=14]
 [ext_resource path="res://src/tutorial/7.tscn" type="PackedScene" id=15]
-[ext_resource path="res://src/HUD/energy_HUD.gd" type="Script" id=16]
-[ext_resource path="res://assets/texture/dither1x4.png" type="Texture" id=17]
 [ext_resource path="res://src/tutorial/8.tscn" type="PackedScene" id=18]
 [ext_resource path="res://src/tutorial/9.tscn" type="PackedScene" id=19]
 [ext_resource path="res://src/tutorial/11.tscn" type="PackedScene" id=20]
@@ -22,16 +19,9 @@
 [ext_resource path="res://src/tutorial/12.tscn" type="PackedScene" id=22]
 [ext_resource path="res://src/tutorial/13.tscn" type="PackedScene" id=23]
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 2
-atlas = ExtResource( 17 )
-region = Rect2( 0, 0, 256, 8 )
-
 [node name="tutorial" type="Node2D"]
 pause_mode = 1
 script = ExtResource( 2 )
-
-[node name="player_hud" type="Node" parent="."]
 
 [node name="circuit" type="Node" parent="." groups=["level_circuit"]]
 script = ExtResource( 1 )
@@ -107,27 +97,6 @@ script = ExtResource( 5 )
 scene = ExtResource( 23 )
 texture = ExtResource( 14 )
 
-[node name="player_HUD" type="CanvasLayer" parent="."]
-script = ExtResource( 16 )
-
-[node name="energy_bar" type="TextureProgress" parent="player_HUD"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -256.0
-margin_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-max_value = 256.0
-step = 0.0
-value = 256.0
-texture_under = SubResource( 1 )
-texture_progress = SubResource( 1 )
-fill_mode = 1
-tint_under = Color( 1, 0, 0, 1 )
-tint_progress = Color( 0.129412, 1, 0, 1 )
-script = ExtResource( 11 )
-
-[connection signal="new_level" from="." to="player_HUD" method="set_to"]
 [connection signal="finished" from="circuit" to="." method="_on_go_back"]
 [connection signal="level_finished" from="circuit" to="." method="_on_level_finished"]
 [connection signal="next_level" from="circuit" to="." method="_on_next_level"]

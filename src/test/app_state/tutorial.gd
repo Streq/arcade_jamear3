@@ -1,6 +1,5 @@
 extends Node
 onready var circuit = $circuit
-onready var player_hud = $player_HUD
 
 
 signal new_level(player)

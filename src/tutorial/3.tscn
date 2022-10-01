@@ -1,17 +1,14 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/tutorial/0.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/color/palette.gd" type="Script" id=2]
 [ext_resource path="res://assets/texture/acid_texture.tres" type="Texture" id=3]
 [ext_resource path="res://src/terrain/acid_zone.gd" type="Script" id=4]
-[ext_resource path="res://assets/texture/arrow.png" type="Texture" id=5]
-[ext_resource path="res://src/util/free.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/HUD/player_HUD.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=8]
 
 [sub_resource type="Image" id=19]
 data = {
-"data": PoolByteArray( 0, 0, 0, 255, 49, 0, 75, 255, 202, 100, 0, 255, 255, 167, 0, 255 ),
+"data": PoolByteArray( 0, 0, 0, 255, 50, 0, 76, 255, 203, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -130,16 +127,16 @@ margin_right = 719.0
 margin_bottom = 112.0
 
 [node name="tutorial_text" parent="MarginContainer" index="2"]
-margin_right = 225.0
+margin_right = 232.0
 margin_bottom = 39.0
-text = "esta es tu energía, 
+text = "la barrita verde es tu energía, 
 disminuye con choques y aleteos"
 align = 1
 
 [node name="acid_zone" type="Area2D" parent="." index="4"]
 z_index = -1
-collision_layer = 8
-collision_mask = 0
+collision_layer = 0
+collision_mask = 512
 script = ExtResource( 4 )
 
 [node name="tilemap" type="TileMap" parent="acid_zone" index="0"]
@@ -154,15 +151,4 @@ tile_data = PoolIntArray( 1835011, 0, 2, 1835012, 0, 2, 1835013, 0, 2, 1835014, 
 script = ExtResource( 2 )
 palette = PoolColorArray( 0, 0, 0, 1, 0.803922, 1, 0, 1, 0.00392157, 0.54902, 0, 1, 0.501961, 1, 0, 1 )
 material = SubResource( 9 )
-
-[node name="player_HUD" parent="." index="5" instance=ExtResource( 7 )]
-
-[node name="free" parent="player_HUD" index="2" instance=ExtResource( 6 )]
-
-[node name="Sprite" type="Sprite" parent="." index="6"]
-position = Vector2( 708, 37 )
-rotation = -1.0472
-texture = ExtResource( 5 )
-
-[connection signal="area_entered" from="acid_zone" to="." method="_on_acid_zone_area_entered"]
-[connection signal="set_to" from="player_HUD" to="player_HUD/HUD_map" method="set_to"]
+string_val = "[\"ff000000\",\"ffcdff00\",\"ff018c00\",\"ff80ff00\"]"

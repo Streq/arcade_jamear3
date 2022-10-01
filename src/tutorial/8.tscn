@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/tutorial/0.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/enemy/lancer/lancero.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/object_pool/arrow_pool.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=8]
 
-[sub_resource type="Image" id=9]
+[sub_resource type="Image" id=12]
 data = {
-"data": PoolByteArray( 0, 0, 0, 255, 49, 0, 75, 255, 202, 100, 0, 255, 255, 167, 0, 255 ),
+"data": PoolByteArray( 0, 0, 0, 255, 50, 0, 76, 255, 203, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -16,7 +17,7 @@ data = {
 [sub_resource type="ImageTexture" id=5]
 flags = 0
 flags = 0
-image = SubResource( 9 )
+image = SubResource( 12 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
@@ -27,9 +28,9 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 5 )
 
-[sub_resource type="Image" id=10]
+[sub_resource type="Image" id=13]
 data = {
-"data": PoolByteArray( 56, 0, 0, 255, 0, 61, 94, 255, 253, 255, 0, 255 ),
+"data": PoolByteArray( 57, 0, 0, 255, 0, 61, 95, 255, 253, 255, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -39,7 +40,7 @@ data = {
 [sub_resource type="ImageTexture" id=7]
 flags = 0
 flags = 0
-image = SubResource( 10 )
+image = SubResource( 13 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=8]
@@ -49,6 +50,29 @@ shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 7 )
+
+[sub_resource type="Image" id=14]
+data = {
+"data": PoolByteArray( 255, 0, 0, 255, 247, 255, 0, 255, 255, 255, 255, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 3
+}
+
+[sub_resource type="ImageTexture" id=10]
+flags = 0
+flags = 0
+image = SubResource( 14 )
+size = Vector2( 3, 1 )
+
+[sub_resource type="ShaderMaterial" id=11]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/palette_size = 3
+shader_param/offset = 0
+shader_param/blue_index_offset = 0.0
+shader_param/palette = SubResource( 10 )
 
 [node name="Node2D" instance=ExtResource( 1 )]
 
@@ -73,6 +97,7 @@ margin_bottom = 176.0
 
 [node name="tutorial_text" parent="MarginContainer" index="2"]
 margin_right = 344.0
+margin_bottom = 56.0
 text = "Bueno ahí tenés tu energía de nuevo.
 Esto de abajo es un arquero durmiendo.
 Los arqueros disparan cuando te escuchan aletear"
@@ -82,3 +107,6 @@ align = 1
 material = SubResource( 8 )
 position = Vector2( 480, 456 )
 difficulty = 50.0
+
+[node name="arrow_pool" parent="." index="5" instance=ExtResource( 3 )]
+material = SubResource( 11 )

@@ -5,7 +5,7 @@
 
 [sub_resource type="Image" id=6]
 data = {
-"data": PoolByteArray( 0, 0, 0, 255, 49, 0, 75, 255, 202, 100, 0, 255, 255, 167, 0, 255 ),
+"data": PoolByteArray( 0, 0, 0, 255, 50, 0, 76, 255, 203, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -49,7 +49,6 @@ margin_bottom = 368.0
 
 [node name="tutorial_text" parent="MarginContainer" index="2"]
 margin_right = 264.0
-margin_bottom = 73.0
 text = "Con las flechitas o el analog stick
 podés cambiar la dirección.
 El pájaro va a mirar en la dirección a la que apuntes"

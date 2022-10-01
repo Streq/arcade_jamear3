@@ -19,7 +19,7 @@
 
 [sub_resource type="Image" id=25]
 data = {
-"data": PoolByteArray( 0, 0, 0, 255, 49, 0, 75, 255, 202, 100, 0, 255, 255, 167, 0, 255 ),
+"data": PoolByteArray( 0, 0, 0, 255, 50, 0, 76, 255, 203, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -135,6 +135,7 @@ tile_data = PoolIntArray( -1, 8, 8, -65536, 8, 10, -65535, 8, 10, -65534, 8, 10,
 [node name="palette" parent="TileMap" instance=ExtResource( 2 )]
 palette = PoolColorArray( 0, 0, 0, 1, 0.196078, 0, 0.298039, 1, 0.796078, 0.392157, 0, 1, 1, 0.654902, 0, 1 )
 material = SubResource( 3 )
+string_val = "[\"ff000000\",\"ff32004c\",\"ffcb6400\",\"ffffa700\"]"
 
 [node name="MarginContainer" parent="." instance=ExtResource( 12 )]
 margin_left = 239.0
@@ -184,8 +185,8 @@ text = "holes: 2"
 
 [node name="acid_zone" type="Area2D" parent="."]
 z_index = -1
-collision_layer = 8
-collision_mask = 0
+collision_layer = 0
+collision_mask = 512
 script = ExtResource( 14 )
 
 [node name="tilemap" type="TileMap" parent="acid_zone"]
@@ -200,5 +201,6 @@ tile_data = PoolIntArray( 1703941, 0, 2, 1703942, 0, 2, 1703943, 0, 2, 1703944, 
 script = ExtResource( 15 )
 palette = PoolColorArray( 0, 0, 0, 1, 0.803922, 1, 0, 1, 0.00392157, 0.54902, 0, 1, 0.501961, 1, 0, 1 )
 material = SubResource( 19 )
+string_val = "[\"ff000000\",\"ffcdff00\",\"ff018c00\",\"ff80ff00\"]"
 
 [editable path="navigation_generator"]

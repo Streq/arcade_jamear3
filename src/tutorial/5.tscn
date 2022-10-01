@@ -8,7 +8,7 @@
 [ext_resource path="res://src/HUD/player_HUD.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=8]
 
-[sub_resource type="Image" id=24]
+[sub_resource type="Image" id=18]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -20,7 +20,7 @@ data = {
 [sub_resource type="ImageTexture" id=19]
 flags = 0
 flags = 0
-image = SubResource( 24 )
+image = SubResource( 18 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=17]
@@ -31,9 +31,9 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
 shader_param/palette = SubResource( 19 )
 
-[sub_resource type="Image" id=25]
+[sub_resource type="Image" id=20]
 data = {
-"data": PoolByteArray( 0, 0, 0, 255, 49, 0, 75, 255, 202, 100, 0, 255, 255, 167, 0, 255 ),
+"data": PoolByteArray( 0, 0, 0, 255, 50, 0, 76, 255, 203, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -43,7 +43,7 @@ data = {
 [sub_resource type="ImageTexture" id=21]
 flags = 0
 flags = 0
-image = SubResource( 25 )
+image = SubResource( 20 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
@@ -54,7 +54,7 @@ shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 21 )
 
-[sub_resource type="Image" id=26]
+[sub_resource type="Image" id=22]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 205, 255, 0, 255, 1, 140, 0, 255, 128, 255, 0, 255 ),
 "format": "RGBA8",
@@ -66,7 +66,7 @@ data = {
 [sub_resource type="ImageTexture" id=23]
 flags = 0
 flags = 0
-image = SubResource( 26 )
+image = SubResource( 22 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=9]
@@ -138,10 +138,10 @@ position = Vector2( 55, 60 )
 [node name="energy" parent="fast_glider" index="24"]
 value = 2.0
 
-[node name="Sprite" parent="fast_glider" index="28"]
+[node name="Sprite" parent="fast_glider/pivot" index="0"]
 material = SubResource( 17 )
 
-[node name="palette" parent="fast_glider/Sprite" index="1"]
+[node name="palette" parent="fast_glider/pivot/Sprite/palette_manager" index="0"]
 material = SubResource( 17 )
 
 [node name="TileMap" parent="." index="1"]
@@ -162,6 +162,7 @@ margin_bottom = 184.0
 
 [node name="tutorial_text" parent="MarginContainer" index="2"]
 margin_right = 400.0
+margin_bottom = 56.0
 text = "apretando X en el teclado o B/RB en el joystick
 podés planear
 Tené en cuenta que si caés muy rápido tus alas se doblan"
@@ -169,8 +170,8 @@ align = 1
 
 [node name="acid_zone" type="Area2D" parent="." index="4"]
 z_index = -1
-collision_layer = 8
-collision_mask = 0
+collision_layer = 0
+collision_mask = 512
 script = ExtResource( 4 )
 
 [node name="tilemap" type="TileMap" parent="acid_zone" index="0"]
@@ -185,12 +186,12 @@ tile_data = PoolIntArray( 1835011, 0, 2, 1835012, 0, 2, 1835013, 0, 2, 1835014, 
 script = ExtResource( 2 )
 palette = PoolColorArray( 0, 0, 0, 1, 0.803922, 1, 0, 1, 0.00392157, 0.54902, 0, 1, 0.501961, 1, 0, 1 )
 material = SubResource( 9 )
+string_val = "[\"ff000000\",\"ffcdff00\",\"ff018c00\",\"ff80ff00\"]"
 
 [node name="player_HUD" parent="." index="5" instance=ExtResource( 7 )]
 
-[node name="free" parent="player_HUD" index="2" instance=ExtResource( 6 )]
+[node name="free" parent="player_HUD" index="1" instance=ExtResource( 6 )]
 
-[connection signal="area_entered" from="acid_zone" to="." method="_on_acid_zone_area_entered"]
 [connection signal="set_to" from="player_HUD" to="player_HUD/HUD_map" method="set_to"]
 
 [editable path="fast_glider"]
