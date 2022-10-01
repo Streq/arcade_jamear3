@@ -17,7 +17,7 @@
 [ext_resource path="res://src/flapper/recorder.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/tutorial/disappear.gd" type="Script" id=16]
 
-[sub_resource type="Image" id=76]
+[sub_resource type="Image" id=94]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -26,10 +26,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=49]
+[sub_resource type="ImageTexture" id=87]
 flags = 0
 flags = 0
-image = SubResource( 76 )
+image = SubResource( 94 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=50]
@@ -38,9 +38,9 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 49 )
+shader_param/palette = SubResource( 87 )
 
-[sub_resource type="Image" id=77]
+[sub_resource type="Image" id=95]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 50, 0, 76, 255, 203, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
@@ -49,10 +49,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=52]
+[sub_resource type="ImageTexture" id=89]
 flags = 0
 flags = 0
-image = SubResource( 77 )
+image = SubResource( 95 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
@@ -61,9 +61,9 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 52 )
+shader_param/palette = SubResource( 89 )
 
-[sub_resource type="Image" id=78]
+[sub_resource type="Image" id=96]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 205, 255, 0, 255, 1, 140, 0, 255, 128, 255, 0, 255 ),
 "format": "RGBA8",
@@ -72,10 +72,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=54]
+[sub_resource type="ImageTexture" id=91]
 flags = 0
 flags = 0
-image = SubResource( 78 )
+image = SubResource( 96 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=9]
@@ -84,7 +84,7 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 54 )
+shader_param/palette = SubResource( 91 )
 
 [sub_resource type="ConvexPolygonShape2D" id=12]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -419,7 +419,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=79]
+[sub_resource type="Image" id=97]
 data = {
 "data": PoolByteArray( 24, 151, 151, 255, 0, 255, 255, 255, 0, 160, 215, 255 ),
 "format": "RGBA8",
@@ -428,10 +428,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=68]
+[sub_resource type="ImageTexture" id=93]
 flags = 0
 flags = 0
-image = SubResource( 79 )
+image = SubResource( 97 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=69]
@@ -440,7 +440,7 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 68 )
+shader_param/palette = SubResource( 93 )
 
 [sub_resource type="Animation" id=70]
 length = 0.001
@@ -554,20 +554,20 @@ tracks/1/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Gradient" id=46]
+[sub_resource type="Gradient" id=84]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture2D" id=74]
-gradient = SubResource( 46 )
+gradient = SubResource( 84 )
 width = 32
 height = 8
 fill_from = Vector2( 0, 1 )
 
-[sub_resource type="Gradient" id=47]
+[sub_resource type="Gradient" id=85]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture2D" id=75]
-gradient = SubResource( 47 )
+gradient = SubResource( 85 )
 width = 32
 height = 6
 fill_from = Vector2( 0, 1 )
@@ -793,7 +793,7 @@ align = 1
 autowrap = true
 script = ExtResource( 6 )
 autoplay = true
-texts = PoolStringArray( "La barrita verde esa arriba tuyo es tu energía", "a medida que aleteás y chocás con paredes se va agotando", "si se te termina no podés volar" )
+texts = PoolStringArray( "La barrita verde esa arriba tuyo es tu energía", "a medida que aleteás y chocás con paredes se va agotando", "ves\? ahí me la puse", " no se nota porque no tengo barrita pero si tuviera me habría bajado", "si se te termina no podés volar" )
 file_name = "demo_text_tutorial_3.dat"
 
 [node name="MarginContainer" type="MarginContainer" parent="demo/demo_glider/tutorial_pivot/tutorial_text" index="0"]

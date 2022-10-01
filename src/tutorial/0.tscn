@@ -19,7 +19,7 @@
 [ext_resource path="res://src/util/free.tscn" type="PackedScene" id=17]
 [ext_resource path="res://src/tutorial/disappear.gd" type="Script" id=18]
 
-[sub_resource type="Image" id=113]
+[sub_resource type="Image" id=119]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -28,10 +28,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=106]
+[sub_resource type="ImageTexture" id=114]
 flags = 0
 flags = 0
-image = SubResource( 113 )
+image = SubResource( 119 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=65]
@@ -40,7 +40,7 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 106 )
+shader_param/palette = SubResource( 114 )
 
 [sub_resource type="Animation" id=91]
 length = 0.001
@@ -378,7 +378,7 @@ tracks/1/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Image" id=114]
+[sub_resource type="Image" id=120]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 50, 0, 76, 255, 203, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
@@ -387,10 +387,10 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=108]
+[sub_resource type="ImageTexture" id=116]
 flags = 0
 flags = 0
-image = SubResource( 114 )
+image = SubResource( 120 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=62]
@@ -399,7 +399,7 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 4
 shader_param/offset = 0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 108 )
+shader_param/palette = SubResource( 116 )
 
 [sub_resource type="Animation" id=68]
 length = 0.001
@@ -681,7 +681,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=115]
+[sub_resource type="Image" id=121]
 data = {
 "data": PoolByteArray( 24, 151, 151, 255, 0, 255, 255, 255, 0, 160, 215, 255 ),
 "format": "RGBA8",
@@ -690,10 +690,10 @@ data = {
 "width": 3
 }
 
-[sub_resource type="ImageTexture" id=110]
+[sub_resource type="ImageTexture" id=118]
 flags = 0
 flags = 0
-image = SubResource( 115 )
+image = SubResource( 121 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=82]
@@ -702,7 +702,7 @@ shader = ExtResource( 8 )
 shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
-shader_param/palette = SubResource( 110 )
+shader_param/palette = SubResource( 118 )
 
 [sub_resource type="Animation" id=83]
 length = 0.001
@@ -898,8 +898,7 @@ margin_right = 246.0
 margin_bottom = 73.0
 text = "Presiona 
 Z en el teclado o A en el joystick
-para aletear hacia el portal!
-(PAUSA con ENTER)"
+para aletear hacia el portal!"
 
 [node name="demo" type="Node2D" parent="."]
 
