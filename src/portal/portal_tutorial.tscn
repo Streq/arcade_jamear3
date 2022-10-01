@@ -177,3 +177,4 @@ shape = SubResource( 49 )
 [node name="free" parent="out_of_sight_arrow" instance=ExtResource( 8 )]
 
 [connection signal="body_entered" from="inside_area" to="inside_area" method="_on_body_entered"]
+[connection signal="body_exited" from="inside_area" to="inside_area" method="_on_body_exited"]

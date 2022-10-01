@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://src/tutorial/0.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/tutorial/base_level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/enemy/bat.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/test/geometry/navigation_generator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=8]

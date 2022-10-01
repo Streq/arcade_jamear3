@@ -329,6 +329,7 @@ script = ExtResource( 4 )
 [node name="palette" parent="nav_indicator/arrow" instance=ExtResource( 10 )]
 palette = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0.415686, 0.384314, 0.54902, 1, 0, 0.811765, 1, 1 )
 material = SubResource( 52 )
+string_val = "[\"ff000000\",\"ff000000\",\"ff6a628c\",\"ff00cfff\"]"
 
 [node name="free" parent="nav_indicator" instance=ExtResource( 14 )]
 should_free = false

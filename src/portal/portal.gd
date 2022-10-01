@@ -5,7 +5,6 @@ signal player_exited
 var state = 0
 onready var state_change = $state_change
 onready var texture_rect = $Viewport/TextureRect
-
 func _ready():
 	var circuit = Group.get_one("level_circuit")
 	if circuit:
