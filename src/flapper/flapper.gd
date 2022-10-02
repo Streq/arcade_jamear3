@@ -19,6 +19,7 @@ signal killed_by(cause)
 
 export var gravity := 200.0
 export var air_friction := 0.0
+export var mass := 1.0
 export (float, 0.0, 60.0) var rotation_lerp := 4.0
 export var strong_flap := 87.0 setget,get_strong_flap
 func get_strong_flap():

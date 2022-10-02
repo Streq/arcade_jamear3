@@ -336,6 +336,8 @@ buffering/agile_event_flushing=true
 2d_physics/layer_8="enemy"
 2d_physics/layer_9="pickup_free_detect"
 2d_physics/layer_10="player_hurtbox"
+2d_physics/layer_11="grabbable"
+2d_physics/layer_12="body_heat"
 
 [memory]
 

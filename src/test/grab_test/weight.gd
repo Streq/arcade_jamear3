@@ -1,15 +1,15 @@
-extends Node2D
+extends KinematicBody2D
 
-var velocity := Vector2()
+export var velocity := Vector2()
 
 var weight := 200.0
 
-var dropped = false
+#export var grabbed = false
 
 func  _ready() -> void:
 	var parent = get_parent()
 	var parent_owner = parent.owner
-	parent_owner.connect("glide_pre_flap",self,"drop",[],CONNECT_ONESHOT)
+#	parent_owner.connect("glide_pre_flap",self,"drop",[],CONNECT_ONESHOT)
 
 func drop():
 	var parent = get_parent()
@@ -20,10 +20,10 @@ func drop():
 	grandpa.add_child(self)
 	self.global_transform = aux_t 
 	self.velocity = parent_owner.velocity
-	dropped = true
+#	grabbed = false
 
 func _physics_process(delta: float) -> void:
-	if dropped:
-		position += velocity*delta
-		velocity.y += weight*delta
+#	if !grabbed:
+	velocity = move_and_slide(velocity)
+	velocity.y += weight*delta
 

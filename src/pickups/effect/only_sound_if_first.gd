@@ -16,7 +16,8 @@ func _check():
 	if am_playing:
 		if !is_in_group(group):
 			add_to_group(group)
-		var is_first = Group.get_all(group)[0] == self
+		var sounds = Group.get_all(group)
+		var is_first = sounds[0] == self
 		if is_first:
 			volume_db = db
 		else:
