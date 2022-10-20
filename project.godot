@@ -128,6 +128,8 @@ boot_splash/show_image=false
 boot_splash/use_filter=false
 config/icon="res://assets/icon.png"
 run/main_scene.playjam="res://src/gamemode/single_room/single_room_playjam.tscn"
+config/name.64="jamear3"
+config/name.Android="jamear3"
 
 [autoload]
 
@@ -136,6 +138,7 @@ Group="*res://src/global/group.gd"
 Music="*res://src/global/music.tscn"
 LoadingHud="*res://src/HUD/LoadingHUD.tscn"
 ScoreBoard="*res://src/global/score_board.gd"
+InputConfig="res://src/global/input_config_playjam.tscn"
 
 [display]
 

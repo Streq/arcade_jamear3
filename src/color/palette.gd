@@ -8,6 +8,7 @@ export var glow_speed = 1.0
 
 export var string_val : String setget set_string_val
 
+var shader_offset
 
 var ready = false
 
@@ -40,6 +41,7 @@ func _ready():
 	
 	ready = true
 	set_palette(palette)
+	shader_offset = material.get_shader_param("offset")
 	material.set_shader_param("palette", tex)
 	material.set_shader_param("palette_size", palette.size())
 	update_parent_material()
@@ -83,5 +85,5 @@ func _process(delta):
 func set_glow(val):
 	glow = val
 	if ready:
-		material.set_shader_param("offset", 0)
+		material.set_shader_param("offset", shader_offset)
 	
