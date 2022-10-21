@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://src/flapper/presets/fast_glider.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/portal/portal_tutorial.tscn" type="PackedScene" id=2]
@@ -20,7 +20,7 @@
 [ext_resource path="res://src/tutorial/disappear.gd" type="Script" id=18]
 [ext_resource path="res://src/map/play_music.gd" type="Script" id=19]
 
-[sub_resource type="Image" id=119]
+[sub_resource type="Image" id=122]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -32,7 +32,7 @@ data = {
 [sub_resource type="ImageTexture" id=114]
 flags = 0
 flags = 0
-image = SubResource( 119 )
+image = SubResource( 122 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=65]
@@ -42,6 +42,9 @@ shader_param/palette_size = 3
 shader_param/offset = 0
 shader_param/blue_index_offset = 1.0
 shader_param/palette = SubResource( 114 )
+
+[sub_resource type="StreamTexture" id=74]
+load_path = "res://.import/flapper.png-42d4f1390d9d9cceb01520b415ef9b37.stex"
 
 [sub_resource type="Animation" id=91]
 length = 0.001
@@ -379,7 +382,7 @@ tracks/1/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Image" id=120]
+[sub_resource type="Image" id=123]
 data = {
 "data": PoolByteArray( 0, 0, 0, 255, 50, 0, 76, 255, 203, 100, 0, 255, 255, 167, 0, 255 ),
 "format": "RGBA8",
@@ -391,7 +394,7 @@ data = {
 [sub_resource type="ImageTexture" id=116]
 flags = 0
 flags = 0
-image = SubResource( 120 )
+image = SubResource( 123 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=62]
@@ -532,7 +535,7 @@ tracks/1/keys = {
 "values": [ 27.0, 9.0, 4.0, 3.0, 2.0, 1.0, 5.0 ]
 }
 
-[sub_resource type="Animation" id=74]
+[sub_resource type="Animation" id=121]
 length = 0.5
 step = 0.05
 tracks/0/type = "method"
@@ -682,7 +685,7 @@ tracks/0/keys = {
 "values": [ 14.0, 26.0, 25.0, 27.0 ]
 }
 
-[sub_resource type="Image" id=121]
+[sub_resource type="Image" id=124]
 data = {
 "data": PoolByteArray( 24, 151, 151, 255, 0, 255, 255, 255, 0, 160, 215, 255 ),
 "format": "RGBA8",
@@ -694,7 +697,7 @@ data = {
 [sub_resource type="ImageTexture" id=118]
 flags = 0
 flags = 0
-image = SubResource( 121 )
+image = SubResource( 124 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=82]
@@ -843,6 +846,8 @@ position = Vector2( 489, 429 )
 
 [node name="Sprite" parent="fast_glider/pivot" index="0"]
 material = SubResource( 65 )
+texture = SubResource( 74 )
+frame = 13
 
 [node name="palette" parent="fast_glider/pivot/Sprite/palette_manager" index="0"]
 palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
@@ -867,6 +872,8 @@ anims/spread_wings = SubResource( 102 )
 
 [node name="Sprite" parent="fast_glider2/pivot" index="0"]
 material = SubResource( 65 )
+texture = SubResource( 74 )
+frame = 13
 
 [node name="palette" parent="fast_glider2/pivot/Sprite/palette_manager" index="0"]
 palette = PoolColorArray( 0.592157, 0.0941176, 0.0941176, 1, 1, 0.701961, 0, 1, 0.843137, 0.337255, 0, 1 )
@@ -915,7 +922,7 @@ anims/close_wings = SubResource( 70 )
 anims/die = SubResource( 71 )
 anims/failed_flap = SubResource( 72 )
 anims/failed_glide_flap = SubResource( 73 )
-anims/flap = SubResource( 74 )
+anims/flap = SubResource( 121 )
 anims/glide = SubResource( 75 )
 anims/glide_fail = SubResource( 76 )
 anims/glide_flap = SubResource( 77 )
@@ -981,6 +988,8 @@ disabled = true
 [node name="Sprite" parent="demo/demo_glider/pivot" index="0"]
 modulate = Color( 1, 1, 1, 0.466667 )
 material = SubResource( 82 )
+texture = SubResource( 74 )
+frame = 13
 
 [node name="palette" parent="demo/demo_glider/pivot/Sprite/palette_manager" index="0"]
 palette = PoolColorArray( 0.0941176, 0.592157, 0.592157, 1, 0, 1, 1, 1, 0, 0.627451, 0.843137, 1 )
