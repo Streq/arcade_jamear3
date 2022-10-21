@@ -3,7 +3,7 @@
 [ext_resource path="res://src/flapper/flapper.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/shader/palette.gdshader" type="Shader" id=2]
 
-[sub_resource type="Image" id=4]
+[sub_resource type="Image" id=6]
 data = {
 "data": PoolByteArray( 151, 23, 23, 255, 255, 179, 0, 255, 214, 86, 0, 255 ),
 "format": "RGBA8",
@@ -15,7 +15,7 @@ data = {
 [sub_resource type="ImageTexture" id=5]
 flags = 0
 flags = 0
-image = SubResource( 4 )
+image = SubResource( 6 )
 size = Vector2( 3, 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
