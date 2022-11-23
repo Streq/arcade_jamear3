@@ -10,17 +10,23 @@ enum STATE {
 }
 
 var state : int
+
+var map = {
+	"ui_left": Vector2.LEFT,
+	"ui_right": Vector2.RIGHT,
+	"ui_up": Vector2.UP,
+	"ui_down": Vector2.DOWN
+}
+
 func _input(event):
 	if state == STATE.IDLE:
-		if event.is_action("ui_left"):
-			move_to(node_position.node_left)
-		if event.is_action("ui_right"):
-			move_to(node_position.node_right)
-		if event.is_action("ui_up"):
-			move_to(node_position.node_up)
-		if event.is_action("ui_down"):
-			move_to(node_position.node_down)
-
+		var dir = Vector2.ZERO
+		for key in map:
+			if event.is_action(key):
+				dir = map[key]
+				break
+		move_to(node_position.get_road_node(dir))
+		
 func move_to(node):
 	if !is_instance_valid(node):
 		return
