@@ -43,3 +43,6 @@ static func link(a,b):
 	if a.global_position.y > b.global_position.y:
 		a.node_up = b.get_path()
 		b.node_down = a.get_path()
+
+func _ready():
+	pass
