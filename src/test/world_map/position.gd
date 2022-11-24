@@ -1,25 +1,44 @@
 extends Position2D
 tool
 
+export var disabled := false
+export var clear := false
+
 export (NodePath) var node_left
 export (NodePath) var node_right
 export (NodePath) var node_up
 export (NodePath) var node_down
 
 
+export var lmao := {"sos":"sas"}
+
 func get_road_node(dir:Vector2):
 	var node = null
 	match dir:
 		Vector2.LEFT:
-			node = node_left
+			node = get_if_can_travel(node_left)
 		Vector2.RIGHT:
-			node = node_right
+			node = get_if_can_travel(node_right)
 		Vector2.UP:
-			node = node_up
+			node = get_if_can_travel(node_up)
 		Vector2.DOWN:
-			node = node_down
+			node = get_if_can_travel(node_down)
 	
-	return get_node_if_present(node)
+	return node
+
+func get_if_can_travel(node_path):
+	var node = get_node_if_present(node_path)
+	if !is_instance_valid(node):
+		return null
+	if node.disabled:
+		return null
+	if node.clear:
+		return node
+	
+	if self.clear:
+		return node
+	
+	return null
 
 func get_node_if_present(node):
 	if node and has_node(node):

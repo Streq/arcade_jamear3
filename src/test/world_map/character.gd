@@ -22,11 +22,12 @@ func _input(event):
 	if state == STATE.IDLE:
 		var dir = Vector2.ZERO
 		for key in map:
-			if event.is_action(key):
+			if event.is_action_pressed(key):
 				dir = map[key]
 				break
 		move_to(node_position.get_road_node(dir))
-		
+		if event.is_action_pressed("A"):
+			node_position.clear = true
 func move_to(node):
 	if !is_instance_valid(node):
 		return

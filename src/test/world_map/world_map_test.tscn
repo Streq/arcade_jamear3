@@ -52,36 +52,56 @@ texture = ExtResource( 1 )
 script = ExtResource( 4 )
 
 [node name="road_node" parent="." instance=ExtResource( 7 )]
+node_down = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node2")
 
 [node name="road_node2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 40, 248 )
+node_right = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node3")
+node_up = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node")
 
 [node name="road_node3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 200, 248 )
+node_left = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node2")
+node_right = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node8")
+node_up = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node11")
+node_down = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node10")
 
 [node name="road_node4" parent="." instance=ExtResource( 7 )]
 position = Vector2( 200, 72 )
+node_right = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node5")
 
 [node name="road_node5" parent="." instance=ExtResource( 7 )]
 position = Vector2( 344, 72 )
+node_left = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node4")
 
 [node name="road_node6" parent="." instance=ExtResource( 7 )]
 position = Vector2( 456, 72 )
+node_down = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node7")
 
 [node name="road_node7" parent="." instance=ExtResource( 7 )]
 position = Vector2( 456, 248 )
+node_left = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node8")
+node_up = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node6")
 
 [node name="road_node8" parent="." instance=ExtResource( 7 )]
 position = Vector2( 344, 248 )
+node_left = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node3")
+node_right = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node7")
+node_down = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node9")
 
 [node name="road_node9" parent="." instance=ExtResource( 7 )]
 position = Vector2( 344, 344 )
+node_left = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node10")
+node_up = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node8")
 
 [node name="road_node10" parent="." instance=ExtResource( 7 )]
 position = Vector2( 200, 344 )
+node_right = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node9")
+node_up = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node3")
 
 [node name="road_node11" parent="." instance=ExtResource( 7 )]
 position = Vector2( 200, 168 )
+node_down = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6618/@@6450/@@6451/@@6452/@@6453/@@6454/@@6455/Node2D/road_node3")
 
 [node name="road_node12" parent="." instance=ExtResource( 7 )]
 position = Vector2( 344, 168 )
@@ -95,7 +115,7 @@ script = ExtResource( 6 )
 
 [node name="line_bridge2" type="Line2D" parent="."]
 position = Vector2( 112, -96 )
-points = PoolVector2Array( 344, 344, 344, 168, 232, 168, 88, 168, -72, 168, -72, 344, 232, 344, 88, 344, 232, 440, 88, 440, 88, 440, 88, 344, -72, 344, 88, 344, 88, 264, 88, 344, 232, 344, 344, 344, 232, 440, 232, 344 )
+points = PoolVector2Array( 344, 344, 344, 168, 232, 168, 88, 168, -72, 168, -72, 344, 232, 344, 88, 344, 232, 440, 88, 440, 88, 440, 88, 344, -72, 344, 88, 344, 88, 264, 88, 344, 232, 344, 344, 344, 232, 440, 232, 344, 88, 264, 88, 168, 232, 264, 88, 264, 232, 168, 232, 264, 344, 168, 232, 168 )
 width = 0.0
 script = ExtResource( 8 )
 multiline = true
